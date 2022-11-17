@@ -1,3 +1,5 @@
+//STALE_FILE
+
 export const addRideHandler = async (rideData) => {
   try {
     const response = await fetch(

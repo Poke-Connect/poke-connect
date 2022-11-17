@@ -1,3 +1,5 @@
+//STALE_FILE
+
 import React from "react";
 import { getFilteredRidesLocality } from "../../helpers/getFilteredRidesLocality";
 import { getPreFilteredRides } from "../../helpers/getPreFilteredRides";

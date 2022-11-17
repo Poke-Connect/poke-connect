@@ -4,9 +4,16 @@ import { createRoute } from "../../../helpers/createRoute";
 import GMapElement from "./GMapElement";
 import { useNavigate } from "react-router-dom";
 import { getDatabase, ref, set } from "firebase/database";
+import DateTimeContainer from "./DateTimeContainer";
+import {
+  getTodaysDate,
+  createDateString,
+  createTimeStamp,
+} from "../../../helpers/dateHelper";
 
 const MapContainer = () => {
   // const [map, setMap] = useState(/** @type google.maps.map */ (null));
+  getTodaysDate();
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [placeholderText, setPlaceHolderText] = useState("");
   const [showMap, setShowMap] = useState(false);
@@ -14,14 +21,13 @@ const MapContainer = () => {
   const [duration, setDuration] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [rideType, setRideType] = useState(null);
-  const rideId = "118";
+  const [dateValue, setDateValue] = useState(getTodaysDate());
+  const rideId = "120";
 
   const db = getDatabase();
   const dbRef = ref(db, "rides/" + rideId);
 
   const originRef = useRef();
-  const dateRef = useRef();
-  const timeRef = useRef();
 
   const navigate = useNavigate();
 
@@ -59,20 +65,18 @@ const MapContainer = () => {
   };
 
   const onFindMatchesHandler = async () => {
-    console.log("date ref", typeof dateRef.current.value);
-    console.log("time ref", typeof timeRef.current.value);
-
     const rideData = {
       rideType: rideType,
       creatorId: "1",
-      date: dateRef.current.value, //dateObject
-      time: timeRef.current.value, //timeObject
+      date: createDateString(dateValue),
+      time: createTimeStamp(dateValue),
       location: originRef.current.value,
       rideId: rideId,
     };
     set(dbRef, rideData);
     navigate(`/matches/${rideId}`);
   };
+
   return (
     <>
       <div>
@@ -95,29 +99,13 @@ const MapContainer = () => {
               </Autocomplete>
             </div>
             <div>
-              <input
-                type="datetime-local"
-                name={"date"}
-                placeholder={"date"}
-                ref={dateRef}
-              />
-              <input
-                type="time"
-                name={"time"}
-                placeholder={"time"}
-                ref={timeRef}
+              <DateTimeContainer
+                dateValue={dateValue}
+                setDateValue={setDateValue}
               />
             </div>
           </div>
-          {showMap && (
-            <div>
-              Location Map
-              <GMapElement
-                // setMap={setMap}
-                directionsResponse={directionsResponse}
-              />
-            </div>
-          )}
+          {showMap && <GMapElement directionsResponse={directionsResponse} />}
           <div>
             <button onClick={onConfirmRouteHandler}>Confirm Route</button>
           </div>

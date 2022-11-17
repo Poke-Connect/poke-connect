@@ -1,7 +1,9 @@
-//MAIN
-1. Date and time object in new request creation
+//MAIN:
 2. ride id logic
 3. authentication and user id
 4. protected routes
 5. mask first 3 characters auto-complete
 6. implement Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
+
+//Finished:
+1. Date and time object in new request creation
