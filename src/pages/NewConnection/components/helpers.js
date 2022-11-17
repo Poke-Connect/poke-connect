@@ -1,3 +1,5 @@
+//STALE_FILE
+
 const calculateRouteTime = (route) => {
   let timeTaken = 0;
   route.legs.map((leg) => (timeTaken = timeTaken + leg.duration.value));
