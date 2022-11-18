@@ -1,3 +1,11 @@
 .App {
   text-align: center;
+  max-width: 600px;
+}
+.rightsidenav-position-absolute{
+  position: absolute;
+  right: 0px;
+  top:0px;
+  width: 70%;
+  height: 100%;
 }
