@@ -1,9 +1,32 @@
-//MAIN:
-2. ride id logic
-3. authentication and user id
-4. protected routes
-5. mask first 3 characters auto-complete
-6. implement Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
+#MAIN:
 
-//Finished:
-1. Date and time object in new request creation
+    ##Authentication and Protection
+        - Figma
+        - Sign in UI
+        - Routes handling for Protection
+        - Component Handling for protection
+
+
+    ##Profile building
+        - Figma file
+        - UI elements
+        - Saving the profile
+
+
+    ##Ride Creation and Matching
+        - home page to new connections link
+        - Masking auto-complete
+        - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
+        - Map direction not showing
+        - restricting the suggestions to Bangalore
+        - ride id logic
+
+    ##Connections Handling
+        - Complete left
+
+    ##Chatting
+        - Complete left
+
+#OTHERS:
+    - Making UI responsive
+

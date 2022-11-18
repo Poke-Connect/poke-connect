@@ -31,7 +31,7 @@ const Home = () => {
             />
           </div>
         </div>
-        <span class="h-0.5 bg-lightGreen mt-20 mb-20 w-4/5"></span>
+        <span className="h-0.5 bg-lightGreen mt-20 mb-20 w-4/5"></span>
         <div className="flex flex-col w-4/5">
           <HomeButton onClick={onClickTripsHandler} name={"My Trips"}>
             <div>

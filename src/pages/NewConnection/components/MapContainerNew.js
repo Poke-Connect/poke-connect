@@ -20,8 +20,8 @@ const MapContainer = () => {
   getTodaysDate();
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [placeholderText, setPlaceHolderText] = useState("");
-  const [distance, setDistance] = useState("");
-  const [duration, setDuration] = useState("");
+  // const [distance, setDistance] = useState("");
+  // const [duration, setDuration] = useState("");
   const [showInput, setShowInput] = useState(true);
   const [rideType, setRideType] = useState(null);
   const [dateValue, setDateValue] = useState(getTodaysDate());
@@ -64,15 +64,15 @@ const MapContainer = () => {
   const onConfirmRouteHandler = async () => {
     const minRouteObject = await getRouteObject();
     setDirectionsResponse(minRouteObject);
-    setDistance(minRouteObject.routeDistance);
-    setDuration(minRouteObject.routeTime);
+    // setDistance(minRouteObject.routeDistance);
+    // setDuration(minRouteObject.routeTime);
   };
 
   const onFindMatchesHandler = async () => {
     const minRouteObject = await getRouteObject();
     setDirectionsResponse(minRouteObject);
-    setDistance(minRouteObject.routeDistance);
-    setDuration(minRouteObject.routeTime);
+    // setDistance(minRouteObject.routeDistance);
+    // setDuration(minRouteObject.routeTime);
 
     const rideData = {
       rideType: rideType,
@@ -87,26 +87,28 @@ const MapContainer = () => {
   };
 
   return (
-    <div className="bg-white flex-1 items-center md:w-[600px]">
+    <div className="bg-white flex-1 items-center md:w-[600px] pt-12">
       {showInput && (
         <div className="bg-white-500 flex-1 flex-col">
           <div className="h-1/2">
             <div>
               <Autocomplete restrictions={{ country: "in" }}>
-                <InputElement
-                  name={placeholderText}
+                <input
+                  type="location"
+                  name="From"
+                  className={`bg-lightGray inline-flex p-2 m-2 text-lg w-5/6 rounded-lg `}
                   placeholder={"From where?"}
-                  originRef={originRef}
-                  disabled={false}
+                  ref={originRef}
                 />
               </Autocomplete>
-              <InputElement
-                className="placeholder-black"
-                name={placeholderText}
+              <input
+                type="location"
+                name="KIA"
+                className={
+                  "bg-lightGray inline-flex p-2 m-2 text-lg w-5/6 rounded-lg placeholder-black"
+                }
                 placeholder={"Kempegowda International Airport"}
-                originRef={originRef}
                 disabled={true}
-                placeholderTextColor={"black"}
               />
             </div>
             <div className="flex flex-row w-full items-center justify-center">
@@ -122,7 +124,7 @@ const MapContainer = () => {
                 onClick={onFindMatchesHandler}
                 className="bg-black inline-flex p-2 justify-center m-4 text-lg w-5/6 rounded-lg text-white"
               >
-                Schedule
+                Find Connections
               </button>
             </div>
           </div>

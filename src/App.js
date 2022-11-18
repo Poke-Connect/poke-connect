@@ -14,10 +14,14 @@ function App() {
     return <div>Loading...</div>;
   }
   return (
-    <div className="App md:mx-auto relative h-screen">
-      <Header />
-      <div><AppRouter /></div>
-    </div>
+    <AuthContextProvider>
+      <div className="App md:mx-auto relative h-screen">
+        <Header />
+        <div>
+          <AppRouter />
+        </div>
+      </div>
+    </AuthContextProvider>
   );
 }
 
