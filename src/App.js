@@ -16,9 +16,9 @@ function App() {
     return <div>Loading...</div>;
   }
   return (
-    <div className="App mx-auto relative h-screen">
+    <div className="App mx-auto relative max-w-xl h-screen">
       <Header />
-      <div className="mx-6"><AppRouter /></div>
+      <div className="mx-6 pt-24 "><AppRouter /></div>
     </div>
   );
 }

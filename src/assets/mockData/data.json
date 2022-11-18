@@ -13,15 +13,19 @@
         {"name":"Aadil khan","lastMessage":"Last message","time":"8 Sep"},
         {"name":"Abhijeet Sinha","lastMessage":"Last message","time":"7 Sep"}
     ],
-    "userProfile":{
-        "userName":"Coco Chanel",
-        "userEmail":"coco.chanel7@gmail.com",
-        "mobile":"+351 90000007",
-        "LinkedIn":"linkedin.com/fr/coco-chanel-7-0165aq",
-        "Gender":"Female",
-        "Occupation":"Entrepreneur",
-        "Company":"Chanel",
-        "About":"Chupa chups donut donut danish marshmallow brownie lemon drops. Tootsie roll wafer candy canes candy canes gingerbread chocolate cake. Bonbon donut brownie cheesecake fruitcake jelly chocolate jelly halvah. Sweet jelly-o halvah carrot cake apple pie carrot cake ice cream topping."
+    "userProfile": {
+        "primaryInfo": {
+            "userName": "Coco Chanel",
+            "userEmail": "coco.chanel7@gmail.com"
+        },
+        "secondaryInfo": {
+            "mobile": "+351 90000007",
+            "LinkedIn": "linkedin.com/fr/coco-chanel-7-0165aq",
+            "Gender": "Female",
+            "Occupation": "Entrepreneur",
+            "Company": "Chanel",
+            "About": "Chupa chups donut donut danish marshmallow brownie lemon drops. Tootsie roll wafer candy canes candy canes gingerbread chocolate cake. Bonbon donut brownie cheesecake fruitcake jelly chocolate jelly halvah. Sweet jelly-o halvah carrot cake apple pie carrot cake ice cream topping."
+        }
     },
     "aboutUs":{
         "aboutUs":"Chupa chups donut donut danish marshmallow brownie lemon drops. Tootsie roll wafer candy canes candy canes gingerbread chocolate cake. Bonbon donut brownie cheesecake fruitcake jelly chocolate jelly halvah. Sweet jelly-o halvah carrot cake apple pie carrot cake ice cream topping.",

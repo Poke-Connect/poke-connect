@@ -1,11 +1,13 @@
 .App {
   text-align: center;
-  max-width: 600px;
 }
-.rightsidenav-position-absolute{
-  position: absolute;
-  right: 0px;
-  top:0px;
-  width: 70%;
-  height: 100%;
+.profile-pic{
+  width: 32px;
+  height: 30px;
+  background-image: url(./assets/icons/defaltPicture.png);
+}
+.profile-picture{
+  width: 54px;
+  height: 54px;
+  background-image: url(./assets/icons/profile-pic.png);
 }

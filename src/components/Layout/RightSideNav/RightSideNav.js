@@ -7,16 +7,16 @@ const RightSideNav = ({sidebar , onClick}) => {
         <li className=" border-t border-b border-black py-5">
           <a href="/connections/new">Find New Connection</a>
         </li>
-        <li className="border-b border-black pb-5">
+        <li className="border-b border-black py-5">
           <a href="/mytrips">My Trips</a>
         </li>
-        <li className="border-b border-black pb-5">
+        <li className="border-b border-black py-5">
           <a href="/connections">My Connections</a>
         </li>
-        <li className="border-b border-black pb-5">
+        <li className="border-b border-black py-5">
           <a href="/profile">My Profile</a>
         </li>
-        <li className="border-b border-black pb-5">
+        <li className="border-b border-black py-5">
           <a href="#">Log Out</a>
         </li>
       </ul>
