@@ -1,12 +1,10 @@
 import "./App.css";
 import AppRouter from "./AppRouter";
-import { firebaseConfig } from "./firebaseConfig";
-import { initializeApp } from "firebase/app";
 import { useJsApiLoader } from "@react-google-maps/api";
-import Header from "./components/Layout/Header"
+import Header from "./components/Layout/Header/Header";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
-  const app = initializeApp(firebaseConfig);
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_POKE_GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
@@ -16,10 +14,14 @@ function App() {
     return <div>Loading...</div>;
   }
   return (
-    <div className="App mx-auto relative max-w-xl h-screen">
-      <Header />
-      <div className="mx-6 pt-24 "><AppRouter /></div>
-    </div>
+    <AuthContextProvider>
+      <div className="App mx-auto relative max-w-xl h-screen">
+        <Header />
+        <div className="mx-6 pt-24">
+          <AppRouter />
+        </div>
+      </div>
+    </AuthContextProvider>
   );
 }
 
