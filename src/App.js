@@ -16,9 +16,9 @@ function App() {
     return <div>Loading...</div>;
   }
   return (
-    <div className="App mx-auto relative h-screen">
+    <div className="App md:mx-auto relative h-screen">
       <Header />
-      <div className="mx-6"><AppRouter /></div>
+      <div><AppRouter /></div>
     </div>
   );
 }
