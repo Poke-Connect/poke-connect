@@ -5,11 +5,7 @@ const ToggleElement = (props) => {
   const { toggleState, handleToggleChange } = props;
   return (
     <label>
-      <Toggle
-        defaultChecked={toggleState}
-        onChange={handleToggleChange}
-        icons={false}
-      />
+      <Toggle defaultChecked={toggleState} onChange={handleToggleChange} />
     </label>
   );
 };

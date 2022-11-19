@@ -1,0 +1,34 @@
+{
+    "upcommingTrips":[
+        {"name":"Ashish Jain","lastMessage":"Last message","time":"19 Nov"},
+        {"name":"Thapan K T","lastMessage":"Last message","time":"20 Nov"},
+        {"name":"Armaan Preet Sandhu ","lastMessage":"Last message","time":"23 Nov"},
+        {"name":"Aadil khan","lastMessage":"Last message","time":"1 Dec"},
+        {"name":"Abhijeet Sinha","lastMessage":"Last message","time":"7 Dec"}
+    ],
+    "completedTrips":[
+        {"name":"Ashish Jain","lastMessage":"Last message","time":"12 Sep"},
+        {"name":"Thapan K T","lastMessage":"Last message","time":"11 Sep"},
+        {"name":"Armaan Preet Sandhu ","lastMessage":"Last message","time":"10 Sep"},
+        {"name":"Aadil khan","lastMessage":"Last message","time":"8 Sep"},
+        {"name":"Abhijeet Sinha","lastMessage":"Last message","time":"7 Sep"}
+    ],
+    "userProfile": {
+        "primaryInfo": {
+            "userName": "Coco Chanel",
+            "userEmail": "coco.chanel7@gmail.com"
+        },
+        "secondaryInfo": {
+            "mobile": "+351 90000007",
+            "LinkedIn": "linkedin.com/fr/coco-chanel-7-0165aq",
+            "Gender": "Female",
+            "Occupation": "Entrepreneur",
+            "Company": "Chanel",
+            "About": "Chupa chups donut donut danish marshmallow brownie lemon drops. Tootsie roll wafer candy canes candy canes gingerbread chocolate cake. Bonbon donut brownie cheesecake fruitcake jelly chocolate jelly halvah. Sweet jelly-o halvah carrot cake apple pie carrot cake ice cream topping."
+        }
+    },
+    "aboutUs":{
+        "aboutUs":"Chupa chups donut donut danish marshmallow brownie lemon drops. Tootsie roll wafer candy canes candy canes gingerbread chocolate cake. Bonbon donut brownie cheesecake fruitcake jelly chocolate jelly halvah. Sweet jelly-o halvah carrot cake apple pie carrot cake ice cream topping.",
+        "donatetopoke":"Poke is powered by people like you. Your donations help grow our team and build a better experience for you."
+    }
+}
