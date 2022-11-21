@@ -23,7 +23,7 @@ const AvailableMatches = () => {
   }, []);
 
   return (
-    <div>
+    <div className="pt-20">
       <h1>Available co-passengers </h1>
       <ShowMatchesNew ride={ride} allRides={allRides} />
     </div>

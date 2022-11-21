@@ -6,8 +6,6 @@ const ShowMatchesNew = (props) => {
   const { ride, allRides } = props;
   const [myMatches, setMyMatches] = useState([]);
 
-  console.log("allRides", allRides);
-
   useEffect(() => {
     async function fetchMatches() {
       try {
@@ -28,7 +26,6 @@ const ShowMatchesNew = (props) => {
   if (!ride || !allRides) {
     return null;
   }
-  console.log("my matches", myMatches);
   return (
     <div>
       Showing Matches for
@@ -39,7 +36,7 @@ const ShowMatchesNew = (props) => {
         <div>Matches:</div>
         {myMatches
           ? myMatches.map((rideObj) => (
-              <div>
+              <div key={rideObj[0].rideId}>
                 <h5>{allRides[rideObj[0]].location}</h5>
                 <h5>{rideObj[1]}</h5>
               </div>

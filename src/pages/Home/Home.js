@@ -3,6 +3,9 @@ import HomeButton from "./components/HomeButton";
 import { useNavigate } from "react-router-dom";
 import Arrow from "../../assets/icons/Arrow";
 
+const DESTINATION_RIDE = "DESTINATION_RIDE";
+const ORIGIN_RIDE = "ORIGIN_RIDE";
+
 const Home = () => {
   const navigate = useNavigate();
 
@@ -10,8 +13,12 @@ const Home = () => {
     navigate(`/mytrips`);
   };
 
-  const onClickConnectionsHandler = () => {
-    navigate(`/connections/new`);
+  const onTravelToAirportHandler = () => {
+    navigate(`/connections/new`, { state: { rideType: DESTINATION_RIDE } });
+  };
+
+  const onTravelFromAirportHandler = () => {
+    navigate(`/connections/new`, { state: { rideType: ORIGIN_RIDE } });
   };
 
   return (
@@ -21,12 +28,12 @@ const Home = () => {
           <h2 className="text-2xl mb-6 text-left">Find new connections</h2>
           <div className="flex flex-col">
             <HomeButton
-              onClick={onClickConnectionsHandler}
+              onClick={onTravelFromAirportHandler}
               name={"From Airport"}
             />
 
             <HomeButton
-              onClick={onClickConnectionsHandler}
+              onClick={onTravelToAirportHandler}
               name={"To Airport"}
             />
           </div>

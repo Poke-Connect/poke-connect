@@ -19,7 +19,7 @@ const RightSideNav = (props) => {
   const navElements = [
     {
       title: "Find New Connection",
-      toRoute: "/connections/new",
+      toRoute: "/home",
       onClickHandler: toggleSideBar,
       styles: "",
     },

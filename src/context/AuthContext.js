@@ -40,3 +40,13 @@ export const AuthContextProvider = ({ children }) => {
 export const UserAuth = () => {
   return useContext(AuthContext);
 };
+
+/**UserObject --> 
+ *{
+  displayName,
+  email,
+  emailVerified,
+  phoneNumber,
+  photoURL,
+  uid
+ } */

@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
-import { Autocomplete } from "@react-google-maps/api";
+/* eslint-disable no-undef */
+import React, { useState } from "react";
 import { createRoute } from "../../../helpers/createRoute";
 import GMapElement from "./GMapElement";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { getDatabase, ref, set } from "firebase/database";
 import DateTimeContainer from "./DateTimeContainer";
 import {
@@ -11,75 +11,49 @@ import {
   createTimeStamp,
   getTimeNow,
 } from "../../../helpers/dateHelper";
-import InputElement from "../../../components/InputElement";
-import HomeButton from "../../Home/components/HomeButton";
-import Arrow from "../../../assets/icons/Arrow";
+import { UserAuth } from "../../../context/AuthContext";
+import PlacesAutocomplete from "./PlacesAutoComplete";
+
+const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
 const MapContainer = () => {
-  // const [map, setMap] = useState(/** @type google.maps.map */ (null));
-  getTodaysDate();
+  const location = useLocation();
+  const rideType = location.state.rideType;
+  const { user } = UserAuth();
+
   const [directionsResponse, setDirectionsResponse] = useState(null);
-  const [placeholderText, setPlaceHolderText] = useState("");
-  // const [distance, setDistance] = useState("");
-  // const [duration, setDuration] = useState("");
-  const [showInput, setShowInput] = useState(true);
-  const [rideType, setRideType] = useState(null);
   const [dateValue, setDateValue] = useState(getTodaysDate());
   const [timeValue, setTimeValue] = useState(getTimeNow());
+  const [locationValue, setLocationValue] = useState(null);
 
-  const rideId = "120";
+  const rideId = "123";
 
   const db = getDatabase();
   const dbRef = ref(db, "rides/" + rideId);
-
-  const originRef = useRef();
-
   const navigate = useNavigate();
 
-  // eslint-disable-next-line no-undef
   const airportCordinates = new google.maps.LatLng(13.199379, 77.710136);
 
   const getRouteObject = () => {
     if (!rideType) {
       return {};
-    } else if (rideType === "TO_AIRPORT") {
-      return createRoute(originRef.current.value, airportCordinates);
+    } else if (rideType === DESTINATION_RIDE) {
+      return createRoute(locationValue, airportCordinates);
     } else {
-      return createRoute(airportCordinates, originRef.current.value);
+      return createRoute(airportCordinates, locationValue);
     }
-  };
-
-  const onTravelToAirportHandler = () => {
-    setShowInput(true);
-    setPlaceHolderText("From?");
-    setRideType("TO_AIRPORT");
-  };
-
-  const onTravelFromAirportHandler = () => {
-    setShowInput(true);
-    setPlaceHolderText("Where to?");
-    setRideType("FROM_AIRPORT");
-  };
-
-  const onConfirmRouteHandler = async () => {
-    const minRouteObject = await getRouteObject();
-    setDirectionsResponse(minRouteObject);
-    // setDistance(minRouteObject.routeDistance);
-    // setDuration(minRouteObject.routeTime);
   };
 
   const onFindMatchesHandler = async () => {
     const minRouteObject = await getRouteObject();
     setDirectionsResponse(minRouteObject);
-    // setDistance(minRouteObject.routeDistance);
-    // setDuration(minRouteObject.routeTime);
-
+    //IF REQUIRED: Distance and duration can be taken from minRouteObject
     const rideData = {
       rideType: rideType,
-      creatorId: "1",
+      creatorId: user.uid,
       date: createDateString(dateValue),
       time: createTimeStamp(dateValue, timeValue),
-      location: originRef.current.value,
+      location: locationValue,
       rideId: rideId,
     };
     set(dbRef, rideData);
@@ -88,19 +62,22 @@ const MapContainer = () => {
 
   return (
     <div className="bg-white flex-1 items-center md:w-[600px] pt-12">
-      {showInput && (
-        <div className="bg-white-500 flex-1 flex-col">
-          <div className="h-1/2">
+      <div className="bg-white-500 flex-1 flex-col">
+        <div className="h-1/2">
+          <div
+            className={`flex ${
+              rideType === DESTINATION_RIDE
+                ? "flex-col"
+                : "flex flex-col-reverse"
+            }`}
+          >
+            <PlacesAutocomplete
+              setLocationValue={setLocationValue}
+              placeholder={
+                rideType === DESTINATION_RIDE ? "From where?" : "Where to?"
+              }
+            />
             <div>
-              <Autocomplete restrictions={{ country: "in" }}>
-                <input
-                  type="location"
-                  name="From"
-                  className={`bg-lightGray inline-flex p-2 m-2 text-lg w-5/6 rounded-lg `}
-                  placeholder={"From where?"}
-                  ref={originRef}
-                />
-              </Autocomplete>
               <input
                 type="location"
                 name="KIA"
@@ -111,28 +88,28 @@ const MapContainer = () => {
                 disabled={true}
               />
             </div>
-            <div className="flex flex-row w-full items-center justify-center">
-              <DateTimeContainer
-                dateValue={dateValue}
-                setDateValue={setDateValue}
-                timeValue={timeValue}
-                setTimeValue={setTimeValue}
-              />
-            </div>
-            <div>
-              <button
-                onClick={onFindMatchesHandler}
-                className="bg-black inline-flex p-2 justify-center m-4 text-lg w-5/6 rounded-lg text-white"
-              >
-                Find Connections
-              </button>
-            </div>
           </div>
-          <div className="h-1/2 w-full">
-            {<GMapElement directionsResponse={directionsResponse} />}
+          <div className="flex flex-row w-full items-center justify-center">
+            <DateTimeContainer
+              dateValue={dateValue}
+              setDateValue={setDateValue}
+              timeValue={timeValue}
+              setTimeValue={setTimeValue}
+            />
+          </div>
+          <div>
+            <button
+              onClick={onFindMatchesHandler}
+              className="bg-black inline-flex p-2 justify-center m-4 text-lg w-5/6 rounded-lg text-white"
+            >
+              Find Connections
+            </button>
           </div>
         </div>
-      )}
+        <div className="h-1/2 w-full">
+          {<GMapElement directionsResponse={directionsResponse} />}
+        </div>
+      </div>
     </div>
   );
 };
