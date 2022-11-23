@@ -14,10 +14,8 @@ function App() {
   }
   return (
     <AuthContextProvider>
-      <div className="App md:mx-auto relative h-screen">
-        <div className="pt-40">
+      <div className="App md:mx-auto relative h-screen max-w-xl mx-auto pt-24">
           <AppRouter />
-        </div>
       </div>
     </AuthContextProvider>
   );

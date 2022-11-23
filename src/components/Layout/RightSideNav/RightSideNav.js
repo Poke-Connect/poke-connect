@@ -58,7 +58,7 @@ const RightSideNav = (props) => {
   return (
     <>
       {showSidebar ? (
-        <nav className="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10 ${sidebar ? 'translate-x-0':'translate-x-full'}">
+        <nav className="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10 ${sidebar ? 'translate-x-0':'translate-x-full'} max-w-xl mx-auto">
           <ul className="{`flex flex-col gap-5 absolute bg-lightGreen h-full w-3/4 top-0 right-0 bottom-0 px-5 pt-24 font-bold text-xl z-10 `}">
             <div className="pb-5">
               <p>Hello, {displayName}</p>

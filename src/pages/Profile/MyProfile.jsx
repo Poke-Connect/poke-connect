@@ -14,7 +14,7 @@ const MyProfile = () => {
   const userSecondaryInfo = myData.userProfile.secondaryInfo;
 
   return (
-    <div className="pt-6 pb-10">
+    <div className="pt-6 pb-10 px-5">
       <div className="profile-into flex flex-row items-center">
         <div className="profile-picture flex-none"></div>
         <div className="profile-detail flex-none pl-2.5">

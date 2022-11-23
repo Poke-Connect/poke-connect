@@ -22,8 +22,7 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <div className="bg-white flex flex-col items-center justify-center h-screen">
+      <div className="bg-white flex flex-col items-center justify-center h-full">
         <div className="bg-lightGray p-6 flex flex-col rounded-2xl w-4/5">
           <h2 className="text-2xl mb-6 text-left">Find new connections</h2>
           <div className="flex flex-col">
@@ -47,7 +46,6 @@ const Home = () => {
           </HomeButton>
         </div>
       </div>
-    </div>
   );
 };
 

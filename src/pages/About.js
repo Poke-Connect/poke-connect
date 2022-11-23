@@ -10,7 +10,7 @@ const About = () => {
     alert('your feedback submitted successfuly!!!');
   }
   return (
-    <div className="pt-6">
+    <div className="pt-6 px-10">
     <div className="about-us text-left">
       <h2 className="font-semibold text-xl pb-1.5">About Us</h2>
       <p className="font-normal text-sm">{aboutData.aboutUs}</p>
