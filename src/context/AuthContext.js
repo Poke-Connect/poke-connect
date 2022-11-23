@@ -5,17 +5,33 @@ import {
   // signInWithRedirect,
   signOut,
   onAuthStateChanged,
+  getAdditionalUserInfo,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { createUserObject } from "./createUserObject";
 
 const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-  const googleSignIn = () => {
+  const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    try {
+      const res = await signInWithPopup(auth, provider);
+      const details = await getAdditionalUserInfo(res);
+      // console.log("res", res.user.uid);
+      if (details.isNewUser) {
+        createUserObject(res);
+        navigate("/profile", { state: { edit: true } });
+      } else {
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const logOut = () => {

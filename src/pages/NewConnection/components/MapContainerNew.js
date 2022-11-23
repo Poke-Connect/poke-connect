@@ -13,6 +13,7 @@ import {
 } from "../../../helpers/dateHelper";
 import { UserAuth } from "../../../context/AuthContext";
 import PlacesAutocomplete from "./PlacesAutoComplete";
+import { v4 as uuidv4 } from "uuid";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
@@ -20,16 +21,19 @@ const MapContainer = () => {
   const location = useLocation();
   const rideType = location.state.rideType;
   const { user } = UserAuth();
+  const userId = user.uid;
 
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [dateValue, setDateValue] = useState(getTodaysDate());
   const [timeValue, setTimeValue] = useState(getTimeNow());
   const [locationValue, setLocationValue] = useState(null);
 
-  const rideId = "123";
+  const rideId = uuidv4();
 
   const db = getDatabase();
-  const dbRef = ref(db, "rides/" + rideId);
+  const ridesDbRef = ref(db, `rides/${rideId}`);
+  const userRidesDbRef = ref(db, `userRides/${userId}/${rideId}`);
+
   const navigate = useNavigate();
 
   const airportCordinates = new google.maps.LatLng(13.199379, 77.710136);
@@ -55,8 +59,15 @@ const MapContainer = () => {
       time: createTimeStamp(dateValue, timeValue),
       location: locationValue,
       rideId: rideId,
+      discoverability: true,
+      userInfo: {
+        userId: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+      },
     };
-    set(dbRef, rideData);
+    set(ridesDbRef, rideData);
+    set(userRidesDbRef, { time: createTimeStamp(dateValue, timeValue) });
     navigate(`/matches/${rideId}`);
   };
 

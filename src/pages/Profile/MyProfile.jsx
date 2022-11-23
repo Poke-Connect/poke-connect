@@ -1,25 +1,17 @@
-import Edit from "../assets/icons/edit";
-import myData from "../assets/mockData/data.json";
+import React from "react";
+import EditIcon from "../../assets/icons/EditIcon";
+import myData from "../../assets/mockData/data.json";
+// import { useNavigate, useLocation } from "react-router-dom";
+// import { UserAuth } from "../../context/AuthContext";
+import SecondaryProfileInfo from "./components/SecondaryProfileInfo";
 
 const MyProfile = () => {
+  // const { user: userAuthData } = UserAuth();
+  // const location = useLocation();
+  // const editMode = location.state?.edit ? location.state?.edit : false;
+
   const userPrimaryInfo = myData.userProfile.primaryInfo;
   const userSecondaryInfo = myData.userProfile.secondaryInfo;
-
-  //Create a element and use map to show
-  const val = () => {
-    const rows = [];
-    for (let info in userSecondaryInfo) {
-      rows.push(
-        <div className="mobile pt-5 flex flex-col items-start">
-          <div className="font-semibold text-sm">{info}</div>
-          <div className="font-normal text-sm text-left">
-            {userSecondaryInfo[info]}
-          </div>
-        </div>
-      );
-    }
-    return <>{rows}</>;
-  };
 
   return (
     <div className="pt-6 pb-10">
@@ -34,10 +26,11 @@ const MyProfile = () => {
           </div>
         </div>
         <div className="edit flex-1">
-          <Edit />
+          <EditIcon />
         </div>
       </div>
-      <div className="pl-3">{val()}</div>
+      <SecondaryProfileInfo userSecondaryInfo={userSecondaryInfo} />
+
       <div className="logout flex pl-3 pt-5 ">
         <button className="bg-black text-white px-5 py-1.5 rounded-lg font-sm font-semibold">
           Logout

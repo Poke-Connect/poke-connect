@@ -1,7 +1,6 @@
 import "./App.css";
 import AppRouter from "./AppRouter";
 import { useJsApiLoader } from "@react-google-maps/api";
-import Header from "./components/Layout/Header/Header";
 import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
@@ -16,8 +15,7 @@ function App() {
   return (
     <AuthContextProvider>
       <div className="App md:mx-auto relative h-screen">
-        <Header />
-        <div>
+        <div className="pt-40">
           <AppRouter />
         </div>
       </div>

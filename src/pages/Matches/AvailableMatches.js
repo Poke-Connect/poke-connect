@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDatabase, onValue, ref } from "firebase/database";
-import ShowMatches from "./ShowMatches";
 import ShowMatchesNew from "./ShowMatchesNew";
 
 const AvailableMatches = () => {
