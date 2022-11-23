@@ -6,7 +6,7 @@ import Home from "./pages/Home/Home";
 import MyTrips from "./pages/MyTrips/MyTrips";
 import AvailableMatches from "./pages/Matches/AvailableMatches";
 import MyConnections from "./pages/MyConnections/MyConnection";
-import MyProfile from "./pages/MyProfile";
+import MyProfile from "./pages/Profile/MyProfile";
 import Chat from "./pages/Chat";
 import UserProfile from "./pages/UserProfile";
 import NewConnection from "./pages/NewConnection/NewConnection";
@@ -18,7 +18,15 @@ const AppRouter = () => {
     <Routes>
       <Route path="/" exact element={<SignIn />} />
       <Route path="/signin" exact element={<SignIn />} />
-      <Route path="/about" exact element={<About />} />
+      <Route
+        path="/about"
+        exact
+        element={
+          <Protected>
+            <About />
+          </Protected>
+        }
+      />
 
       <Route
         path="/home"

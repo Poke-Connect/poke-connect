@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDatabase, onValue, ref } from "firebase/database";
-import ShowMatches from "./ShowMatches";
 import ShowMatchesNew from "./ShowMatchesNew";
 
 const AvailableMatches = () => {
@@ -23,7 +22,7 @@ const AvailableMatches = () => {
   }, []);
 
   return (
-    <div>
+    <div className="pt-20">
       <h1>Available co-passengers </h1>
       <ShowMatchesNew ride={ride} allRides={allRides} />
     </div>

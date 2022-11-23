@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getPreFilteredRides } from "../../helpers/getPreFilteredRides";
 import { getFilteredRidesTime } from "../../helpers/getFilteredRidesTime";
+import MatchTile from "./components/MatchTile";
+import { createLocationString } from "./helpers";
 
 const ShowMatchesNew = (props) => {
   const { ride, allRides } = props;
   const [myMatches, setMyMatches] = useState([]);
-
-  console.log("allRides", allRides);
 
   useEffect(() => {
     async function fetchMatches() {
@@ -28,21 +28,23 @@ const ShowMatchesNew = (props) => {
   if (!ride || !allRides) {
     return null;
   }
-  console.log("my matches", myMatches);
+
   return (
     <div>
       Showing Matches for
       <div>
-        <h4>{ride.location}</h4>
+        <h4>{createLocationString(ride.location)}</h4>
+        <h4>{ride.date}</h4>
       </div>
       <div>
         <div>Matches:</div>
         {myMatches
           ? myMatches.map((rideObj) => (
-              <div>
-                <h5>{allRides[rideObj[0]].location}</h5>
-                <h5>{rideObj[1]}</h5>
-              </div>
+              <MatchTile
+                matchDetails={allRides[rideObj[0]]}
+                timeDiff={rideObj[1]}
+                userRide={ride}
+              />
             ))
           : null}
       </div>

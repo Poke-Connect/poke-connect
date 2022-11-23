@@ -1,32 +1,54 @@
 #MAIN:
 
-    ##Authentication and Protection
-        - Figma
-        - Sign in UI
-        - Routes handling for Protection
-        - Component Handling for protection
+    ##ITEMS:
+        - callback for calculating min times - cache function results
+        - Show matches page
+        - logout route
+        - about us write up
+        - refresh logic - (currently its going back to sign in screen on reload)
+        - sorting logic based on extra time + time of departure
+        - suggestions - connection
+        - donate - connection
+
+    ##UI Items
+        - Layout of screen for all children
+        - Redesign Navbar
+        - Sign in page
+        - My connections tab bar bottom
+        - Fixing viewport/ scroll on screens - Home | Map
+        - Z-index throught the app (header-layout, navbar-layout)
+        - Responsive UI for desktop and mobile
+        - location autocomplete box items
 
 
     ##Profile building
-        - Figma file
         - UI elements
-        - Saving the profile
+        - Firebase functionality
 
 
     ##Ride Creation and Matching
-        - home page to new connections link
-        - Masking auto-complete
         - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
         - Map direction not showing
-        - restricting the suggestions to Bangalore
+        - storing ride-dates collection
         - ride id logic
+        - remove the requests of the requesting user
 
     ##Connections Handling
-        - Complete left
+        - Firebase Handling
+        - UI elements
 
     ##Chatting
         - Complete left
 
-#OTHERS:
-    - Making UI responsive
+
+
+COMPLETE:
+    ##Authentication and Protection
+        - Figma
+        - Routes handling for Protection
+        - Component Handling for protection
+    - home page to new connections link
+    - restricting the suggestions to Bangalore
+    - Masking auto-complete
+
 
