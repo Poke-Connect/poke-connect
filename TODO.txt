@@ -1,24 +1,31 @@
 #MAIN:
 
     ##ITEMS:
+        - storing ride-dates collection
+        - ride id logic
+        - remove the requests of the requesting user
+
         - callback for calculating min times - cache function results
         - Show matches page
-        - logout route
         - about us write up
-        - refresh logic - (currently its going back to sign in screen on reload)
         - sorting logic based on extra time + time of departure
         - suggestions - connection
+                //store in a suggestions collection
         - donate - connection
+        - firebase analytics
+        - terms and conditions 
 
     ##UI Items
-        - Layout of screen for all children
-        - Redesign Navbar
-        - Sign in page
-        - My connections tab bar bottom
-        - Fixing viewport/ scroll on screens - Home | Map
-        - Z-index throught the app (header-layout, navbar-layout)
-        - Responsive UI for desktop and mobile
-        - location autocomplete box items
+        T- Layout of screen for all children
+        T- Sign in page
+        T- Fixing viewport/ scroll on screens - Home | Map
+        T- Z-index throught the app (header-layout, navbar-layout)
+
+        AS- Redesign Navbar
+        AJ- My connections tab bar bottom
+        AS- Responsive UI for desktop and mobile
+        AS- location autocomplete box items
+        AS- profile edit
 
 
     ##Profile building
@@ -50,5 +57,8 @@ COMPLETE:
     - home page to new connections link
     - restricting the suggestions to Bangalore
     - Masking auto-complete
+    - logout route
+    - refresh logic - (currently its going back to sign in screen on reload)
+
 
 

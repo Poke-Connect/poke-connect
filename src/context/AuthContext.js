@@ -15,6 +15,7 @@ const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const googleSignIn = async () => {
@@ -41,13 +42,15 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unsubscribe();
     };
   }, []);
+
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
+    <AuthContext.Provider value={{ googleSignIn, logOut, user, loading }}>
       {children}
     </AuthContext.Provider>
   );
@@ -56,13 +59,3 @@ export const AuthContextProvider = ({ children }) => {
 export const UserAuth = () => {
   return useContext(AuthContext);
 };
-
-/**UserObject --> 
- *{
-  displayName,
-  email,
-  emailVerified,
-  phoneNumber,
-  photoURL,
-  uid
- } */

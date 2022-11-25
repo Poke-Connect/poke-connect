@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import About from "./pages/About";
+import About from "./pages/About/About";
 import Error from "./pages/Error";
 import Home from "./pages/Home/Home";
 import MyTrips from "./pages/MyTrips/MyTrips";
@@ -12,6 +12,7 @@ import UserProfile from "./pages/UserProfile";
 import NewConnection from "./pages/NewConnection/NewConnection";
 import SignIn from "./pages/SignIn/SignIn";
 import Protected from "./pages/Protected";
+import LogOut from "./pages/LogOut";
 
 const AppRouter = () => {
   return (
@@ -97,6 +98,7 @@ const AppRouter = () => {
           </Protected>
         }
       />
+      <Route path="/logout" element={<LogOut />} />
 
       <Route path="*" element={<Error />} />
     </Routes>
