@@ -1,42 +1,33 @@
-import React from "react";
-import EditIcon from "../../assets/icons/EditIcon";
-import myData from "../../assets/mockData/data.json";
+import React, { useState, useEffect } from "react";
 // import { useNavigate, useLocation } from "react-router-dom";
-// import { UserAuth } from "../../context/AuthContext";
-import SecondaryProfileInfo from "./components/SecondaryProfileInfo";
+import { UserAuth } from "../../context/AuthContext";
+import { getDatabase, onValue, ref } from "firebase/database";
+import ProfileContainer from "./components/ProfileContainer";
+import EditProfile from "./components/EditProfile";
 
 const MyProfile = () => {
-  // const { user: userAuthData } = UserAuth();
+  const { user } = UserAuth();
+  const userId = user.uid;
   // const location = useLocation();
   // const editMode = location.state?.edit ? location.state?.edit : false;
+  const [editMode, setEditMode] = useState(true);
+  const [profileData, setProfileData] = useState(null);
 
-  const userPrimaryInfo = myData.userProfile.primaryInfo;
-  const userSecondaryInfo = myData.userProfile.secondaryInfo;
+  const db = getDatabase();
 
-  return (
-    <div className="pt-6 pb-10 px-5">
-      <div className="profile-into flex flex-row items-center">
-        <div className="profile-picture flex-none"></div>
-        <div className="profile-detail flex-none pl-2.5">
-          <div className="user-name flex items-left font-bold text-xl">
-            {userPrimaryInfo.userName}
-          </div>
-          <div className="user-email flex items-left font-normal text-sm">
-            {userPrimaryInfo.userEmail}
-          </div>
-        </div>
-        <div className="edit flex-1">
-          <EditIcon />
-        </div>
-      </div>
-      <SecondaryProfileInfo userSecondaryInfo={userSecondaryInfo} />
+  const myTripsRef = ref(db, `users/${userId}`);
 
-      <div className="logout flex pl-3 pt-5 ">
-        <button className="bg-black text-white px-5 py-1.5 rounded-lg font-sm font-semibold">
-          Logout
-        </button>
-      </div>
-    </div>
+  useEffect(() => {
+    onValue(myTripsRef, (snapshot) => {
+      const data = snapshot.val();
+      setProfileData(data);
+    });
+  }, []);
+
+  return editMode ? (
+    <EditProfile profileData={profileData} />
+  ) : (
+    <ProfileContainer profileData={profileData} />
   );
 };
 
