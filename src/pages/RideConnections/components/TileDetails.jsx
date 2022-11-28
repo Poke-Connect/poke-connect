@@ -12,10 +12,15 @@ const TileDetails = (props) => {
     location = "",
     timeDiff = "",
     time = "",
+    onClickHandler,
   } = props;
 
   return (
-    <>
+    <div
+      id="clickContainer"
+      className="flex flex-row py-8 px-2 justify-between items-center border-b border-lightGreen gap-3"
+      onClick={onClickHandler}
+    >
       <div id="profileNameContainer">
         <div
           id="profilePicContainer"
@@ -48,7 +53,7 @@ const TileDetails = (props) => {
       >
         {`extra time = ${getTimeInMins(timeDiff)} mins`}
       </div>
-    </>
+    </div>
   );
 };
 

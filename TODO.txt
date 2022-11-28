@@ -1,19 +1,18 @@
 #MAIN:
 
     ##ITEMS:
-        - storing ride-dates collection
-        - ride id logic
-        - remove the requests of the requesting user
-
         - callback for calculating min times - cache function results
-        - Show matches page
-        - about us write up
         - sorting logic based on extra time + time of departure
+        - firebase analytics
+        - ride id logic --> will change it to SQL database later
+        
+        - about us write up
+        - terms and conditions 
+        
         - suggestions - connection
                 //store in a suggestions collection
         - donate - connection
-        - firebase analytics
-        - terms and conditions 
+
 
     ##UI Items
         T- Layout of screen for all children
@@ -21,8 +20,9 @@
         T- Fixing viewport/ scroll on screens - Home | Map
         T- Z-index throught the app (header-layout, navbar-layout)
 
-        AS- Redesign Navbar
         AJ- My connections tab bar bottom
+
+        AS- Redesign Navbar
         AS- Responsive UI for desktop and mobile
         AS- location autocomplete box items
         AS- profile edit
@@ -30,18 +30,12 @@
 
     ##Profile building
         - UI elements
-        - Firebase functionality
-
 
     ##Ride Creation and Matching
         - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
         - Map direction not showing
-        - storing ride-dates collection
-        - ride id logic
-        - remove the requests of the requesting user
 
     ##Connections Handling
-        - Firebase Handling
         - UI elements
 
     ##Chatting
@@ -59,6 +53,7 @@ COMPLETE:
     - Masking auto-complete
     - logout route
     - refresh logic - (currently its going back to sign in screen on reload)
-
-
-
+    - storing ride-dates collection
+    - remove the requests of the requesting user 
+    - Show matches page
+    - Firebase Handling

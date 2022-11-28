@@ -23,7 +23,6 @@ export const AuthContextProvider = ({ children }) => {
     try {
       const res = await signInWithPopup(auth, provider);
       const details = await getAdditionalUserInfo(res);
-      // console.log("res", res.user.uid);
       if (details.isNewUser) {
         createUserObject(res);
         navigate("/profile", { state: { edit: true } });

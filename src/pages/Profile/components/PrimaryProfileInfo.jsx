@@ -1,8 +1,17 @@
 import React from "react";
-import EditIcon from "../../..//assets/icons/EditIcon";
+import { useNavigate } from "react-router-dom";
+import EditIcon from "../../../assets/icons/EditIcon";
+import IconButton from "../../../components/IconButton";
 
 const PrimaryProfileInfo = (props) => {
   const { displayName, email } = props;
+
+  const navigate = useNavigate();
+
+  const onEditPressHandler = () => {
+    navigate("/profile/edit");
+  };
+
   return (
     <div className="profile-into flex flex-row items-center">
       <div className="profile-picture flex-none"></div>
@@ -15,7 +24,7 @@ const PrimaryProfileInfo = (props) => {
         </div>
       </div>
       <div className="edit flex-1">
-        <EditIcon />
+        <IconButton IconParam={EditIcon} onPressHandler={onEditPressHandler} />
       </div>
     </div>
   );

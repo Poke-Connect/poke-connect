@@ -56,19 +56,17 @@ const MapContainer = () => {
       rideType: rideType,
       creatorId: user.uid,
       date: createDateString(dateValue),
-      time: createTimeStamp(dateValue, timeValue),
+      timeStampRide: createTimeStamp(dateValue, timeValue),
       location: locationValue,
       rideId: rideId,
       discoverability: true,
-      userInfo: {
-        userId: user.uid,
-        displayName: user.displayName,
-        email: user.email,
-      },
+      time: timeValue,
     };
     set(ridesDbRef, rideData);
-    set(userRidesDbRef, { time: createTimeStamp(dateValue, timeValue) });
-    navigate(`/matches/${rideId}`);
+    set(userRidesDbRef, {
+      timeStampRide: createTimeStamp(dateValue, timeValue),
+    });
+    navigate(`/connections/${rideId}/available`);
   };
 
   return (

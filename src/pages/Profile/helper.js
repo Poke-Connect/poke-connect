@@ -9,12 +9,12 @@ export const getSecondaryInfo = (profileData) => {
   } = profileData;
 
   const secondaryInfoObj = {
-    Mobile: mobile,
-    LinkedIn: linkedIn,
-    Gender: gender,
-    Occupation: occupation,
-    Company: company,
-    About: about,
+    mobile: mobile,
+    linkedIn: linkedIn,
+    gender: gender,
+    occupation: occupation,
+    company: company,
+    about: about,
   };
   return secondaryInfoObj;
 };
