@@ -1,13 +1,16 @@
+import React, { useState } from "react";
 import "./App.css";
 import AppRouter from "./AppRouter";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { AuthContextProvider } from "./context/AuthContext";
 import { useLocation } from "react-router-dom";
 
-function App() {
+const App = () => {
+  const [libraries] = useState(["places"]);
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_POKE_GOOGLE_MAPS_API_KEY,
-    libraries: ["places"],
+    libraries,
   });
 
   const location = useLocation();
@@ -28,6 +31,6 @@ function App() {
       </div>
     </AuthContextProvider>
   );
-}
+};
 
 export default App;
