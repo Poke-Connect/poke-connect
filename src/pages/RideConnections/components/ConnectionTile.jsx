@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import TileDetails from "./TileDetails";
-import { UserAuth } from "../../../context/AuthContext";
 import { createUserObj } from "../helpers";
-import { createMatchDb } from "../createMatchDb";
+import { createMatchDb } from "../AvailableConnections/createMatchDb";
+import { createConnectionDb } from "../AvailableConnections/createConnectionDb";
+import { UserAuth } from "../../../context/AuthContext";
 
-const MatchTile = (props) => {
+const ConnectionTile = (props) => {
   const { matchDetails, timeDiff, userRide } = props;
 
   const { creatorId, rideId, location, time } = matchDetails;
@@ -34,24 +35,25 @@ const MatchTile = (props) => {
       return;
     }
     //Save match in collection of both user --> matchid: combinedId
-    createMatchDb(userObj, creatorObj, userRide, matchDetails, timeDiff);
+    try {
+      createMatchDb(userObj, creatorObj, userRide, matchDetails, timeDiff);
+      createConnectionDb(userObj, creatorObj, userRide, matchDetails, timeDiff);
+      alert("Connection Added Succesfully");
+    } catch (error) {
+      alert("Connection Failed");
+    }
   };
 
   return (
-    <div
-      id="clickContainer"
-      className="flex flex-row py-8 px-2 justify-between items-center border-b border-lightGreen gap-3"
-      onClick={onClickHandler}
-    >
-      <TileDetails
-        displayName={creatorObj?.displayName}
-        photoURL={creatorObj?.photoURL}
-        location={location}
-        timeDiff={timeDiff}
-        time={time}
-      />
-    </div>
+    <TileDetails
+      displayName={creatorObj?.displayName}
+      photoURL={creatorObj?.photoURL}
+      location={location}
+      timeDiff={timeDiff}
+      time={time}
+      onClickHandler={onClickHandler}
+    />
   );
 };
 
-export default MatchTile;
+export default ConnectionTile;

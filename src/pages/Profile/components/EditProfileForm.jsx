@@ -1,23 +1,32 @@
 import React from "react";
-// import { getSecondaryInfo } from "../helper";
+import { getSecondaryInfo } from "../helper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { updateUserObj } from "../updateUserObject";
 
-const EditProfile = (props) => {
-  // const { profileData } = props;
-  //   const { displayName = "", email = "", photoURL = "" } = profileData;
-  //   const secondaryInfo = getSecondaryInfo(profileData);
+const EditProfileForm = (props) => {
+  const { profileData } = props;
+
+  const {
+    firstName = "",
+    lastName = "",
+    email = "",
+    photoURL = "",
+    id = "",
+  } = profileData;
+
+  const secondaryInfo = getSecondaryInfo(profileData);
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      linkedIn: "",
-      mobile: "",
-      gender: "",
-      occupation: "",
-      company: "",
-      about: " ",
+      firstName: firstName,
+      lastName: lastName,
+      linkedIn: secondaryInfo.linkedIn,
+      mobile: secondaryInfo.mobile,
+      gender: secondaryInfo.gender,
+      occupation: secondaryInfo.occupation,
+      company: secondaryInfo.company,
+      about: secondaryInfo.about,
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -28,9 +37,16 @@ const EditProfile = (props) => {
         .min(10, "Invalid Mobile number"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      updateUserObj(values, id, email, photoURL);
+      alert("user updated");
+      //Save profile data
+      //navigate?
     },
   });
+
+  if (!profileData) {
+    return null;
+  }
 
   return (
     <div>
@@ -129,4 +145,4 @@ const EditProfile = (props) => {
   );
 };
 
-export default EditProfile;
+export default EditProfileForm;

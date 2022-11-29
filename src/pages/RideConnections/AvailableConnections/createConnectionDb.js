@@ -1,8 +1,8 @@
 import { getDatabase, ref, set } from "firebase/database";
-import { createMatchId } from "../../helpers/createMatchId";
+import { createMatchId } from "../../../helpers/createMatchId";
 
-// "/matches/userid/rideid/matchid"
-export const createMatchDb = (
+// "/matches/userid/connectionId"
+export const createConnectionDb = (
   userData1,
   userData2,
   rideData1,
@@ -10,18 +10,18 @@ export const createMatchDb = (
   extraTime
 ) => {
   const db = getDatabase();
-  const matchId = createMatchId(rideData1.rideId, rideData2.rideId);
+  const connectionId = createMatchId(userData1.id, userData2.id);
   const dbRefUser1 = ref(
     db,
-    `matches/${userData1.id}/${rideData1.rideId}/${matchId}`
+    `usersConnections/${userData1.id}/${connectionId}`
   );
   const dbRefUser2 = ref(
     db,
-    `matches/${userData2.id}/${rideData2.rideId}/${matchId}`
+    `usersConnections/${userData2.id}/${connectionId}`
   );
 
-  const matchData1 = {
-    id: matchId,
+  const connectionData1 = {
+    id: connectionId,
     date: rideData1.date,
     userInfo: {
       id: userData2.id,
@@ -38,8 +38,8 @@ export const createMatchDb = (
     },
   };
 
-  const matchData2 = {
-    id: matchId,
+  const connectionData2 = {
+    id: connectionId,
     date: rideData2.date,
     userInfo: {
       id: userData1.id,
@@ -56,6 +56,6 @@ export const createMatchDb = (
     },
   };
 
-  set(dbRefUser1, matchData1);
-  set(dbRefUser2, matchData2);
+  set(dbRefUser1, connectionData1);
+  set(dbRefUser2, connectionData2);
 };

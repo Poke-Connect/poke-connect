@@ -1,7 +1,7 @@
 import React from "react";
 import MapContainer from "./components/MapContainerNew";
 
-const NewConnection = () => {
+const NewRide = () => {
   return (
     <div className="bg-white flex flex-col items-center pt-2 h-screen">
       <div className="bg-white p-3 flex flex-col rounded-2xl">
@@ -12,4 +12,4 @@ const NewConnection = () => {
   );
 };
 
-export default NewConnection;
+export default NewRide;

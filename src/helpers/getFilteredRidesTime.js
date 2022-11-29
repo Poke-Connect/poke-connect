@@ -20,9 +20,9 @@ export const getFilteredRidesTime = async (
   requestRide
 ) => {
   const promisesArr = [];
-  for (const ride of preFilteredRides) {
+  for (const rideId of preFilteredRides) {
     const reqPromise = findTimeBetweenTwoPoints(
-      allRides[ride].location,
+      allRides[rideId].location,
       requestRide.location
     );
     promisesArr.push(reqPromise);
