@@ -1,26 +1,45 @@
 #MAIN:
 
     ##TODAY:
-        - invalid date on available connections
         - connection already added still adding 
         - Click handler for creating a match is taking lot of time
-        - file Extension changes
         - segregate db handling
         - put unused file seperately
-        - ui colors 
-        - ui bugs
         - handle imports
         - make absolute imports
         - adding time and ride info in matches 
         - other users profile
-        - edit profile navigation
         - capitalisations in profile
         - remove useHistory from app.js
         - firebase crashlytics
         - MyTrips - upcoming and completed trips not working
         - Map marker
+
+        ARMAAN
+        - figma file color addition
         - Loading page
         - Page not found page
+        - edit profile navigation
+        - ui colors 
+        - about us write up
+
+
+        THAPAN 
+        - UI bugs   
+            - z index fix of map and toggle
+            - map view port fix
+
+        - UI elements
+            - sign in page changes
+            - edit profile page changes
+            - about us page changes
+            - auto complete suggestion element 
+            - Connections page (layout and footer)
+            - connection element
+            - my trip element
+            - find new connection icons addition
+            - find a connection vertical line addition (left of input boxes)
+
 
 
     ##WARNINGS
@@ -36,6 +55,10 @@
     4. util.js:93 [Violation] Added non-passive event listener to a scroll-blocking 'touchstart' event. 
     Consider marking event handler as 'passive' to make the page more responsive. 
     See https://www.chromestatus.com/feature/5745543795965952
+
+    5. [2022-11-29T10:46:47.596Z]  @firebase/database: FIREBASE WARNING: 
+    Using an unspecified index. Your data will be downloaded and filtered on the client. 
+    Consider adding ".indexOn": "date" at /rides to your security rules for better performance. 
 
     ##ITEMS:
         - callback for calculating min times - cache function results
@@ -63,6 +86,8 @@
         AS- Responsive UI for desktop and mobile
         AS- location autocomplete box items
         AS- profile edit
+        AS- UI web
+
 
 
     ##Profile building

@@ -9,7 +9,7 @@ import { UserAuth } from "../../../context/AuthContext";
 const ConnectionTile = (props) => {
   const { matchDetails, timeDiff, userRide } = props;
 
-  const { creatorId, rideId, location, time } = matchDetails;
+  const { creatorId, rideId, location, timeStampRide } = matchDetails;
 
   const [creatorObj, setCreatorObj] = useState(null);
 
@@ -50,8 +50,8 @@ const ConnectionTile = (props) => {
       photoURL={creatorObj?.photoURL}
       location={location}
       timeDiff={timeDiff}
-      time={time}
       onClickHandler={onClickHandler}
+      timeStampRide={timeStampRide}
     />
   );
 };

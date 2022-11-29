@@ -11,7 +11,7 @@ const TileDetails = (props) => {
     displayName = "",
     location = "",
     timeDiff = "",
-    time = "",
+    timeStampRide = "",
     onClickHandler,
   } = props;
 
@@ -42,10 +42,10 @@ const TileDetails = (props) => {
         </div>
       </div>
       <div
-        id="extraTime"
+        id="rideTime"
         className="date flex-none flex justify-end font-medium text-sm text-lightGray2"
       >
-        {createTimeStringFromTimeStamp(time)}
+        {createTimeStringFromTimeStamp(timeStampRide)}
       </div>
       <div
         id="extraTime"
