@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import { createUserObject } from "./createUserObject";
+import { createUserObject } from "db/createUserObject";
 
 const AuthContext = createContext(null);
 

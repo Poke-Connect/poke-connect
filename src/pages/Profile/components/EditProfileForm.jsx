@@ -2,7 +2,7 @@ import React from "react";
 import { getSecondaryInfo } from "../helper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { updateUserObj } from "../updateUserObject";
+import { updateUserObj } from "db/updateUserObject";
 
 const EditProfileForm = (props) => {
   const { profileData } = props;

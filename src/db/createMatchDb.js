@@ -1,5 +1,5 @@
 import { getDatabase, ref, set } from "firebase/database";
-import { createMatchId } from "../../../helpers/createMatchId";
+import { createMatchId } from "../helpers/createMatchId";
 
 // "/matches/userid/rideid/matchid"
 export const createMatchDb = (

@@ -25,9 +25,9 @@ const getDiscoverableRides = (allRides, filteredRides) => {
   return discoverableRides;
 };
 
-const getOtherUsersRides = (allRides, filteredRides, creatorId) => {
+const getOtherUsersRides = (allRides, filteredRides, userId) => {
   const filteredTypeRides = filteredRides.filter(
-    (rideId) => allRides[rideId].creatorId !== creatorId
+    (rideId) => allRides[rideId].userId !== userId
   );
   return filteredTypeRides;
 };
@@ -50,7 +50,7 @@ export const getPreFilteredRides = (myRide, allRides) => {
   const otherUsersRide = getOtherUsersRides(
     allRides,
     discoverableRides,
-    myRide.creatorId
+    myRide.userId
   );
 
   return otherUsersRide;

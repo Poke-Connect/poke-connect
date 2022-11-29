@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getDatabase, onValue, ref } from "firebase/database";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "context/AuthContext";
 import EditProfileHandler from "./components/EditProfileHandler";
 
 const EditProfile = () => {

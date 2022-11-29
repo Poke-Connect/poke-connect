@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import EditIcon from "../../../assets/icons/EditIcon";
-import IconButton from "../../../components/IconButton";
+import EditIcon from "assets/icons/EditIcon";
+import IconButton from "components/IconButton";
 
 const PrimaryProfileInfo = (props) => {
   const { displayName, email } = props;

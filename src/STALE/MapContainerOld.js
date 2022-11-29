@@ -7,8 +7,8 @@ import {
   calculateMinRouteSameOrigin,
   calculateMinRouteNoSame,
   calculateRoute,
-} from "./helpers";
-import GMapElement from "./GMapElement";
+} from "./helpers_stale";
+import GMapElement from "../pages/NewRide/components/GMapElement";
 
 //V0 --> only for same origin or same destinations
 

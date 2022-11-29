@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, onValue, ref } from "firebase/database";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "context/AuthContext";
 import ShowTrips from "./components/ShowTrips";
 
 const MyTrips = () => {
