@@ -8,3 +8,7 @@
 
 
 
+## Figma Rules
+
+1. Add colors in rgba format to design system
+2. Use colors only from design system for creating components
