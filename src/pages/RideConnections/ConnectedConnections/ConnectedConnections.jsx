@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import RideConnections from "../RideConnections";
 import { useParams } from "react-router-dom";
 import { getDatabase, onValue, ref } from "firebase/database";
-import { UserAuth } from "../../../context/AuthContext";
+import { UserAuth } from "context/AuthContext";
 import ShowRideConnections from "./ShowRideConnections";
 
 const ConnectedConnections = () => {

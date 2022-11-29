@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import GoogleIcon from "../../assets/icons/GoogleIcon";
+import GoogleIcon from "assets/icons/GoogleIcon";
 import About from "../About/About";
 
 const SignIn = () => {

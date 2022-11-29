@@ -1,5 +1,5 @@
 import React from "react";
-import Heart from "../../../assets/icons/heart";
+import Heart from "assets/icons/heart";
 
 const DONATE_TEXT =
   "Poke is powered by people like you. Your donations help grow our team and build a better experience for you.";

@@ -1,5 +1,7 @@
+//STALE_FILE
+
 import React from "react";
-import ConnectionCell from "../CollectionCell/ConnectionCell";
+import ConnectionCell from "./ConnectionCell";
 
 const UpcomingConnections = ({ pokeDetails, onClick }) => {
   return (

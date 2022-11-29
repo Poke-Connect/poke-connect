@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, onValue, ref } from "firebase/database";
 import Connections from "./components/Connections";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "context/AuthContext";
 
 const MyConnections = () => {
   const { user } = UserAuth();

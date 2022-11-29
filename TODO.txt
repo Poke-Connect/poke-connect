@@ -3,9 +3,7 @@
     ##TODAY:
         - connection already added still adding 
         - Click handler for creating a match is taking lot of time
-        - segregate db handling
         - put unused file seperately
-        - handle imports
         - make absolute imports
         - adding time and ride info in matches 
         - other users profile
@@ -43,10 +41,6 @@
 
 
     ##WARNINGS
-    1. useJsApiLoader.tsx:86 Performance warning! LoadScript has been reloaded unintentionally! 
-    You should not pass `libraries` prop as new array. Please keep an array of libraries as static 
-    class property for Components and PureComponents, or just a const variable outside of component, 
-    or somewhere in config files or ENV variables
 
     2. Failed to load resource: the server responded with a status of 400 ()
 
@@ -119,3 +113,8 @@ COMPLETE:
     - remove the requests of the requesting user 
     - Show matches page
     - Firebase Handling
+
+        1. useJsApiLoader.tsx:86 Performance warning! LoadScript has been reloaded unintentionally! 
+    You should not pass `libraries` prop as new array. Please keep an array of libraries as static 
+    class property for Components and PureComponents, or just a const variable outside of component, 
+    or somewhere in config files or ENV variables

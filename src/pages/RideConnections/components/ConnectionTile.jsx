@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import TileDetails from "./TileDetails";
 import { createUserObj } from "../helpers";
-import { createMatchDb } from "../AvailableConnections/createMatchDb";
-import { createConnectionDb } from "../AvailableConnections/createConnectionDb";
-import { UserAuth } from "../../../context/AuthContext";
+import { createMatchDb } from "db/createMatchDb";
+import { createConnectionDb } from "db/createConnectionDb";
+import { UserAuth } from "context/AuthContext";
 
 const ConnectionTile = (props) => {
   const { matchDetails, timeDiff, userRide } = props;
 
-  const { creatorId, rideId, location, timeStampRide } = matchDetails;
+  const { userId, rideId, location, timeStampRide } = matchDetails;
 
   const [creatorObj, setCreatorObj] = useState(null);
 
   const db = getDatabase();
-  const creatorRef = ref(db, "users/" + creatorId);
+  const creatorRef = ref(db, "users/" + userId);
 
   useEffect(() => {
     onValue(creatorRef, (snapshot) => {
@@ -23,7 +23,7 @@ const ConnectionTile = (props) => {
     });
   }, []);
 
-  if (!creatorId || !rideId) {
+  if (!userId || !rideId) {
     return null;
   }
 

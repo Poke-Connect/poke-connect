@@ -1,6 +1,7 @@
 import React from "react";
 import usePlacesAutocomplete from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+import InputField from "./InputField";
 
 const BANGALORE_LAT = 12.972442;
 const BANGALORE_LNG = 77.580643;
@@ -63,12 +64,12 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
 
   return (
     <div ref={ref}>
-      <input
+      <InputField
+        name={value}
         value={value}
         onChange={handleInput}
         disabled={!ready}
         placeholder={placeholder}
-        className={`bg-lightGray inline-flex p-2 m-2 text-lg w-5/6 rounded-lg `}
       />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
       {status === "OK" && <ul>{renderSuggestions()}</ul>}

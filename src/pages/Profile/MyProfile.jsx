@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "context/AuthContext";
 import { getDatabase, onValue, ref } from "firebase/database";
 import ProfileContainer from "./components/ProfileContainer";
 
