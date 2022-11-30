@@ -7,13 +7,11 @@ const CompletedTrips = (props) => {
   return (
     <div>
       Completed Trips
-      {completedTrips.map((trip) => (
+      {completedTrips.map((rideId) => (
         <TripElement
-          location={trip.location}
-          date={trip.date}
+          key={rideId}
+          rideId={rideId}
           onClickHandler={() => {}}
-          toggleState={true}
-          handleToggleChange={() => {}}
           upcoming={false}
         />
       ))}

@@ -32,7 +32,23 @@ const getOtherUsersRides = (allRides, filteredRides, userId) => {
   return filteredTypeRides;
 };
 
-export const getPreFilteredRides = (myRide, allRides) => {
+const getConnectedRidesIds = (connectedRides) => {
+  const rideIds = [];
+  Object.keys(connectedRides).map((matchId) =>
+    rideIds.push(connectedRides[matchId].rideInfo.rideId)
+  );
+  return rideIds;
+};
+
+const getNotConnectedRides = (filteredRides, alreadyConnected) => {
+  const filteredTypeRides = filteredRides.filter(
+    (rideId) => !alreadyConnected.includes(rideId)
+  );
+
+  return filteredTypeRides;
+};
+
+export const getPreFilteredRides = (myRide, allRides, alreadyConnected) => {
   if (!allRides || !myRide) {
     return [];
   }
@@ -53,5 +69,12 @@ export const getPreFilteredRides = (myRide, allRides) => {
     myRide.userId
   );
 
-  return otherUsersRide;
+  const connectedRidesIds = getConnectedRidesIds(alreadyConnected);
+
+  const availableRides = getNotConnectedRides(
+    otherUsersRide,
+    connectedRidesIds
+  );
+
+  return availableRides;
 };

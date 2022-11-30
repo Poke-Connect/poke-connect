@@ -5,10 +5,14 @@ import ConnectionTile from "../components/ConnectionTile";
 import { createLocationString } from "../helpers";
 
 const ShowConnections = (props) => {
-  const { myRide, allRides } = props;
+  const { myRide, allRides, alreadyConnected } = props;
   const [availableConnections, setAvailableConnections] = useState([]);
 
-  const preFilteredRides = getPreFilteredRides(myRide, allRides);
+  const preFilteredRides = getPreFilteredRides(
+    myRide,
+    allRides,
+    alreadyConnected
+  );
 
   useEffect(() => {
     async function fetchMatches() {

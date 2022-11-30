@@ -50,8 +50,8 @@ const ConnectionTile = (props) => {
       photoURL={creatorObj?.photoURL}
       location={location}
       timeDiff={timeDiff}
-      onClickHandler={onClickHandler}
       timeStampRide={timeStampRide}
+      onClickHandler={onClickHandler}
     />
   );
 };

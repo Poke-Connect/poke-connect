@@ -13,7 +13,7 @@ const ShowTrips = (props) => {
   return (
     <div>
       <UpcomingTrips upcomingTrips={filteredTrips[0]} />
-      {/* <CompletedTrips completedTrips={filteredTrips[1]} /> */}
+      <CompletedTrips completedTrips={filteredTrips[1]} />
     </div>
   );
 };

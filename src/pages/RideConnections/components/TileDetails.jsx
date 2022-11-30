@@ -7,8 +7,8 @@ import {
 
 const TileDetails = (props) => {
   const {
-    photoURL = "",
     displayName = "",
+    photoURL = "",
     location = "",
     timeDiff = "",
     timeStampRide = "",

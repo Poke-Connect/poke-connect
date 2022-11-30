@@ -34,7 +34,7 @@ export const createConnectionObj = (connectionData) => {
   connectionObj["email"] = connectionData.userInfo.email;
   connectionObj["location"] = connectionData.rideInfo.location;
   connectionObj["timeDiff"] = connectionData.matchInfo.extraTime;
-  connectionObj["time"] = connectionData.rideInfo.time;
+  connectionObj["timeStampRide"] = connectionData.rideInfo.timeStampRide;
 
   return connectionObj;
 };

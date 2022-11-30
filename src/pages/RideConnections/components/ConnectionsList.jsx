@@ -12,7 +12,7 @@ const ConnectionsList = (props) => {
           photoURL={data.photoURL}
           location={data.location}
           timeDiff={data.timeDiff}
-          time={data.time}
+          timeStampRide={data.timeStampRide}
           onClickHandler={() => {}}
         />
       ))}

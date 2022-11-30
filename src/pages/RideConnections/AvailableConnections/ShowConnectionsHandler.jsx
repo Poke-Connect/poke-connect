@@ -9,7 +9,8 @@ import {
 } from "firebase/database";
 import ShowConnections from "./ShowConnections";
 
-const ShowConnectionsHandler = ({ myRide }) => {
+const ShowConnectionsHandler = (props) => {
+  const { myRide, alreadyConnected } = props;
   const [allRides, setAllRides] = useState(null);
 
   const db = getDatabase();
@@ -32,7 +33,11 @@ const ShowConnectionsHandler = ({ myRide }) => {
   }
   return (
     <>
-      <ShowConnections allRides={allRides} myRide={myRide} />
+      <ShowConnections
+        allRides={allRides}
+        myRide={myRide}
+        alreadyConnected={alreadyConnected}
+      />
     </>
   );
 };

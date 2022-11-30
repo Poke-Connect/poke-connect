@@ -1,24 +1,19 @@
 #MAIN:
 
     ##TODAY:
-        - connection already added still adding 
         - Click handler for creating a match is taking lot of time
-        - put unused file seperately
-        - make absolute imports
-        - adding time and ride info in matches 
         - other users profile
         - capitalisations in profile
         - remove useHistory from app.js
         - firebase crashlytics
-        - MyTrips - upcoming and completed trips not working
         - Map marker
+        - Chat
+        - connected should be user specific property (other user might not connect)
 
         ARMAAN
-        - figma file color addition
         - Loading page
         - Page not found page
         - edit profile navigation
-        - ui colors 
         - about us write up
 
 
@@ -50,9 +45,6 @@
     Consider marking event handler as 'passive' to make the page more responsive. 
     See https://www.chromestatus.com/feature/5745543795965952
 
-    5. [2022-11-29T10:46:47.596Z]  @firebase/database: FIREBASE WARNING: 
-    Using an unspecified index. Your data will be downloaded and filtered on the client. 
-    Consider adding ".indexOn": "date" at /rides to your security rules for better performance. 
 
     ##ITEMS:
         - callback for calculating min times - cache function results
@@ -65,7 +57,7 @@
         
         - suggestions - connection
                 //store in a suggestions collection
-        - donate - connection
+        - donate - connection --> buy me a coffee // patron
 
 
     ##UI Items
@@ -113,8 +105,17 @@ COMPLETE:
     - remove the requests of the requesting user 
     - Show matches page
     - Firebase Handling
+    - adding time and ride info in matches 
+    - MyTrips - upcoming and completed trips not working
+    - connection already added still adding 
+
+
 
         1. useJsApiLoader.tsx:86 Performance warning! LoadScript has been reloaded unintentionally! 
     You should not pass `libraries` prop as new array. Please keep an array of libraries as static 
     class property for Components and PureComponents, or just a const variable outside of component, 
     or somewhere in config files or ENV variables
+
+5. [2022-11-29T10:46:47.596Z]  @firebase/database: FIREBASE WARNING: 
+    Using an unspecified index. Your data will be downloaded and filtered on the client. 
+    Consider adding ".indexOn": "date" at /rides to your security rules for better performance. 

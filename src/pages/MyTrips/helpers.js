@@ -5,7 +5,7 @@ export const getfilteredTrips = (myTrips) => {
   const completedTrips = [];
   const curTimeStamp = getCurrentTimeStamp();
   for (const tripId of Object.keys(myTrips)) {
-    if (curTimeStamp - myTrips[tripId].time <= 3600) {
+    if (curTimeStamp - myTrips[tripId].timeStampRide <= 3600) {
       upcomingTrips.push(tripId);
     } else {
       completedTrips.push(tripId);

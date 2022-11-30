@@ -32,6 +32,7 @@ export const createMatchDb = (
     rideInfo: {
       rideId: rideData2.rideId,
       location: rideData2.location,
+      timeStampRide: rideData2.timeStampRide,
     },
     matchInfo: {
       extraTime: extraTime,
@@ -50,6 +51,7 @@ export const createMatchDb = (
     rideInfo: {
       rideId: rideData1.rideId,
       location: rideData1.location,
+      timeStampRide: rideData1.timeStampRide,
     },
     matchInfo: {
       extraTime: extraTime,
