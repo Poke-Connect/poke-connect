@@ -6,7 +6,7 @@ export const createUserObject = (res) => {
   const dbRef = ref(db, "users/" + res.user.uid);
   const name = getNameObject(res.user.displayName);
   const userData = {
-    id: res.user.uid,
+    uid: res.user.uid,
     displayName: res.user.displayName,
     firstName: name[0],
     lastName: name[1],

@@ -24,7 +24,7 @@ const ShowConnections = (props) => {
         );
         setAvailableConnections(filteredRides);
       } catch (e) {
-        console.error(e);
+        console.error("The error is", e);
       }
     }
     fetchMatches();

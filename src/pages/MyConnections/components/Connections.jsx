@@ -12,6 +12,7 @@ const Connections = (props) => {
       {Object.keys(myConnections).map((connectionId) => (
         <ConnectionTile
           key={connectionId}
+          connectionId={connectionId}
           connectionData={myConnections[connectionId]}
         />
       ))}
