@@ -11,7 +11,7 @@ export const createLocationString = (location) => {
 
 export const createUserObj = (user) => {
   const userObj = {};
-  userObj["id"] = user.uid;
+  userObj["uid"] = user.uid;
   userObj["displayName"] = user.displayName;
   userObj["photoURL"] = user.photoURL;
   userObj["email"] = user.email;

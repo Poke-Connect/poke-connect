@@ -1,6 +1,6 @@
 //STALE_FILE
 
-import Smiley from "assets/icons/smiley";
+import Smiley from "assets/icons/Smiley";
 const ConnectionCell = ({ pokeDetails, onClick }) => {
   return (
     <div>

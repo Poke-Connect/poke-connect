@@ -7,7 +7,7 @@ import MyTrips from "./pages/MyTrips/MyTrips";
 import AvailableConnections from "./pages/RideConnections/AvailableConnections/AvailableConnections";
 import MyConnections from "./pages/MyConnections/MyConnections";
 import MyProfile from "./pages/Profile/MyProfile";
-import Chat from "./pages/Chat";
+import Chat from "./pages/Chat/Chat";
 import UserProfile from "./pages/UserProfile";
 import NewRide from "./pages/NewRide/NewRide";
 import SignIn from "./pages/SignIn/SignIn";
@@ -96,7 +96,7 @@ const AppRouter = () => {
         }
       />
       <Route
-        path="/userId/chat"
+        path="/chat/:chatId"
         element={
           <Protected>
             <Chat />

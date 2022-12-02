@@ -3,6 +3,7 @@ import "./App.css";
 import AppRouter from "./AppRouter";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { AuthContextProvider } from "context/AuthContext";
+import { ChatContextProvider } from "context/ChatContext";
 import { useLocation } from "react-router-dom";
 
 const App = () => {
@@ -21,13 +22,15 @@ const App = () => {
 
   return (
     <AuthContextProvider>
-      <div
-        className={`App md:mx-auto relative h-screen max-w-xl mx-auto ${
-          val ? "pt-0" : "pt-24"
-        }`}
-      >
-        <AppRouter />
-      </div>
+      <ChatContextProvider>
+        <div
+          className={`App md:mx-auto relative h-screen max-w-xl mx-auto ${
+            val ? "pt-0" : "pt-24"
+          }`}
+        >
+          <AppRouter />
+        </div>
+      </ChatContextProvider>
     </AuthContextProvider>
   );
 };

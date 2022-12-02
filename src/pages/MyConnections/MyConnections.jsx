@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { getDatabase, onValue, ref } from "firebase/database";
 import Connections from "./components/Connections";
 import { UserAuth } from "context/AuthContext";
+import { onSnapshot, doc } from "firebase/firestore";
+import { fireStoreDb } from "firebaseConfig";
 
 const MyConnections = () => {
   const { user } = UserAuth();
 
-  const userId = user.uid;
-
   const [myConnections, setMyConnections] = useState(null);
 
-  const db = getDatabase();
-
-  const myConnectionsRef = ref(db, `usersConnections/${userId}`);
-
   useEffect(() => {
-    onValue(myConnectionsRef, (snapshot) => {
-      const data = snapshot.val();
-      setMyConnections(data);
-    });
-  }, []);
+    const getChats = () => {
+      const unsub = onSnapshot(
+        doc(fireStoreDb, "userChats", user.uid),
+        (doc) => {
+          setMyConnections(doc.data());
+        }
+      );
+      return () => {
+        unsub();
+      };
+    };
+    user.uid && getChats();
+  }, [user.uid]);
 
   return (
     <div className="pt-6">

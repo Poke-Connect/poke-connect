@@ -13,18 +13,18 @@ export const createMatchDb = (
   const matchId = createMatchId(rideData1.rideId, rideData2.rideId);
   const dbRefUser1 = ref(
     db,
-    `ridesConnections/${userData1.id}/${rideData1.rideId}/${matchId}`
+    `ridesConnections/${userData1.uid}/${rideData1.rideId}/${matchId}`
   );
   const dbRefUser2 = ref(
     db,
-    `ridesConnections/${userData2.id}/${rideData2.rideId}/${matchId}`
+    `ridesConnections/${userData2.uid}/${rideData2.rideId}/${matchId}`
   );
 
   const matchData1 = {
     id: matchId,
     date: rideData1.date,
     userInfo: {
-      id: userData2.id,
+      uid: userData2.uid,
       displayName: userData2.displayName,
       photoURL: userData2.photoURL,
       email: userData2.email,
@@ -43,7 +43,7 @@ export const createMatchDb = (
     id: matchId,
     date: rideData2.date,
     userInfo: {
-      id: userData1.id,
+      uid: userData1.uid,
       displayName: userData1.displayName,
       photoURL: userData1.photoURL,
       email: userData1.email,

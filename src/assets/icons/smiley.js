@@ -1,4 +1,4 @@
-const smiley = () => {
+const Smiley = () => {
   return (
     <svg
       width="22"
@@ -17,4 +17,4 @@ const smiley = () => {
   );
 };
 
-export default smiley;
+export default Smiley;

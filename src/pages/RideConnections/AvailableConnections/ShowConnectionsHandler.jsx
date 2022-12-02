@@ -15,14 +15,14 @@ const ShowConnectionsHandler = (props) => {
 
   const db = getDatabase();
 
-  const myRideRef = query(
+  const allRidesRef = query(
     ref(db, `rides`),
     orderByChild("date"),
     equalTo(myRide.date)
   );
 
   useEffect(() => {
-    onValue(myRideRef, (snapshot) => {
+    onValue(allRidesRef, (snapshot) => {
       const data = snapshot.val();
       setAllRides(data);
     });

@@ -10,6 +10,7 @@ import {
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { createUserObject } from "db/createUserObject";
+import { addUserChatsDb } from "db/firestore/dbWrites";
 
 const AuthContext = createContext(null);
 
@@ -25,7 +26,8 @@ export const AuthContextProvider = ({ children }) => {
       const details = await getAdditionalUserInfo(res);
       if (details.isNewUser) {
         createUserObject(res);
-        navigate("/profile", { state: { edit: true } });
+        addUserChatsDb(res.user.uid);
+        navigate("/profile/edit", { state: { newUser: true } });
       } else {
         navigate("/home");
       }

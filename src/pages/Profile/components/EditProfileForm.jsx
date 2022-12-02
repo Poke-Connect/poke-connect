@@ -12,7 +12,7 @@ const EditProfileForm = (props) => {
     lastName = "",
     email = "",
     photoURL = "",
-    id = "",
+    uid = "",
   } = profileData;
 
   const secondaryInfo = getSecondaryInfo(profileData);
@@ -37,7 +37,7 @@ const EditProfileForm = (props) => {
         .min(10, "Invalid Mobile number"),
     }),
     onSubmit: (values) => {
-      updateUserObj(values, id, email, photoURL);
+      updateUserObj(values, uid, email, photoURL);
       alert("user updated");
       //Save profile data
       //navigate?

@@ -34,6 +34,9 @@ const getOtherUsersRides = (allRides, filteredRides, userId) => {
 
 const getConnectedRidesIds = (connectedRides) => {
   const rideIds = [];
+  if (!connectedRides) {
+    return rideIds;
+  }
   Object.keys(connectedRides).map((matchId) =>
     rideIds.push(connectedRides[matchId].rideInfo.rideId)
   );
