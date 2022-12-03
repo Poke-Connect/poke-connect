@@ -30,7 +30,7 @@ export const ChatContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(chatReducer, INITIAL_STATE, () => {
     const localData = localStorage.getItem("state");
-    if (!localData || localData === undefined) {
+    if (!localData || localData === "undefined") {
       return INITIAL_STATE;
     } else {
       return JSON.parse(localData);

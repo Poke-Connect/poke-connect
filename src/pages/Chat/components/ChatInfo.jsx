@@ -1,31 +1,34 @@
 import React from "react";
-import Smiley from "assets/icons/Smiley";
+import { UserChat } from "context/ChatContext";
+import ImageContainer from "components/UI/ImageContainer";
 
-const ChatInfo = (props) => {
+//TODO: Add rideinfo(location,time)
+const ChatInfo = () => {
+  const { data } = UserChat();
+
   return (
     <div className="bg-primary">
-      <div id="profileNameContainer">
+      <div id="userInfoContainer">
+        <ImageContainer
+          photoURL={data.user.photoURL}
+          alt={data.user.displayName[0]}
+          dimension={10}
+        />
+        <div className="text-base font-semibold flex justify-start">
+          {data.user.displayName}
+        </div>
+      </div>
+      {/* <div id="rideInfoContainer">
+        <div className="text-xs font-light text-lightGray3 flex justify-start">
+          {"Ambience Diva"}
+        </div>
         <div
-          id="profilePicContainer"
-          className="icon flex-none w-14 h-14 bg-lightGray rounded-lg flex items-center justify-center"
+          id="rideTime"
+          className="date flex-none flex justify-end font-medium text-sm text-lightGray2"
         >
-          <Smiley className="shadow rounded-full max-w-full h-auto align-middle border-none" />
+          {"time"}
         </div>
-        <div id="detailsContainer" className="info flex-auto">
-          <div className="text-base font-semibold flex justify-start">
-            {"Ashish Jain"}
-          </div>
-          <div className="text-xs font-light text-lightGray3 flex justify-start">
-            {"Ambience Diva"}
-          </div>
-        </div>
-      </div>
-      <div
-        id="rideTime"
-        className="date flex-none flex justify-end font-medium text-sm text-lightGray2"
-      >
-        {"time"}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -7,7 +7,6 @@
         - remove useHistory from app.js
         - firebase crashlytics
         - Map marker
-        - Chat
         - connected should be user specific property (other user might not connect)
 
         ARMAAN
@@ -87,7 +86,7 @@
         - UI elements
 
     ##Chatting
-        - Complete left
+    - UI
 
 
 
@@ -108,6 +107,8 @@ COMPLETE:
     - adding time and ride info in matches 
     - MyTrips - upcoming and completed trips not working
     - connection already added still adding 
+            - Chat
+
 
 
 
