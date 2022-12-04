@@ -6,9 +6,9 @@ import Home from "./pages/Home/Home";
 import MyTrips from "./pages/MyTrips/MyTrips";
 import AvailableConnections from "./pages/RideConnections/AvailableConnections/AvailableConnections";
 import MyConnections from "./pages/MyConnections/MyConnections";
-import MyProfile from "./pages/Profile/MyProfile";
+import Profile from "./pages/Profile/Profile";
 import Chat from "./pages/Chat/Chat";
-import UserProfile from "./pages/UserProfile";
+import UserProfile from "./pages/Profile/UserProfile";
 import NewRide from "./pages/NewRide/NewRide";
 import SignIn from "./pages/SignIn/SignIn";
 import Protected from "./pages/Protected";
@@ -108,7 +108,7 @@ const AppRouter = () => {
         exact
         element={
           <Protected>
-            <MyProfile />
+            <Profile />
           </Protected>
         }
       />
@@ -122,7 +122,7 @@ const AppRouter = () => {
         }
       />
       <Route
-        path="/userId"
+        path="/user/:uid"
         element={
           <Protected>
             <UserProfile />

@@ -1,18 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import EditIcon from "assets/icons/EditIcon";
-import IconButton from "components/IconButton";
 import ImageContainer from "components/UI/ImageContainer";
 
-const PrimaryProfileInfo = (props) => {
-  const { displayName, email, photoURL } = props;
-
-  const navigate = useNavigate();
-
-  const onEditPressHandler = () => {
-    navigate("/profile/edit");
-  };
-
+const PrimaryUserProfileInfo = (props) => {
+  const { displayName, photoURL, linkedIn } = props;
   return (
     <div className="profile-into flex flex-row items-center">
       <ImageContainer alt={displayName[0]} photoURL={photoURL} dimension={10} />
@@ -21,14 +11,11 @@ const PrimaryProfileInfo = (props) => {
           {displayName}
         </div>
         <div className="user-email flex items-left font-normal text-sm">
-          {email}
+          {linkedIn}
         </div>
-      </div>
-      <div className="edit flex-1">
-        <IconButton IconParam={EditIcon} onPressHandler={onEditPressHandler} />
       </div>
     </div>
   );
 };
 
-export default PrimaryProfileInfo;
+export default PrimaryUserProfileInfo;
