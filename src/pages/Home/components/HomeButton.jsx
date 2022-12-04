@@ -4,7 +4,7 @@ const HomeButton = (props) => {
   const { onClick, name, children } = props;
   return (
     <button
-      className="bg-black inline-flex items-center justify-between text-white rounded-xl p-4 mb-4 pl-6"
+      className="bg-black inline-flex items-center justify-between text-white border-r-4 border-b-4 border-primary p-4 mb-4 pl-6"
       onClick={onClick}
     >
       {name}

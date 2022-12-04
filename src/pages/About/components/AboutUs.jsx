@@ -5,7 +5,7 @@ const ABOUT_US_DATA =
 
 const AboutUs = () => {
   return (
-    <div className="about-us text-left">
+    <div className="about-us text-left p-5 pl-2 mb-2">
       <h2 className="font-semibold text-xl pb-1.5">About Us</h2>
       <p className="font-normal text-sm">{ABOUT_US_DATA}</p>
     </div>

@@ -6,15 +6,16 @@ const DONATE_TEXT =
 
 const Donate = () => {
   return (
-    <div className="donate-to-poke text-left pt-6">
+    <div className="donate-to-poke text-left bg-primary rounded-lg p-5 m-2">
       <h2 className=" flex font-semibold text-xl items-center gap-2 pb-1.5">
         <Heart />
         Donate to Poke
       </h2>
       <div className="flex gap-2">
-        <p className="font-normal text-sm">{DONATE_TEXT}</p>
-        <div>
-          <button className="px-6 bg-lightGreen py-1 rounded-lg text-base font-semibold">
+        <p className="font-normal text-sm px-3">{DONATE_TEXT}</p>
+        <div className="py-6 md:py-0">
+          <button className="px-4 py-1 text-base font-semibold 
+          bg-black text-white border-r-2 border-b-2 border-white">
             Donate
           </button>
         </div>

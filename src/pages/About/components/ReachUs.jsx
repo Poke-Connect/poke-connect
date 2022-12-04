@@ -10,11 +10,11 @@ const ReachUs = () => {
       suggestion: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Required"),
-      email: Yup.string().required("Required"),
+      name: Yup.string().required("*Required"),
+      email: Yup.string().required("*Required"),
       suggestion: Yup.string()
         .min(3, "Please enter a valuable feedback or suggestion")
-        .required("Required"),
+        .required("*Required"),
     }),
     onSubmit: (values) => {
       alert("your feedback submitted successfuly!!!" + values);
@@ -27,7 +27,7 @@ const ReachUs = () => {
       <div className="pt-4">
         <form
           onSubmit={formik.handleSubmit}
-          className="flex flex-col p-4 bg-whiteGray rounded-2xl gap-4"
+          className="flex flex-col p-4 bg-darkGray rounded-2xl gap-4"
         >
           <input
             id={"name"}
@@ -40,7 +40,7 @@ const ReachUs = () => {
             className="p-1 rounded-lg"
           />
           {formik.touched.name && formik.errors.name ? (
-            <p>{formik.errors.name}</p>
+            <p className="text-sm text-primary">{formik.errors.name}</p>
           ) : null}
           <input
             id={"email"}
@@ -53,7 +53,7 @@ const ReachUs = () => {
             className="p-1 rounded-lg"
           />
           {formik.touched.email && formik.errors.email ? (
-            <p>{formik.errors.email}</p>
+            <p className="text-sm text-primary">{formik.errors.email}</p>
           ) : null}
           <input
             id={"suggestion"}
@@ -66,7 +66,7 @@ const ReachUs = () => {
             className="p-1 rounded-lg"
           />
           {formik.touched.suggestion && formik.errors.suggestion ? (
-            <p>{formik.errors.suggestion}</p>
+            <p className="text-sm text-primary">{formik.errors.suggestion}</p>
           ) : null}
           <button
             type={"submit"}

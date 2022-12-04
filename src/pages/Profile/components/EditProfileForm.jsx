@@ -1,10 +1,14 @@
 import React from "react";
 import { getSecondaryInfo } from "../helper";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { updateUserObj } from "db/updateUserObject";
+import EditInput from "./EditInput";
 
 const EditProfileForm = (props) => {
+  const navigate = useNavigate();
+
   const { profileData } = props;
 
   const {
@@ -48,39 +52,43 @@ const EditProfileForm = (props) => {
     return null;
   }
 
+  const cancelChangesHandler = () => {
+    navigate("/profile");
+  };
+
   return (
     <div id="form">
-      EditProfile
-      <form onSubmit={formik.handleSubmit}>
-        <div id="pic&email" className="flex-row flex-2">
-          <div className="icon flex-none w-10 h-10 bg-lightGray rounded-lg flex items-center justify-center pl-2">
-            <img
-              src={photoURL}
-              alt={"P"}
-              className="shadow rounded-full max-w-full h-auto align-middle border-none"
-            />
+      <form onSubmit={formik.handleSubmit} className="p-2 md:p-7 m-2 mt-0 pt-3">
+        <div
+          id="pic&email"
+          className="flex flex-row flex-2 items-center justify-center ml-3 pb-3"
+        >
+          <div className="flex-1 w-1/4">
+            <div className="icon w-20 h-20 bg-lightGray rounded-full flex items-center justify-center">
+              <img
+                src={photoURL}
+                alt={"P"}
+                className="rounded-full w-20 h-20 align-middle border-none"
+              />
+            </div>
           </div>
-          <div className="flex-1">coco.chanel@gmail.com</div>
+          <div className="flex-2 text-left w-3/4">
+            <div className="text-primary mt-[-10]">coco.chanel@gmail.com</div>
+          </div>
         </div>
 
-        <div id="inputContainer" className="flex-col">
-          <div id="name" className="flex-2 flex-row">
-            <input
-              id={"firstName"}
-              name={"firstName"}
-              placeholder={"First name"}
-              value={formik.values.firstName}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              type="text"
-              className="flex-1"
-            />
-
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <p>{formik.errors.firstName}</p>
-            ) : null}
-
-            <input
+        <div className="flex flex-col items-start md:flex-row flex-2">
+          <EditInput
+            id={"firstName"}
+            name={"firstName"}
+            placeholder={"First name"}
+            value={formik.values.firstName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            type="text"
+          />
+          <div className="md:pl-2">
+            <EditInput
               id={"lastName"}
               name={"lastName"}
               placeholder={"Last name"}
@@ -89,83 +97,103 @@ const EditProfileForm = (props) => {
               type="text"
             />
           </div>
-          <div>
-            <input
-              id={"linkedIn"}
-              name={"linkedIn"}
-              placeholder={"linkedin"}
-              value={formik.values.linkedIn}
-              onChange={formik.handleChange}
-              type="text"
-            />
+        </div>
 
-            <div id="mobile">
-              <input
-                id={"countryCode"}
-                name={"countryCode"}
-                placeholder={"+91"}
-                disabled={true}
-                value={"+91"}
-              />
-              <input
+        <div
+          id="inputContainer"
+          className="flex flex-col items-start justify-center pr-7"
+        >
+          <EditInput
+            id={"linkedIn"}
+            name={"linkedIn"}
+            placeholder={"LinkedIn profile link"}
+            value={formik.values.linkedIn}
+            onChange={formik.handleChange}
+            type="text"
+          />
+          <div id="mobile" className="flex flex-row">
+            <div
+              id={"countryCode"}
+              name={"countryCode"}
+              placeholder={"+91"}
+              disabled={true}
+              value={"+91"}
+              className="p-2 rounded-lg bg-lightGray text-typeText m-2 mr-0 w-1/6"
+            >
+              +91
+            </div>
+            <div className="w-5/6">
+              <EditInput
                 id={"mobile"}
                 name={"mobile"}
-                placeholder={"mobile"}
+                placeholder={"Mobile number"}
                 value={formik.values.mobile}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 type="number"
               />
             </div>
-
-            {formik.touched.mobile && formik.errors.mobile ? (
-              <p>{formik.errors.mobile}</p>
-            ) : null}
-
-            <select
-              id={"gender"}
-              name={"gender"}
-              value={formik.values.gender}
-              onChange={formik.handleChange}
-              style={{ display: "block" }}
-            >
-              <option value="">Gender</option>
-              <option value="male" label="Male" />
-              <option value="female" label="Female" />
-              <option value="nonBinary" label="Non-binary" />
-            </select>
-
-            <input
-              id={"occupation"}
-              name={"occupation"}
-              placeholder={"Occupation"}
-              value={formik.values.occupation}
-              onChange={formik.handleChange}
-              type="text"
-            />
-
-            <input
-              id={"company"}
-              name={"company"}
-              placeholder={"Company"}
-              value={formik.values.company}
-              onChange={formik.handleChange}
-              type="text"
-            />
-
-            <input
-              id={"about"}
-              name={"about"}
-              placeholder={"About"}
-              value={formik.values.about}
-              onChange={formik.handleChange}
-              type="text"
-            />
           </div>
+          {formik.touched.mobile && formik.errors.mobile ? (
+            <p className="text-sm text-primary">{formik.errors.mobile}</p>
+          ) : null}
+          <select
+            id={"gender"}
+            name={"gender"}
+            value={formik.values.gender}
+            onChange={formik.handleChange}
+            style={{ display: "block" }}
+            className="p-2 rounded-lg bg-lightGray text-typeText m-2 w-[193px]"
+          >
+            <option value="">Gender</option>
+            <option value="male" label="Male" />
+            <option value="female" label="Female" />
+            <option value="nonBinary" label="Non-binary" />
+          </select>
+
+          <EditInput
+            id={"occupation"}
+            name={"occupation"}
+            placeholder={"Occupation"}
+            value={formik.values.occupation}
+            onChange={formik.handleChange}
+            type="text"
+          />
+
+          <EditInput
+            id={"company"}
+            name={"company"}
+            placeholder={"Company"}
+            value={formik.values.company}
+            onChange={formik.handleChange}
+            type="text"
+          />
+
+          <input
+            id={"about"}
+            name={"about"}
+            placeholder={"About"}
+            value={formik.values.about}
+            onChange={formik.handleChange}
+            type="text"
+            className="p-2 rounded-lg bg-lightGray placeholder-typeText text-black m-2 h-32 w-full items-start align-top"
+          />
         </div>
 
-        <div id="button">
-          <button type={"submit"}>Save Profile</button>
+        <div
+          id="button"
+          className="flex flex-row flex-2 items-start justify-between p-4"
+        >
+          <button type={"submit"} className="bg-black text-white p-1 pl-4 pr-4">
+            Save Profile
+          </button>
+          <button
+            type={"button"}
+            onClick={cancelChangesHandler}
+            className="bg-white text-primary underline p-1 pl-4 pr-4"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

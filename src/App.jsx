@@ -5,6 +5,7 @@ import { useJsApiLoader } from "@react-google-maps/api";
 import { AuthContextProvider } from "context/AuthContext";
 import { ChatContextProvider } from "context/ChatContext";
 import { useLocation } from "react-router-dom";
+import Loading from "./pages/Loading";
 
 const App = () => {
   const [libraries] = useState(["places"]);
@@ -17,7 +18,7 @@ const App = () => {
   const val = location.pathname.includes("signin") || location.pathname === "/";
 
   if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
