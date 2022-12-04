@@ -1,21 +1,28 @@
 import React from "react";
 import { UserChat } from "context/ChatContext";
 import ImageContainer from "components/UI/ImageContainer";
+import { useNavigate } from "react-router-dom";
 
 //TODO: Add rideinfo(location,time)
 const ChatInfo = () => {
   const { data } = UserChat();
+  const { uid, displayName, photoURL } = data.user;
+  const navigate = useNavigate();
+
+  const onClickHandler = () => {
+    uid && navigate(`/user/${uid}`);
+  };
 
   return (
     <div className="bg-primary">
-      <div id="userInfoContainer">
+      <div id="userInfoContainer" onClick={onClickHandler}>
         <ImageContainer
-          photoURL={data.user.photoURL}
-          alt={data.user.displayName[0]}
+          photoURL={photoURL}
+          alt={displayName[0]}
           dimension={10}
         />
         <div className="text-base font-semibold flex justify-start">
-          {data.user.displayName}
+          {displayName}
         </div>
       </div>
       {/* <div id="rideInfoContainer">

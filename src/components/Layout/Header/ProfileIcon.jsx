@@ -4,7 +4,7 @@ const ProfileIcon = (props) => {
   const { photoURL = "", displayName = "", onClickHandler } = props;
   return (
     <button
-      className="flex-none mr-4 cursor-pointer profile-pic "
+      className="flex-none mr-4 cursor-pointer w-8 h-8 "
       onClick={onClickHandler}
     >
       <img

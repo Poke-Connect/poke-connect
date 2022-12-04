@@ -1,27 +1,44 @@
-#MAIN:
+# MAIN:
 
-    ##TODAY:
-        - Click handler for creating a match is taking lot of time
-        - other users profile
-        - capitalisations in profile
-        - remove useHistory from app.js
-        - firebase crashlytics
-        - Map marker
-        - connected should be user specific property (other user might not connect)
+    ## ITEMS:
 
-        ARMAAN
-        - Loading page
-        - Page not found page
-        - edit profile navigation
-        - about us write up
+        ## Ride Creation and Matching:
+            - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
+            - Map direction not showing
 
+        ## Functional Items: 
+            - Map marker
+            - capitalisations in profile
+            - remove useHistory from app.js
+            - image storage fix
+            - migrate to typescript
+            - Click handler for creating a match is taking lot of time
+            - Profile signup vs edit
+            - connected should be user specific property (other user might not connect)
+            - callback for calculating min times - cache function results
+            - sorting logic based on extra time + time of departure
+            - ride id logic --> will change it to SQL database later
+            - connections throttle user wise
 
-        THAPAN 
-        - UI bugs   
+        ## Firebase:
+            - Crashlytics
+            - Analytics
+
+        ## Other Pages:
+            - Suggestions/feedback (suggestions collection)
+            - Dontaion (buy me a coffee/ patron)
+
+        ## Write Ups:
+            - about us write up (Main)
+            - about us write up (Min)
+            - terms and conditions 
+            - FAQ
+
+        ## UI bugs:   
             - z index fix of map and toggle
             - map view port fix
 
-        - UI elements
+        ## UI elements:
             - sign in page changes
             - edit profile page changes
             - about us page changes
@@ -31,10 +48,13 @@
             - my trip element
             - find new connection icons addition
             - find a connection vertical line addition (left of input boxes)
+            - My connection tab bar bottom
+            - Responsive UI for desktop and mobile - Figma
+            - Chat UI
 
+        
 
-
-    ##WARNINGS
+    ## WARNINGS:
 
     2. Failed to load resource: the server responded with a status of 400 ()
 
@@ -45,78 +65,3 @@
     See https://www.chromestatus.com/feature/5745543795965952
 
 
-    ##ITEMS:
-        - callback for calculating min times - cache function results
-        - sorting logic based on extra time + time of departure
-        - firebase analytics
-        - ride id logic --> will change it to SQL database later
-        
-        - about us write up
-        - terms and conditions 
-        
-        - suggestions - connection
-                //store in a suggestions collection
-        - donate - connection --> buy me a coffee // patron
-
-
-    ##UI Items
-        T- Layout of screen for all children
-        T- Sign in page
-        T- Fixing viewport/ scroll on screens - Home | Map
-        T- Z-index throught the app (header-layout, navbar-layout)
-
-        AJ- My connections tab bar bottom
-
-        AS- Redesign Navbar
-        AS- Responsive UI for desktop and mobile
-        AS- location autocomplete box items
-        AS- profile edit
-        AS- UI web
-
-
-
-    ##Profile building
-        - UI elements
-
-    ##Ride Creation and Matching
-        - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
-        - Map direction not showing
-
-    ##Connections Handling
-        - UI elements
-
-    ##Chatting
-    - UI
-
-
-
-COMPLETE:
-    ##Authentication and Protection
-        - Figma
-        - Routes handling for Protection
-        - Component Handling for protection
-    - home page to new connections link
-    - restricting the suggestions to Bangalore
-    - Masking auto-complete
-    - logout route
-    - refresh logic - (currently its going back to sign in screen on reload)
-    - storing ride-dates collection
-    - remove the requests of the requesting user 
-    - Show matches page
-    - Firebase Handling
-    - adding time and ride info in matches 
-    - MyTrips - upcoming and completed trips not working
-    - connection already added still adding 
-            - Chat
-
-
-
-
-        1. useJsApiLoader.tsx:86 Performance warning! LoadScript has been reloaded unintentionally! 
-    You should not pass `libraries` prop as new array. Please keep an array of libraries as static 
-    class property for Components and PureComponents, or just a const variable outside of component, 
-    or somewhere in config files or ENV variables
-
-5. [2022-11-29T10:46:47.596Z]  @firebase/database: FIREBASE WARNING: 
-    Using an unspecified index. Your data will be downloaded and filtered on the client. 
-    Consider adding ".indexOn": "date" at /rides to your security rules for better performance. 
