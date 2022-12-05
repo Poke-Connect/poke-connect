@@ -35,7 +35,7 @@ const AvailableConnections = () => {
   return (
     <RideConnections rideId={rideId}>
       <div className="pt-20">
-        <h1>Available co-passengers </h1>
+        <h1>Matches Found</h1>
         {myRide && (
           <ShowConnectionsHandler
             myRide={myRide}

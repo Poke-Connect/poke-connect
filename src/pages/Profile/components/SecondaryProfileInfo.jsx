@@ -14,7 +14,7 @@ const SecondaryProfileInfo = (props) => {
     return <>{rows}</>;
   };
 
-  return <div className="pl-3">{createSecondaryInfo()}</div>;
+  return <div className="p-7 pt-2">{createSecondaryInfo()}</div>;
 };
 
 export default SecondaryProfileInfo;

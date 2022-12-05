@@ -19,7 +19,7 @@ const ProfileContainer = (props) => {
       />
       <SecondaryProfileInfo secondaryInfo={secondaryInfo} />
       <div className="logout flex pl-3 pt-5 ">
-        <button className="bg-black text-white px-5 py-1.5 rounded-lg font-sm font-semibold">
+        <button className="bg-black text-white px-5 py-1.5 font-sm font-semibold">
           Logout
         </button>
       </div>

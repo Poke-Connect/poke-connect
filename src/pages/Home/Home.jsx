@@ -34,13 +34,17 @@ const Home = () => {
           <HomeButton onClick={onTravelToAirportHandler} name={"To Airport"} />
         </div>
       </div>
-      <span className="h-0.5 bg-lightGreen mt-20 mb-20 w-4/5"></span>
+      <span className="h-0.5 bg-primary mt-20 mb-20 w-4/5"></span>
       <div className="flex flex-col w-4/5">
-        <HomeButton onClick={onClickTripsHandler} name={"My Trips"}>
+        <button
+          className="bg-black inline-flex items-center justify-between text-white p-4 mb-4 pl-6 rounded-xl"
+          name={"My Trips"}
+        >
+          My Trips
           <div>
             <Arrow />
           </div>
-        </HomeButton>
+        </button>
       </div>
     </div>
   );

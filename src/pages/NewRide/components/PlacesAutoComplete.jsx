@@ -2,6 +2,8 @@ import React from "react";
 import usePlacesAutocomplete from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import InputField from "./InputField";
+import Suggestions from "./Suggestions";
+import LocationIcon from "assets/icons/locationIcon";
 
 const BANGALORE_LAT = 12.972442;
 const BANGALORE_LNG = 77.580643;
@@ -56,9 +58,23 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
       } = suggestion;
 
       return (
-        <li key={place_id} onClick={handleSelect(suggestion)}>
-          <strong>{main_text}</strong> <small>{secondary_text}</small>
-        </li>
+        <div className="m-4 p-4 h-15 bordder border-b-2 border-primary">
+          <li
+            key={place_id}
+            onClick={handleSelect(suggestion)}
+            className="flex flex-row"
+          >
+            <div className="w-1/5">
+              <LocationIcon />
+            </div>
+            <div className="flex justify-items-start w-4/5">
+              <Suggestions
+                main_text={main_text}
+                secondary_text={secondary_text}
+              />
+            </div>
+          </li>
+        </div>
       );
     });
 

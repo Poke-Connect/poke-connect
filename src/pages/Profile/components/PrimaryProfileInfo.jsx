@@ -20,11 +20,11 @@ const PrimaryProfileInfo = (props) => {
         <div className="user-name flex items-left font-bold text-xl">
           {displayName}
         </div>
-        <div className="user-email flex items-left font-normal text-sm">
+        <div className="user-email flex items-left font-normal text-sm text-primary">
           {email}
         </div>
       </div>
-      <div className="edit flex-1">
+      <div className="edit pl-2 md:pl-10">
         <IconButton IconParam={EditIcon} onPressHandler={onEditPressHandler} />
       </div>
     </div>
