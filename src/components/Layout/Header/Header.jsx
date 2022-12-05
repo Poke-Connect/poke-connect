@@ -27,30 +27,28 @@ const Header = () => {
   };
 
   return (
-    <>
-      <div className=" bg-black flex items-center py-6 fixed left-0 right-0 top-0 max-w-xl mx-auto ">
-        <span
-          className="text-5xl font-bold text-left pl-5 flex-auto text-white"
-          onClick={onHomeClickHandler}
-        >
-          POKE
-        </span>
-        <IconElement Icon={ChatIcon} onClickHandler={onChatClickHandler} />
-        <ProfileIcon
-          photoURL={user?.photoURL}
+    <div className=" bg-black flex items-center py-6 fixed left-0 right-0 top-0 max-w-xl mx-auto z-50 ">
+      <span
+        className="text-5xl font-bold text-left pl-5 flex-auto text-white"
+        onClick={onHomeClickHandler}
+      >
+        POKE
+      </span>
+      <IconElement Icon={ChatIcon} onClickHandler={onChatClickHandler} />
+      <ProfileIcon
+        photoURL={user?.photoURL}
+        displayName={user?.displayName}
+        onClickHandler={onProfieClickHandler}
+      />
+      <div>
+        <RightSideNav
+          showSidebar={showSidebar}
+          toggleSideBar={toggleSideBar}
+          logOut={logOut}
           displayName={user?.displayName}
-          onClickHandler={onProfieClickHandler}
         />
-        <div>
-          <RightSideNav
-            showSidebar={showSidebar}
-            toggleSideBar={toggleSideBar}
-            logOut={logOut}
-            displayName={user?.displayName}
-          />
-        </div>
       </div>
-    </>
+    </div>
   );
 };
 

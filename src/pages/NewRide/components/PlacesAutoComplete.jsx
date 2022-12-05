@@ -3,7 +3,7 @@ import usePlacesAutocomplete from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import InputField from "./InputField";
 import Suggestions from "./Suggestions";
-import LocationIcon from "assets/icons/locationIcon";
+import LocationIcon from "assets/icons/LocationIcon";
 
 const BANGALORE_LAT = 12.972442;
 const BANGALORE_LNG = 77.580643;

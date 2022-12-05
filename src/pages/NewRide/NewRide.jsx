@@ -10,6 +10,8 @@ import { v4 as uuidv4 } from "uuid";
 import { getRouteObject } from "./helpers";
 import InputField from "./components/InputField";
 import { createNewRideDb } from "db/createNewRideDb";
+import Heading from "components/UI/Heading";
+import ButtonContainer from "./components/ButtonContainer";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
@@ -56,8 +58,8 @@ const NewRide = () => {
       id="container"
       className="bg-white flex flex-col items-center pt-2 h-screen"
     >
-      <div className="bg-white p-3 flex flex-col rounded-2xl">
-        <h2 className="text-2xl text-left ml-5">Find a connection</h2>
+      <div className="bg-white flex flex-col rounded-2xl">
+        <Heading text={"Find a connection"} />
         <div className="bg-white flex-1 items-center md:w-[600px] pt-12">
           <div className="bg-white-500 flex-1 flex-col">
             <div className="h-1/2">
@@ -92,15 +94,13 @@ const NewRide = () => {
                 />
               </div>
               <div>
-                <button
-                  onClick={onFindMatchesHandler}
-                  className="bg-black inline-flex p-2 justify-center m-4 text-lg w-5/6 rounded-lg text-white"
-                >
-                  Find Connections
-                </button>
+                <ButtonContainer
+                  onFindMatchesHandler={onFindMatchesHandler}
+                  locationValue={locationValue}
+                />
               </div>
             </div>
-            <div className="h-1/2 w-full">
+            <div className=" w-full">
               {<GMapElement directionsResponse={directionsResponse} />}
             </div>
           </div>

@@ -29,7 +29,7 @@ const SignIn = () => {
   return (
     <div className="flex flex-col text-left h-screen">
       <div className="flex flex-col bg-black text-white p-7 border-b-8 border-primary">
-        <h1 className="pt-16 pl-2 font-medium text-8xl">POKE</h1>
+        <h1 className="pt-8 pl-2 font-medium text-8xl">POKE</h1>
         <h4 className="text-2xl font-medium tracking-[.05em] pl-3 pt-7 pb-2 mt-[-10px]">
           Connect via travel
         </h4>

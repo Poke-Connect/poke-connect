@@ -1,21 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+const PRIMARY_COLOR = "rgba(216, 63, 135, 1)";
+
 const NavElement = (props) => {
-  const { title, toRoute, onClickHandler, styles = "" } = props;
-  // let activeClassName = "underline";
+  const { title, toRoute, onClickHandler } = props;
+  let activeStyle = {
+    borderColor: PRIMARY_COLOR,
+  };
   return (
-    <li
-      className={"border-b border-black py-5" + styles}
+    <NavLink
+      to={toRoute}
+      className={"border-b-2 border-darkGray py-5 min-w-[85%] justify-end flex"}
       onClick={onClickHandler}
+      style={({ isActive }) => (isActive ? activeStyle : undefined)}
     >
-      <NavLink
-        to={toRoute}
-        // style={({ isActive }) => (isActive ? activeClassName : undefined)}
-      >
-        {title}
-      </NavLink>
-    </li>
+      {title}
+    </NavLink>
   );
 };
 

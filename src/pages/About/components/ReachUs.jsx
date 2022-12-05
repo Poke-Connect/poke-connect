@@ -1,6 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { addFeedbackDb } from "db/firestore/dbWrites";
+import { createRandomId } from "helpers/createRandomId";
 
 const ReachUs = () => {
   const formik = useFormik({
@@ -17,12 +19,14 @@ const ReachUs = () => {
         .required("*Required"),
     }),
     onSubmit: (values) => {
-      alert("your feedback submitted successfuly!!!" + values);
+      const id = createRandomId();
+      addFeedbackDb(id, values);
+      formik.resetForm();
     },
   });
 
   return (
-    <div className="reach-out-us pt-6">
+    <div className="reach-out-us py-6">
       <h2 className="font-semibold text-left text-xl">Reach out to us</h2>
       <div className="pt-4">
         <form
