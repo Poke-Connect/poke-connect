@@ -2,9 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "assets/icons/EditIcon";
 import IconButton from "components/IconButton";
+import ImageContainer from "components/UI/ImageContainer";
 
 const PrimaryProfileInfo = (props) => {
-  const { displayName, email } = props;
+  const { displayName, email, photoURL } = props;
 
   const navigate = useNavigate();
 
@@ -13,8 +14,8 @@ const PrimaryProfileInfo = (props) => {
   };
 
   return (
-    <div className="profile-into flex flex-row items-center p-2 md:p-7 pb-0">
-      <div className="profile-picture flex-none"></div>
+    <div className="profile-into flex flex-row items-center">
+      <ImageContainer alt={displayName[0]} photoURL={photoURL} dimension={10} />
       <div className="profile-detail flex-none pl-2.5">
         <div className="user-name flex items-left font-bold text-xl">
           {displayName}
