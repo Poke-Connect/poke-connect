@@ -104,3 +104,11 @@ export const updateDatesUserChats = async (uid1, uid2, chatId) => {
   await updateItem("userChats", uid1, document);
   await updateItem("userChats", uid2, document);
 };
+
+export const addFeedbackDb = async (id, data) => {
+  try {
+    await addItem("feedback", id, data);
+  } catch (e) {
+    console.log(e);
+  }
+};

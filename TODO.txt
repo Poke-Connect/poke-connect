@@ -2,6 +2,28 @@
 
     ## ITEMS:
 
+        ## TODAY
+            - profile signup vs edit --> (first time -> home || edit -> profile)
+            - trip element
+            - match element
+            - match footer
+            - connection element
+            - chat ui
+           
+            - airplane svgs
+            - toast messages
+            
+            - about us write up (Main)
+            - about us write up (Min)
+
+            - buy me a coffee finish
+
+            | Navbar UI
+            |suggestion/feedback finish
+            | z index fix of map and toggle
+            | map view port fix
+
+
         ## Ride Creation and Matching:
             - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
             - Map direction not showing
@@ -65,3 +87,9 @@
     See https://www.chromestatus.com/feature/5745543795965952
 
 
+ <div className="profile-into flex flex-row items-center p-2 md:p-7 pb-0">
+      <div className="profile-picture flex-none"></div>
+=======
+    <div className="profile-into flex flex-row items-center">
+      <ImageContainer alt={displayName[0]} photoURL={photoURL} dimension={10} />
+>>>>>>> pr-ui-v0

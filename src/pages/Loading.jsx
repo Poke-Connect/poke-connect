@@ -3,16 +3,14 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div>
-      <div
-        role="status"
-        className="flex text-typeText items-center justify-center h-screen text-sm"
-      >
-        P
-        <LoadingIcon />
-        KE
-        <span class="sr-only">Loading...</span>
-      </div>
+    <div
+      role="status"
+      className="flex text-typeText items-center justify-center text-sm h-screen pb-[80%] "
+    >
+      P
+      <LoadingIcon />
+      KE
+      <span className="sr-only">Loading...</span>
     </div>
   );
 };
