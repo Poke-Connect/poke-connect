@@ -1,7 +1,7 @@
 import Toggle from "react-toggle";
-import "react-toggle/style.css"; // for ES6 modules
+import "react-toggle/style.css";
 
-const ToggleElement = (props) => {
+const ToggleButton = (props) => {
   const { toggleState, handleToggleChange } = props;
   return (
     <label>
@@ -10,4 +10,4 @@ const ToggleElement = (props) => {
   );
 };
 
-export default ToggleElement;
+export default ToggleButton;

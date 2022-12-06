@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getPreFilteredRides } from "../../../helpers/getPreFilteredRidesNew";
-import { getFilteredRidesTime } from "../../../helpers/getFilteredRidesTime";
+import { getPreFilteredRides } from "helpers/getPreFilteredRidesNew";
+import { getFilteredRidesTime } from "helpers/getFilteredRidesTime";
 import ConnectionTile from "../components/ConnectionTile";
-import { createLocationString } from "../helpers";
+import { createLocationString } from "helpers/utils";
 
 const ShowConnections = (props) => {
   const { myRide, allRides, alreadyConnected } = props;

@@ -1,14 +1,3 @@
-export const createLocationString = (location) => {
-  if (!location) {
-    return "";
-  }
-  const locationArr = location.split(",");
-  const establishment = locationArr[0];
-  const subLocality = locationArr[1];
-  const locationStr = `${establishment}, ${subLocality}`;
-  return locationStr;
-};
-
 export const createUserObj = (user) => {
   const userObj = {};
   userObj["uid"] = user.uid;

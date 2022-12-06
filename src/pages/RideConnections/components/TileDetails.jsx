@@ -1,9 +1,9 @@
 import React from "react";
-import { createLocationString } from "../helpers";
+import { createLocationString } from "helpers/utils";
 import {
   createTimeStringFromTimeStamp,
   getTimeInMins,
-} from "../../../helpers/dateHelper";
+} from "helpers/dateHelper";
 
 const TileDetails = (props) => {
   const {

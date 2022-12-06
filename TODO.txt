@@ -3,12 +3,11 @@
     ## ITEMS:
 
         ## TODAY
-            6- home page button svgs (airplane svgs)
-            2- trip element
             3- match element
             5- connection element
             8- other profile ui
 
+            _____________________~==
 
             4- match footer
             9- ui layout
@@ -18,6 +17,7 @@
             11- line before input buttons (find new connection page)
 
             12- suggestions list
+            6- home page button svgs (airplane svgs)
             14- about us write up (Main)
             15- about us write up (Min)
            
@@ -96,3 +96,4 @@
 | z index fix of map and toggle
 | map view port fix
 | profile signup vs edit --> (first time -> home || edit -> profile)
+| trip element

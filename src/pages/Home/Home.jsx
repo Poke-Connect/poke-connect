@@ -39,6 +39,7 @@ const Home = () => {
         <button
           className="bg-black inline-flex items-center justify-between text-white p-4 mb-4 pl-6 rounded-xl"
           name={"My Trips"}
+          onClick={onClickTripsHandler}
         >
           My Trips
           <div>
