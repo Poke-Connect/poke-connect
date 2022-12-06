@@ -1,5 +1,5 @@
 import React from "react";
-import ConnectionTile from "./ConnectionTile";
+import ConnectionElement from "./ConnectionElement";
 
 const Connections = (props) => {
   const { myConnections } = props;
@@ -10,7 +10,7 @@ const Connections = (props) => {
   return (
     <div>
       {Object.keys(myConnections).map((connectionId) => (
-        <ConnectionTile
+        <ConnectionElement
           key={connectionId}
           connectionId={connectionId}
           connectionData={myConnections[connectionId]}

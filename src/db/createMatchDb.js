@@ -7,7 +7,8 @@ export const createMatchDb = (
   userData2,
   rideData1,
   rideData2,
-  extraTime
+  extraTime,
+  extraDist
 ) => {
   const db = getDatabase();
   const matchId = createMatchId(rideData1.rideId, rideData2.rideId);
@@ -36,6 +37,7 @@ export const createMatchDb = (
     },
     matchInfo: {
       extraTime: extraTime,
+      extraDist: extraDist,
     },
   };
 
@@ -55,6 +57,7 @@ export const createMatchDb = (
     },
     matchInfo: {
       extraTime: extraTime,
+      extraDist: extraDist,
     },
   };
 

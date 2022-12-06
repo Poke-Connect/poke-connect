@@ -1,6 +1,6 @@
 import React from "react";
 import { createConnectedConnectionsList } from "../helpers";
-import ConnectionsList from "../components/ConnectionsList";
+import ConnectedConnectionsList from "./ConnectedConnectionsList";
 
 const ShowRideConnections = (props) => {
   const { rideConnections } = props;
@@ -13,7 +13,7 @@ const ShowRideConnections = (props) => {
 
   return (
     <div>
-      <ConnectionsList connectionsdata={connectionsdata} />
+      <ConnectedConnectionsList connectionsdata={connectionsdata} />
     </div>
   );
 };

@@ -12,3 +12,7 @@ export const createLocationString = (location) => {
   const locationStr = `${establishment}, ${subLocality}`;
   return locationStr;
 };
+
+export const getDistanceInKm = (distance) => {
+  return (Number(distance) / 1000).toFixed(2);
+};

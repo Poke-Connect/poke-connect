@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { getPreFilteredRides } from "helpers/getPreFilteredRidesNew";
 import { getFilteredRidesTime } from "helpers/getFilteredRidesTime";
 import ConnectionTile from "../components/ConnectionTile";
-import { createLocationString } from "helpers/utils";
+import DateTimeElement from "components/DateTimeElement";
 
-const ShowConnections = (props) => {
+const AvailableConnectionsList = (props) => {
   const { myRide, allRides, alreadyConnected } = props;
   const [availableConnections, setAvailableConnections] = useState([]);
 
@@ -33,22 +33,20 @@ const ShowConnections = (props) => {
   if (!myRide || !allRides) {
     return null;
   }
-
   return (
     <div>
-      Showing Matches for
+      <DateTimeElement
+        date={myRide.date}
+        timeStampRide={myRide.timeStampRide}
+      />
       <div>
-        <h4>{createLocationString(myRide.location)}</h4>
-        <h4>{myRide.date}</h4>
-      </div>
-      <div>
-        <div>Matches:</div>
         {availableConnections
           ? availableConnections.map((rideObj) => (
               <ConnectionTile
                 key={rideObj[0]}
                 matchDetails={allRides[rideObj[0]]}
                 timeDiff={rideObj[1]}
+                distDiff={rideObj[2]}
                 userRide={myRide}
               />
             ))
@@ -58,4 +56,4 @@ const ShowConnections = (props) => {
   );
 };
 
-export default ShowConnections;
+export default AvailableConnectionsList;

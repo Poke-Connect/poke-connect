@@ -4,7 +4,7 @@ import {
   createDateStringTrip,
 } from "helpers/dateHelper";
 
-const DateElement = (props) => {
+const DateTimeElement = (props) => {
   const { date, timeStampRide } = props;
   const dateDisplay = createDateStringTrip(date);
   const timeDisplay = createTimeStringFromTimeStamp(timeStampRide);
@@ -15,4 +15,4 @@ const DateElement = (props) => {
   );
 };
 
-export default DateElement;
+export default DateTimeElement;

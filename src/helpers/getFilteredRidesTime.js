@@ -8,7 +8,8 @@ const sortArrByTime = (preFilteredRides, ridesArr) => {
   const timesArr = [];
   for (const i in ridesArr) {
     const time = ridesArr[i].routes[0].legs[0].duration.value;
-    timesArr.push([preFilteredRides[i], time]);
+    const distance = ridesArr[i].routes[0].legs[0].distance.value;
+    timesArr.push([preFilteredRides[i], time, distance]);
   }
   timesArr.sort((a, b) => a[1] - b[1]);
   return timesArr;

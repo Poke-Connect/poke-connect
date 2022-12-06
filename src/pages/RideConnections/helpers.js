@@ -23,6 +23,7 @@ export const createConnectionObj = (connectionData) => {
   connectionObj["email"] = connectionData.userInfo.email;
   connectionObj["location"] = connectionData.rideInfo.location;
   connectionObj["timeDiff"] = connectionData.matchInfo.extraTime;
+  connectionObj["distDiff"] = connectionData.matchInfo.extraDist;
   connectionObj["timeStampRide"] = connectionData.rideInfo.timeStampRide;
 
   return connectionObj;

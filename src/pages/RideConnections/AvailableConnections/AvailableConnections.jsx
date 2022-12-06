@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDatabase, onValue, ref } from "firebase/database";
-import RideConnections from "../RideConnections";
+import RideConnectionsLayout from "../RideConnectionsLayout";
 import ShowConnectionsHandler from "./ShowConnectionsHandler";
 import { UserAuth } from "context/AuthContext";
 
@@ -33,17 +33,14 @@ const AvailableConnections = () => {
   }, []);
 
   return (
-    <RideConnections rideId={rideId}>
-      <div className="pt-20">
-        <h1>Matches Found</h1>
-        {myRide && (
-          <ShowConnectionsHandler
-            myRide={myRide}
-            alreadyConnected={alreadyConnected}
-          />
-        )}
-      </div>
-    </RideConnections>
+    <RideConnectionsLayout rideId={rideId} heading={"Matches Found"}>
+      {myRide && (
+        <ShowConnectionsHandler
+          myRide={myRide}
+          alreadyConnected={alreadyConnected}
+        />
+      )}
+    </RideConnectionsLayout>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, onValue, ref, update } from "firebase/database";
-import DateElement from "./DateElement";
+import DateTimeElement from "components/DateTimeElement";
 import AddressElement from "./AddressElement";
 import ToggleElement from "./ToggleElement";
 
@@ -36,7 +36,7 @@ const TripElement = (props) => {
   return (
     <div className="flex flex-row py-4 justify-between items-center border-b border-primary gap-3">
       <div onClick={onClickHandler}>
-        <DateElement
+        <DateTimeElement
           date={rideData.date}
           timeStampRide={rideData.timeStampRide}
         />

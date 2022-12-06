@@ -3,12 +3,6 @@
     ## ITEMS:
 
         ## TODAY
-            3- match element
-            5- connection element
-            8- other profile ui
-
-            _____________________~==
-
             4- match footer
             9- ui layout
 
@@ -97,3 +91,6 @@
 | map view port fix
 | profile signup vs edit --> (first time -> home || edit -> profile)
 | trip element
+| matches found element
+| my connections element
+| other profile ui

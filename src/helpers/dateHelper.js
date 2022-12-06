@@ -1,6 +1,6 @@
 import * as dayjs from "dayjs";
 
-const INPUT_FORMAT = "YYYY-MM-DDTHH:mm";
+// const INPUT_FORMAT = "YYYY-MM-DDTHH:mm";
 const INPUT_DATE_FORMAT = "YYYY-MM-DD";
 const DISPLAY_DATE_FORMAT = "DD MMM YY";
 const INPUT_TIME_FORMAT = "HH:mm";
@@ -27,7 +27,22 @@ export const createDateString = (dateStr) => {
 };
 
 export const createDateStringTrip = (dateStr) => {
+  if (!dateStr) {
+    return;
+  }
   const travelDate = dayjs(dateStr).format(DISPLAY_DATE_FORMAT);
+  if (travelDate[0] === "0") {
+    return travelDate.slice(1);
+  }
+  return travelDate;
+};
+
+export const createDateFromTimeStamp = (timeStamp) => {
+  if (!timeStamp) {
+    return;
+  }
+  const dateObj = dayjs.unix(timeStamp);
+  const travelDate = dayjs(dateObj).format(DISPLAY_DATE_FORMAT);
   if (travelDate[0] === "0") {
     return travelDate.slice(1);
   }
@@ -47,6 +62,9 @@ export const createTimeString = (timeStr) => {
 
 //In AM/PM
 export const createTimeStringFromTimeStamp = (timeStamp) => {
+  if (!timeStamp) {
+    return;
+  }
   const timeObj = dayjs.unix(timeStamp);
   const timeStr = dayjs(timeObj).format(DISPLAY_TIME_FORMAT);
   if (timeStr[0] === "0") {
