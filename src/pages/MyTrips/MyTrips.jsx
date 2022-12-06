@@ -20,7 +20,7 @@ const MyTrips = () => {
       setMyTrips(data);
     });
   }, []);
-
+  //Heading component
   return (
     <div>
       <div>

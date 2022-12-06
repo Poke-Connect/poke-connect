@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { UserAuth } from "context/AuthContext";
-import EditProfileHandler from "./components/EditProfileHandler";
+import EditProfileForm from "./components/EditProfileForm";
+import { useLocation } from "react-router-dom";
 
 const EditProfile = () => {
   const [profileData, setProfileData] = useState(null);
+  const location = useLocation();
+  const isNew = location?.state?.newUser ?? false;
 
   const { user } = UserAuth();
   const { uid } = user;
@@ -20,7 +23,9 @@ const EditProfile = () => {
     });
   }, []);
 
-  return <EditProfileHandler profileData={profileData} />;
+  return (
+    profileData && <EditProfileForm profileData={profileData} isNew={isNew} />
+  );
 };
 
 export default EditProfile;

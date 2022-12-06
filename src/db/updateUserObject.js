@@ -1,13 +1,16 @@
 import { getDatabase, ref, set } from "firebase/database";
 
-// "/users/userid"
-export const updateUserObj = (userData, id, email, photoURL) => {
+// "/users/uid"
+export const updateUserObj = (userData, uid, email, photoURL) => {
+  if (!uid) {
+    return;
+  }
   const db = getDatabase();
-  const userDbRef = ref(db, `users/${id}`);
+  const userDbRef = ref(db, `users/${uid}`);
   const displayName = `${userData.firstName} ${userData.lastName}`;
   const userObj = {
     ...userData,
-    id,
+    uid,
     displayName,
     email,
     photoURL,
