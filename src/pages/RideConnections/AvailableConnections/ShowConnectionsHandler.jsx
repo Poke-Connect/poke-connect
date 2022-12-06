@@ -7,7 +7,7 @@ import {
   orderByChild,
   equalTo,
 } from "firebase/database";
-import ShowConnections from "./ShowConnections";
+import AvailableConnectionsList from "./AvailableConnectionsList";
 
 const ShowConnectionsHandler = (props) => {
   const { myRide, alreadyConnected } = props;
@@ -33,7 +33,7 @@ const ShowConnectionsHandler = (props) => {
   }
   return (
     <>
-      <ShowConnections
+      <AvailableConnectionsList
         allRides={allRides}
         myRide={myRide}
         alreadyConnected={alreadyConnected}

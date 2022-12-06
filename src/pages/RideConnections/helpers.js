@@ -1,14 +1,3 @@
-export const createLocationString = (location) => {
-  if (!location) {
-    return "";
-  }
-  const locationArr = location.split(",");
-  const establishment = locationArr[0];
-  const subLocality = locationArr[1];
-  const locationStr = `${establishment}, ${subLocality}`;
-  return locationStr;
-};
-
 export const createUserObj = (user) => {
   const userObj = {};
   userObj["uid"] = user.uid;
@@ -34,6 +23,7 @@ export const createConnectionObj = (connectionData) => {
   connectionObj["email"] = connectionData.userInfo.email;
   connectionObj["location"] = connectionData.rideInfo.location;
   connectionObj["timeDiff"] = connectionData.matchInfo.extraTime;
+  connectionObj["distDiff"] = connectionData.matchInfo.extraDist;
   connectionObj["timeStampRide"] = connectionData.rideInfo.timeStampRide;
 
   return connectionObj;

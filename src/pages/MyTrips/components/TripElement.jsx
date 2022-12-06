@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ToggleElement from "../../../components/ToggleElement";
 import { getDatabase, onValue, ref, update } from "firebase/database";
+import DateTimeElement from "components/DateTimeElement";
+import AddressElement from "./AddressElement";
+import ToggleElement from "./ToggleElement";
 
 const TripElement = (props) => {
   const { rideId, onClickHandler, upcoming } = props;
@@ -32,28 +34,23 @@ const TripElement = (props) => {
   }
 
   return (
-    <div>
-      <div
-        className="flex flex-row py-8 px-2 justify-between items-center border-b border-lightGreen gap-3"
-        onClick={onClickHandler}
-      >
-        <div className="icon flex-none w-14 h-14 bg-lightGray rounded-lg flex items-center justify-center">
-          {rideData.date}
-        </div>
-        <div className="info flex-auto">
-          <div className="text-base font-semibold flex justify-start">
-            {rideData.location}
-          </div>
-        </div>
-        <div className="date flex-none flex justify-end font-medium text-sm text-lightGray2">
-          {upcoming ? (
-            <ToggleElement
-              toggleState={rideData.discoverability}
-              handleToggleChange={handleToggleChange}
-            />
-          ) : null}
-        </div>
+    <div className="flex flex-row py-4 justify-between items-center border-b border-primary gap-3">
+      <div onClick={onClickHandler}>
+        <DateTimeElement
+          date={rideData.date}
+          timeStampRide={rideData.timeStampRide}
+        />
+        <AddressElement
+          location={rideData.location}
+          rideType={rideData.rideType}
+        />
       </div>
+      {upcoming ? (
+        <ToggleElement
+          discoverability={rideData.discoverability}
+          handleToggleChange={handleToggleChange}
+        />
+      ) : null}
     </div>
   );
 };

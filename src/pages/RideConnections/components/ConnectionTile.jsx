@@ -10,8 +10,7 @@ import { createConnectionId } from "helpers/createMatchId";
 import { UserChat } from "context/ChatContext";
 
 const ConnectionTile = (props) => {
-  const { matchDetails, timeDiff, userRide } = props;
-
+  const { matchDetails, timeDiff, userRide, distDiff } = props;
   const navigate = useNavigate();
 
   const { dispatch } = UserChat();
@@ -53,14 +52,16 @@ const ConnectionTile = (props) => {
         creatorObj,
         userRide,
         matchDetails,
-        timeDiff
+        timeDiff,
+        distDiff
       );
       await updateUserChats(
         userObj,
         creatorObj,
         userRide,
         matchDetails,
-        timeDiff
+        timeDiff,
+        distDiff
       );
       await createNewUsersChats(combinedId);
 
@@ -81,6 +82,7 @@ const ConnectionTile = (props) => {
       photoURL={creatorObj?.photoURL}
       location={location}
       timeDiff={timeDiff}
+      distDiff={distDiff}
       timeStampRide={timeStampRide}
       onClickHandler={onClickHandler}
     />

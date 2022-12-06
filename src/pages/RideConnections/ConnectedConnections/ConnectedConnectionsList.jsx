@@ -1,7 +1,7 @@
 import React from "react";
-import TileDetails from "./TileDetails";
+import TileDetails from "../components/TileDetails";
 
-const ConnectionsList = (props) => {
+const ConnectedConnectionsList = (props) => {
   const { connectionsdata } = props;
   return (
     <>
@@ -12,6 +12,7 @@ const ConnectionsList = (props) => {
           photoURL={data.photoURL}
           location={data.location}
           timeDiff={data.timeDiff}
+          distDiff={data.distDiff}
           timeStampRide={data.timeStampRide}
           onClickHandler={() => {}}
         />
@@ -20,4 +21,4 @@ const ConnectionsList = (props) => {
   );
 };
 
-export default ConnectionsList;
+export default ConnectedConnectionsList;

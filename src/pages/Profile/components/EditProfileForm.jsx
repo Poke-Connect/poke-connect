@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { getSecondaryInfo } from "../helper";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { updateUserObj } from "db/updateUserObject";
 import EditInput from "./EditInput";
+import ButtonContainer from "./ButtonContainer";
 
 const EditProfileForm = (props) => {
   const navigate = useNavigate();
 
-  const { profileData } = props;
+  const { profileData, isNew } = props;
+  const [isEditing, setIsEditing] = useState(true);
 
   const {
     firstName = "",
@@ -42,9 +44,9 @@ const EditProfileForm = (props) => {
     }),
     onSubmit: (values) => {
       updateUserObj(values, uid, email, photoURL);
-      alert("user updated");
-      //Save profile data
-      //navigate?
+      setIsEditing(false);
+      formik.resetForm();
+      isNew ? navigate("/home") : navigate("/profile");
     },
   });
 
@@ -53,7 +55,15 @@ const EditProfileForm = (props) => {
   }
 
   const cancelChangesHandler = () => {
+    formik.resetForm();
+    setIsEditing(false);
     navigate("/profile");
+  };
+
+  const skipChangesHandler = () => {
+    formik.resetForm();
+    setIsEditing(false);
+    navigate("/home");
   };
 
   return (
@@ -180,6 +190,13 @@ const EditProfileForm = (props) => {
           />
         </div>
 
+        <ButtonContainer
+          isNew={isNew}
+          isEditing={isEditing}
+          cancelChangesHandler={cancelChangesHandler}
+          skipChangesHandler={skipChangesHandler}
+        />
+        {/* 
         <div
           id="button"
           className="flex flex-row flex-2 items-start justify-between p-4"
@@ -194,7 +211,7 @@ const EditProfileForm = (props) => {
           >
             Cancel
           </button>
-        </div>
+        </div> */}
       </form>
     </div>
   );

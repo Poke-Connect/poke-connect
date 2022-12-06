@@ -5,6 +5,7 @@ var Colors = {
   lightGray: "rgba(246, 246, 246, 1)",
   textGray: "rgba(151, 151, 151, 1)",
   darkGray: "rgba(232, 232, 232, 1)",
+  whiteGray: "rgba(218, 218, 218, 1)",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -19,6 +20,7 @@ module.exports = {
         lightGray: Colors.lightGray,
         typeText: Colors.textGray,
         darkGray: Colors.darkGray,
+        whiteGray: Colors.whiteGray,
       },
     },
   },

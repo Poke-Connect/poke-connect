@@ -48,7 +48,13 @@ export const createNewUsersChats = async (combinedId) => {
 };
 
 //combinedId == u1+u2+r1+r2
-const createUserChatDocument = (combinedId, userData, rideData, extraTime) => {
+const createUserChatDocument = (
+  combinedId,
+  userData,
+  rideData,
+  extraTime,
+  extraDist
+) => {
   const document = {
     [combinedId + ".userInfo"]: {
       uid: userData.uid,
@@ -64,6 +70,7 @@ const createUserChatDocument = (combinedId, userData, rideData, extraTime) => {
     },
     [combinedId + ".matchInfo"]: {
       extraTime: extraTime,
+      extraDist: extraDist,
     },
   };
   return document;
@@ -74,7 +81,8 @@ export const updateUserChats = async (
   user2,
   ride1,
   ride2,
-  extraTime
+  extraTime,
+  extraDist
 ) => {
   const combinedId = createConnectionId(
     user1.uid,
@@ -82,8 +90,20 @@ export const updateUserChats = async (
     ride1.rideId,
     ride2.rideId
   );
-  const document1 = createUserChatDocument(combinedId, user2, ride2, extraTime);
-  const document2 = createUserChatDocument(combinedId, user1, ride1, extraTime);
+  const document1 = createUserChatDocument(
+    combinedId,
+    user2,
+    ride2,
+    extraTime,
+    extraDist
+  );
+  const document2 = createUserChatDocument(
+    combinedId,
+    user1,
+    ride1,
+    extraTime,
+    extraDist
+  );
   await updateItem("userChats", user1.uid, document1);
   await updateItem("userChats", user2.uid, document2);
 };

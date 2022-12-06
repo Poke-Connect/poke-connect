@@ -58,12 +58,11 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
       } = suggestion;
 
       return (
-        <div className="m-4 p-4 h-15 bordder border-b-2 border-primary">
-          <li
-            key={place_id}
-            onClick={handleSelect(suggestion)}
-            className="flex flex-row"
-          >
+        <div
+          key={place_id}
+          className="m-4 p-4 h-15 bordder border-b-2 border-primary"
+        >
+          <li onClick={handleSelect(suggestion)} className="flex flex-row">
             <div className="w-1/5">
               <LocationIcon />
             </div>
