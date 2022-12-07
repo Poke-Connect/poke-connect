@@ -23,7 +23,7 @@ const MyTrips = () => {
   return (
     <div>
       <Heading text={"My Trips"} />
-      <div className="mx-4">{myTrips && <ShowTrips myTrips={myTrips} />}</div>
+      <div>{myTrips && <ShowTrips myTrips={myTrips} />}</div>
     </div>
   );
 };

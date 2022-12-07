@@ -49,7 +49,7 @@ const NewRide = () => {
       locationValue
     );
 
-    navigate(`/connections/${rideId}/available`);
+    navigate(`/rideconnections/${rideId}/available`);
     //IF REQUIRED: Distance and duration can be taken from minRouteObject
   };
 

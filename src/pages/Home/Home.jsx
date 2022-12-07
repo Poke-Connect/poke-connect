@@ -1,7 +1,9 @@
 import React from "react";
-import HomeButton from "./components/HomeButton";
+import NewConnectionContainer from "./components/NewConnectionContainer";
 import { useNavigate } from "react-router-dom";
 import Arrow from "assets/icons/Arrow";
+import Line from "components/Line";
+import RoundButton from "components/Buttons/RoundButton";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE";
 const ORIGIN_RIDE = "ORIGIN_RIDE";
@@ -22,30 +24,18 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-white flex flex-col items-center justify-center h-full">
-      <div className="bg-lightGray p-6 flex flex-col rounded-2xl w-4/5">
-        <h2 className="text-2xl mb-6 text-left">Find new connections</h2>
-        <div className="flex flex-col">
-          <HomeButton
-            onClick={onTravelFromAirportHandler}
-            name={"From Airport"}
-          />
-
-          <HomeButton onClick={onTravelToAirportHandler} name={"To Airport"} />
-        </div>
-      </div>
-      <span className="h-0.5 bg-primary mt-20 mb-20 w-4/5"></span>
+    <div className="flex flex-col items-center w-full ">
+      <NewConnectionContainer
+        onTravelToAirportHandler={onTravelToAirportHandler}
+        onTravelFromAirportHandler={onTravelFromAirportHandler}
+      />
+      <Line marginY={"20"} />
       <div className="flex flex-col w-4/5">
-        <button
-          className="bg-black inline-flex items-center justify-between text-white p-4 mb-4 pl-6 rounded-xl"
-          name={"My Trips"}
-          onClick={onClickTripsHandler}
-        >
-          My Trips
-          <div>
-            <Arrow />
-          </div>
-        </button>
+        <RoundButton
+          text={"My Trips"}
+          onClickHandler={onClickTripsHandler}
+          IconParam={Arrow}
+        />
       </div>
     </div>
   );

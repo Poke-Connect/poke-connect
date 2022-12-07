@@ -1,14 +1,21 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const FooterButton = (props) => {
-  const { onClickHandler, text } = props;
+  const { toRoute, text } = props;
+  let activeStyle = {
+    color: "black",
+  };
   return (
-    <button
-      className="border-whiteGray border  h-full w-1/2"
-      onClick={onClickHandler}
-    >
-      <p>{text}</p>
-    </button>
+    <div className="border-whiteGray border h-full text-typeText flex-1 font-semibold text-lg ">
+      <NavLink
+        to={toRoute}
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        className="flex h-full  items-center justify-center"
+      >
+        {text}
+      </NavLink>
+    </div>
   );
 };
 

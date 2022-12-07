@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   return (
-    <div className=" bg-black flex items-center py-6 fixed left-0 right-0 top-0 max-w-xl mx-auto z-50 ">
+    <div className=" bg-black flex items-center py-6 left-0 right-0 top-0 max-w-xl mx-auto z-50  w-screen">
       <span
         className="text-5xl font-bold text-left pl-5 flex-auto text-white"
         onClick={onHomeClickHandler}
