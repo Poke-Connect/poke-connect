@@ -12,6 +12,8 @@ import InputField from "./components/InputField";
 import { createNewRideDb } from "db/createNewRideDb";
 import Heading from "components/UI/Heading";
 import ButtonContainer from "./components/ButtonContainer";
+import FromPoint from '../../assets/icons/FromPoint';
+import ToPoint from '../../assets/icons/ToPoint';
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
@@ -62,7 +64,11 @@ const NewRide = () => {
         <Heading text={"Find a connection"} />
         <div className="bg-white flex-1 items-center md:w-[600px] pt-12">
           <div className="bg-white-500 flex-1 flex-col">
-            <div className="h-1/2">
+            <div className="h-1/2 px-6">
+              <div className="relative">
+              <div className="absolute flex flex-col gap-1 -left-2 top-6 bottom-6"><FromPoint />
+              <div className="border-r-2 mx-auto h-[42px] border-lineGrey"></div>
+              <ToPoint  /></div>
               <div
                 className={`flex ${
                   rideType === DESTINATION_RIDE
@@ -70,13 +76,18 @@ const NewRide = () => {
                     : "flex flex-col-reverse"
                 }`}
               >
-                <PlacesAutocomplete
+                
+                <div >
+                  
+                  <PlacesAutocomplete
                   setLocationValue={setLocationValue}
                   placeholder={
                     rideType === DESTINATION_RIDE ? "From where?" : "Where to?"
                   }
                 />
-                <div>
+                </div>
+                <div >
+                
                   <InputField
                     name={"KIA"}
                     disabled={true}
@@ -85,7 +96,8 @@ const NewRide = () => {
                   />
                 </div>
               </div>
-              <div className="flex flex-row w-full items-center justify-center">
+              </div>
+              <div className="flex flex-row w-full items-center m-2">
                 <DateTimeContainer
                   dateValue={dateValue}
                   setDateValue={setDateValue}
