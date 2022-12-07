@@ -1,38 +1,34 @@
 # MAIN:
 
     ## ITEMS:
-
         ## TODAY
-            4- match footer
-            9- ui layout
+            1- toast messages
+            2- donations finish
+            3- Map marker
 
-            7- chat ui
-            10- 3d buttons (sign in and home)
-            11- line before input buttons (find new connection page)
-
-            12- suggestions list
-            6- home page button svgs (airplane svgs)
-            14- about us write up (Main)
-            15- about us write up (Min)
+            4- chat ui
+            5- 3d buttons (sign in and home)
+            6- line before input buttons (find new connection page)
            
-            13- toast messages
-            16- donations finish
-
-
-
+            
+            7- home page button svgs (airplane svgs)
+            8- about us write up (Main)
+            9- about us write up (Min)
+            10- Add places to add toast messages and ui
+            11- suggestions list
+           
+        
 
         ## Ride Creation and Matching:
             - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
             - Map direction not showing
 
         ## Functional Items: 
-            - Map marker
-            - capitalisations in profile
+            
             - remove useHistory from app.js
             - image storage fix
             - migrate to typescript
             - Click handler for creating a match is taking lot of time
-            - Profile signup vs edit
             - connected should be user specific property (other user might not connect)
             - callback for calculating min times - cache function results
             - sorting logic based on extra time + time of departure
@@ -43,9 +39,6 @@
             - Crashlytics
             - Analytics
 
-        ## Other Pages:
-            - Dontaion (buy me a coffee/ patron)
-
         ## Write Ups:
             - about us write up (Main)
             - about us write up (Min)
@@ -53,24 +46,11 @@
             - FAQ
 
         ## UI bugs:   
-            - z index fix of map and toggle
             - map view port fix
 
         ## UI elements:
-            - sign in page changes
-            - edit profile page changes
-            - about us page changes
-            - auto complete suggestion element 
-            - Connections page (layout and footer)
-            - connection element
-            - my trip element
-            - find new connection icons addition
-            - find a connection vertical line addition (left of input boxes)
-            - My connection tab bar bottom
             - Responsive UI for desktop and mobile - Figma
-            - Chat UI
 
-        
 
     ## WARNINGS:
 
@@ -83,14 +63,3 @@
     See https://www.chromestatus.com/feature/5745543795965952
 
 
--Done-
-- Suggestions/feedback (suggestions collection)
-| Navbar UI
-|suggestion/feedback finish
-| z index fix of map and toggle
-| map view port fix
-| profile signup vs edit --> (first time -> home || edit -> profile)
-| trip element
-| matches found element
-| my connections element
-| other profile ui

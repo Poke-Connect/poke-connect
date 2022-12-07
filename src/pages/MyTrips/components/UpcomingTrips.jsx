@@ -15,7 +15,7 @@ const UpcomingTrips = (props) => {
             key={rideId}
             rideId={rideId}
             onClickHandler={() => {
-              navigate(`/connections/${rideId}`);
+              navigate(`/rideconnections/${rideId}/connected`);
             }}
             upcoming={true}
           />

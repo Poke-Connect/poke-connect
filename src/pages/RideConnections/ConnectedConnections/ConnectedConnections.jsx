@@ -26,7 +26,7 @@ const ConnectedConnections = () => {
   }, []);
 
   return (
-    <RideConnectionsLayout rideId={rideId} heading={"Connected"}>
+    <RideConnectionsLayout heading={"My Connections"}>
       <ShowRideConnections rideConnections={rideConnections} />
     </RideConnectionsLayout>
   );

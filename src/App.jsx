@@ -4,7 +4,6 @@ import AppRouter from "./AppRouter";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { AuthContextProvider } from "context/AuthContext";
 import { ChatContextProvider } from "context/ChatContext";
-import { useLocation } from "react-router-dom";
 import Loading from "./pages/Loading";
 
 const App = () => {
@@ -14,9 +13,6 @@ const App = () => {
     libraries,
   });
 
-  const location = useLocation();
-  const val = location.pathname.includes("signin") || location.pathname === "/";
-
   if (!isLoaded) {
     return <Loading />;
   }
@@ -24,13 +20,7 @@ const App = () => {
   return (
     <AuthContextProvider>
       <ChatContextProvider>
-        <div
-          className={`App md:mx-auto relative h-screen max-w-xl mx-auto ${
-            val ? "pt-0" : "pt-24"
-          }`}
-        >
-          <AppRouter />
-        </div>
+        <AppRouter />
       </ChatContextProvider>
     </AuthContextProvider>
   );

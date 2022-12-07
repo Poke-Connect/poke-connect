@@ -33,7 +33,7 @@ const AvailableConnections = () => {
   }, []);
 
   return (
-    <RideConnectionsLayout rideId={rideId} heading={"Matches Found"}>
+    <RideConnectionsLayout heading={"Matches Found"}>
       {myRide && (
         <ShowConnectionsHandler
           myRide={myRide}
