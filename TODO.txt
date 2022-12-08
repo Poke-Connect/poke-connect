@@ -6,9 +6,14 @@
             2- donations finish
             3- Map marker
 
-            4- chat ui
-            5- 3d buttons (sign in and home)
-            6- line before input buttons (find new connection page)
+            7- chat ui
+            10- 3d buttons (sign in and home)
+            11- line before input buttons (find new connection page)
+
+            ||12- suggestions list
+            ||6- home page button svgs (airplane svgs)
+            14- about us write up (Main)
+            15- about us write up (Min)
            
             
             7- home page button svgs (airplane svgs)
