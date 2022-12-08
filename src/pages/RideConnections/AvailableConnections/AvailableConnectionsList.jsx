@@ -3,6 +3,9 @@ import { getPreFilteredRides } from "helpers/getPreFilteredRidesNew";
 import { getFilteredRidesTime } from "helpers/getFilteredRidesTime";
 import ConnectionTile from "../components/ConnectionTile";
 import DateTimeElement from "components/DateTimeElement";
+import EmptyItem from "components/UI/EmptyItem";
+
+const EMPTY_AVAILABLE_TEXT = "No matches found yet. Please come back later.";
 
 const AvailableConnectionsList = (props) => {
   const { myRide, allRides, alreadyConnected } = props;
@@ -33,6 +36,13 @@ const AvailableConnectionsList = (props) => {
   if (!myRide || !allRides) {
     return null;
   }
+
+  const isEmpty = availableConnections.length === 0 ? true : false;
+
+  if (isEmpty) {
+    return <EmptyItem text={EMPTY_AVAILABLE_TEXT} />;
+  }
+
   return (
     <div className="mt-10">
       <DateTimeElement

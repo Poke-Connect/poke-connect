@@ -6,7 +6,7 @@
     ## ITEMS:
         ## TODAY
             5. Ride line
-            1- toast messages
+            || 1- toast messages
             4. date and time in chat
            5. images storage
             3- Map marker
@@ -16,14 +16,14 @@
             11- line before input buttons (find new connection page)
 
 
-            14- about us write up (Main)
-            15- about us write up (Min)
+            || 14- about us write up (Main)
+            || 15- about us write up (Min)
            
             
             7- home page button svgs (airplane svgs)
-            8- about us write up (Main)
-            9- about us write up (Min)
-            10- Add places to add toast messages and ui
+            || 8- about us write up (Main)
+            || 9- about us write up (Min)
+            || 10- Add places to add toast messages and ui
             11- suggestions list
            
            LATER
