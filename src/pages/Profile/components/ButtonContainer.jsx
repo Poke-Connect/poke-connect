@@ -13,12 +13,12 @@ const ButtonContainer = (props) => {
       className="flex flex-row flex-2 items-start justify-between p-4"
     >
       <button type={"submit"} className="bg-black text-white p-1 pl-4 pr-4">
-        {buttonText1}
+        <p className="text-base">{buttonText1}</p>
       </button>
       <button
         type={"button"}
         onClick={isNew ? skipChangesHandler : cancelChangesHandler}
-        className="bg-white text-primary underline p-1 pl-4 pr-4"
+        className="bg-white text-primary underline p-1 pl-4 pr-4 text-base underline-offset-2 font-semibold"
       >
         {buttonText2}
       </button>

@@ -26,9 +26,9 @@ const ReachUs = () => {
   });
 
   return (
-    <div className="reach-out-us py-6">
+    <div className="reach-out-us ">
       <h2 className="font-semibold text-left text-xl">Reach out to us</h2>
-      <div className="pt-4">
+      <div className="pt-2">
         <form
           onSubmit={formik.handleSubmit}
           className="flex flex-col p-4 bg-darkGray rounded-2xl gap-4"

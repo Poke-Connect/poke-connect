@@ -6,7 +6,7 @@ const LocationIcon = () => {
           viewBox="0 0 395.71 395.71"
           height="24"
           width="24"
-          className="items-center pl-3"
+          className="items-center"
         >
           <path
             d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738

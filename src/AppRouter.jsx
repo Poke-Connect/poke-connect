@@ -115,14 +115,6 @@ const AppRouter = () => {
           />
         </Route>
         <Route
-          path="chat/:chatId"
-          element={
-            <Protected>
-              <Chat />
-            </Protected>
-          }
-        />
-        <Route
           path="profile"
           exact
           element={
@@ -152,6 +144,14 @@ const AppRouter = () => {
 
         <Route path="*" element={<Error />} />
       </Route>
+      <Route
+        path="/chat/:chatId"
+        element={
+          <Protected>
+            <Chat />
+          </Protected>
+        }
+      />
     </Routes>
   );
 };

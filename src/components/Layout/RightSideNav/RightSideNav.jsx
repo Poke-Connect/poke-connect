@@ -62,7 +62,7 @@ const RightSideNav = (props) => {
           showSidebar ? "translate-x-0" : "translate-x-full"
         } max-w-xl mx-auto ease-in-out duration-200`}
       >
-        <ul className="flex flex-col  absolute  h-full w-3/4 bg-white top-0 right-0 bottom-0 pl-5 pr-8 pt-20 font-bold text-xl items-end">
+        <ul className="flex flex-col  absolute  h-full w-3/4 bg-white top-0 right-0 bottom-0 pl-5 pr-8 pt-20 font-bold text-xl items-end overflow-y-scroll">
           <div className="pb-5">
             <p>Hello, {displayName}</p>
           </div>

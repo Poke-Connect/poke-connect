@@ -21,9 +21,9 @@ const MyTrips = () => {
   }, []);
 
   return (
-    <div>
+    <div className="pl-6 pr-7 w-screen ">
       <Heading text={"My Trips"} />
-      <div>{myTrips && <ShowTrips myTrips={myTrips} />}</div>
+      <div className="pt-1">{myTrips && <ShowTrips myTrips={myTrips} />}</div>
     </div>
   );
 };

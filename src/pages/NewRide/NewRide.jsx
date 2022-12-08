@@ -12,6 +12,7 @@ import InputField from "./components/InputField";
 import { createNewRideDb } from "db/createNewRideDb";
 import Heading from "components/UI/Heading";
 import ButtonContainer from "./components/ButtonContainer";
+import RideLine from "components/RideLine";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
@@ -56,55 +57,56 @@ const NewRide = () => {
   return (
     <div
       id="container"
-      className="bg-white flex flex-col items-center pt-2 h-screen"
+      className="bg-white flex flex-col items-start  w-screen "
     >
-      <div className="bg-white flex flex-col rounded-2xl">
+      <div className="ml-6 flex">
         <Heading text={"Find a connection"} />
-        <div className="bg-white flex-1 items-center md:w-[600px] pt-12">
-          <div className="bg-white-500 flex-1 flex-col">
-            <div className="h-1/2">
-              <div
-                className={`flex ${
-                  rideType === DESTINATION_RIDE
-                    ? "flex-col"
-                    : "flex flex-col-reverse"
-                }`}
-              >
-                <PlacesAutocomplete
-                  setLocationValue={setLocationValue}
-                  placeholder={
-                    rideType === DESTINATION_RIDE ? "From where?" : "Where to?"
-                  }
-                />
-                <div>
-                  <InputField
-                    name={"KIA"}
-                    disabled={true}
-                    placeholder={"Kempegowda International Airport"}
-                    styles={"placeholder-black"}
-                  />
-                </div>
-              </div>
-              <div className="flex flex-row w-full items-center justify-center">
-                <DateTimeContainer
-                  dateValue={dateValue}
-                  setDateValue={setDateValue}
-                  timeValue={timeValue}
-                  setTimeValue={setTimeValue}
-                />
-              </div>
-              <div>
-                <ButtonContainer
-                  onFindMatchesHandler={onFindMatchesHandler}
-                  locationValue={locationValue}
-                />
-              </div>
+      </div>
+      <div className="flex flex-col w-full pt-1">
+        <div className="flex flex-row w-full pl-1 ">
+          <RideLine height={"m"} />
+          <div
+            className={`flex w-full ${
+              rideType === DESTINATION_RIDE
+                ? "flex-col"
+                : "flex flex-col-reverse"
+            }`}
+          >
+            <div>
+              <PlacesAutocomplete
+                setLocationValue={setLocationValue}
+                placeholder={
+                  rideType === DESTINATION_RIDE ? "From where?" : "Where to?"
+                }
+              />
             </div>
-            <div className=" w-full">
-              {<GMapElement directionsResponse={directionsResponse} />}
+            <div>
+              <InputField
+                name={"KIA"}
+                disabled={true}
+                placeholder={"Kempegowda International Airport"}
+                styles={"placeholder-black"}
+              />
             </div>
           </div>
         </div>
+        <div className="flex flex-row w-full  my-5 pl-6  justify-between">
+          <DateTimeContainer
+            dateValue={dateValue}
+            setDateValue={setDateValue}
+            timeValue={timeValue}
+            setTimeValue={setTimeValue}
+          />
+        </div>
+        <div className="flex w-full  m-5">
+          <ButtonContainer
+            onFindMatchesHandler={onFindMatchesHandler}
+            locationValue={locationValue}
+          />
+        </div>
+      </div>
+      <div className=" w-full h-[48%] ">
+        {<GMapElement directionsResponse={directionsResponse} />}
       </div>
     </div>
   );

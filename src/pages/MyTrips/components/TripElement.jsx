@@ -3,6 +3,7 @@ import { getDatabase, onValue, ref, update } from "firebase/database";
 import DateTimeElement from "components/DateTimeElement";
 import AddressElement from "./AddressElement";
 import ToggleElement from "./ToggleElement";
+import RideLine from "components/RideLine";
 
 const TripElement = (props) => {
   const { rideId, onClickHandler, upcoming } = props;
@@ -40,10 +41,13 @@ const TripElement = (props) => {
           date={rideData.date}
           timeStampRide={rideData.timeStampRide}
         />
-        <AddressElement
-          location={rideData.location}
-          rideType={rideData.rideType}
-        />
+        <div className="flex flex-row pt-1">
+          <RideLine height="s" />
+          <AddressElement
+            location={rideData.location}
+            rideType={rideData.rideType}
+          />
+        </div>
       </div>
       {upcoming ? (
         <ToggleElement

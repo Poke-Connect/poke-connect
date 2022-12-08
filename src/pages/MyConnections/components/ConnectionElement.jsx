@@ -19,7 +19,6 @@ const ConnectionElement = (props) => {
       type: "CHANGE_USER_CHAT",
       payload: { user: connectionData.userInfo, chatId: connectionId },
     });
-    console.log("chatid", connectionId);
     navigate(`/chat/${connectionId}`);
   };
 
@@ -28,16 +27,20 @@ const ConnectionElement = (props) => {
       className="flex flex-row py-8 px-2 justify-between items-center border-b border-primary gap-3"
       onClick={onClickHandler}
     >
-      <PicContainer src={photoURL} alt={displayName[0]} />
-      <div className="info flex-col">
-        <div className="text-black font-semibold flex justify-start">
-          {displayName}
-        </div>
-        <div className="text-xs font-light text-typeText flex justify-start">
-          {createLocationString(location)}
+      <div className="flex flex-row">
+        <PicContainer src={photoURL} alt={displayName[0]} />
+        <div className="info flex-col pl-2">
+          <div className="text-black font-semibold flex justify-start text-lg">
+            {displayName}
+          </div>
+          <div className="text-xs font-light text-typeText flex justify-start ">
+            <p className="text-ellipsis overflow-hidden line-clamp-1">
+              {createLocationString(location)}
+            </p>
+          </div>
         </div>
       </div>
-      <div className="date flex-none flex justify-end font-medium text-sm text-typeText">
+      <div className="date flex-none flex justify-end text-sm text-typeText font-normal pl-1">
         {createDateFromTimeStamp(connectionData.date.seconds)}
       </div>
     </div>

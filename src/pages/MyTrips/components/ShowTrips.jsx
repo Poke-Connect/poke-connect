@@ -1,7 +1,6 @@
 import React from "react";
-import CompletedTrips from "./CompletedTrips";
-import UpcomingTrips from "./UpcomingTrips";
 import { getfilteredTrips } from "../helpers";
+import TripsList from "./TripsList";
 
 const ShowTrips = (props) => {
   const { myTrips } = props; //myTrips are rideIds
@@ -12,8 +11,20 @@ const ShowTrips = (props) => {
 
   return (
     <div>
-      <UpcomingTrips upcomingTrips={filteredTrips[0]} />
-      <CompletedTrips completedTrips={filteredTrips[1]} />
+      <div>
+        <TripsList
+          heading={"Upcoming Trips"}
+          tripsList={filteredTrips[0]}
+          upcoming={true}
+        />
+      </div>
+      <div className="mt-10">
+        <TripsList
+          heading={"Completed Trips"}
+          tripsList={filteredTrips[1]}
+          upcoming={false}
+        />
+      </div>
     </div>
   );
 };

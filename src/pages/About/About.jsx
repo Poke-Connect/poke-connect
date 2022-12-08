@@ -5,10 +5,12 @@ import ReachUs from "./components/ReachUs";
 
 const About = () => {
   return (
-    <div className="p-7 pt-3 pb-2 px-10">
+    <div className="pl-6 pr-7">
       <AboutUs />
       <Donate />
-      <div className="m-2 pb-10"><ReachUs /></div>
+      <div className="mt-10 pb-10">
+        <ReachUs />
+      </div>
     </div>
   );
 };
