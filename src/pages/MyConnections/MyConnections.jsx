@@ -25,7 +25,7 @@ const MyConnections = () => {
   }, [user.uid]);
 
   return (
-    <div className="pt-6">
+    <div className="pt-6 w-full px-6">
       <h1 className="text-3xl font-bold "> My Connections </h1>
       <div className="scroll-fix">
         <Connections myConnections={myConnections} />

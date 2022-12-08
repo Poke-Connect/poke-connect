@@ -14,16 +14,22 @@ const ChatInfo = () => {
   };
 
   return (
-    <div className="bg-primary">
-      <div id="userInfoContainer" onClick={onClickHandler}>
-        <ImageContainer
+    <div className="bg-primary px-9 pt-4 pb-3  text-left left-0 right-0 max-w-xl mx-auto z-5">
+      <div id="userInfoContainer" className="flex flex-row gap-2" onClick={onClickHandler}>
+      <div className="profile-pic flex-none">
+      <ImageContainer
           photoURL={photoURL}
           alt={displayName[0]}
           dimension={10}
         />
-        <div className="text-base font-semibold flex justify-start">
+      </div>
+      <div className='chat-details flex flex-col pt-2'>
+        <div className="text-base font-semibold">
           {displayName}
         </div>
+        <div className='font-normal text-sm'>Bangalore Airport</div>
+      <div className='date-time flex font-light text-sm gap-4'><span className='date'>7 Sep</span> <span className='time'> 13:00</span>    </div>
+      </div>
       </div>
       {/* <div id="rideInfoContainer">
         <div className="text-xs font-light text-lightGray3 flex justify-start">

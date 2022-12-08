@@ -16,9 +16,9 @@ const MessagesList = () => {
       unsub();
     };
   }, [data.chatId]);
-
+  
   return (
-    <div id="container" className="flex-col flex-1">
+    <div id="container" className="flex flex-col px-4 pt-2 bg-lightWhite mb-24 gap-10">
       {messages.map((message) => (
         <MessageItem key={message.message.id} message={message.message} />
       ))}

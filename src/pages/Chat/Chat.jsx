@@ -5,8 +5,8 @@ import MessagesList from "./components/MessagesList";
 
 const Chat = () => {
   return (
-    <div id="chatPage">
-      <h1>Chat page </h1>
+    <div id="chatPage" className="w-full  bg-lightWhite">
+      {/* <h1>Chat page </h1> */}
       <div id="chatContainer" className="flex-col">
         <ChatInfo />
         <MessagesList />
