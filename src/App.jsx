@@ -14,6 +14,7 @@ const App = () => {
   });
 
   if (!isLoaded) {
+    console.log("loading js libraries");
     return <Loading />;
   }
 

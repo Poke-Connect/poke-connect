@@ -19,6 +19,7 @@ import RideConnections from "pages/RideConnections/RideConnections";
 import AppLayout from "components/Layout/AppLayout";
 
 const AppRouter = () => {
+  console.log("JS libraries loaded");
   return (
     <Routes>
       <Route path="/signin" exact element={<SignIn />} />

@@ -8,7 +8,7 @@
             5. Ride line
             1- toast messages
             4. date and time in chat
-           
+           5. images storage
             3- Map marker
 
             7- chat ui
