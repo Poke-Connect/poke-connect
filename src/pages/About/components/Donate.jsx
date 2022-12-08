@@ -2,7 +2,7 @@ import React from "react";
 import Heart from "assets/icons/heart";
 
 const DONATE_TEXT =
-  "Poke is powered by people like you. Your donations help grow our team and build a better experience for you.";
+  <p>Poke is powered by people like you. Your donations help grow our team and build a better experience for you.Be a part of our pledge to reduce 600 tonns of CO2 emissions in 2023.</p>;
 
 const Donate = () => {
   return (

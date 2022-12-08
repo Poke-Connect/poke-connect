@@ -52,7 +52,7 @@ const SignIn = () => {
         <div className="px-10">
           <div className="about-us text-left pt-7">
             <h2 className="font-semibold text-xl pb-1.5">About Us</h2>
-            <p className="font-normal text-sm">Chupa chups donut donut danish marshmallow brownie lemon drops. </p>
+            <p className="font-normal text-sm">Choose your co-passenger and take a sustainable trip with Poke.</p>
             <p className="text-primary text-sm underline pt-2" onClick={handleAboutUs}>Learn more about Poke</p>
           </div>
           <div className="power-us text-left pt-7">

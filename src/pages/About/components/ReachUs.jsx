@@ -26,7 +26,7 @@ const ReachUs = () => {
   });
 
   return (
-    <div className="reach-out-us ">
+    <div className="reach-out-us pt-5">
       <h2 className="font-semibold text-left text-xl">Reach out to us</h2>
       <div className="pt-2">
         <form
