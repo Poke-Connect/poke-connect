@@ -90,7 +90,7 @@ const NewRide = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-row w-full  my-5 pl-6  justify-between">
+        <div className="flex flex-row w-full  my-2 pl-6  justify-between">
           <DateTimeContainer
             dateValue={dateValue}
             setDateValue={setDateValue}
@@ -98,7 +98,7 @@ const NewRide = () => {
             setTimeValue={setTimeValue}
           />
         </div>
-        <div className="flex w-full  m-5">
+        <div className="flex w-full m-5">
           <ButtonContainer
             onFindMatchesHandler={onFindMatchesHandler}
             locationValue={locationValue}

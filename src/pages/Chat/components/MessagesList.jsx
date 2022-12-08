@@ -20,7 +20,7 @@ const MessagesList = () => {
   return (
     <div
       id="container"
-      className="flex flex-col px-4 pt-5 bg-lightWhite "
+      className="flex flex-col px-4 pt-5 pb-10 overflow-y-scroll"
     >
       {messages.map((message) => (
         <MessageItem key={message.message.id} message={message.message} />

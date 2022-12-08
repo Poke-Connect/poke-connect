@@ -10,7 +10,7 @@ const PrimaryUserProfileInfo = (props) => {
         <div className="user-name flex items-left font-bold text-xl">
           {displayName}
         </div>
-        <div className="user-email flex items-left font-normal text-sm">
+        <div className="user-email flex items-left font-normal text-sm text-primary">
           {linkedIn}
         </div>
       </div>

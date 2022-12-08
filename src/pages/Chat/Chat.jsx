@@ -6,15 +6,17 @@ import Header from "components/Layout/Header/Header";
 
 const Chat = () => {
   return (
-    <div className="flex flex-col fixed w-screen h-screen ">
+    <div className="flex flex-col fixed w-screen h-full ">
       <div className=" flex h-[10%] ">
         <Header />
       </div>
       <div className=" flex h-[90%] ">
-        <div id="chatPage" className="w-full">
-          <div id="chatContainer" className="flex-col">
+        <div id="chatPage" className="w-full h-full">
+          <div id="chatContainer" className="flex-col h-full">
             <ChatInfo />
-            <MessagesList />
+            <div className="h-[83%] overflow-y-scroll">
+              <MessagesList />
+            </div>
             <InputContainer />
           </div>
         </div>

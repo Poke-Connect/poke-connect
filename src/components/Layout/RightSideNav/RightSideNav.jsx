@@ -1,6 +1,7 @@
 import React from "react";
 import NavElement from "./NavElement";
 import { useNavigate } from "react-router-dom";
+import { capitaliseName } from "helpers/utils";
 
 const RightSideNav = (props) => {
   const { showSidebar, toggleSideBar, logOut, displayName } = props;
@@ -58,13 +59,13 @@ const RightSideNav = (props) => {
   return (
     <>
       <nav
-        className={`fixed top-0 right-0 bottom-0 left-0 z-50  ${
+        className={`fixed top-0 right-0 bottom-0 left-0 z-50 overflow-y-scroll pb-10 ${
           showSidebar ? "translate-x-0" : "translate-x-full"
         } max-w-xl mx-auto ease-in-out duration-200`}
       >
-        <ul className="flex flex-col  absolute  h-full w-3/4 bg-white top-0 right-0 bottom-0 pl-5 pr-8 pt-20 font-bold text-xl items-end overflow-y-scroll">
+        <ul className="flex flex-col  absolute  h-full w-3/4 bg-white top-0 right-0 bottom-0 pl-5 pr-8 pt-20 font-bold text-xl items-end ">
           <div className="pb-5">
-            <p>Hello, {displayName}</p>
+            <p>Hello, {capitaliseName(displayName)}</p>
           </div>
           {navElements.map((navElement) => (
             <NavElement

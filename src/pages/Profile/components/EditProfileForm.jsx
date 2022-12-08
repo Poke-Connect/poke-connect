@@ -141,12 +141,18 @@ const EditProfileForm = (props) => {
             value={formik.values.gender}
             onChange={formik.handleChange}
             style={{ display: "block" }}
-            className="p-2 rounded-lg bg-lightGray text-typeText m-2 w-[193px]"
+            className="p-2 rounded-lg bg-lightGray  m-2 w-[193px] h-10"
           >
-            <option value=""> Select Gender</option>
-            <option value="male" label="Male" />
-            <option value="female" label="Female" />
-            <option value="nonBinary" label="Non-binary" />
+            <option>Select Gender</option>
+            <option value="Male" label="Male">
+              Male
+            </option>
+            <option value="Female" label="Female">
+              Female
+            </option>
+            <option value="Non-binary" label="Non-binary">
+              Non-binary
+            </option>
           </select>
 
           <EditInput

@@ -2,6 +2,16 @@ export const capitaliseFirstLetter = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+export const capitaliseName = (name) => {
+  const nameArr = name.split(" ");
+  const finalNameArr = [];
+  nameArr.forEach((elem) => {
+    const nameCap = capitaliseFirstLetter(elem);
+    finalNameArr.push(nameCap);
+  });
+  return finalNameArr.join(" ");
+};
+
 export const createLocationString = (location) => {
   if (!location) {
     return "";

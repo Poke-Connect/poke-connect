@@ -7,7 +7,7 @@ const RideConnections = () => {
   const { rideId } = params;
 
   return (
-    <div className="flex">
+    <div className="flex-col flex justify-between ">
       <Outlet />
       <FooterLayout rideId={rideId} />
     </div>

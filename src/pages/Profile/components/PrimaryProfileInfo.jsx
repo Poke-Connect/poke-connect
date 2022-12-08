@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import EditIcon from "assets/icons/EditIcon";
 import IconButton from "components/IconButton";
 import ImageContainer from "components/UI/ImageContainer";
+import { capitaliseName } from "helpers/utils";
 
 const PrimaryProfileInfo = (props) => {
   const { displayName, email, photoURL } = props;
@@ -18,7 +19,7 @@ const PrimaryProfileInfo = (props) => {
       <ImageContainer alt={displayName[0]} photoURL={photoURL} dimension={10} />
       <div className="profile-detail flex-none ml-3">
         <div className="user-name flex items-left font-bold text-xl">
-          {displayName}
+          {capitaliseName(displayName)}
         </div>
         <div className="user-email flex items-left font-normal text-sm text-primary">
           {email}

@@ -5,7 +5,7 @@ const FooterLayout = (props) => {
   const { rideId } = props;
 
   return (
-    <div className=" flex flex-row absolute mt-10 h-12 bottom-0 w-screen">
+    <div className="flex flex-row  mt-auto h-12  w-screen ">
       <FooterButton
         text={"Connected"}
         toRoute={`/rideconnections/${rideId}/connected`}
