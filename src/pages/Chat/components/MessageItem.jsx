@@ -8,7 +8,8 @@ const MessageItem = ({ message }) => {
 
   const { user } = UserAuth();
 
-  const bgColor = user.uid === senderId ? "bg-primary" : "bg-lightGray";
+  const bgColor =
+    user.uid === senderId ? "bg-primary-lighter ml-auto" : "bg-lightGray mr-auto";
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -17,9 +18,9 @@ const MessageItem = ({ message }) => {
   return (
     <div
       ref={ref}
-      className={`${bgColor} flex-1 p-2 m-2 text-sm w-auto rounded-lg`}
+      className={`${bgColor} flex-1 py-1 px-4 m-2 text-sm max-w-3/5 rounded-xl`}
     >
-      <div className="flex-1 w-3/6 item-end  justify-self-end">{text}</div>
+      <div>{text}</div>
     </div>
   );
 };

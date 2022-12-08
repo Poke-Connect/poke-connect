@@ -6,7 +6,7 @@ const RideLine = (props) => {
   const { height } = props;
   const heightClass = {
     s: " h-[1px]",
-    m: " h-[42px]",
+    m: " h-[50px]",
   };
   return (
     <div className="flex flex-col justify-center w-fit items-center">

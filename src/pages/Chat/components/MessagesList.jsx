@@ -18,7 +18,10 @@ const MessagesList = () => {
   }, [data.chatId]);
 
   return (
-    <div id="container" className="flex-col flex-1">
+    <div
+      id="container"
+      className="flex flex-col px-4 pt-5 bg-lightWhite "
+    >
       {messages.map((message) => (
         <MessageItem key={message.message.id} message={message.message} />
       ))}

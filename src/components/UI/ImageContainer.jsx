@@ -4,7 +4,7 @@ const ImageContainer = (props) => {
   const { photoURL = "", alt = "P", dimension = 10 } = props;
   return (
     <div
-      className={`icon flex-none bg-lightGray rounded-lg flex items-center justify-center w-${dimension} h-${dimension}`}
+      className={`icon flex-none rounded-lg flex items-center justify-center w-${dimension} h-${dimension}`}
     >
       <img
         src={photoURL}

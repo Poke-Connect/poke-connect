@@ -5,9 +5,9 @@
 
     ## ITEMS:
         ## TODAY
+            5. Ride line
             1- toast messages
-            2. text ellipsis
-            3. profile pic remove background
+            4. date and time in chat
            
             3- Map marker
 
@@ -65,6 +65,13 @@
     4. util.js:93 [Violation] Added non-passive event listener to a scroll-blocking 'touchstart' event. 
     Consider marking event handler as 'passive' to make the page more responsive. 
     See https://www.chromestatus.com/feature/5745543795965952
+
+
+[2022-12-08T05:58:24.271Z]  @firebase/firestore: Firestore (9.13.0): Connection WebChannel transport 
+errored: Jd {type: 'c', target: X, g: X, defaultPrevented: false, status: 1}
+GET https://firestore.googleapis.com/google.firestore.v1.Firestore/Listen/
+channel?gsessionid=mRt03xnMfJITjM1XUPXyROLIdN1y59t2ULayauHlYJo&VER=8&database=projects%2Fpoke-connect%
+2Fdatabases%2F(default)&RID=rpc&SID=hExuF3fMv35m_ZG2ieZNJQ&CI=0&AID=16&TYPE=xmlhttp&zx=9p4b3d8n0z2i&t=1 400
 
 
 ||12- suggestions list
