@@ -24,12 +24,12 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full ">
+    <div className="flex flex-col items-center w-full pt-5">
       <NewConnectionContainer
         onTravelToAirportHandler={onTravelToAirportHandler}
         onTravelFromAirportHandler={onTravelFromAirportHandler}
       />
-      <Line marginY={"20"} />
+      <Line />
       <div className="flex flex-col w-4/5">
         <RoundButton
           text={"My Trips"}

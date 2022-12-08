@@ -1,17 +1,21 @@
 # MAIN:
 
+    UI elements:
+    min map height
+
     ## ITEMS:
         ## TODAY
             1- toast messages
-            2- donations finish
+            2. text ellipsis
+            3. profile pic remove background
+           
             3- Map marker
 
             7- chat ui
             10- 3d buttons (sign in and home)
             11- line before input buttons (find new connection page)
 
-            ||12- suggestions list
-            ||6- home page button svgs (airplane svgs)
+
             14- about us write up (Main)
             15- about us write up (Min)
            
@@ -22,23 +26,18 @@
             10- Add places to add toast messages and ui
             11- suggestions list
            
-        
+           LATER
+            2- donations figure out
+            - image storage fix
+            - migrate to typescript
+            - connected should be user specific property (other user might not connect) | connections throttle user wise
+            - callback for calculating min times - cache function results
+            - sorting logic based on extra time + time of departure
+            - ride id logic --> will change it to SQL database later
 
         ## Ride Creation and Matching:
             - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
             - Map direction not showing
-
-        ## Functional Items: 
-            
-            - remove useHistory from app.js
-            - image storage fix
-            - migrate to typescript
-            - Click handler for creating a match is taking lot of time
-            - connected should be user specific property (other user might not connect)
-            - callback for calculating min times - cache function results
-            - sorting logic based on extra time + time of departure
-            - ride id logic --> will change it to SQL database later
-            - connections throttle user wise
 
         ## Firebase:
             - Crashlytics
@@ -68,3 +67,5 @@
     See https://www.chromestatus.com/feature/5745543795965952
 
 
+||12- suggestions list
+||6- home page button svgs (airplane svgs)

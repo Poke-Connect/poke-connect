@@ -12,9 +12,15 @@ const AddressElement = (props) => {
     rideType === DESTINATION_RIDE ? "flex-col" : "flex flex-col-reverse";
 
   return (
-    <div className={`info flex ${styles}`}>
-      <div className="text-base  flex justify-start">{locationDisplay}</div>
-      <div className="text-base  flex justify-start">{KIA}</div>
+    <div className={`info flex ${styles} font-normal pl-1 text-sm`}>
+      <div className="flex justify-start text-sm ">
+        <p className="text-ellipsis overflow-hidden line-clamp-1">
+          {locationDisplay}
+        </p>
+      </div>
+      <div className="flex justify-start text-sm">
+        <p className="text-ellipsis overflow-hidden line-clamp-1">{KIA}</p>
+      </div>
     </div>
   );
 };

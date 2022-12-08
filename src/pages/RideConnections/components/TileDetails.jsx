@@ -17,7 +17,7 @@ const TileDetails = (props) => {
   return (
     <div
       id="clickContainer"
-      className="flex flex-row py-8 px-2 justify-between items-center border-b border-lightGreen gap-3"
+      className="flex flex-row py-8 justify-between items-center border-b border-primary "
       onClick={onClickHandler}
     >
       <PicContainer photoURL={photoURL} alt={displayName[0]} />
@@ -29,9 +29,11 @@ const TileDetails = (props) => {
       />
       <div
         id="rideTime"
-        className="flex justify-end font-medium text-sm text-typeText"
+        className="flex justify-end font-normal text-sm text-typeText ml-2 items-center "
       >
-        {createTimeStringFromTimeStamp(timeStampRide)}
+        <p className=" text-center">
+          {createTimeStringFromTimeStamp(timeStampRide)}
+        </p>
       </div>
     </div>
   );

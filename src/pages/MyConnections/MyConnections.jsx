@@ -3,6 +3,7 @@ import Connections from "./components/Connections";
 import { UserAuth } from "context/AuthContext";
 import { onSnapshot, doc } from "firebase/firestore";
 import { fireStoreDb } from "firebaseConfig";
+import Heading from "components/UI/Heading";
 
 const MyConnections = () => {
   const { user } = UserAuth();
@@ -25,9 +26,9 @@ const MyConnections = () => {
   }, [user.uid]);
 
   return (
-    <div className="pt-6">
-      <h1 className="text-3xl font-bold "> My Connections </h1>
-      <div className="scroll-fix">
+    <div className="pl-6 pr-7 w-screen">
+      <Heading text={"My Connections"} />
+      <div>
         <Connections myConnections={myConnections} />
       </div>
     </div>

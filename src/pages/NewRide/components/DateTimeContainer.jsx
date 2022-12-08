@@ -13,7 +13,7 @@ const DateTimeContainer = (props) => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center mt-2 w-5/6">
+    <div className="flex flex-row items-center justify-center mt-2 w-5/6 ">
       <input
         id="rideDate"
         type="date"

@@ -34,7 +34,7 @@ const AvailableConnectionsList = (props) => {
     return null;
   }
   return (
-    <div>
+    <div className="mt-10">
       <DateTimeElement
         date={myRide.date}
         timeStampRide={myRide.timeStampRide}

@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { updateUserObj } from "db/updateUserObject";
 import EditInput from "./EditInput";
 import ButtonContainer from "./ButtonContainer";
+import PicEmailContainer from "./PicEmailContainer";
 
 const EditProfileForm = (props) => {
   const navigate = useNavigate();
@@ -67,26 +68,13 @@ const EditProfileForm = (props) => {
   };
 
   return (
-    <div id="form">
-      <form onSubmit={formik.handleSubmit} className="p-2 md:p-7 m-2 mt-0 pt-3">
-        <div
-          id="pic&email"
-          className="flex flex-row flex-2 items-center justify-center ml-3 pb-3"
-        >
-          <div className="flex-1 w-1/4">
-            <div className="icon w-20 h-20 bg-lightGray rounded-full flex items-center justify-center">
-              <img
-                src={photoURL}
-                alt={"P"}
-                className="rounded-full w-20 h-20 align-middle border-none"
-              />
-            </div>
-          </div>
-          <div className="flex-2 text-left w-3/4">
-            <div className="text-primary mt-[-10]">coco.chanel@gmail.com</div>
-          </div>
-        </div>
-
+    <div id="form" className="pt-3 pb-10 pl-6 pr-7 w-full">
+      <form onSubmit={formik.handleSubmit}>
+        <PicEmailContainer
+          alt={firstName[0]}
+          photoURL={photoURL}
+          email={email}
+        />
         <div className="flex flex-col items-start md:flex-row flex-2">
           <EditInput
             id={"firstName"}
@@ -155,7 +143,7 @@ const EditProfileForm = (props) => {
             style={{ display: "block" }}
             className="p-2 rounded-lg bg-lightGray text-typeText m-2 w-[193px]"
           >
-            <option value="">Gender</option>
+            <option value=""> Select Gender</option>
             <option value="male" label="Male" />
             <option value="female" label="Female" />
             <option value="nonBinary" label="Non-binary" />
@@ -178,15 +166,14 @@ const EditProfileForm = (props) => {
             onChange={formik.handleChange}
             type="text"
           />
-
-          <input
+          <textarea
             id={"about"}
             name={"about"}
             placeholder={"About"}
             value={formik.values.about}
             onChange={formik.handleChange}
             type="text"
-            className="p-2 rounded-lg bg-lightGray placeholder-typeText text-black m-2 h-32 w-full items-start align-top"
+            className="p-2 rounded-lg bg-lightGray placeholder-typeText text-black m-2 h-32 w-full items-start align-top justify-start"
           />
         </div>
 
@@ -196,22 +183,6 @@ const EditProfileForm = (props) => {
           cancelChangesHandler={cancelChangesHandler}
           skipChangesHandler={skipChangesHandler}
         />
-        {/* 
-        <div
-          id="button"
-          className="flex flex-row flex-2 items-start justify-between p-4"
-        >
-          <button type={"submit"} className="bg-black text-white p-1 pl-4 pr-4">
-            Save Profile
-          </button>
-          <button
-            type={"button"}
-            onClick={cancelChangesHandler}
-            className="bg-white text-primary underline p-1 pl-4 pr-4"
-          >
-            Cancel
-          </button>
-        </div> */}
       </form>
     </div>
   );

@@ -3,6 +3,7 @@ import {
   createTimeStringFromTimeStamp,
   createDateStringTrip,
 } from "helpers/dateHelper";
+import DateTimeText from "./UI/DateTimeText";
 
 const DateTimeElement = (props) => {
   const { date, timeStampRide } = props;
@@ -10,7 +11,7 @@ const DateTimeElement = (props) => {
   const timeDisplay = createTimeStringFromTimeStamp(timeStampRide);
   return (
     <div className="flex items-center justify-start">
-      <p className="text-typeText">{`${dateDisplay}, ${timeDisplay}`}</p>
+      <DateTimeText text={`${dateDisplay}, ${timeDisplay}`} />
     </div>
   );
 };

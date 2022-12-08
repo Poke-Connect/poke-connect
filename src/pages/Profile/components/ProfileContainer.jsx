@@ -11,7 +11,7 @@ const ProfileContainer = (props) => {
   const { displayName = "", email = "", photoURL = "" } = profileData;
   const secondaryInfo = getSecondaryInfo(profileData);
   return (
-    <div className="pt-6 pb-10 px-5">
+    <div className="pt-3 pb-10 pl-6 w-screen ">
       <PrimaryProfileInfo
         displayName={displayName}
         email={email}

@@ -9,6 +9,7 @@ const ImageContainer = (props) => {
       <img
         src={photoURL}
         alt={alt}
+        referrerPolicy="no-referrer"
         className="shadow rounded-full max-w-full h-auto align-middle border-none"
       />
     </div>

@@ -6,7 +6,7 @@ const center = { lat: 12.972442, lng: 77.580643 };
 const GMapElement = (props) => {
   const { directionsResponse } = props;
   return (
-    <div className="mt-2 w-screen md:w-full h-[46vh]">
+    <div className="mt-2 w-screen md:w-full h-full">
       <GoogleMap
         center={center}
         zoom={15}

@@ -1,3 +1,4 @@
+import Heading from "components/UI/Heading";
 import React from "react";
 
 const ABOUT_US_DATA =
@@ -5,8 +6,8 @@ const ABOUT_US_DATA =
 
 const AboutUs = () => {
   return (
-    <div className="about-us text-left p-5 pl-2 mb-2">
-      <h2 className="font-semibold text-xl pb-1.5">About Us</h2>
+    <div className="about-us text-left ">
+      <Heading text={"About Us"} />
       <p className="font-normal text-sm">{ABOUT_US_DATA}</p>
     </div>
   );
