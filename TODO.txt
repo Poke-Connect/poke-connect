@@ -10,8 +10,8 @@
             10- 3d buttons (sign in and home)
             11- line before input buttons (find new connection page)
 
-            12- suggestions list
-            6- home page button svgs (airplane svgs)
+            ||12- suggestions list
+            ||6- home page button svgs (airplane svgs)
             14- about us write up (Main)
             15- about us write up (Min)
            

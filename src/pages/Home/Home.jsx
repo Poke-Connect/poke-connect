@@ -2,6 +2,8 @@ import React from "react";
 import HomeButton from "./components/HomeButton";
 import { useNavigate } from "react-router-dom";
 import Arrow from "assets/icons/Arrow";
+import PlaneLanding from "assets/icons/PlaneLanding.svg";
+import PlaneTakeoff from "assets/icons/PlaneTakeoff.svg";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE";
 const ORIGIN_RIDE = "ORIGIN_RIDE";
@@ -29,9 +31,13 @@ const Home = () => {
           <HomeButton
             onClick={onTravelFromAirportHandler}
             name={"From Airport"}
-          />
+          >
+            <img src={PlaneLanding} alt="Plane Landing" />
+          </HomeButton>
 
-          <HomeButton onClick={onTravelToAirportHandler} name={"To Airport"} />
+          <HomeButton onClick={onTravelToAirportHandler} name={"To Airport"}>
+            <img src={PlaneTakeoff} alt="Plane TakeOff" />
+          </HomeButton>
         </div>
       </div>
       <span className="h-0.5 bg-primary mt-20 mb-20 w-4/5"></span>
