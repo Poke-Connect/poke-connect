@@ -36,13 +36,13 @@ const SignIn = () => {
 
   return (
     <div className="flex flex-col text-left h-full overflow-y-scroll pb-20">
-      <div className="flex flex-col bg-black text-white p-7 border-b-8 border-primary">
+      <div className="flex flex-col bg-black text-white px-7 pt-2 border-b-8 border-primary">
         <h1 className="pt-8 pl-2 font-medium text-8xl">POKE</h1>
-        <h4 className="text-2xl font-medium tracking-[.05em] pl-3 pt-7 pb-2 mt-[-10px]">
+        <h4 className="text-2xl font-medium tracking-[.05em] pl-3 pt-5 pb-4 mt-[-10px]">
           Connect via travel
         </h4>
       </div>
-      <div className="flex flex-col text-primary p-7 pb-0 pl-9">
+      <div className="flex flex-col text-primary pr-7 pt-5 pb-0 pl-9">
         <h3 className="font-medium pt-2 text-xl pl-1 py-5">
           Meet new co-passengers
         </h3>

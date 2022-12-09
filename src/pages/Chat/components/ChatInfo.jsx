@@ -14,7 +14,7 @@ const ChatInfo = () => {
   };
 
   return (
-    <div className="bg-primary-light px-9 pt-4 pb-3  text-left left-0 right-0 max-w-xl mx-auto z-5">
+    <div className="bg-primary-light px-9 pt-4 pb-3 text-left left-0 right-0 z-5">
       <div
         id="userInfoContainer"
         className="flex flex-row "

@@ -10,11 +10,11 @@ const NewConnectionContainer = (props) => {
       <h2 className="text-2xl mb-6 text-left">Find new connections</h2>
       <div className="flex flex-col">
         <HomeButton onClick={onTravelFromAirportHandler} name={"From Airport"}>
-          <img src={PlaneLanding} alt="Plane Landing" />
+          <img src={PlaneLanding} alt="PL" />
         </HomeButton>
 
         <HomeButton onClick={onTravelToAirportHandler} name={"To Airport"}>
-          <img src={PlaneTakeoff} alt="Plane TakeOff" />
+          <img src={PlaneTakeoff} alt="PT" />
         </HomeButton>
       </div>
     </div>

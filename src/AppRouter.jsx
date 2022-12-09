@@ -22,6 +22,7 @@ const AppRouter = () => {
   return (
     <Routes>
       <Route path="/signin" exact element={<SignIn />} />
+      <Route path="about" exact element={<About />} />
       <Route
         element={
           <Protected>
@@ -35,15 +36,6 @@ const AppRouter = () => {
           element={
             <Protected>
               <Home />
-            </Protected>
-          }
-        />
-        <Route
-          path="about"
-          exact
-          element={
-            <Protected>
-              <About />
             </Protected>
           }
         />

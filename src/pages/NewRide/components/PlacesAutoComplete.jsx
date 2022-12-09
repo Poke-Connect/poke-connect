@@ -57,16 +57,9 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
       } = suggestion;
 
       return (
-        <div
-          key={place_id}
-          className="flex flex-row m-4 pb-4 h-15 border-b-2 border-primary"
-          onClick={handleSelect(suggestion)}
-        >
-          <SuggestionItem
-            main_text={main_text}
-            secondary_text={secondary_text}
-          />
-        </div>
+        <li key={place_id} onClick={handleSelect(suggestion)} className="p-3">
+          <strong>{main_text}</strong> <small>{secondary_text}</small>
+        </li>
       );
     });
 
@@ -82,10 +75,10 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
       {status === "OK" && (
         <div className="flex flex-col">
-          <div className="flex flex-1 m-2 p-2 border-b-2 border-primary">
+          <div className="flex flex-1 m-2 p-2 mb-0 border-b-2 border-primary">
             Search Results
           </div>
-          <ul>{renderSuggestions()}</ul>
+          <ul className="overflow-y-scroll">{renderSuggestions()}</ul>
         </div>
       )}
     </div>

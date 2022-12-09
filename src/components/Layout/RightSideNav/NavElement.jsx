@@ -15,7 +15,7 @@ const NavElement = (props) => {
       onClick={onClickHandler}
       style={({ isActive }) => (isActive ? activeStyle : undefined)}
     >
-      {title}
+      <p className="text-right">{title}</p>
     </NavLink>
   );
 };

@@ -10,7 +10,7 @@ const AppLayout = () => {
       <div className=" flex h-[10%] ">
         <Header />
       </div>
-      <div className="h-[90%] ">
+      <div className="flex pt-5 h-[90%] ">
         <Outlet />
       </div>
       <ToastContainer

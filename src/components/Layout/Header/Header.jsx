@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   return (
-    <div className=" bg-black flex items-center py-6 left-0 right-0 top-0 max-w-xl mx-auto z-50  w-screen justify-between">
+    <div className=" bg-black flex items-center py-6 left-0  top-0  z-50  w-full justify-between">
       <div>
         <span
           className="text-5xl font-bold text-left pl-5  text-white "
@@ -44,7 +44,7 @@ const Header = () => {
           onClickHandler={onProfieClickHandler}
         />
       </div>
-      <div >
+      <div className="overflow-y-scroll">
         <RightSideNav
           showSidebar={showSidebar}
           toggleSideBar={toggleSideBar}
