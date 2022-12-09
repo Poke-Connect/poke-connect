@@ -3,6 +3,10 @@ import { getDatabase, onValue, ref } from "firebase/database";
 import { UserAuth } from "context/AuthContext";
 import ShowTrips from "./components/ShowTrips";
 import Heading from "components/UI/Heading";
+import EmptyItem from "components/UI/EmptyItem";
+
+const EMPTY_TRIPS =
+  "No trips yet, go to find new connections to create a new trip.";
 
 const MyTrips = () => {
   const { user } = UserAuth();
@@ -23,6 +27,7 @@ const MyTrips = () => {
   return (
     <div className="pl-6 pr-7 w-screen ">
       <Heading text={"My Trips"} />
+      {!myTrips && <EmptyItem text={EMPTY_TRIPS} />}
       <div className="pt-1">{myTrips && <ShowTrips myTrips={myTrips} />}</div>
     </div>
   );

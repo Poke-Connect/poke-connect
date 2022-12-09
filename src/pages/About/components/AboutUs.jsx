@@ -7,7 +7,7 @@ const AboutUs = () => {
   return (
     <div className="about-us text-left ">
       <Heading text={"About Us"} />
-      <p className="font-normal text-sm pt-2">{ABOUT_US_DATA}</p>
+      <p className="font-normal text-base pt-2">{ABOUT_US_DATA}</p>
     </div>
   );
 };

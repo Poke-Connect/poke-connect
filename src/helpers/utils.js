@@ -26,3 +26,9 @@ export const createLocationString = (location) => {
 export const getDistanceInKm = (distance) => {
   return (Number(distance) / 1000).toFixed(2);
 };
+
+export const getFirstName = (displayName) => {
+  const nameArr = displayName.split(" ");
+  const firstName = capitaliseFirstLetter(nameArr[0]);
+  return firstName;
+};
