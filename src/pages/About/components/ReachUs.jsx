@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { addFeedbackDb } from "db/firestore/dbWrites";
 import { createRandomId } from "helpers/createRandomId";
+import { toast } from "react-toastify";
 
 const ReachUs = () => {
   const formik = useFormik({
@@ -20,7 +21,12 @@ const ReachUs = () => {
     }),
     onSubmit: (values) => {
       const id = createRandomId();
-      addFeedbackDb(id, values);
+      try {
+        addFeedbackDb(id, values);
+        toast.success("Thanks, feedback submitted successfully");
+      } catch (e) {
+        toast.error("Opps, something went wrong!");
+      }
       formik.resetForm();
     },
   });

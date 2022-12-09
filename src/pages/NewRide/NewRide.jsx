@@ -13,6 +13,7 @@ import { createNewRideDb } from "db/createNewRideDb";
 import Heading from "components/UI/Heading";
 import ButtonContainer from "./components/ButtonContainer";
 import RideLine from "components/RideLine";
+import { toast } from "react-toastify";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
@@ -33,24 +34,29 @@ const NewRide = () => {
 
   const onFindMatchesHandler = async () => {
     const airportCordinates = new google.maps.LatLng(13.199379, 77.710136);
-    const minRouteObject = await getRouteObject(
-      rideType,
-      locationValue,
-      airportCordinates
-    );
+    try {
+      const minRouteObject = await getRouteObject(
+        rideType,
+        locationValue,
+        airportCordinates
+      );
 
-    setDirectionsResponse(minRouteObject);
+      setDirectionsResponse(minRouteObject);
 
-    createNewRideDb(
-      rideId,
-      rideType,
-      userId,
-      dateValue,
-      timeValue,
-      locationValue
-    );
+      createNewRideDb(
+        rideId,
+        rideType,
+        userId,
+        dateValue,
+        timeValue,
+        locationValue
+      );
 
-    navigate(`/rideconnections/${rideId}/available`);
+      navigate(`/rideconnections/${rideId}/available`);
+    } catch (e) {
+      toast.error("Opps, something went wrong!");
+    }
+
     //IF REQUIRED: Distance and duration can be taken from minRouteObject
   };
 

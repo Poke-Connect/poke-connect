@@ -4,6 +4,7 @@ import DateTimeElement from "components/DateTimeElement";
 import AddressElement from "./AddressElement";
 import ToggleElement from "./ToggleElement";
 import RideLine from "components/RideLine";
+import { toast } from "react-toastify";
 
 const TripElement = (props) => {
   const { rideId, onClickHandler, upcoming } = props;
@@ -25,9 +26,18 @@ const TripElement = (props) => {
     if (!rideData) {
       return;
     }
-    update(myTripRef, {
-      discoverability: !rideData.discoverability,
-    });
+    try {
+      update(myTripRef, {
+        discoverability: !rideData.discoverability,
+      });
+      if (rideData.discoverability) {
+        toast.success("Trip’s discoverability turned Off");
+      } else {
+        toast.success("Trip’s discoverability turned On");
+      }
+    } catch (e) {
+      toast.error("Opps, something went wrong!");
+    }
   };
 
   if (!rideData) {

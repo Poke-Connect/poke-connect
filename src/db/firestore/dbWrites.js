@@ -8,6 +8,7 @@ import {
   arrayUnion,
 } from "firebase/firestore";
 import { createConnectionId } from "helpers/createMatchId";
+import { toast } from "react-toastify";
 
 //collection = 'users' ; node = 'uid' ; document = {name, email}
 
@@ -31,7 +32,7 @@ export const addUserChatsDb = async (userId) => {
       return;
     }
   } catch (e) {
-    console.log(e);
+    toast.error("Opps, something went wrong!");
   }
 };
 
@@ -43,7 +44,7 @@ export const createNewUsersChats = async (combinedId) => {
       await addItem("chats", combinedId, { messages: [] });
     }
   } catch (e) {
-    console.log(e);
+    toast.error("Opps, something went wrong!");
   }
 };
 
@@ -126,9 +127,5 @@ export const updateDatesUserChats = async (uid1, uid2, chatId) => {
 };
 
 export const addFeedbackDb = async (id, data) => {
-  try {
-    await addItem("feedback", id, data);
-  } catch (e) {
-    console.log(e);
-  }
+  await addItem("feedback", id, data);
 };

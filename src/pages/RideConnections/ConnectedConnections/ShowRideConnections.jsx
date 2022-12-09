@@ -10,16 +10,10 @@ const ShowRideConnections = (props) => {
   const { rideConnections } = props;
 
   if (!rideConnections) {
-    return null;
+    return <EmptyItem text={EMPTY_CONNECTED_TEXT} />;
   }
 
   const connectionsdata = createConnectedConnectionsList(rideConnections);
-
-  const isEmpty = connectionsdata.length === 0 ? true : false;
-
-  if (isEmpty) {
-    return <EmptyItem text={EMPTY_CONNECTED_TEXT} />;
-  }
 
   return (
     <div>
