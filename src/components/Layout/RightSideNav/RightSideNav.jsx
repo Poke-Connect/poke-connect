@@ -1,21 +1,9 @@
 import React from "react";
 import NavElement from "./NavElement";
-import { useNavigate } from "react-router-dom";
 import { getFirstName } from "helpers/utils";
 
 const RightSideNav = (props) => {
-  const { showSidebar, toggleSideBar, logOut, displayName } = props;
-  const navigate = useNavigate();
-
-  const onLogOutPressHandler = async () => {
-    toggleSideBar();
-    try {
-      await logOut();
-      navigate(`/signin`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { showSidebar, toggleSideBar, displayName } = props;
 
   const navElements = [
     {
@@ -46,12 +34,6 @@ const RightSideNav = (props) => {
       title: "About",
       toRoute: "/about",
       onClickHandler: toggleSideBar,
-      styles: "",
-    },
-    {
-      title: "Log Out",
-      toRoute: "/signin",
-      onClickHandler: onLogOutPressHandler,
       styles: "",
     },
   ];

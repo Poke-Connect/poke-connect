@@ -7,10 +7,10 @@ import LinkText from "components/UI/LinkText";
 import SignInButton from "./components/SignInButton";
 
 const ABOUT_US_MIN =
-  "Choose your co-passenger and take a sustainable trip with Poke.";
+  "Poke helps you connect with probable co-passengers and share a cab.";
 
 const POWER_POKE =
-  "Poke is powered by people like you. Your donations help grow our team and build a better experience for you. Be a part of our pledge to reduce 600 tonns of CO2 emissions in 2023.";
+  "Poke is powered by people like you. Help grow our team and build a better experience for you.";
 
 const SignIn = () => {
   const { googleSignIn, user } = UserAuth();

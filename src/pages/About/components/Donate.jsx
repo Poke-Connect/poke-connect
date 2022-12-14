@@ -3,7 +3,7 @@ import Heart from "assets/icons/heart";
 import DonateButton from "./DonateButton";
 
 const DONATE_TEXT =
-  " Poke is powered by people like you. Your donations help grow our team and build a better experience for you. Be a part of our pledge to reduce 600 tons of CO2 emissions in 2023.";
+  "Poke is powered by people like you. Help grow our team and build a better experience for you.";
 
 const Donate = () => {
   return (

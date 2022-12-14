@@ -2,6 +2,7 @@ import React from "react";
 import { createTimeStringFromTimeStamp } from "helpers/dateHelper";
 import PicContainer from "components/PicContainer";
 import NameInfoContainer from "./NameInfoContainer";
+import { useNavigate } from "react-router-dom";
 
 const TileDetails = (props) => {
   const {
@@ -11,29 +12,44 @@ const TileDetails = (props) => {
     timeDiff = "",
     distDiff = "",
     timeStampRide = "",
+    uid = "",
     onClickHandler,
   } = props;
+
+  const navigate = useNavigate();
+
+  const onPhotoClickHandler = () => {
+    uid && navigate(`/user/${uid}`);
+  };
 
   return (
     <div
       id="clickContainer"
       className="flex flex-row py-8 justify-between items-center border-b border-primary "
-      onClick={onClickHandler}
     >
-      <PicContainer photoURL={photoURL} alt={displayName[0]} />
-      <NameInfoContainer
-        displayName={displayName}
-        location={location}
-        timeDiff={timeDiff}
-        distDiff={distDiff}
+      <PicContainer
+        photoURL={photoURL}
+        alt={displayName[0]}
+        onClickHandler={onPhotoClickHandler}
       />
       <div
-        id="rideTime"
-        className="flex justify-end font-normal text-sm text-typeText ml-2 items-center "
+        onClick={onClickHandler}
+        className="flex  w-full pl-4 justify-between pr-2"
       >
-        <p className=" text-center">
-          {createTimeStringFromTimeStamp(timeStampRide)}
-        </p>
+        <NameInfoContainer
+          displayName={displayName}
+          location={location}
+          timeDiff={timeDiff}
+          distDiff={distDiff}
+        />
+        <div
+          id="rideTime"
+          className="flex justify-end font-normal text-sm text-typeText ml-2 items-center "
+        >
+          <p className=" text-end">
+            {createTimeStringFromTimeStamp(timeStampRide)}
+          </p>
+        </div>
       </div>
     </div>
   );

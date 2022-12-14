@@ -2,12 +2,12 @@ import React from "react";
 import { UserChat } from "context/ChatContext";
 import { useNavigate } from "react-router-dom";
 import PicContainer from "components/PicContainer";
-import { createLocationString } from "helpers/utils";
 import { createDateStringTrip } from "helpers/dateHelper";
+import InfoContainer from "./InfoContainer";
 
 const ConnectionElement = (props) => {
   const { connectionId, connectionData } = props;
-  const { displayName = "", photoURL = "" } = connectionData.userInfo;
+  const { displayName = "", photoURL = "", uid } = connectionData.userInfo;
   const { location = "" } = connectionData.rideInfo;
 
   const navigate = useNavigate();
@@ -26,26 +26,24 @@ const ConnectionElement = (props) => {
     ? createDateStringTrip(connectionData.rideInfo.date)
     : "No Date";
 
+  const onPhotoClickHandler = () => {
+    uid && navigate(`/user/${uid}`);
+  };
+
   return (
-    <div
-      className="flex flex-row py-8 px-2 justify-between items-center border-b border-primary gap-3"
-      onClick={onClickHandler}
-    >
-      <div className="flex flex-row">
-        <PicContainer src={photoURL} alt={displayName[0]} />
-        <div className="info flex-col pl-2">
-          <div className="text-black font-semibold flex justify-start text-lg">
-            {displayName}
-          </div>
-          <div className="text-xs font-light text-typeText flex justify-start ">
-            <p className="text-ellipsis overflow-hidden line-clamp-1">
-              {createLocationString(location)}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="date flex-none flex justify-end text-sm text-typeText font-normal pl-1">
-        {rideDate}
+    <div className="flex flex-row py-8 pl-2 justify-between items-center border-b border-primary gap-3 ">
+      <div className="flex flex-row justify-start w-full">
+        <PicContainer
+          photoURL={photoURL}
+          alt={displayName[0]}
+          onClickHandler={onPhotoClickHandler}
+        />
+        <InfoContainer
+          onClickHandler={onClickHandler}
+          displayName={displayName}
+          location={location}
+          rideDate={rideDate}
+        />
       </div>
     </div>
   );

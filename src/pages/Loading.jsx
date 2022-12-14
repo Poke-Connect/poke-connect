@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <div
       role="status"
-      className="flex text-typeText items-center justify-center text-sm h-screen pb-[80%] "
+      className="flex text-typeText items-center justify-center text-sm h-screen pb-[25%]"
     >
       P
       <LoadingIcon />

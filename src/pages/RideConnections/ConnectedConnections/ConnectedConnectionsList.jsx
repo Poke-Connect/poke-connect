@@ -36,6 +36,7 @@ const ConnectedConnectionsList = (props) => {
           timeDiff={data.timeDiff}
           distDiff={data.distDiff}
           timeStampRide={data.timeStampRide}
+          uid={data.uid}
           onClickHandler={() => onClickHandler(data)}
         />
       ))}

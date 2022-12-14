@@ -80,6 +80,7 @@ const ConnectionTile = (props) => {
     <TileDetails
       displayName={creatorObj?.displayName}
       photoURL={creatorObj?.photoURL}
+      uid={creatorObj?.uid}
       location={location}
       timeDiff={timeDiff}
       distDiff={distDiff}
