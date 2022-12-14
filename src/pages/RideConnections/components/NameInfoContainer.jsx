@@ -17,7 +17,7 @@ const NameInfoContainer = (props) => {
         </p>
       </div>
 
-      <div className="text-xs font-light text-typeText flex flex-col">
+      <div className="text-sm font-normal text-typeText flex flex-col">
         <p className="text-ellipsis overflow-hidden line-clamp-1">{`Pickup: ${createLocationString(
           location
         )}`}</p>

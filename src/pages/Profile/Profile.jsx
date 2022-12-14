@@ -4,7 +4,7 @@ import { getDatabase, onValue, ref } from "firebase/database";
 import ProfileContainer from "./components/ProfileContainer";
 
 const Profile = () => {
-  const { user } = UserAuth();
+  const { user, logOut } = UserAuth();
   const userId = user.uid;
   const [profileData, setProfileData] = useState(null);
 
@@ -19,7 +19,7 @@ const Profile = () => {
     });
   }, []);
 
-  return <ProfileContainer profileData={profileData} />;
+  return <ProfileContainer profileData={profileData} logOut={logOut} />;
 };
 
 export default Profile;
