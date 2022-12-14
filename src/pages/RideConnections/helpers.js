@@ -18,6 +18,7 @@ export const createConnectedConnectionsList = (rideConnections) => {
 export const createConnectionObj = (connectionData) => {
   const connectionObj = {};
   connectionObj["id"] = connectionData.id;
+  connectionObj["uid"] = connectionData.userInfo.uid;
   connectionObj["displayName"] = connectionData.userInfo.displayName;
   connectionObj["photoURL"] = connectionData.userInfo.photoURL;
   connectionObj["email"] = connectionData.userInfo.email;

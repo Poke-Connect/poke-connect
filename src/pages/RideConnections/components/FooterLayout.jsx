@@ -7,12 +7,12 @@ const FooterLayout = (props) => {
   return (
     <div className="flex flex-row  mt-auto h-12  w-screen ">
       <FooterButton
-        text={"Connected"}
-        toRoute={`/rideconnections/${rideId}/connected`}
-      />
-      <FooterButton
         text={"Available"}
         toRoute={`/rideconnections/${rideId}/available`}
+      />
+      <FooterButton
+        text={"Connected"}
+        toRoute={`/rideconnections/${rideId}/connected`}
       />
     </div>
   );

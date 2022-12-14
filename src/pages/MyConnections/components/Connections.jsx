@@ -12,13 +12,17 @@ const Connections = (props) => {
     return <EmptyItem text={EMPTY_CONNECTION_TEXT} />;
   }
 
+  const sortedConnections = Object.entries(myConnections)?.sort(
+    (a, b) => b[1].date - a[1].date
+  );
+
   return (
     <div>
-      {Object.keys(myConnections).map((connectionId) => (
+      {sortedConnections.map((connection) => (
         <ConnectionElement
-          key={connectionId}
-          connectionId={connectionId}
-          connectionData={myConnections[connectionId]}
+          key={connection[0]}
+          connectionId={connection[0]}
+          connectionData={connection[1]}
         />
       ))}
     </div>

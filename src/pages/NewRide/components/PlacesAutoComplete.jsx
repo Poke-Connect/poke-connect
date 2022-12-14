@@ -75,7 +75,7 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
       {status === "OK" && (
         <div className="flex flex-col">
-          <div className="flex flex-1 m-2 p-2 mb-0 border-b-2 border-primary">
+          <div className="flex flex-1 mx-2 px-2 border-b-2 border-primary">
             Search Results
           </div>
           <ul className="overflow-y-scroll">{renderSuggestions()}</ul>

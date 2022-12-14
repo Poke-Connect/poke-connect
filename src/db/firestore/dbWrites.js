@@ -37,11 +37,11 @@ export const addUserChatsDb = async (userId) => {
 };
 
 //combinedId == u1+u2+r1+r2
-export const createNewUsersChats = async (combinedId) => {
+export const createNewUsersChats = async (combinedId, uid1, uid2) => {
   try {
     const res = await getDoc(doc(fireStoreDb, "chats", combinedId));
     if (!res.exists()) {
-      await addItem("chats", combinedId, { messages: [] });
+      await addItem("chats", combinedId, { messages: [], users: [uid1, uid2] });
     }
   } catch (e) {
     toast.error("Opps, something went wrong!");
@@ -68,6 +68,7 @@ const createUserChatDocument = (
       rideId: rideData.rideId,
       location: rideData.location,
       time: rideData.time,
+      date: rideData.date,
     },
     [combinedId + ".matchInfo"]: {
       extraTime: extraTime,

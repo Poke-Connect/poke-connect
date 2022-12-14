@@ -26,8 +26,13 @@ const InputContainer = () => {
       senderId: user.uid,
       date: Timestamp.now(),
     };
-    await updateMessagesDb(data.chatId, message);
-    await updateDatesUserChats(user.uid, data.user.uid, data.chatId);
+    try {
+      await updateMessagesDb(data.chatId, message);
+      await updateDatesUserChats(user.uid, data.user.uid, data.chatId);
+    } catch (e) {
+      console.log("error", e);
+    }
+
     setText("");
   };
   return (

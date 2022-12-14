@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { UserAuth } from "context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import GoogleIcon from "assets/icons/GoogleIcon";
 import ReachUs from "../About/components/ReachUs";
 import Loading from "pages/Loading";
+import LinkText from "components/UI/LinkText";
+import SignInButton from "./components/SignInButton";
+
+const ABOUT_US_MIN =
+  "Choose your co-passenger and take a sustainable trip with Poke.";
+
+const POWER_POKE =
+  "Poke is powered by people like you. Your donations help grow our team and build a better experience for you. Be a part of our pledge to reduce 600 tonns of CO2 emissions in 2023.";
 
 const SignIn = () => {
   const { googleSignIn, user } = UserAuth();
@@ -46,43 +53,22 @@ const SignIn = () => {
         <h3 className="font-medium pt-2 text-xl pl-1 py-5">
           Meet new co-passengers
         </h3>
-        <button
-          className="flex flex-row p-4 w-full bg-black gap-5 border-b-4 border-r-4 border-primary text-white md:w-3/5"
-          onClick={handleGoogleSignIn}
-        >
-          <span className="googleImg">
-            <GoogleIcon />
-          </span>
-          <span>Sign in with Google</span>
-        </button>
+        <SignInButton handleGoogleSignIn={handleGoogleSignIn} />
       </div>
       <div className="pb-5">
         <div className="px-10">
           <div className="about-us text-left pt-7">
             <h2 className="font-semibold text-xl pb-1.5">About Us</h2>
-            <p className="font-normal text-sm">
-              Choose your co-passenger and take a sustainable trip with Poke.
-            </p>
-            <p
-              className="text-primary text-sm underline pt-2"
-              onClick={handleAboutUs}
-            >
-              Learn more about Poke
-            </p>
+            <p className="font-normal text-sm">{ABOUT_US_MIN}</p>
+            <LinkText
+              text={"Learn more about Poke"}
+              onClickHandler={handleAboutUs}
+            />
           </div>
           <div className="power-us text-left pt-7">
             <h2 className="font-semibold text-xl pb-1.5">Power Poke</h2>
-            <p className="font-normal text-sm">
-              Poke is powered by people like you. Your donations help grow our
-              team and build a better experience for you. Be a part of our
-              pledge to reduce 600 tonns of CO2 emissions in 2023.
-            </p>
-            <p
-              className="text-primary text-sm underline pt-2"
-              onClick={handleAboutUs}
-            >
-              Donate to Poke
-            </p>
+            <p className="font-normal text-sm">{POWER_POKE}</p>
+            <LinkText text={"Buy us a Coffee"} onClickHandler={handleAboutUs} />
           </div>
           <div className="power-us text-left pt-7">
             <ReachUs />

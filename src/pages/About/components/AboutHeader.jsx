@@ -1,11 +1,8 @@
 import React from "react";
 import Header from "components/Layout/Header/Header";
-import { UserAuth } from "context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const AboutHeader = () => {
-  const { user } = UserAuth();
-  const isLoggedIn = user && user.accessToken ? true : false;
+const AboutHeader = ({ isLoggedIn }) => {
   const navigate = useNavigate();
 
   if (isLoggedIn) {

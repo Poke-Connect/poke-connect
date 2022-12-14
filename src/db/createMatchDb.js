@@ -1,5 +1,5 @@
 import { getDatabase, ref, set } from "firebase/database";
-import { createMatchId } from "../helpers/createMatchId";
+import { createConnectionId } from "../helpers/createMatchId";
 
 // "/matches/userid/rideid/matchid"
 export const createMatchDb = (
@@ -11,7 +11,13 @@ export const createMatchDb = (
   extraDist
 ) => {
   const db = getDatabase();
-  const matchId = createMatchId(rideData1.rideId, rideData2.rideId);
+
+  const matchId = createConnectionId(
+    userData1.uid,
+    userData2.uid,
+    rideData1.rideId,
+    rideData2.rideId
+  );
   const dbRefUser1 = ref(
     db,
     `ridesConnections/${userData1.uid}/${rideData1.rideId}/${matchId}`

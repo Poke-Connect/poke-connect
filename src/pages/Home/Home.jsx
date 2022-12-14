@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Arrow from "assets/icons/Arrow";
 import Line from "components/Line";
 import RoundButton from "components/Buttons/RoundButton";
+import WarningBar from "./components/WarningBar";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE";
 const ORIGIN_RIDE = "ORIGIN_RIDE";
@@ -24,7 +25,8 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full pt-5">
+    <div className="flex flex-col items-center w-full ">
+      <WarningBar />
       <NewConnectionContainer
         onTravelToAirportHandler={onTravelToAirportHandler}
         onTravelFromAirportHandler={onTravelFromAirportHandler}

@@ -3,7 +3,7 @@ import { UserChat } from "context/ChatContext";
 import { useNavigate } from "react-router-dom";
 import PicContainer from "components/PicContainer";
 import { createLocationString } from "helpers/utils";
-import { createDateFromTimeStamp } from "helpers/dateHelper";
+import { createDateStringTrip } from "helpers/dateHelper";
 
 const ConnectionElement = (props) => {
   const { connectionId, connectionData } = props;
@@ -21,6 +21,10 @@ const ConnectionElement = (props) => {
     });
     navigate(`/chat/${connectionId}`);
   };
+
+  const rideDate = connectionData.rideInfo.date
+    ? createDateStringTrip(connectionData.rideInfo.date)
+    : "No Date";
 
   return (
     <div
@@ -41,7 +45,7 @@ const ConnectionElement = (props) => {
         </div>
       </div>
       <div className="date flex-none flex justify-end text-sm text-typeText font-normal pl-1">
-        {createDateFromTimeStamp(connectionData.date.seconds)}
+        {rideDate}
       </div>
     </div>
   );

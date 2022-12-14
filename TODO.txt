@@ -1,60 +1,8 @@
 # MAIN:
 
     UI elements:
-    min map height
-
-    ## ITEMS:
-        ## TODAY
-            5. Ride line
-            || 1- toast messages
-            4. date and time in chat
-           5. images storage
-            3- Map marker
-
-            7- chat ui
-            10- 3d buttons (sign in and home)
-            11- line before input buttons (find new connection page)
-
-
-            || 14- about us write up (Main)
-            || 15- about us write up (Min)
-           
-            
-            7- home page button svgs (airplane svgs)
-            || 8- about us write up (Main)
-            || 9- about us write up (Min)
-            || 10- Add places to add toast messages and ui
-            11- suggestions list
-           
-           LATER
-            2- donations figure out
-            - image storage fix
-            - migrate to typescript
-            - connected should be user specific property (other user might not connect) | connections throttle user wise
-            - callback for calculating min times - cache function results
-            - sorting logic based on extra time + time of departure
-            - ride id logic --> will change it to SQL database later
-
-        ## Ride Creation and Matching:
-            - Implementing Haversine formula - https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
-            - Map direction not showing
-
-        ## Firebase:
-            - Crashlytics
-            - Analytics
-
-        ## Write Ups:
-            - about us write up (Main)
-            - about us write up (Min)
-            - terms and conditions 
-            - FAQ
-
-        ## UI bugs:   
-            - map view port fix
-
-        ## UI elements:
-            - Responsive UI for desktop and mobile - Figma
-
+    1. min map height
+    2. add createdAt time stamp to every new creation
 
     ## WARNINGS:
 
@@ -73,6 +21,3 @@ GET https://firestore.googleapis.com/google.firestore.v1.Firestore/Listen/
 channel?gsessionid=mRt03xnMfJITjM1XUPXyROLIdN1y59t2ULayauHlYJo&VER=8&database=projects%2Fpoke-connect%
 2Fdatabases%2F(default)&RID=rpc&SID=hExuF3fMv35m_ZG2ieZNJQ&CI=0&AID=16&TYPE=xmlhttp&zx=9p4b3d8n0z2i&t=1 400
 
-
-||12- suggestions list
-||6- home page button svgs (airplane svgs)

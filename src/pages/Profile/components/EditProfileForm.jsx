@@ -69,13 +69,13 @@ const EditProfileForm = (props) => {
 
   return (
     <div id="form" className="pt-3 pb-10 pl-6 pr-7 w-full">
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} className=" w-full">
         <PicEmailContainer
           alt={firstName[0]}
           photoURL={photoURL}
           email={email}
         />
-        <div className="flex flex-col items-start md:flex-row flex-2">
+        <div className="flex flex-col items-start w-full pr-7 justify-center">
           <EditInput
             id={"firstName"}
             name={"firstName"}
@@ -85,16 +85,14 @@ const EditProfileForm = (props) => {
             onBlur={formik.handleBlur}
             type="text"
           />
-          <div className="md:pl-2">
-            <EditInput
-              id={"lastName"}
-              name={"lastName"}
-              placeholder={"Last name"}
-              value={formik.values.lastName}
-              onChange={formik.handleChange}
-              type="text"
-            />
-          </div>
+          <EditInput
+            id={"lastName"}
+            name={"lastName"}
+            placeholder={"Last name"}
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
+            type="text"
+          />
         </div>
 
         <div
@@ -109,7 +107,7 @@ const EditProfileForm = (props) => {
             onChange={formik.handleChange}
             type="text"
           />
-          <div id="mobile" className="flex flex-row">
+          <div id="mobile" className="flex flex-row w-full">
             <div
               id={"countryCode"}
               name={"countryCode"}
@@ -120,7 +118,7 @@ const EditProfileForm = (props) => {
             >
               +91
             </div>
-            <div className="w-5/6">
+            <div className="w-full">
               <EditInput
                 id={"mobile"}
                 name={"mobile"}
@@ -141,7 +139,7 @@ const EditProfileForm = (props) => {
             value={formik.values.gender}
             onChange={formik.handleChange}
             style={{ display: "block" }}
-            className="p-2 rounded-lg bg-lightGray  m-2 w-[193px] h-10"
+            className="p-2 rounded-lg bg-lightGray  m-2 w-full h-10"
           >
             <option>Select Gender</option>
             <option value="Male" label="Male">

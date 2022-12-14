@@ -65,10 +65,10 @@ const NewRide = () => {
       id="container"
       className="bg-white flex flex-col items-start w-screen h-full"
     >
-      <div className="ml-6 flex">
+      <div className="ml-8 flex">
         <Heading text={"Find a connection"} />
       </div>
-      <div className="flex flex-col w-full pt-1">
+      <div className="flex flex-col w-full pt-1 pl-2">
         <div className="flex flex-row w-full pl-1 ">
           <RideLine height={"m"} type={"newRide"} />
           <div

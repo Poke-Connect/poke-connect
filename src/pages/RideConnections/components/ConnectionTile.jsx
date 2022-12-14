@@ -63,7 +63,7 @@ const ConnectionTile = (props) => {
         timeDiff,
         distDiff
       );
-      await createNewUsersChats(combinedId);
+      await createNewUsersChats(combinedId, user.uid, creatorId);
 
       dispatch({
         type: "CHANGE_USER_CHAT",

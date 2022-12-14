@@ -5,6 +5,8 @@ import { useJsApiLoader } from "@react-google-maps/api";
 import { AuthContextProvider } from "context/AuthContext";
 import { ChatContextProvider } from "context/ChatContext";
 import Loading from "./pages/Loading";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const [libraries] = useState(["places"]);
@@ -14,7 +16,6 @@ const App = () => {
   });
 
   if (!isLoaded) {
-    console.log("loading js libraries");
     return <Loading />;
   }
 
@@ -22,6 +23,12 @@ const App = () => {
     <AuthContextProvider>
       <ChatContextProvider>
         <AppRouter />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={2000}
+          hideProgressBar={true}
+          theme="light"
+        />
       </ChatContextProvider>
     </AuthContextProvider>
   );
