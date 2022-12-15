@@ -7,7 +7,12 @@ import {
 import { getTimeInMins } from "helpers/dateHelper";
 
 const NameInfoContainer = (props) => {
-  const { displayName, location, timeDiff, distDiff } = props;
+  const {
+    displayName = "",
+    location = "",
+    timeDiff = "",
+    distDiff = "",
+  } = props;
 
   return (
     <div id="nameInfoContainer" className="flex-col max-w-[80%]">
@@ -21,7 +26,7 @@ const NameInfoContainer = (props) => {
         <p className="text-ellipsis overflow-hidden line-clamp-1">{`Pickup: ${createLocationString(
           location
         )}`}</p>
-        <p className="text-ellipsis overflow-hidden line-clamp-1">{`Distance between pickups: ${getDistanceInKm(
+        <p className="text-ellipsis overflow-hidden line-clamp-1">{`Distance b/w pickups: ${getDistanceInKm(
           distDiff
         )}km`}</p>
         <p className="text-ellipsis overflow-hidden line-clamp-1">{`Extra time travel: ${getTimeInMins(
