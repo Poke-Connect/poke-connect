@@ -6,6 +6,7 @@ import AboutHeader from "./components/AboutHeader";
 import { UserAuth } from "context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import LinkText from "components/UI/LinkText";
+import HowWeWork from "./components/HowWeWork";
 
 const About = () => {
   const { user } = UserAuth();
@@ -31,6 +32,7 @@ const About = () => {
               onClickHandler={onGetStartedHandler}
             />
           )}
+          <HowWeWork />
           <Donate />
           <div className="mt-10 pb-10">
             <ReachUs />

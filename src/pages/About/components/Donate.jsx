@@ -13,7 +13,7 @@ const Donate = () => {
         Donate to Poke
       </h2>
       <div className="flex gap-2 flex-col px-3">
-        <p className="font-normal text-base ">{DONATE_TEXT}</p>
+        <p className="font-normal text-sm ">{DONATE_TEXT}</p>
         <DonateButton />
       </div>
     </div>
