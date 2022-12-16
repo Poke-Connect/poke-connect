@@ -10,7 +10,7 @@ const ABOUT_US_MIN =
   "Poke helps you connect with probable co-passengers and share a cab.";
 
 const POWER_POKE =
-  "Poke is powered by people like you. Help grow our team and build a better experience for you.";
+  "Poke is powered by people like you. Please give us feedback to help us build a better experience for you and share with your friends to increase your chances of connection.";
 
 const SignIn = () => {
   const { googleSignIn, user } = UserAuth();
@@ -68,7 +68,7 @@ const SignIn = () => {
           <div className="power-us text-left pt-7">
             <h2 className="font-semibold text-xl pb-1.5">Power Poke</h2>
             <p className="font-normal text-sm">{POWER_POKE}</p>
-            <LinkText text={"Buy us a Coffee"} onClickHandler={handleAboutUs} />
+            <p className="font-normal text-sm "></p>
           </div>
           <div className="power-us text-left pt-7">
             <ReachUs />
