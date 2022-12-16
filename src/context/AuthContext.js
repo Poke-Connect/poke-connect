@@ -11,6 +11,7 @@ import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { createUserObject } from "db/createUserObject";
 import { addUserChatsDb } from "db/firestore/dbWrites";
+import { readUserExists } from "db/readUserExists";
 
 const AuthContext = createContext(null);
 
@@ -24,10 +25,16 @@ export const AuthContextProvider = ({ children }) => {
     try {
       const res = await signInWithPopup(auth, provider);
       const details = await getAdditionalUserInfo(res);
+      const userExists = await readUserExists(res.user.uid);
+      console.log("user exists: ", userExists);
       if (details.isNewUser) {
-        createUserObject(res);
-        addUserChatsDb(res.user.uid);
+        await createUserObject(res);
+        await addUserChatsDb(res.user.uid);
         navigate("/profile/edit", { state: { newUser: true } });
+      } else if (!userExists && !details.isNewUser) {
+        await createUserObject(res);
+        await addUserChatsDb(res.user.uid);
+        navigate("/home");
       } else {
         navigate("/home");
       }
@@ -36,8 +43,8 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const logOut = () => {
-    signOut(auth);
+  const logOut = async () => {
+    await signOut(auth);
   };
 
   useEffect(() => {

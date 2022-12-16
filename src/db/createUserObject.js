@@ -2,7 +2,7 @@ import { getDatabase, ref, set } from "firebase/database";
 import { getNameObject } from "../helpers/getNameObject";
 import { capitaliseName } from "helpers/utils";
 
-export const createUserObject = (res) => {
+export const createUserObject = async (res) => {
   const db = getDatabase();
   const dbRef = ref(db, "users/" + res.user.uid);
 
@@ -19,5 +19,5 @@ export const createUserObject = (res) => {
     phoneNumber: res.user.phoneNumber,
   };
 
-  set(dbRef, userData);
+  await set(dbRef, userData);
 };

@@ -1,9 +1,21 @@
 import React from "react";
 import NavElement from "./NavElement";
 import { getFirstName } from "helpers/utils";
+import { useNavigate } from "react-router-dom";
 
 const RightSideNav = (props) => {
-  const { showSidebar, toggleSideBar, displayName } = props;
+  const { showSidebar, toggleSideBar, logOut, displayName } = props;
+  const navigate = useNavigate();
+
+  const onLogOutPressHandler = async () => {
+    toggleSideBar();
+    try {
+      await logOut();
+      navigate(`/signin`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const navElements = [
     {
@@ -36,6 +48,12 @@ const RightSideNav = (props) => {
       onClickHandler: toggleSideBar,
       styles: "",
     },
+    {
+      title: "Log Out",
+      toRoute: "/signin",
+      onClickHandler: onLogOutPressHandler,
+      styles: "",
+    },
   ];
 
   return (
@@ -58,6 +76,7 @@ const RightSideNav = (props) => {
           />
         ))}
       </ul>
+
       <button
         className="absolute top-0 left-0 bottom-0 w-1/4 bg-white focus:outline-none focus:shadow-none opacity-20"
         onClick={toggleSideBar}
