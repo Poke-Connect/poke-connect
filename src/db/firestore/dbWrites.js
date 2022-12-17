@@ -20,6 +20,15 @@ export const updateItem = async (collection, node, document) => {
   await updateDoc(doc(fireStoreDb, collection, node), document);
 };
 
+export const userChatExists = async (userId) => {
+  const res = await getDoc(doc(fireStoreDb, "userChats", userId));
+  if (res.exists()) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 export const addUserChatsDb = async (userId) => {
   const collection = "userChats";
   const node = userId;
@@ -106,8 +115,22 @@ export const updateUserChats = async (
     extraTime,
     extraDist
   );
-  await updateItem("userChats", user1.uid, document1);
-  await updateItem("userChats", user2.uid, document2);
+  try {
+    const user1ChatExists = await userChatExists(user1.uid);
+    const user2ChatExists = await userChatExists(user2.uid);
+    if (!user1ChatExists) {
+      await addItem("userChats", user1.uid, document1);
+    } else {
+      await updateItem("userChats", user1.uid, document1);
+    }
+    if (!user2ChatExists) {
+      await addItem("userChats", user2.uid, document2);
+    } else {
+      await updateItem("userChats", user2.uid, document2);
+    }
+  } catch (e) {
+    console.log("error", e);
+  }
 };
 
 export const updateMessagesDb = async (chatId, message) => {

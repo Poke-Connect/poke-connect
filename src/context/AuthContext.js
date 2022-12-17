@@ -10,7 +10,7 @@ import {
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { createUserObject } from "db/createUserObject";
-import { addUserChatsDb } from "db/firestore/dbWrites";
+import { addUserChatsDb, userChatExists } from "db/firestore/dbWrites";
 import { readUserExists } from "db/readUserExists";
 
 const AuthContext = createContext(null);
@@ -26,14 +26,23 @@ export const AuthContextProvider = ({ children }) => {
       const res = await signInWithPopup(auth, provider);
       const details = await getAdditionalUserInfo(res);
       const userExists = await readUserExists(res.user.uid);
+
+      const userChatDbExists = await userChatExists(res.user.uid);
+
       console.log("user exists: ", userExists);
+
       if (details.isNewUser) {
         await createUserObject(res);
         await addUserChatsDb(res.user.uid);
         navigate("/profile/edit", { state: { newUser: true } });
-      } else if (!userExists && !details.isNewUser) {
-        await createUserObject(res);
-        await addUserChatsDb(res.user.uid);
+      } else if ((!userExists || !userChatDbExists) && !details.isNewUser) {
+        if (!userExists) {
+          await createUserObject(res);
+        }
+        if (!userChatDbExists) {
+          await addUserChatsDb(res.user.uid);
+        }
+
         navigate("/home");
       } else {
         navigate("/home");
