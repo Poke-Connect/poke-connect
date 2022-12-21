@@ -1,14 +1,11 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { UserAuth } from "context/AuthContext";
-import Loading from "./Loading";
+import { UserAuth } from "context/AuthProvider";
 
 const Protected = ({ children }) => {
-  const { user , loading } = UserAuth();
+  const { user } = UserAuth();
   const isLoggedIn = user && user.accessToken ? true : false;
-  if (loading) {
-    return <Loading />;
-  }
+
   if (!isLoggedIn) {
     return <Navigate to="/signin" />;
   }

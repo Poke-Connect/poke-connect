@@ -45,6 +45,14 @@ export const addUserChatsDb = async (userId) => {
   }
 };
 
+export const addToUserChatsDb = async (userId) => {
+  try {
+    await addItem("userChats", userId, {});
+  } catch (e) {
+    toast.error("Opps, something went wrong!");
+  }
+};
+
 //combinedId == u1+u2+r1+r2
 export const createNewUsersChats = async (combinedId, uid1, uid2) => {
   try {

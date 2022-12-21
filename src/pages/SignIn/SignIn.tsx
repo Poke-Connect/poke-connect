@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UserAuth } from "context/AuthContext";
+import { UserAuth } from "context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import ReachUs from "../About/components/ReachUs";
 import Loading from "pages/Loading";
@@ -35,7 +35,7 @@ const SignIn = () => {
     if (user != null) {
       navigate("/home");
     }
-  }, [user]);
+  }, []);
 
   if (loading) {
     return <Loading />;

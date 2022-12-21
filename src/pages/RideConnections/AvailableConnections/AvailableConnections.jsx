@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getDatabase, onValue, ref } from "firebase/database";
 import RideConnectionsLayout from "../RideConnectionsLayout";
 import ShowConnectionsHandler from "./ShowConnectionsHandler";
-import { UserAuth } from "context/AuthContext";
+import { UserAuth } from "context/AuthProvider";
 
 const AvailableConnections = () => {
   const params = useParams();

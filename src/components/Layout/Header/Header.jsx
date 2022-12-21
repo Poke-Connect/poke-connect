@@ -3,7 +3,7 @@ import ChatIcon from "assets/icons/ChatIcon";
 import { useNavigate } from "react-router-dom";
 import RightSideNav from "../RightSideNav/RightSideNav";
 import IconElement from "./IconElement";
-import { UserAuth } from "context/AuthContext";
+import { UserAuth } from "context/AuthProvider";
 import ProfileIcon from "./ProfileIcon";
 
 const Header = () => {
