@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { UserChat } from "context/ChatContext";
-import { UserAuth } from "context/AuthContext";
+import { UserAuth } from "context/AuthProvider";
 import { updateMessagesDb, updateDatesUserChats } from "db/firestore/dbWrites";
 import { Timestamp } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";

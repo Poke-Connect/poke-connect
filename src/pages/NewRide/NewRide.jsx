@@ -4,7 +4,7 @@ import GMapElement from "./components/GMapElement";
 import { useNavigate, useLocation } from "react-router-dom";
 import DateTimeContainer from "./components/DateTimeContainer";
 import { getTodaysDate, getTimeNow } from "helpers/dateHelper";
-import { UserAuth } from "context/AuthContext";
+import { UserAuth } from "context/AuthProvider";
 import PlacesAutocomplete from "./components/PlacesAutoComplete";
 import { v4 as uuidv4 } from "uuid";
 import { getRouteObject } from "./helpers";

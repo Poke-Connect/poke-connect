@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import AppRouter from "./AppRouter";
 import { useJsApiLoader } from "@react-google-maps/api";
-import { AuthContextProvider } from "context/AuthContext";
+import { AuthContextProvider } from "context/AuthProvider";
 import { ChatContextProvider } from "context/ChatContext";
 import Loading from "./pages/Loading";
 import { ToastContainer } from "react-toastify";

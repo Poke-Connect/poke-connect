@@ -7,7 +7,7 @@ const ButtonContainer = (props) => {
     return null;
   }
 
-  const buttonText1 = isNew ? "Sign up" : "Save changes";
+  const buttonText1 = "Save changes";
   const buttonText2 = isNew ? "Skip for now" : "Cancel";
 
   return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { UserAuth } from "context/AuthContext";
+import { UserAuth } from "context/AuthProvider";
 
 const MessageItem = ({ message }) => {
   const { senderId, text } = message;

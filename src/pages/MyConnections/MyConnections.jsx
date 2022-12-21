@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Connections from "./components/Connections";
-import { UserAuth } from "context/AuthContext";
+import { UserAuth } from "context/AuthProvider";
 import { onSnapshot, doc } from "firebase/firestore";
 import { fireStoreDb } from "firebaseConfig";
 import Heading from "components/UI/Heading";

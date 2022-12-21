@@ -3,7 +3,7 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import TileDetails from "./TileDetails";
 import { createUserObj } from "../helpers";
 import { createMatchDb } from "db/createMatchDb";
-import { UserAuth } from "context/AuthContext";
+import { UserAuth } from "context/AuthProvider";
 import { updateUserChats, createNewUsersChats } from "db/firestore/dbWrites";
 import { useNavigate } from "react-router-dom";
 import { createConnectionId } from "helpers/createMatchId";
