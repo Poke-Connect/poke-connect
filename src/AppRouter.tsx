@@ -21,8 +21,8 @@ import AppLayout from "components/Layout/AppLayout";
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/signin" exact element={<SignIn />} />
-      <Route path="about" exact element={<About />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="about" element={<About />} />
       <Route
         element={
           <Protected>
@@ -32,7 +32,6 @@ const AppRouter = () => {
       >
         <Route
           path="/"
-          exact
           element={
             <Protected>
               <Home />
@@ -42,7 +41,6 @@ const AppRouter = () => {
 
         <Route
           path="home"
-          exact
           element={
             <Protected>
               <Home />
@@ -52,7 +50,6 @@ const AppRouter = () => {
 
         <Route
           path="mytrips"
-          exact
           element={
             <Protected>
               <MyTrips />
@@ -62,7 +59,6 @@ const AppRouter = () => {
 
         <Route
           path="connections"
-          exact
           element={
             <Protected>
               <MyConnections />
@@ -80,7 +76,6 @@ const AppRouter = () => {
         />
         <Route
           path="rideconnections/:rideId"
-          exact
           element={
             <Protected>
               <RideConnections />
@@ -89,7 +84,6 @@ const AppRouter = () => {
         >
           <Route
             path="connected"
-            exact
             element={
               <Protected>
                 <ConnectedConnections />
@@ -98,7 +92,6 @@ const AppRouter = () => {
           />
           <Route
             path="available"
-            exact
             element={
               <Protected>
                 <AvailableConnections />
@@ -108,7 +101,6 @@ const AppRouter = () => {
         </Route>
         <Route
           path="profile"
-          exact
           element={
             <Protected>
               <Profile />
@@ -117,7 +109,6 @@ const AppRouter = () => {
         />
         <Route
           path="profile/edit"
-          exact
           element={
             <Protected>
               <EditProfile />

@@ -5,6 +5,7 @@ import ReachUs from "../About/components/ReachUs";
 import Loading from "pages/Loading";
 import LinkText from "components/UI/LinkText";
 import SignInButton from "./components/SignInButton";
+import { errorLogger, signInLogger } from "firebaseUtils/firebaseLogger";
 
 const ABOUT_US_MIN =
   "Poke helps you connect with probable co-passengers and share a cab.";
@@ -24,6 +25,7 @@ const SignIn = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
+      errorLogger(null, `handleGoogleSignIn error: ${error}`);
     }
   };
 
@@ -33,6 +35,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (user != null) {
+      signInLogger(null, "navigating to home screen", null);
       navigate("/home");
     }
   }, []);

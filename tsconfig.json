@@ -10,6 +10,9 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "baseUrl": "src"
+    // "noImplicitAny": true, //LATER
+    // "noImplicitThis": true, //LATER
+    // "alwaysStrict": true //LATER
   },
   "include": ["./src/"]
 }
