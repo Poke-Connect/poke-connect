@@ -3,17 +3,17 @@
  * rides/${rideId}
  */
 
-/**
- * User Object - 12params
- * @param {string} rideId key required uuid
- * @param {string} userId required SECURITY_KEY
- * @param {string} date required 
- * @param {boolean} discoverability required 
- * @param {string} location required
- * @param {string} rideType required
- * @param {string} time required
- * @param {string} timeStampRide required
- */
+export interface IRide {
+  createdAt: Date;
+  rideId: string;
+  userId: string;
+  date: string;
+  discoverability: boolean;
+  location: string;
+  rideType: string;
+  time: string;
+  timeStampRide: number;
+}
 
 /**
  * RULES

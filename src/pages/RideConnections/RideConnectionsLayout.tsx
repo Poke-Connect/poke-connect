@@ -1,7 +1,12 @@
-import React from "react";
+import React, { FC, ReactNode } from "react";
 import Heading from "components/UI/Heading";
 
-const RideConnectionsLayout = (props) => {
+interface IProps {
+  heading: string;
+  children?: ReactNode;
+}
+
+const RideConnectionsLayout: FC<IProps> = (props) => {
   const { heading } = props;
 
   return (

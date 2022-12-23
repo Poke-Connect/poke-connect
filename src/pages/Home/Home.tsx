@@ -1,15 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import NewConnectionContainer from "./components/NewConnectionContainer";
 import { useNavigate } from "react-router-dom";
 import Arrow from "assets/icons/Arrow";
 import Line from "components/Line";
 import RoundButton from "components/Buttons/RoundButton";
 import WarningBar from "./components/WarningBar";
+import { commonStrings } from "strings/commonStrings";
 
-const DESTINATION_RIDE = "DESTINATION_RIDE";
-const ORIGIN_RIDE = "ORIGIN_RIDE";
-
-const Home = () => {
+const Home: FC = () => {
   const navigate = useNavigate();
 
   const onClickTripsHandler = () => {
@@ -17,11 +15,15 @@ const Home = () => {
   };
 
   const onTravelToAirportHandler = () => {
-    navigate(`/connections/new`, { state: { rideType: DESTINATION_RIDE } });
+    navigate(`/connections/new`, {
+      state: { rideType: commonStrings.DESTINATION_RIDE },
+    });
   };
 
   const onTravelFromAirportHandler = () => {
-    navigate(`/connections/new`, { state: { rideType: ORIGIN_RIDE } });
+    navigate(`/connections/new`, {
+      state: { rideType: commonStrings.ORIGIN_RIDE },
+    });
   };
 
   return (

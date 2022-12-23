@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import ChatInfo from "./components/ChatInfo";
 import InputContainer from "./components/InputContainer";
 import MessagesList from "./components/MessagesList";
 import Header from "components/Layout/Header/Header";
 
-const Chat = () => {
+const Chat: FC = () => {
   return (
     <div className="flex flex-col fixed w-screen h-full ">
       <div className=" flex h-[10%] ">

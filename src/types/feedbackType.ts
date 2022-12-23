@@ -4,12 +4,16 @@
  */
 //FireStore
 
-/**
- * Feedback Object - 3params
- * @param {string} email key required uuid
- * @param {string} name required 
- * @param {boolean} suggestion required 
- */
+export interface Feedbacks {
+  feedbacks: IFeedback[];
+}
+
+export interface IFeedback {
+  createdAt: Date;
+  email: string;
+  name: string;
+  suggestion: string;
+}
 
 /**
  * RULES

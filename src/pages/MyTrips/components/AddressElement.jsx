@@ -1,12 +1,11 @@
 import React from "react";
 import { createLocationString } from "helpers/utils";
-
-const KIA = "Kempegowda International Airport";
-const DESTINATION_RIDE = "DESTINATION_RIDE";
+import { commonStrings } from "strings/commonStrings";
 
 const AddressElement = (props) => {
   const { location, rideType } = props;
   const locationDisplay = createLocationString(location);
+  const { KIA, DESTINATION_RIDE } = commonStrings;
 
   const styles =
     rideType === DESTINATION_RIDE ? "flex-col" : "flex flex-col-reverse";
@@ -19,7 +18,9 @@ const AddressElement = (props) => {
         </p>
       </div>
       <div className="flex justify-start ">
-        <p className="text-ellipsis overflow-hidden line-clamp-1 text-base">{KIA}</p>
+        <p className="text-ellipsis overflow-hidden line-clamp-1 text-base">
+          {KIA}
+        </p>
       </div>
     </div>
   );

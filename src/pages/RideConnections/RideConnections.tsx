@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import FooterLayout from "./components/FooterLayout";
 import { Outlet, useParams } from "react-router-dom";
 
-const RideConnections = () => {
+const RideConnections: FC = () => {
   const params = useParams();
   const { rideId } = params;
 
