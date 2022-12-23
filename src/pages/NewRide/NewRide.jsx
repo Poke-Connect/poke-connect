@@ -7,13 +7,14 @@ import { getTodaysDate, getTimeNow } from "helpers/dateHelper";
 import { UserAuth } from "context/AuthProvider";
 import PlacesAutocomplete from "./components/PlacesAutoComplete";
 import { v4 as uuidv4 } from "uuid";
-import { getRouteObject } from "./helpers";
+import { getRouteObject, getTripDistance } from "./helpers";
 import InputField from "./components/InputField";
 import { createNewRideDb } from "db/createNewRideDb";
 import Heading from "components/UI/Heading";
 import ButtonContainer from "./components/ButtonContainer";
 import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
+import { toastStrings } from "strings/toastStrings";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
@@ -43,18 +44,22 @@ const NewRide = () => {
 
       setDirectionsResponse(minRouteObject);
 
+      const distance = getTripDistance(minRouteObject);
+
       createNewRideDb(
         rideId,
         rideType,
         userId,
         dateValue,
         timeValue,
-        locationValue
+        locationValue,
+        distance
       );
 
+      toast.success(toastStrings.RIDE_CREATION_SUCCESS);
       navigate(`/rideconnections/${rideId}/available`);
     } catch (e) {
-      toast.error("Opps, something went wrong!");
+      toast.error(toastStrings.ERROR);
     }
 
     //IF REQUIRED: Distance and duration can be taken from minRouteObject

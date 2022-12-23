@@ -1,5 +1,6 @@
 import { getDatabase, ref, set } from "firebase/database";
 import { createDateString, createTimeStamp } from "helpers/dateHelper";
+import { Timestamp } from "firebase/firestore";
 
 export const createNewRideDb = (
   rideId,
@@ -7,7 +8,8 @@ export const createNewRideDb = (
   userId,
   dateValue,
   timeValue,
-  locationValue
+  locationValue,
+  distance
 ) => {
   const db = getDatabase();
 
@@ -18,11 +20,13 @@ export const createNewRideDb = (
   const timeStampRide = createTimeStamp(dateValue, timeValue);
 
   const rideData = {
+    createdAt: Timestamp.now(),
     rideType,
     userId,
     date,
     timeStampRide,
     rideId,
+    distance,
     location: locationValue,
     discoverability: true,
     time: timeValue,

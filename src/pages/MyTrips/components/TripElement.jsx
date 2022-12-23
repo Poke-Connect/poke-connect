@@ -5,6 +5,7 @@ import AddressElement from "./AddressElement";
 import ToggleElement from "./ToggleElement";
 import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
+import { toastStrings } from "strings/toastStrings";
 
 const TripElement = (props) => {
   const { rideId, onClickHandler, upcoming } = props;
@@ -27,16 +28,16 @@ const TripElement = (props) => {
       return;
     }
     try {
+      if (rideData.discoverability) {
+        toast.success(toastStrings.DISCOVERABILITY_SUCCESS_OFF);
+      } else {
+        toast.success(toastStrings.DISCOVERABILITY_SUCCESS_ON);
+      }
       update(myTripRef, {
         discoverability: !rideData.discoverability,
       });
-      if (rideData.discoverability) {
-        toast.success("Trip’s discoverability turned Off");
-      } else {
-        toast.success("Trip’s discoverability turned On");
-      }
     } catch (e) {
-      toast.error("Opps, something went wrong!");
+      toast.error(toastStrings.ERROR);
     }
   };
 

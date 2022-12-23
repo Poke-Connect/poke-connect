@@ -16,3 +16,8 @@ export const getRouteObject = async (
     return createRoute(airportCordinates, locationValue);
   }
 };
+
+export const getTripDistance = (minRouteObject) => {
+  const distValue = minRouteObject?.routes[0]?.legs[0]?.distance.value;
+  return distValue ? distValue : 0;
+};

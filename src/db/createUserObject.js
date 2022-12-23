@@ -1,6 +1,7 @@
 import { getDatabase, ref, set } from "firebase/database";
 import { getNameObject } from "../helpers/getNameObject";
 import { capitaliseName } from "helpers/utils";
+import { Timestamp } from "firebase/firestore";
 
 export const createUserObject = async (res) => {
   const db = getDatabase();
@@ -10,6 +11,7 @@ export const createUserObject = async (res) => {
   const name = getNameObject(displayName);
 
   const userData = {
+    createdAt: Timestamp.now(),
     uid: res.user.uid,
     displayName: displayName,
     firstName: name[0],

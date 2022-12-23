@@ -1,15 +1,13 @@
 import EmptyItem from "components/UI/EmptyItem";
 import React from "react";
+import { emptyStrings } from "strings/emptyStrings";
 import ConnectionElement from "./ConnectionElement";
-
-const EMPTY_CONNECTION_TEXT =
-  "No connections yet, create a new ride to find connections.";
 
 const Connections = (props) => {
   const { myConnections } = props;
 
   if (!myConnections || Object.keys(myConnections).length === 0) {
-    return <EmptyItem text={EMPTY_CONNECTION_TEXT} />;
+    return <EmptyItem text={emptyStrings.MY_CONNECTIONS} />;
   }
 
   const sortedConnections = Object.entries(myConnections)?.sort(

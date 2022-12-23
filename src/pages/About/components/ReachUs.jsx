@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { addFeedbackDb } from "db/firestore/dbWrites";
 import { createRandomId } from "helpers/createRandomId";
 import { toast } from "react-toastify";
+import { Timestamp } from "firebase/firestore";
+import { toastStrings } from "strings/toastStrings";
 
 const ReachUs = () => {
   const formik = useFormik({
@@ -22,10 +24,10 @@ const ReachUs = () => {
     onSubmit: (values) => {
       const id = createRandomId();
       try {
-        addFeedbackDb(id, values);
-        toast.success("Thanks, feedback submitted successfully");
+        addFeedbackDb(id, { ...values, createdAt: Timestamp.now() });
+        toast.success(toastStrings.FEEDBACK_SUCCESS);
       } catch (e) {
-        toast.error("Opps, something went wrong!");
+        toast.error(toastStrings.ERROR);
       }
       formik.resetForm();
     },

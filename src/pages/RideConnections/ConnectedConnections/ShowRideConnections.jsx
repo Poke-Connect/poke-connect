@@ -2,15 +2,13 @@ import React from "react";
 import { createConnectedConnectionsList } from "../helpers";
 import ConnectedConnectionsList from "./ConnectedConnectionsList";
 import EmptyItem from "components/UI/EmptyItem";
-
-const EMPTY_CONNECTED_TEXT =
-  "No connections yet. Please go to the Available tab to find new matches.";
+import { emptyStrings } from "strings/emptyStrings";
 
 const ShowRideConnections = (props) => {
   const { rideConnections } = props;
 
   if (!rideConnections) {
-    return <EmptyItem text={EMPTY_CONNECTED_TEXT} />;
+    return <EmptyItem text={emptyStrings.CONNECTED_CONNECTIONS} />;
   }
 
   const connectionsdata = createConnectedConnectionsList(rideConnections);

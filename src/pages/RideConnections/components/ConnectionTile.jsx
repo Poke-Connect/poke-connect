@@ -8,6 +8,8 @@ import { updateUserChats, createNewUsersChats } from "db/firestore/dbWrites";
 import { useNavigate } from "react-router-dom";
 import { createConnectionId } from "helpers/createMatchId";
 import { UserChat } from "context/ChatContext";
+import { toast } from "react-toastify";
+import { toastStrings } from "strings/toastStrings";
 
 const ConnectionTile = (props) => {
   const { matchDetails, timeDiff, userRide, distDiff } = props;
@@ -64,7 +66,7 @@ const ConnectionTile = (props) => {
         distDiff
       );
       await createNewUsersChats(combinedId, user.uid, creatorId);
-
+      toast.success(toastStrings.MATCH_CREATION_SUCCESS);
       dispatch({
         type: "CHANGE_USER_CHAT",
         payload: { user: creatorObj, chatId: combinedId },
@@ -72,6 +74,7 @@ const ConnectionTile = (props) => {
 
       navigate(`/chat/${combinedId}`);
     } catch (error) {
+      toast.error(toastStrings.ERROR);
       console.log("Connection Failed", error);
     }
   };
