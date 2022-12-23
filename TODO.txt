@@ -1,4 +1,9 @@
 # MAIN:
+    2. add back Button
+    3. add home icon
+    5. in app notifications
+    6. show when other people are going (approx hot times)
+    7. CO2 reduction calculator 
 
     UI elements:
     1. min map height

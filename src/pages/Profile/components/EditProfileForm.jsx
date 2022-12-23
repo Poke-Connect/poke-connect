@@ -7,6 +7,8 @@ import { updateUserObj } from "db/updateUserObject";
 import EditInput from "./EditInput";
 import ButtonContainer from "./ButtonContainer";
 import PicEmailContainer from "./PicEmailContainer";
+import { toast } from "react-toastify";
+import { toastStrings } from "strings/toastStrings";
 
 const EditProfileForm = (props) => {
   const navigate = useNavigate();
@@ -44,10 +46,15 @@ const EditProfileForm = (props) => {
         .min(10, "Invalid Mobile number"),
     }),
     onSubmit: (values) => {
-      updateUserObj(values, uid, email, photoURL);
-      setIsEditing(false);
-      formik.resetForm();
-      isNew ? navigate("/home") : navigate("/profile");
+      try {
+        updateUserObj(values, uid, email, photoURL);
+        setIsEditing(false);
+        formik.resetForm();
+        toast.success(toastStrings.EDIT_PROFILE_SUCCESS);
+        isNew ? navigate("/home") : navigate("/profile");
+      } catch (e) {
+        toast.error(toastStrings.ERROR);
+      }
     },
   });
 

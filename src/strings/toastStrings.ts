@@ -6,4 +6,5 @@ export const toastStrings = {
   RIDE_CREATION_SUCCESS: "Yuhu! Ride created successfully.",
   MATCH_CREATION_SUCCESS:
     "Great, user added to your connections, start chatting!",
+  EDIT_PROFILE_SUCCESS: "Profile updated successfully",
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { UserAuth } from "context/AuthProvider";
 import ShowTrips from "./components/ShowTrips";
@@ -6,14 +6,14 @@ import Heading from "components/UI/Heading";
 import EmptyItem from "components/UI/EmptyItem";
 import { emptyStrings } from "strings/emptyStrings";
 
-const MyTrips = () => {
+const MyTrips: FC = () => {
   const { user } = UserAuth();
 
   const [myTrips, setMyTrips] = useState([]);
 
   const db = getDatabase();
 
-  const myTripsRef = ref(db, `userRides/${user.uid}`);
+  const myTripsRef = ref(db, `userRides/${user?.uid}`);
 
   useEffect(() => {
     onValue(myTripsRef, (snapshot) => {
