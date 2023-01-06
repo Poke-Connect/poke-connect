@@ -25,6 +25,7 @@ const AvailableConnectionsList = (props) => {
           myRide
         );
         setAvailableConnections(filteredRides);
+        localStorage.setItem("availableCount", filteredRides.length);
       } catch (e) {
         console.error("The error is", e);
       }

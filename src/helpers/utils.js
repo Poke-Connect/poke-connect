@@ -32,3 +32,7 @@ export const getFirstName = (displayName) => {
   const firstName = capitaliseFirstLetter(nameArr[0]);
   return firstName;
 };
+
+export const getObjectLength = (obj) => {
+  return obj ? Object.keys(obj).length : 0;
+};

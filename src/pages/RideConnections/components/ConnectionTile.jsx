@@ -48,6 +48,8 @@ const ConnectionTile = (props) => {
     if (!userObj || !creatorObj) {
       return;
     }
+    const toastId = toast.loading(toastStrings.CREATING_CONNECTION);
+
     try {
       await createMatchDb(
         userObj,
@@ -66,7 +68,13 @@ const ConnectionTile = (props) => {
         distDiff
       );
       await createNewUsersChats(combinedId, user.uid, creatorId);
-      toast.success(toastStrings.MATCH_CREATION_SUCCESS);
+      toast.update(toastId, {
+        render: toastStrings.MATCH_CREATION_SUCCESS,
+        type: "success",
+        isLoading: false,
+        autoClose: 100,
+        closeButton: true,
+      });
       dispatch({
         type: "CHANGE_USER_CHAT",
         payload: { user: creatorObj, chatId: combinedId },

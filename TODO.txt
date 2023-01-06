@@ -1,4 +1,15 @@
 # MAIN:
+    1. add count in available and connected connections
+    2. manage strings and number like 2 hrs from central place
+
+    ## DESIGN ELEMENTS:
+    1. Poke Logo
+    2. App wide fonts
+    3. Empty state illustrations
+    4. Toast bar messages
+    5. My Profile page (empty fields)
+
+    ## OTHERS:
     2. add back Button
     3. add home icon
     5. in app notifications

@@ -1,43 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getDatabase, onValue, ref } from "firebase/database";
+import React from "react";
 import RideConnectionsLayout from "../RideConnectionsLayout";
 import ShowConnectionsHandler from "./ShowConnectionsHandler";
-import { UserAuth } from "context/AuthProvider";
+import { useOutletContext } from "react-router-dom";
+import { headingStrings } from "strings/headingStrings";
 
 const AvailableConnections = () => {
-  const params = useParams();
-  const { rideId } = params;
-  const { user } = UserAuth();
-
-  const [myRide, setMyRide] = useState(null);
-  const [alreadyConnected, setAlreadyConnected] = useState([]);
-
-  const db = getDatabase();
-
-  const myRideRef = ref(db, `rides/${rideId}`);
-  const rideConnectionsRef = ref(db, `ridesConnections/${user.uid}/${rideId}`);
-
-  useEffect(() => {
-    onValue(myRideRef, (snapshot) => {
-      const data = snapshot.val();
-      setMyRide(data);
-    });
-  }, []);
-
-  useEffect(() => {
-    onValue(rideConnectionsRef, (snapshot) => {
-      const data = snapshot.val();
-      setAlreadyConnected(data);
-    });
-  }, []);
-
+  const { connectedConnections, myRide } = useOutletContext();
   return (
-    <RideConnectionsLayout heading={"Matches Found"}>
+    <RideConnectionsLayout heading={headingStrings.AVAILABLE_CONNECTIONS}>
       {myRide && (
         <ShowConnectionsHandler
           myRide={myRide}
-          alreadyConnected={alreadyConnected}
+          alreadyConnected={connectedConnections}
         />
       )}
     </RideConnectionsLayout>

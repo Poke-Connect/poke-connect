@@ -1,33 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import RideConnectionsLayout from "../RideConnectionsLayout";
-import { useParams } from "react-router-dom";
-import { getDatabase, onValue, ref } from "firebase/database";
-import { UserAuth } from "context/AuthProvider";
 import ShowRideConnections from "./ShowRideConnections";
+import { useOutletContext } from "react-router-dom";
+import { headingStrings } from "strings/headingStrings";
 
 const ConnectedConnections = () => {
-  const params = useParams();
-  const { rideId } = params;
-
-  const { user } = UserAuth();
-  const userId = user.uid;
-
-  const [rideConnections, setRideConnections] = useState([]);
-
-  const db = getDatabase();
-
-  const rideConnectionsRef = ref(db, `ridesConnections/${userId}/${rideId}`);
-
-  useEffect(() => {
-    onValue(rideConnectionsRef, (snapshot) => {
-      const data = snapshot.val();
-      setRideConnections(data);
-    });
-  }, []);
+  const { connectedConnections } = useOutletContext();
 
   return (
-    <RideConnectionsLayout heading={"My Connections"}>
-      <ShowRideConnections rideConnections={rideConnections} />
+    <RideConnectionsLayout heading={headingStrings.CONNECTED_CONNECTIONS}>
+      <ShowRideConnections rideConnections={connectedConnections} />
     </RideConnectionsLayout>
   );
 };
