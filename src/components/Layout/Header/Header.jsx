@@ -5,9 +5,10 @@ import RightSideNav from "../RightSideNav/RightSideNav";
 import IconElement from "./IconElement";
 import { UserAuth } from "context/AuthProvider";
 import ProfileIcon from "./ProfileIcon";
+import { signout } from "helpers/helpersAuth";
 
 const Header = () => {
-  const { logOut, user } = UserAuth();
+  const { user } = UserAuth();
 
   const [showSidebar, setShowSidebar] = useState(false);
   const toggleSideBar = () => setShowSidebar(!showSidebar);
@@ -24,6 +25,12 @@ const Header = () => {
 
   const onProfieClickHandler = () => {
     setShowSidebar(!showSidebar);
+  };
+
+  const onSignOutHandler = () => {
+    toggleSideBar();
+    signout();
+    navigate("/signin");
   };
 
   return (
@@ -48,7 +55,7 @@ const Header = () => {
         <RightSideNav
           showSidebar={showSidebar}
           toggleSideBar={toggleSideBar}
-          logOut={logOut}
+          logOut={onSignOutHandler}
           displayName={user?.displayName}
         />
       </div>

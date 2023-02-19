@@ -1,5 +1,5 @@
 import React, { useContext, FC, useState, useEffect } from "react";
-import { AuthContext } from "./AuthContext";
+import { RideContext } from "./RideContext";
 import { isAuth } from "helpers/helpersAuth";
 import { getUser } from "api/user";
 import { Navigate } from "react-router-dom";
@@ -8,7 +8,7 @@ interface IProps {
   children?: React.ReactNode;
 }
 
-export const AuthContextProvider: FC<IProps> = ({ children }) => {
+export const RideContextProvider: FC<IProps> = ({ children }) => {
   const user = isAuth() ? isAuth() : null;
   const parsedUser = user ? JSON.parse(user) : null;
   const [newUser, setNewUser] = useState<any>(null);
@@ -30,12 +30,12 @@ export const AuthContextProvider: FC<IProps> = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user: newUser }}>
+    <RideContext.Provider value={{ ride: newUser }}>
       {children}
-    </AuthContext.Provider>
+    </RideContext.Provider>
   );
 };
 
-export const UserAuth = () => {
-  return useContext(AuthContext);
+export const CurrentRide = () => {
+  return useContext(RideContext);
 };

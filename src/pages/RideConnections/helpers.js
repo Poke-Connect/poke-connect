@@ -1,6 +1,6 @@
 export const createUserObj = (user) => {
   const userObj = {};
-  userObj["uid"] = user.uid;
+  userObj["uid"] = user._id;
   userObj["displayName"] = user.displayName;
   userObj["photoURL"] = user.photoURL;
   userObj["email"] = user.email;
@@ -28,4 +28,11 @@ export const createConnectionObj = (connectionData) => {
   connectionObj["timeStampRide"] = connectionData.rideInfo.timeStampRide;
 
   return connectionObj;
+};
+
+export const getConnectedCount = (res) => {
+  if (!res || !res.connectedConnections) {
+    return 0;
+  }
+  return res.connectedConnections ? res.connectedConnections.length : 0;
 };

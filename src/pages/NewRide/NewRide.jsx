@@ -15,21 +15,21 @@ import ButtonContainer from "./components/ButtonContainer";
 import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
 import { toastStrings } from "strings/toastStrings";
+import { createNewRideBackend } from "dbNew/dbWrites";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
 const NewRide = () => {
+  console.log("NEW RIDE PAGE");
   const location = useLocation();
   const rideType = location.state.rideType;
   const { user } = UserAuth();
-  const userId = user.uid;
+  const userId = user._id;
 
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [dateValue, setDateValue] = useState(getTodaysDate());
   const [timeValue, setTimeValue] = useState(getTimeNow());
   const [locationValue, setLocationValue] = useState(null);
-
-  const rideId = uuidv4();
 
   const navigate = useNavigate();
 
@@ -46,8 +46,7 @@ const NewRide = () => {
 
       const distance = getTripDistance(minRouteObject);
 
-      createNewRideDb(
-        rideId,
+      const rideId = await createNewRideBackend(
         rideType,
         userId,
         dateValue,

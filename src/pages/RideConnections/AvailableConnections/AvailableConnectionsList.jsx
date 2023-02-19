@@ -1,39 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getPreFilteredRides } from "helpers/getPreFilteredRidesNew";
 import { getFilteredRidesTime } from "helpers/getFilteredRidesTime";
-import ConnectionTile from "../components/ConnectionTile";
+import AvailableConnectionTile from "../components/AvailableConnectionTile";
 import DateTimeElement from "components/DateTimeElement";
 import EmptyItem from "components/UI/EmptyItem";
 import { emptyStrings } from "strings/emptyStrings";
 
 const AvailableConnectionsList = (props) => {
-  const { myRide, allRides, alreadyConnected } = props;
-  const [availableConnections, setAvailableConnections] = useState([]);
+  const { myRide, availableConnections } = props;
 
-  const preFilteredRides = getPreFilteredRides(
-    myRide,
-    allRides,
-    alreadyConnected
-  );
-
-  useEffect(() => {
-    async function fetchMatches() {
-      try {
-        const filteredRides = await getFilteredRidesTime(
-          allRides,
-          preFilteredRides,
-          myRide
-        );
-        setAvailableConnections(filteredRides);
-        localStorage.setItem("availableCount", filteredRides.length);
-      } catch (e) {
-        console.error("The error is", e);
-      }
-    }
-    fetchMatches();
-  }, [allRides]);
-
-  if (!myRide || !allRides) {
+  if (!myRide || !availableConnections) {
     return null;
   }
 
@@ -51,13 +27,13 @@ const AvailableConnectionsList = (props) => {
       />
       <div>
         {availableConnections
-          ? availableConnections.map((rideObj) => (
-              <ConnectionTile
-                key={rideObj[0]}
-                matchDetails={allRides[rideObj[0]]}
-                timeDiff={rideObj[1]}
-                distDiff={rideObj[2]}
-                userRide={myRide}
+          ? availableConnections.map((rideArr) => (
+              <AvailableConnectionTile
+                key={rideArr[0]._id}
+                rideDetails={rideArr[0]}
+                myRide={myRide}
+                timeDiff={rideArr[1]}
+                distDiff={rideArr[2]}
               />
             ))
           : null}

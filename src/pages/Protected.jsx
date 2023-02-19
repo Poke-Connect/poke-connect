@@ -1,14 +1,12 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { UserAuth } from "context/AuthProvider";
+import { isAuth } from "helpers/helpersAuth";
 
 const Protected = ({ children }) => {
-  const { user } = UserAuth();
-  const isLoggedIn = user && user.accessToken ? true : false;
-
-  if (!isLoggedIn) {
+  if (!isAuth()) {
     return <Navigate to="/signin" />;
   }
+
   return <>{children}</>;
 };
 export default Protected;

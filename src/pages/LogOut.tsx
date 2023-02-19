@@ -1,18 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "context/AuthProvider";
+import { signout } from "helpers/helpersAuth";
 
 const LogOut = () => {
   const navigate = useNavigate();
-  const { user, logOut } = UserAuth();
+  const { user } = UserAuth();
 
   const onLogOutPressHandler = async () => {
-    if (!user || !user.uid) {
+    if (!user) {
       navigate(`/signin`);
       return;
     }
     try {
-      await logOut();
+      signout();
       navigate(`/signin`);
     } catch (error) {
       console.log(error);

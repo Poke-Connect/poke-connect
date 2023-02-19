@@ -2,14 +2,10 @@ import { createContext } from "react";
 import { User } from "firebase/auth";
 
 export interface AuthContextInterface {
-  googleSignIn: () => void;
-  logOut: () => void;
-  user: User | null;
+  user: any | null;
 }
 
 export const authContextDefaults: AuthContextInterface = {
-  googleSignIn: () => null,
-  logOut: () => null,
   user: null,
 };
 

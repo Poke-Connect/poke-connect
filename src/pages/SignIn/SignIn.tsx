@@ -6,6 +6,7 @@ import Loading from "pages/Loading";
 import LinkText from "components/UI/LinkText";
 import SignInButton from "./components/SignInButton";
 import { errorLogger, signInLogger } from "firebaseUtils/firebaseLogger";
+import GoogleLoginButton from "components/GoogleLoginButton";
 
 const ABOUT_US_MIN =
   "Poke helps you connect with probable co-passengers and share a cab.";
@@ -14,20 +15,20 @@ const POWER_POKE =
   "Poke is powered by people like you. Please give us feedback to help us build a better experience for you and share with your friends to increase your chances of connection.";
 
 const SignIn = () => {
-  const { googleSignIn, user } = UserAuth();
+  const { user } = UserAuth();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
-  const handleGoogleSignIn = async () => {
-    try {
-      setLoading(true);
-      await googleSignIn();
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      errorLogger(null, `handleGoogleSignIn error: ${error}`);
-    }
-  };
+  // const handleGoogleSignIn = async () => {
+  //   try {
+  //     setLoading(true);
+  //     await googleSignIn();
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //     errorLogger(null, `handleGoogleSignIn error: ${error}`);
+  //   }
+  // };
 
   const handleAboutUs = () => {
     navigate("/about");
@@ -40,9 +41,9 @@ const SignIn = () => {
     }
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   return (
     <div className="flex flex-col text-left h-full overflow-y-scroll pb-20">
@@ -56,7 +57,8 @@ const SignIn = () => {
         <h3 className="font-medium pt-2 text-xl pl-1 py-5">
           Meet new co-passengers
         </h3>
-        <SignInButton handleGoogleSignIn={handleGoogleSignIn} />
+        <GoogleLoginButton />
+        {/* <SignInButton handleGoogleSignIn={handleGoogleSignIn} /> */}
       </div>
       <div className="pb-5">
         <div className="px-10">

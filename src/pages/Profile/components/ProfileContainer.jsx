@@ -4,9 +4,10 @@ import SecondaryProfileInfo from "./SecondaryProfileInfo";
 import { getSecondaryInfo } from "../helper";
 import { useNavigate } from "react-router-dom";
 import Loading from "pages/Loading";
+import { signout } from "helpers/helpersAuth";
 
 const ProfileContainer = (props) => {
-  const { profileData, logOut } = props;
+  const { profileData } = props;
 
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +22,7 @@ const ProfileContainer = (props) => {
   const onLogOutPressHandler = async () => {
     setLoading(true);
     try {
-      await logOut();
+      signout();
       navigate(`/signin`);
     } catch (error) {
       console.log(error);

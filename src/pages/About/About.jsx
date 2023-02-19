@@ -7,10 +7,11 @@ import { UserAuth } from "context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import LinkText from "components/UI/LinkText";
 import HowWeWork from "./components/HowWeWork";
+import { isAuth } from "helpers/helpersAuth";
 
 const About = () => {
-  const { user } = UserAuth();
-  const isLoggedIn = user && user.accessToken ? true : false;
+  // const { user } = UserAuth();
+  const isLoggedIn = !!isAuth();
 
   const navigate = useNavigate();
 

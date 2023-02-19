@@ -8,6 +8,7 @@ import {
   equalTo,
 } from "firebase/database";
 import AvailableConnectionsList from "./AvailableConnectionsList";
+import { getOthersRidesByDate } from "api/ride";
 
 const ShowConnectionsHandler = (props) => {
   const { myRide, alreadyConnected } = props;
@@ -21,12 +22,21 @@ const ShowConnectionsHandler = (props) => {
     equalTo(myRide.date)
   );
 
-  useEffect(() => {
-    onValue(allRidesRef, (snapshot) => {
-      const data = snapshot.val();
-      setAllRides(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   onValue(allRidesRef, (snapshot) => {
+  //     const data = snapshot.val();
+  //     setAllRides(data);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log("running other use effect");
+  //   const fetchOtherRides = async () => {
+  //     const otherRides = await getOthersRidesByDate();
+  //     console.log("Other rides = ", otherRides);
+  //   };
+  //   fetchOtherRides();
+  // }, []);
 
   if (!myRide) {
     return null;

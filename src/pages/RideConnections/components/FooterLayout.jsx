@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import FooterButton from "./FooterButton";
 
 const FooterLayout = (props) => {
-  const { rideId, connectedCount } = props;
-  const availableCount = localStorage.getItem("availableCount");
-  const [availCount, setAvailCount] = useState(availableCount);
+  const { rideId, availableCount, connectedCount } = props;
+  // console.log("available count", availableCount);
+  // console.log("connectedCount count", connectedCount);
 
-  useEffect(() => {
-    setAvailCount(availableCount);
-  }, [availableCount]);
 
   return (
     <div className="flex flex-row  mt-auto h-12  w-screen ">
       <FooterButton
         text={"Available"}
         toRoute={`/rideconnections/${rideId}/available`}
-        count={availCount}
+        count={availableCount}
       />
       <FooterButton
         text={"Connected"}
