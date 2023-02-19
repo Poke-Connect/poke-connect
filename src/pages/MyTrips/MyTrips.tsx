@@ -1,26 +1,24 @@
 import React, { useState, useEffect, FC } from "react";
-import { getDatabase, onValue, ref } from "firebase/database";
 import { UserAuth } from "context/AuthProvider";
 import ShowTrips from "./components/ShowTrips";
 import Heading from "components/UI/Heading";
 import EmptyItem from "components/UI/EmptyItem";
 import { emptyStrings } from "strings/emptyStrings";
+import { getUserRides } from "api/ride";
 
 const MyTrips: FC = () => {
   const { user } = UserAuth();
 
-  const [myTrips, setMyTrips] = useState([]);
-
-  const db = getDatabase();
-
-  const myTripsRef = ref(db, `userRides/${user?.uid}`);
+  const [myTrips, setMyTrips] = useState<any>([]);
 
   useEffect(() => {
-    onValue(myTripsRef, (snapshot) => {
-      const data = snapshot.val();
-      setMyTrips(data);
-    });
-  }, []);
+    const fetchUserRides = async () => {
+      const rides = await getUserRides(user._id);
+      setMyTrips(rides);
+    };
+
+    user._id && fetchUserRides();
+  }, [user._id]);
 
   return (
     <div className="pl-6 pr-7 w-screen ">

@@ -15,8 +15,8 @@ export const AuthContextProvider: FC<IProps> = ({ children }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await getUser(parsedUser._id);
-      setNewUser(res?.data);
+      const userData = await getUser(parsedUser._id);
+      setNewUser(userData);
     };
     if (parsedUser?._id) {
       fetchUser();

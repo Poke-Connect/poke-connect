@@ -1,6 +1,16 @@
 # MAIN:
-    1. add count in available and connected connections
-    2. manage strings and number like 2 hrs from central place
+    new
+    1. Clean up all comments and unwanted imports
+    2. remove unwanted files
+    3. Read about next js
+    4. make data fetching syncrounous
+
+
+
+
+
+
+    - manage strings and number like 2 hrs from central place
 
     ## DESIGN ELEMENTS:
     1. Poke Logo

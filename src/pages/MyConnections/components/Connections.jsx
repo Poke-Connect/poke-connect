@@ -6,22 +6,14 @@ import ConnectionElement from "./ConnectionElement";
 const Connections = (props) => {
   const { myConnections } = props;
 
-  if (!myConnections || Object.keys(myConnections).length === 0) {
+  if (!myConnections || myConnections.length === 0) {
     return <EmptyItem text={emptyStrings.MY_CONNECTIONS} />;
   }
 
-  const sortedConnections = Object.entries(myConnections)?.sort(
-    (a, b) => b[1].date - a[1].date
-  );
-
   return (
     <div>
-      {sortedConnections.map((connection) => (
-        <ConnectionElement
-          key={connection[0]}
-          connectionId={connection[0]}
-          connectionData={connection[1]}
-        />
+      {myConnections.map((connection) => (
+        <ConnectionElement key={connection._id} connection={connection} />
       ))}
     </div>
   );

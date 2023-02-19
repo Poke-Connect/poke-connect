@@ -1,4 +1,4 @@
-import { getRequest, postRequest } from "../axiosConfig";
+import { getRequest, patchRequest, postRequest } from "../axiosConfig";
 
 const rideBase = "/ride";
 const rideConnectionBase = "/rideConnection";
@@ -62,4 +62,27 @@ export const postRideConnection = async (id: string, connectionData) => {
   } else {
     return null;
   }
+};
+
+export const getUserRides = async (userId: string) => {
+  const url = `${rideBase}/user`;
+  const res = await getRequest(url, {
+    user: userId,
+  });
+  if (res?.status === 200) {
+    return res?.data;
+  } else {
+    return {};
+  }
+};
+
+export const toggleRideDiscoverability = async (
+  rideId: string,
+  discoverability: boolean
+) => {
+  const url = `${rideBase}/${rideId}/discoverability`;
+  const res = await patchRequest(url, { discoverability });
+  console.log("updated ride", res?.data);
+
+  return res?.data;
 };

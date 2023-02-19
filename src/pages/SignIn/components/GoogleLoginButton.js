@@ -1,9 +1,9 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
-import { postRequest } from "../axiosConfig";
 // import { BASE_URL } from "../constants";
 import { useNavigate } from "react-router-dom";
-import { authenticate, isAuth } from "../helpers/helpersAuth";
+import { postRequest } from "axiosConfig";
+import { authenticate, isAuth } from "helpers/helpersAuth";
 
 const BASE_URL = "http://localhost:5900";
 

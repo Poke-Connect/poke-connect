@@ -57,6 +57,7 @@ const Header = () => {
           toggleSideBar={toggleSideBar}
           logOut={onSignOutHandler}
           displayName={user?.displayName}
+          selfId={user?._id}
         />
       </div>
     </div>

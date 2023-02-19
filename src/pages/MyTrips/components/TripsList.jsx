@@ -20,14 +20,14 @@ const TripsList = (props) => {
       {isEmpty && <EmptyItem text={emptyText} />}
 
       <div className="mt-2">
-        {tripsList.map((rideId) => (
+        {tripsList.map((trip) => (
           <TripElement
-            key={rideId}
-            rideId={rideId}
+            key={trip._id}
+            rideData={trip}
             onClickHandler={
               upcoming
                 ? () => {
-                    navigate(`/rideconnections/${rideId}/connected`);
+                    navigate(`/rideconnections/${trip._id}/connected`);
                   }
                 : null
             }

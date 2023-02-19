@@ -99,27 +99,20 @@ const AppRouter = () => {
             }
           />
         </Route>
+
         <Route
-          path="profile"
-          element={
-            <Protected>
-              <Profile />
-            </Protected>
-          }
-        />
-        <Route
-          path="profile/edit"
-          element={
-            <Protected>
-              <EditProfile />
-            </Protected>
-          }
-        />
-        <Route
-          path="user/:uid"
+          path="user/:userId"
           element={
             <Protected>
               <UserProfile />
+            </Protected>
+          }
+        />
+        <Route
+          path="user/:userId/edit"
+          element={
+            <Protected>
+              <EditProfile />
             </Protected>
           }
         />

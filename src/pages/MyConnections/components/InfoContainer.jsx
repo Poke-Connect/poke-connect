@@ -1,8 +1,9 @@
 import React from "react";
 import { createLocationString, capitaliseName } from "helpers/utils";
+import { createDateStringTrip } from "helpers/dateHelper";
 
 const InfoContainer = (props) => {
-  const { onClickHandler, displayName, location, rideDate } = props;
+  const { onClickHandler, displayName, date, lastMessage } = props;
   return (
     <div
       id="infoContainer"
@@ -17,12 +18,12 @@ const InfoContainer = (props) => {
         </div>
         <div className="text-sm font-light text-typeText flex justify-start ">
           <p className="text-ellipsis overflow-hidden line-clamp-1">
-            {createLocationString(location)}
+            {lastMessage.text}
           </p>
         </div>
       </div>
       <div className=" flex flex-row justify-end text-sm text-typeText font-normal px-1 ">
-        {rideDate}
+        {createDateStringTrip(date)}
       </div>
     </div>
   );

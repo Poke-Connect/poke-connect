@@ -6,14 +6,13 @@ import ImageContainer from "components/UI/ImageContainer";
 import { capitaliseName } from "helpers/utils";
 
 const PrimaryProfileInfo = (props) => {
-  const { displayName, email, photoURL } = props;
+  const { displayName, email, photoURL, userId } = props;
 
   const navigate = useNavigate();
 
   const onEditPressHandler = () => {
-    navigate("/profile/edit");
+    navigate(`/user/${userId}/edit`);
   };
-
   return (
     <div className="profile-into flex flex-row items-center p-2 md:p-7 pb-0">
       <ImageContainer alt={displayName[0]} photoURL={photoURL} dimension={10} />

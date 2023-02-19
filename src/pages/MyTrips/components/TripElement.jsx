@@ -1,29 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { getDatabase, onValue, ref, update } from "firebase/database";
+import React from "react";
 import DateTimeElement from "components/DateTimeElement";
 import AddressElement from "./AddressElement";
 import ToggleElement from "./ToggleElement";
 import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
 import { toastStrings } from "strings/toastStrings";
+import { toggleRideDiscoverability } from "api/ride";
 
 const TripElement = (props) => {
-  const { rideId, onClickHandler, upcoming } = props;
+  const { rideData, onClickHandler, upcoming } = props;
 
-  const [rideData, setRideData] = useState(null);
-
-  const db = getDatabase();
-
-  const myTripRef = ref(db, `rides/${rideId}`);
-
-  useEffect(() => {
-    onValue(myTripRef, (snapshot) => {
-      const data = snapshot.val();
-      setRideData(data);
-    });
-  }, []);
-
-  const handleToggleChange = () => {
+  const handleToggleChange = async () => {
     if (!rideData) {
       return;
     }
@@ -33,9 +20,7 @@ const TripElement = (props) => {
       } else {
         toast.success(toastStrings.DISCOVERABILITY_SUCCESS_ON);
       }
-      update(myTripRef, {
-        discoverability: !rideData.discoverability,
-      });
+      await toggleRideDiscoverability(rideData._id, !rideData.discoverability);
     } catch (e) {
       toast.error(toastStrings.ERROR);
     }

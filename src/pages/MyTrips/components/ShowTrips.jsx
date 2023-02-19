@@ -8,6 +8,7 @@ const ShowTrips = (props) => {
     return null;
   }
   const filteredTrips = getfilteredTrips(myTrips);
+  console.log("myTrips", filteredTrips);
 
   return (
     <div>

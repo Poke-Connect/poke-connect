@@ -6,28 +6,28 @@ import { createDateStringTrip } from "helpers/dateHelper";
 import InfoContainer from "./InfoContainer";
 
 const ConnectionElement = (props) => {
-  const { connectionId, connectionData } = props;
-  const { displayName = "", photoURL = "", uid } = connectionData.userInfo;
-  const { location = "" } = connectionData.rideInfo;
+  const { connection } = props;
+  const { updatedAt, userInfo, lastMessage } = connection;
+  const { displayName = "", photoURL = "", _id: userId = "" } = userInfo;
 
   const navigate = useNavigate();
 
-  const { dispatch } = UserChat();
+  // const { dispatch } = UserChat();
 
   const onClickHandler = () => {
-    dispatch({
-      type: "CHANGE_USER_CHAT",
-      payload: { user: connectionData.userInfo, chatId: connectionId },
-    });
-    navigate(`/chat/${connectionId}`);
+    // dispatch({
+    //   type: "CHANGE_USER_CHAT",
+    //   payload: { user: connectionData.userInfo, chatId: connectionId },
+    // });
+    // navigate(`/chat/${connectionId}`);
   };
 
-  const rideDate = connectionData.rideInfo.date
-    ? createDateStringTrip(connectionData.rideInfo.date)
-    : "No Date";
+  // const rideDate = connectionData.rideInfo.date
+  //   ? createDateStringTrip(connectionData.rideInfo.date)
+  //   : "No Date";
 
   const onPhotoClickHandler = () => {
-    uid && navigate(`/user/${uid}`);
+    userId && navigate(`/user/${userId}`);
   };
 
   return (
@@ -41,8 +41,8 @@ const ConnectionElement = (props) => {
         <InfoContainer
           onClickHandler={onClickHandler}
           displayName={displayName}
-          location={location}
-          rideDate={rideDate}
+          date={updatedAt}
+          lastMessage={lastMessage}
         />
       </div>
     </div>

@@ -6,7 +6,7 @@ import Loading from "pages/Loading";
 import LinkText from "components/UI/LinkText";
 import SignInButton from "./components/SignInButton";
 import { errorLogger, signInLogger } from "firebaseUtils/firebaseLogger";
-import GoogleLoginButton from "components/GoogleLoginButton";
+import GoogleLoginButton from "./components/GoogleLoginButton";
 
 const ABOUT_US_MIN =
   "Poke helps you connect with probable co-passengers and share a cab.";
@@ -17,18 +17,6 @@ const POWER_POKE =
 const SignIn = () => {
   const { user } = UserAuth();
   const navigate = useNavigate();
-  // const [loading, setLoading] = useState(false);
-
-  // const handleGoogleSignIn = async () => {
-  //   try {
-  //     setLoading(true);
-  //     await googleSignIn();
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //     errorLogger(null, `handleGoogleSignIn error: ${error}`);
-  //   }
-  // };
 
   const handleAboutUs = () => {
     navigate("/about");

@@ -46,13 +46,12 @@ export const createRideConnectionData = (
     },
     matchInfo: matchInfo,
   };
-  console.log("connection object test", connectionObject);
   return connectionObject;
 };
 
-export const createNewConnectionData = (user1: any, user2: any) => {
+export const createNewConnectionData = (user1Id: string, user2Id: string) => {
   const connectionObject = {
-    members: [user1, user2],
+    members: [user1Id, user2Id],
   };
   return connectionObject;
 };

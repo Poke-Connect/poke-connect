@@ -4,7 +4,7 @@ import { getFirstName } from "helpers/utils";
 import { useNavigate } from "react-router-dom";
 
 const RightSideNav = (props) => {
-  const { showSidebar, toggleSideBar, logOut, displayName } = props;
+  const { showSidebar, toggleSideBar, logOut, displayName, selfId } = props;
   const navigate = useNavigate();
 
   const onLogOutPressHandler = async () => {
@@ -38,7 +38,7 @@ const RightSideNav = (props) => {
     },
     {
       title: "My Profile",
-      toRoute: "/profile",
+      toRoute: `/user/${selfId}`,
       onClickHandler: toggleSideBar,
       styles: "",
     },

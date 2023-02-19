@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { UserAuth } from "context/AuthProvider";
 import { useParams } from "react-router-dom";
-import { getDatabase, onValue, ref } from "firebase/database";
 import UserProfileContainer from "./components/UserProfileContainer";
+import { getUser } from "api/user";
 
 const UserProfile = () => {
+  const { user } = UserAuth();
   const params = useParams();
-  const { uid } = params;
+  const { userId } = params;
 
   const [profileData, setProfileData] = useState(null);
 
-  const db = getDatabase();
-
-  const userRef = ref(db, `users/${uid}`);
-
   useEffect(() => {
-    onValue(userRef, (snapshot) => {
-      const data = snapshot.val();
-      setProfileData(data);
-    });
-  }, []);
+    const fetchProfile = async () => {
+      const profile = await getUser(userId);
+      setProfileData(profile);
+    };
 
-  return profileData && <UserProfileContainer profileData={profileData} />;
+    userId && fetchProfile();
+  }, [userId]);
+
+  return (
+    profileData && (
+      <UserProfileContainer profileData={profileData} selfId={user._id} />
+    )
+  );
 };
 
 export default UserProfile;

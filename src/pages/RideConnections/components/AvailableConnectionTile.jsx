@@ -10,7 +10,7 @@ import { createMatchId } from "helpers/createMatchId";
 import { UserChat } from "context/ChatContext";
 import { toast } from "react-toastify";
 import { toastStrings } from "strings/toastStrings";
-import { createRideConnection } from "dbNew/dbWrites";
+import { createRideConnection, createNewConnection } from "dbNew/dbWrites";
 
 const AvailableConnectionTile = (props) => {
   const { rideDetails: otherRide, myRide, timeDiff, distDiff } = props;
@@ -48,8 +48,8 @@ const AvailableConnectionTile = (props) => {
         closeButton: true,
       });
       //TODO: Later, we would also need to save connected ride info
-      const conversationId = await createRideConnection(user, otherUser);
-      // navigate(`/chat/${conversationId}`);
+      const connectionId = await createNewConnection(user, otherUser);
+      // navigate(`/chat/${connectionId}`);
     } catch (error) {
       toast.error(toastStrings.ERROR);
       console.log("Connection Failed", error);

@@ -35,10 +35,30 @@ export const postRequest = async (url, data) => {
     const res = await instance.post(url, data, {
       headers: headerConfig,
     });
-    console.log("Data added successfully", res);
-
     return res;
   } catch (e) {
     console.log("Data addition failed: ", e);
+  }
+};
+
+export const putRequest = async (url, data) => {
+  try {
+    const res = await instance.put(url, data, {
+      headers: headerConfig,
+    });
+    return res;
+  } catch (e) {
+    console.log("Data update failed: ", e);
+  }
+};
+
+export const patchRequest = async (url, data) => {
+  try {
+    const res = await instance.patch(url, data, {
+      headers: headerConfig,
+    });
+    return res;
+  } catch (e) {
+    console.log("Data update failed: ", e);
   }
 };

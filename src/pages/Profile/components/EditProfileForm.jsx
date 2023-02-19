@@ -3,12 +3,12 @@ import { getSecondaryInfo } from "../helper";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { updateUserObj } from "db/updateUserObject";
 import EditInput from "./EditInput";
 import ButtonContainer from "./ButtonContainer";
 import PicEmailContainer from "./PicEmailContainer";
 import { toast } from "react-toastify";
 import { toastStrings } from "strings/toastStrings";
+import { updateProfile } from "dbNew/dbUpdate";
 
 const EditProfileForm = (props) => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const EditProfileForm = (props) => {
     lastName = "",
     email = "",
     photoURL = "",
-    uid = "",
+    _id: userId = "",
   } = profileData;
 
   const secondaryInfo = getSecondaryInfo(profileData);
@@ -47,11 +47,11 @@ const EditProfileForm = (props) => {
     }),
     onSubmit: (values) => {
       try {
-        updateUserObj(values, uid, email, photoURL);
+        updateProfile(values, userId, email, photoURL);
         setIsEditing(false);
         formik.resetForm();
         toast.success(toastStrings.EDIT_PROFILE_SUCCESS);
-        isNew ? navigate("/home") : navigate("/profile");
+        isNew ? navigate("/home") : navigate(`/user/${userId}`);
       } catch (e) {
         toast.error(toastStrings.ERROR);
       }
@@ -65,7 +65,7 @@ const EditProfileForm = (props) => {
   const cancelChangesHandler = () => {
     formik.resetForm();
     setIsEditing(false);
-    navigate("/profile");
+    navigate(`/user/${userId}`);
   };
 
   const skipChangesHandler = () => {

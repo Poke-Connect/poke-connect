@@ -53,7 +53,8 @@ export const createRideConnection = async (
 };
 
 export const createNewConnection = async (user1, user2) => {
-  const connectionData = createNewConnectionData(user1, user2);
-  const connectionId = await postConnection(connectionData);
+  const connectionData = createNewConnectionData(user1._id, user2._id);
+  const { connectionId = null } = await postConnection(connectionData);
+
   return connectionId;
 };
