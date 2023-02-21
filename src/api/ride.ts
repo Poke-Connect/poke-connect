@@ -1,4 +1,4 @@
-import { getRequest, patchRequest, postRequest } from "../axiosConfig";
+import { getRequest, patchRequest, postRequest } from "config/axiosConfig";
 
 const rideBase = "/ride";
 const rideConnectionBase = "/rideConnection";

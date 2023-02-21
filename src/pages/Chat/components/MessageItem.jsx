@@ -9,7 +9,9 @@ const MessageItem = ({ message }) => {
   const { user } = UserAuth();
 
   const bgColor =
-    user.uid === senderId ? "bg-primary-lighter ml-auto" : "bg-lightGray mr-auto";
+    user._id === senderId
+      ? "bg-primary-lighter ml-auto"
+      : "bg-lightGray mr-auto";
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });

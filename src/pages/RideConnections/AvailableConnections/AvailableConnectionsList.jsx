@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { getPreFilteredRides } from "helpers/getPreFilteredRidesNew";
-import { getFilteredRidesTime } from "helpers/getFilteredRidesTime";
-import AvailableConnectionTile from "../components/AvailableConnectionTile";
+import React from "react";
 import DateTimeElement from "components/DateTimeElement";
 import EmptyItem from "components/UI/EmptyItem";
 import { emptyStrings } from "strings/emptyStrings";
+import AvailableConnectionTile from "../components/AvailableConnectionTile";
 
 const AvailableConnectionsList = (props) => {
   const { myRide, availableConnections } = props;

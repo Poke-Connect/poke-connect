@@ -10,16 +10,19 @@ const ConnectedConnectionsList = (props) => {
   const navigate = useNavigate();
 
   const onClickHandler = (data) => {
-    // const userObj = createUserObj(data);
-    // try {
-    //   dispatch({
-    //     type: "CHANGE_USER_CHAT",
-    //     payload: { user: userObj, chatId: data.id },
-    //   });
-    //   navigate(`/chat/${data.id}`);
-    // } catch (error) {
-    //   console.log("Connection Failed", error);
-    // }
+    if (!data.connectionId) {
+      return;
+    }
+    const userObj = createUserObj(data?.user);
+    try {
+      dispatch({
+        type: "CHANGE_USER_CHAT",
+        payload: { user: userObj, chatId: data.connectionId },
+      });
+      navigate(`/chat/${data.connectionId}`);
+    } catch (error) {
+      console.log("Connection Failed", error);
+    }
   };
 
   return (

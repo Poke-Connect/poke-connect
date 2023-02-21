@@ -1,4 +1,4 @@
-import { getRequest, putRequest } from "../axiosConfig";
+import { getRequest, putRequest } from "config/axiosConfig";
 
 const userBase = "/user";
 

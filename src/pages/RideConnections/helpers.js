@@ -1,6 +1,6 @@
 export const createUserObj = (user) => {
   const userObj = {};
-  userObj["uid"] = user._id;
+  userObj["userId"] = user._id;
   userObj["displayName"] = user.displayName;
   userObj["photoURL"] = user.photoURL;
   userObj["email"] = user.email;

@@ -1,15 +1,11 @@
-import { getRequest, postRequest } from "../axiosConfig";
+import { getRequest, patchRequest, postRequest } from "config/axiosConfig";
 
 const connectionBase = "/connection";
 
 export const postConnection = async (connectionData: any) => {
   const url = `${connectionBase}`;
   const res = await postRequest(url, connectionData);
-  if (res?.status === 201) {
-    return res?.data;
-  } else {
-    return null;
-  }
+  return res?.data;
 };
 
 export const getUserConnections = async (userId: string) => {
@@ -31,4 +27,17 @@ export const getConnection = async (connectionData: any) => {
   } else {
     return null;
   }
+};
+
+export const updateConnection = async (
+  connectionId: string,
+  lastMessageData: any,
+  updatedAt: any
+) => {
+  const url = `${connectionBase}/${connectionId}`;
+  const res = await patchRequest(url, {
+    lastMessage: lastMessageData,
+    updatedAt: updatedAt,
+  });
+  return res?.data;
 };

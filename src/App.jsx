@@ -7,6 +7,7 @@ import { ChatContextProvider } from "context/ChatContext";
 import Loading from "./pages/Loading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SocketProvider } from "context/SocketContext";
 
 const App = () => {
   const [libraries] = useState(["places"]);
@@ -22,13 +23,15 @@ const App = () => {
   return (
     <AuthContextProvider>
       <ChatContextProvider>
-        <AppRouter />
-        <ToastContainer
-          position="bottom-center"
-          autoClose={2000}
-          hideProgressBar={true}
-          theme="light"
-        />
+        <SocketProvider>
+          <AppRouter />
+          <ToastContainer
+            position="bottom-center"
+            autoClose={2000}
+            hideProgressBar={true}
+            theme="light"
+          />
+        </SocketProvider>
       </ChatContextProvider>
     </AuthContextProvider>
   );

@@ -1,18 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import AboutUs from "./components/AboutUs";
 import Donate from "./components/Donate";
 import ReachUs from "./components/ReachUs";
 import AboutHeader from "./components/AboutHeader";
-import { UserAuth } from "context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import LinkText from "components/UI/LinkText";
 import HowWeWork from "./components/HowWeWork";
 import { isAuth } from "helpers/helpersAuth";
 
-const About = () => {
-  // const { user } = UserAuth();
+const About: FC = () => {
   const isLoggedIn = !!isAuth();
-
   const navigate = useNavigate();
 
   const onGetStartedHandler = () => {

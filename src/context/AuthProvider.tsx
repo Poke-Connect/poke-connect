@@ -11,12 +11,12 @@ interface IProps {
 export const AuthContextProvider: FC<IProps> = ({ children }) => {
   const user = isAuth() ? isAuth() : null;
   const parsedUser = user ? JSON.parse(user) : null;
-  const [newUser, setNewUser] = useState<any>(null);
+  const [authUser, setAuthUser] = useState<any>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       const userData = await getUser(parsedUser._id);
-      setNewUser(userData);
+      setAuthUser(userData);
     };
     if (parsedUser?._id) {
       fetchUser();
@@ -25,12 +25,12 @@ export const AuthContextProvider: FC<IProps> = ({ children }) => {
     }
   }, []);
 
-  if (!newUser && parsedUser?._id) {
+  if (!authUser && parsedUser?._id) {
     return null;
   }
 
   return (
-    <AuthContext.Provider value={{ user: newUser }}>
+    <AuthContext.Provider value={{ user: authUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -2,29 +2,24 @@ import React from "react";
 import { UserChat } from "context/ChatContext";
 import { useNavigate } from "react-router-dom";
 import PicContainer from "components/PicContainer";
-import { createDateStringTrip } from "helpers/dateHelper";
 import InfoContainer from "./InfoContainer";
 
 const ConnectionElement = (props) => {
   const { connection } = props;
-  const { updatedAt, userInfo, lastMessage } = connection;
+  const { _id: connectionId, updatedAt, userInfo, lastMessage } = connection;
   const { displayName = "", photoURL = "", _id: userId = "" } = userInfo;
 
   const navigate = useNavigate();
 
-  // const { dispatch } = UserChat();
+  const { dispatch } = UserChat();
 
   const onClickHandler = () => {
-    // dispatch({
-    //   type: "CHANGE_USER_CHAT",
-    //   payload: { user: connectionData.userInfo, chatId: connectionId },
-    // });
-    // navigate(`/chat/${connectionId}`);
+    dispatch({
+      type: "CHANGE_USER_CHAT",
+      payload: { user: userInfo, chatId: connectionId },
+    });
+    navigate(`/chat/${connectionId}`);
   };
-
-  // const rideDate = connectionData.rideInfo.date
-  //   ? createDateStringTrip(connectionData.rideInfo.date)
-  //   : "No Date";
 
   const onPhotoClickHandler = () => {
     userId && navigate(`/user/${userId}`);

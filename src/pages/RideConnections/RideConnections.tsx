@@ -56,6 +56,19 @@ const RideConnections: FC = () => {
     fetchConnections();
   }, [rideId]);
 
+  // const changeConnectionType = (connectionId, connectionObj) => {
+  //   setAvailableConnections((prevConnections) => {
+  //     prevConnections.filter(
+  //       (connection) => connection[0]._id !== connectionId
+  //     );
+  //   });
+  //   // setConnectedConnections((prev) => {
+  //   //   [...prev, connectionObj];
+  //   // });
+  //   setAvailableCount((prev) => (prev - 1 >= 0 ? prev - 1 : 0));
+  //   setConnectedCount((prev) => prev + 1);
+  // };
+
   return (
     <div className="flex-col flex justify-between ">
       <Outlet

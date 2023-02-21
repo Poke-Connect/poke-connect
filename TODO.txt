@@ -1,7 +1,7 @@
 # MAIN:
     new
-    1. Clean up all comments and unwanted imports
-    2. remove unwanted files
+    1. Realtime chat socket
+    2. Store Images
     3. Read about next js
     4. make data fetching syncrounous
 

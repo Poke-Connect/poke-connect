@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { UserChat } from "context/ChatContext";
-import { UserAuth } from "context/AuthProvider";
-import { updateMessagesDb, updateDatesUserChats } from "db/firestore/dbWrites";
-import { Timestamp } from "firebase/firestore";
-import { v4 as uuidv4 } from "uuid";
+import { createNewMessage } from "dbNew/dbWrites";
 import SendIcon from "assets/icons/SendIcon";
+import { updateConnectionData } from "dbNew/dbUpdate";
 
-const InputContainer = () => {
+const InputContainer = (props) => {
+  const { connectionId, selfId, socket, otherUserId, messages, setMessages } =
+    props;
+
   const [text, setText] = useState("");
-
-  const { data } = UserChat();
-  const { user } = UserAuth();
 
   const onChangeHandler = (e) => {
     setText(e.target.value);
@@ -20,19 +17,23 @@ const InputContainer = () => {
     if (!text) {
       return;
     }
-    const message = {
-      id: uuidv4(),
+    const messageData = {
       text,
-      senderId: user.uid,
-      date: Timestamp.now(),
+      connectionId,
+      senderId: selfId,
     };
     try {
-      await updateMessagesDb(data.chatId, message);
-      await updateDatesUserChats(user.uid, data.user.uid, data.chatId);
+      const messageId = await createNewMessage(messageData);
+      await updateConnectionData(connectionId, text, selfId);
+      socket.emit(
+        "send-message",
+        { ...messageData, _id: messageId },
+        otherUserId
+      );
+      setMessages([...messages, { ...messageData, _id: messageId }]);
     } catch (e) {
       console.log("error", e);
     }
-
     setText("");
   };
   return (

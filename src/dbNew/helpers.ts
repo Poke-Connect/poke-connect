@@ -30,9 +30,11 @@ export const createMatchData = (
 export const createRideConnectionData = (
   user: any,
   ride: any,
-  matchInfo: any
+  matchInfo: any,
+  connectionId: any
 ) => {
   const connectionObject = {
+    connectionId: connectionId,
     user: {
       userId: user._id,
       displayName: user.displayName,

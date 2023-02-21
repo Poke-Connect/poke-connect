@@ -3,13 +3,11 @@ import { getfilteredTrips } from "../helpers";
 import TripsList from "./TripsList";
 
 const ShowTrips = (props) => {
-  const { myTrips } = props; //myTrips are rideIds
+  const { myTrips } = props;
   if (!myTrips) {
     return null;
   }
   const filteredTrips = getfilteredTrips(myTrips);
-  console.log("myTrips", filteredTrips);
-
   return (
     <div>
       <div>

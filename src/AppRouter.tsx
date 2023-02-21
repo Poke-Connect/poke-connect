@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/About/About";
 import Error from "./pages/Error";
@@ -6,7 +6,6 @@ import Home from "./pages/Home/Home";
 import MyTrips from "./pages/MyTrips/MyTrips";
 import AvailableConnections from "./pages/RideConnections/AvailableConnections/AvailableConnections";
 import MyConnections from "./pages/MyConnections/MyConnections";
-import Profile from "./pages/Profile/Profile";
 import Chat from "./pages/Chat/Chat";
 import UserProfile from "./pages/Profile/UserProfile";
 import NewRide from "./pages/NewRide/NewRide";
@@ -18,7 +17,7 @@ import EditProfile from "./pages/Profile/EditProfile";
 import RideConnections from "pages/RideConnections/RideConnections";
 import AppLayout from "components/Layout/AppLayout";
 
-const AppRouter = () => {
+const AppRouter: FC = () => {
   return (
     <Routes>
       <Route path="/signin" element={<SignIn />} />
@@ -119,15 +118,15 @@ const AppRouter = () => {
         <Route path="logout" element={<LogOut />} />
 
         <Route path="*" element={<Error />} />
+        <Route
+          path="/chat/:chatId"
+          element={
+            <Protected>
+              <Chat />
+            </Protected>
+          }
+        />
       </Route>
-      <Route
-        path="/chat/:chatId"
-        element={
-          <Protected>
-            <Chat />
-          </Protected>
-        }
-      />
     </Routes>
   );
 };

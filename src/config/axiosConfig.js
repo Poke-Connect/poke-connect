@@ -1,12 +1,9 @@
 import axios from "axios";
 import { getToken } from "helpers/helpersAuth";
-
-const BASE_URL = "http://localhost:5900/";
-
-// Make a request for a user with a given ID
+import { SERVER_URL } from "./serverConfig";
 
 const instance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: SERVER_URL,
   withCredentials: true,
 });
 

@@ -1,13 +1,11 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
-// import { BASE_URL } from "../constants";
 import { useNavigate } from "react-router-dom";
-import { postRequest } from "axiosConfig";
+import { postRequest } from "config/axiosConfig";
 import { authenticate, isAuth } from "helpers/helpersAuth";
+import { SERVER_URL } from "config/serverConfig";
 
-const BASE_URL = "http://localhost:5900";
-
-const POST_URL = `${BASE_URL}/auth/google-login`;
+const POST_URL = `${SERVER_URL}/auth/google-login`;
 
 const GoogleLoginButton = () => {
   const navigate = useNavigate();

@@ -1,4 +1,5 @@
 import { postConnection } from "api/connection";
+import { addMessage } from "api/messages";
 import { createRide, postRideConnection } from "api/ride";
 import { createDateString, createTimeStamp } from "helpers/dateHelper";
 import { createNewConnectionData, createRideConnectionData } from "./helpers";
@@ -34,17 +35,28 @@ export const createRideConnection = async (
   ride1,
   ride2,
   extraDist,
-  extraTime
+  extraTime,
+  connectionId
 ) => {
-  const connectionData1 = createRideConnectionData(user1, ride1, {
-    extraDist,
-    extraTime,
-  });
+  const connectionData1 = createRideConnectionData(
+    user1,
+    ride1,
+    {
+      extraDist,
+      extraTime,
+    },
+    connectionId
+  );
 
-  const connectionData2 = createRideConnectionData(user2, ride2, {
-    extraDist,
-    extraTime,
-  });
+  const connectionData2 = createRideConnectionData(
+    user2,
+    ride2,
+    {
+      extraDist,
+      extraTime,
+    },
+    connectionId
+  );
 
   await postRideConnection(ride1._id, connectionData2);
   await postRideConnection(ride2._id, connectionData1);
@@ -57,4 +69,9 @@ export const createNewConnection = async (user1, user2) => {
   const { connectionId = null } = await postConnection(connectionData);
 
   return connectionId;
+};
+
+export const createNewMessage = async (messageData: any) => {
+  const message = await addMessage(messageData);
+  return message._id;
 };

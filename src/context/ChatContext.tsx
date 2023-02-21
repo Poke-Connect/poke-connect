@@ -1,8 +1,28 @@
-import { useContext, createContext, useReducer, useEffect } from "react";
+import React, {
+  useContext,
+  createContext,
+  useReducer,
+  useEffect,
+  FC,
+} from "react";
 
-const ChatContext = createContext(null);
+interface IProps {
+  children?: React.ReactNode;
+}
 
-export const ChatContextProvider = ({ children }) => {
+interface ChatContextInterface {
+  data: any | null;
+  dispatch: any;
+}
+
+const chatContextDefaults: ChatContextInterface = {
+  data: null,
+  dispatch: null,
+};
+
+const ChatContext = createContext<ChatContextInterface>(chatContextDefaults);
+
+export const ChatContextProvider: FC<IProps> = ({ children }) => {
   const INITIAL_STATE = {
     chatId: "null",
     user: {},

@@ -1,6 +1,5 @@
 import React from "react";
 import RideConnectionsLayout from "../RideConnectionsLayout";
-import ShowRideConnections from "./ShowRideConnections";
 import ConnectedConnectionsList from "./ConnectedConnectionsList";
 
 import { useOutletContext } from "react-router-dom";
@@ -14,8 +13,6 @@ const ConnectedConnections = () => {
   if (!connectedConnections || connectedConnections.length === 0) {
     return <EmptyItem text={emptyStrings.CONNECTED_CONNECTIONS} />;
   }
-
-  // console.log("connnected connections final", connectedConnections);
 
   return (
     <RideConnectionsLayout heading={headingStrings.CONNECTED_CONNECTIONS}>

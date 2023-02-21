@@ -1,16 +1,19 @@
-import React from "react";
-import { UserChat } from "context/ChatContext";
+import React, { FC } from "react";
 import ImageContainer from "components/UI/ImageContainer";
 import { useNavigate } from "react-router-dom";
 
-//TODO: Add rideinfo(location,time)
-const ChatInfo = () => {
-  const { data } = UserChat();
-  const { uid, displayName, photoURL } = data.user;
+interface IProps {
+  userId: string;
+  displayName: string;
+  photoURL?: string;
+}
+
+const ChatInfo: FC<IProps> = (props) => {
+  const { userId, displayName, photoURL } = props;
   const navigate = useNavigate();
 
   const onClickHandler = () => {
-    uid && navigate(`/user/${uid}`);
+    userId && navigate(`/user/${userId}`);
   };
 
   return (
@@ -27,11 +30,6 @@ const ChatInfo = () => {
         />
         <div className="chat-details flex flex-col pt-2 pl-2">
           <div className="text-base font-semibold">{displayName}</div>
-          {/* <div className="font-normal text-sm">Bangalore Airport</div>
-          <div className="date-time flex font-light text-sm gap-4">
-            <span className="date">7 Sep</span>{" "}
-            <span className="time"> 13:00</span>{" "}
-          </div> */}
         </div>
       </div>
     </div>
