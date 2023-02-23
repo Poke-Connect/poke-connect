@@ -1,11 +1,12 @@
-import React from "react";
-import TileDetails from "./TileDetails";
 import { UserAuth } from "context/AuthProvider";
-import { useNavigate } from "react-router-dom";
 import { UserChat } from "context/ChatContext";
+import { Socket } from "context/SocketContext";
+import { createNewConnection, createRideConnection } from "dbNew/dbWrites";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { toastStrings } from "strings/toastStrings";
-import { createRideConnection, createNewConnection } from "dbNew/dbWrites";
+import TileDetails from "../components/TileDetails";
 
 const AvailableConnectionTile = (props) => {
   const { rideDetails: otherRide, myRide, timeDiff, distDiff } = props;
@@ -13,6 +14,7 @@ const AvailableConnectionTile = (props) => {
 
   const { user } = UserAuth();
   const { dispatch } = UserChat();
+  const socket = Socket();
 
   const { user: otherUser, location, timeStampRide } = otherRide;
 
@@ -42,6 +44,12 @@ const AvailableConnectionTile = (props) => {
         distDiff,
         timeDiff,
         connectionId
+      );
+
+      socket.emit(
+        "add-connection",
+        { connectionId: connectionId },
+        otherUser._id
       );
 
       toast.update(toastId, {

@@ -1,8 +1,3 @@
-/**
- * RIDES_DB
- * rides/${rideId}
- */
-
 export interface IRide {
   createdAt: Date;
   rideId: string;

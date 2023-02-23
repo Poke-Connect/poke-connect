@@ -1,4 +1,5 @@
 import { postConnection } from "api/connection";
+import { addFeedback } from "api/feedback";
 import { addMessage } from "api/messages";
 import { createRide, postRideConnection } from "api/ride";
 import { createDateString, createTimeStamp } from "helpers/dateHelper";
@@ -74,4 +75,9 @@ export const createNewConnection = async (user1, user2) => {
 export const createNewMessage = async (messageData: any) => {
   const message = await addMessage(messageData);
   return message._id;
+};
+
+export const addFeedbackDb = async (feedback: any) => {
+  const res = await addFeedback(feedback);
+  return res;
 };

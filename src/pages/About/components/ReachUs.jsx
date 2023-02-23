@@ -1,11 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { addFeedbackDb } from "db/firestore/dbWrites";
-import { createRandomId } from "helpers/createRandomId";
 import { toast } from "react-toastify";
-import { Timestamp } from "firebase/firestore";
 import { toastStrings } from "strings/toastStrings";
+import { addFeedbackDb } from "dbNew/dbWrites";
 
 const ReachUs = () => {
   const formik = useFormik({
@@ -22,9 +20,8 @@ const ReachUs = () => {
         .required("*Required"),
     }),
     onSubmit: (values) => {
-      const id = createRandomId();
       try {
-        addFeedbackDb(id, { ...values, createdAt: Timestamp.now() });
+        addFeedbackDb(values);
         toast.success(toastStrings.FEEDBACK_SUCCESS);
       } catch (e) {
         toast.error(toastStrings.ERROR);

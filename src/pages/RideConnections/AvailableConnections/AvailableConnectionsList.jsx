@@ -2,7 +2,7 @@ import React from "react";
 import DateTimeElement from "components/DateTimeElement";
 import EmptyItem from "components/UI/EmptyItem";
 import { emptyStrings } from "strings/emptyStrings";
-import AvailableConnectionTile from "../components/AvailableConnectionTile";
+import AvailableConnectionTile from "./AvailableConnectionTile";
 
 const AvailableConnectionsList = (props) => {
   const { myRide, availableConnections } = props;

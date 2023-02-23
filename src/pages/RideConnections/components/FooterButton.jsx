@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import NumberCircle from "./NumberCircle";
+import NumberCircle from "components/UI/NumberCircle";
 
 const FooterButton = (props) => {
   const { toRoute, text, count = 0 } = props;

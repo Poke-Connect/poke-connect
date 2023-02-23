@@ -6,16 +6,15 @@ import DateTimeContainer from "./components/DateTimeContainer";
 import { getTodaysDate, getTimeNow } from "helpers/dateHelper";
 import { UserAuth } from "context/AuthProvider";
 import PlacesAutocomplete from "./components/PlacesAutoComplete";
-import { v4 as uuidv4 } from "uuid";
 import { getRouteObject, getTripDistance } from "./helpers";
 import InputField from "./components/InputField";
-import { createNewRideDb } from "db/createNewRideDb";
 import Heading from "components/UI/Heading";
 import ButtonContainer from "./components/ButtonContainer";
 import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
 import { toastStrings } from "strings/toastStrings";
 import { createNewRideBackend } from "dbNew/dbWrites";
+import { Socket } from "context/SocketContext";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
@@ -25,6 +24,7 @@ const NewRide = () => {
   const rideType = location.state.rideType;
   const { user } = UserAuth();
   const userId = user._id;
+  const socket = Socket();
 
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [dateValue, setDateValue] = useState(getTodaysDate());
@@ -54,6 +54,11 @@ const NewRide = () => {
         locationValue,
         distance
       );
+      console.log("we are pre-socket", socket);
+      //CREATE A SOCKET EVENT
+      socket.emit("create-ride", { rideId: rideId });
+
+      console.log("we are post-socket");
 
       toast.success(toastStrings.RIDE_CREATION_SUCCESS);
       navigate(`/rideconnections/${rideId}/available`);

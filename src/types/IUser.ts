@@ -1,8 +1,3 @@
-/**
- * USERS_DB
- * users/${uid}
- */
-
 export interface IUser {
   uid: string;
   displayName: string;

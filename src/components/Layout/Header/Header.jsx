@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import ChatIcon from "assets/icons/ChatIcon";
 import { useNavigate } from "react-router-dom";
 import RightSideNav from "../RightSideNav/RightSideNav";
-import IconElement from "./IconElement";
+import ConnectionsIcon from "./ConnectionsIcon";
 import { UserAuth } from "context/AuthProvider";
 import ProfileIcon from "./ProfileIcon";
 import { signout } from "helpers/helpersAuth";
@@ -17,10 +16,6 @@ const Header = () => {
 
   const onHomeClickHandler = () => {
     navigate(`/home`);
-  };
-
-  const onChatClickHandler = () => {
-    navigate(`/connections`);
   };
 
   const onProfieClickHandler = () => {
@@ -43,8 +38,8 @@ const Header = () => {
           POKE
         </span>
       </div>
-      <div className="flex flex-row justify-end items-center right-0 absolute mr-7">
-        <IconElement Icon={ChatIcon} onClickHandler={onChatClickHandler} />
+      <div className="flex flex-row justify-end items-center right-0 absolute mr-7 ">
+        <ConnectionsIcon />
         <ProfileIcon
           photoURL={user?.photoURL}
           displayName={user?.displayName}
