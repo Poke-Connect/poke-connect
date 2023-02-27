@@ -3,9 +3,6 @@ import FooterButton from "./FooterButton";
 
 const FooterLayout = (props) => {
   const { rideId, availableCount, connectedCount } = props;
-  // console.log("available count", availableCount);
-  // console.log("connectedCount count", connectedCount);
-
 
   return (
     <div className="flex flex-row  mt-auto h-12  w-screen ">

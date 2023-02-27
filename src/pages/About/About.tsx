@@ -6,11 +6,12 @@ import AboutHeader from "./components/AboutHeader";
 import { useNavigate } from "react-router-dom";
 import LinkText from "components/UI/LinkText";
 import HowWeWork from "./components/HowWeWork";
-import { isAuth } from "helpers/helpersAuth";
+import { useSelector } from "react-redux";
 
 const About: FC = () => {
-  const isLoggedIn = !!isAuth();
   const navigate = useNavigate();
+  const { user } = useSelector((store: any) => store.auth);
+  const isLoggedIn = !!user;
 
   const onGetStartedHandler = () => {
     navigate(`/signin`);

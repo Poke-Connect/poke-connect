@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { UserAuth } from "context/AuthProvider";
 import EditProfileForm from "./components/EditProfileForm";
 import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getUser } from "api/user";
+import { useSelector } from "react-redux";
 
 const EditProfile = () => {
-  const { user } = UserAuth();
+  const { user } = useSelector((store) => store.auth);
+
   const params = useParams();
   const { userId } = params;
 
@@ -24,7 +25,7 @@ const EditProfile = () => {
   }, [userId]);
 
   if (user._id !== userId) {
-    console.log("returning null");
+    console.log("No user found");
     return null;
   }
 

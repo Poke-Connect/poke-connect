@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { UserAuth } from "context/AuthProvider";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ReachUs from "../About/components/ReachUs";
 import Loading from "pages/Loading";
 import LinkText from "components/UI/LinkText";
-import SignInButton from "./components/SignInButton";
-import { errorLogger, signInLogger } from "firebaseUtils/firebaseLogger";
+import { signInLogger } from "firebaseUtils/firebaseLogger";
 import GoogleLoginButton from "./components/GoogleLoginButton";
+import { useSelector } from "react-redux";
 
 const ABOUT_US_MIN =
   "Poke helps you connect with probable co-passengers and share a cab.";
@@ -15,7 +14,7 @@ const POWER_POKE =
   "Poke is powered by people like you. Please give us feedback to help us build a better experience for you and share with your friends to increase your chances of connection.";
 
 const SignIn = () => {
-  const { user } = UserAuth();
+  const { user, loading } = useSelector((store: any) => store.auth);
   const navigate = useNavigate();
 
   const handleAboutUs = () => {
@@ -23,15 +22,15 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    if (user != null) {
+    if (user !== null) {
       signInLogger(null, "navigating to home screen", null);
       navigate("/home");
     }
   }, []);
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex flex-col text-left h-full overflow-y-scroll pb-20">
@@ -46,7 +45,6 @@ const SignIn = () => {
           Meet new co-passengers
         </h3>
         <GoogleLoginButton />
-        {/* <SignInButton handleGoogleSignIn={handleGoogleSignIn} /> */}
       </div>
       <div className="pb-5">
         <div className="px-10">

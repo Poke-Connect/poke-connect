@@ -1,11 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { UserAuth } from "context/AuthProvider";
-import { signout } from "helpers/helpersAuth";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "features/auth/authSlice";
 
 const LogOut = () => {
   const navigate = useNavigate();
-  const { user } = UserAuth();
+  const { user } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
 
   const onLogOutPressHandler = async () => {
     if (!user) {
@@ -13,7 +14,7 @@ const LogOut = () => {
       return;
     }
     try {
-      signout();
+      dispatch(logout());
       navigate(`/signin`);
     } catch (error) {
       console.log(error);

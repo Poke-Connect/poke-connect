@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RightSideNav from "../RightSideNav/RightSideNav";
 import ConnectionsIcon from "./ConnectionsIcon";
-import { UserAuth } from "context/AuthProvider";
 import ProfileIcon from "./ProfileIcon";
-import { signout } from "helpers/helpersAuth";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "features/auth/authSlice";
+import { googleLogout } from "@react-oauth/google";
 
 const Header = () => {
-  const { user } = UserAuth();
+  const { user } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
 
   const [showSidebar, setShowSidebar] = useState(false);
   const toggleSideBar = () => setShowSidebar(!showSidebar);
@@ -24,7 +26,8 @@ const Header = () => {
 
   const onSignOutHandler = () => {
     toggleSideBar();
-    signout();
+    dispatch(logout());
+    googleLogout();
     navigate("/signin");
   };
 

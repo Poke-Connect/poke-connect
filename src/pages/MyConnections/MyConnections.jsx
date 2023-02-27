@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Connections from "./components/Connections";
-import { UserAuth } from "context/AuthProvider";
 import Heading from "components/UI/Heading";
 import { getUserConnections } from "api/connection";
 import { filterConnections } from "./helper";
+import { useSelector } from "react-redux";
 
 const MyConnections = () => {
-  const { user } = UserAuth();
+  const { user } = useSelector((store) => store.auth);
 
   const [myConnections, setMyConnections] = useState(null);
 

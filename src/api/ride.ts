@@ -82,7 +82,5 @@ export const toggleRideDiscoverability = async (
 ) => {
   const url = `${rideBase}/${rideId}/discoverability`;
   const res = await patchRequest(url, { discoverability });
-  console.log("updated ride", res?.data);
-
   return res?.data;
 };

@@ -4,7 +4,6 @@ import GMapElement from "./components/GMapElement";
 import { useNavigate, useLocation } from "react-router-dom";
 import DateTimeContainer from "./components/DateTimeContainer";
 import { getTodaysDate, getTimeNow } from "helpers/dateHelper";
-import { UserAuth } from "context/AuthProvider";
 import PlacesAutocomplete from "./components/PlacesAutoComplete";
 import { getRouteObject, getTripDistance } from "./helpers";
 import InputField from "./components/InputField";
@@ -15,14 +14,14 @@ import { toast } from "react-toastify";
 import { toastStrings } from "strings/toastStrings";
 import { createNewRideBackend } from "dbNew/dbWrites";
 import { Socket } from "context/SocketContext";
+import { useSelector } from "react-redux";
 
 const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
 
 const NewRide = () => {
-  console.log("NEW RIDE PAGE");
   const location = useLocation();
   const rideType = location.state.rideType;
-  const { user } = UserAuth();
+  const { user } = useSelector((store) => store.auth);
   const userId = user._id;
   const socket = Socket();
 
@@ -54,12 +53,10 @@ const NewRide = () => {
         locationValue,
         distance
       );
-      console.log("we are pre-socket", socket);
       //CREATE A SOCKET EVENT
-      socket.emit("create-ride", { rideId: rideId });
-
-      console.log("we are post-socket");
-
+      if (socket) {
+        socket.emit("create-ride", { rideId: rideId });
+      }
       toast.success(toastStrings.RIDE_CREATION_SUCCESS);
       navigate(`/rideconnections/${rideId}/available`);
     } catch (e) {

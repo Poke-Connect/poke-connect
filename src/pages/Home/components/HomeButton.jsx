@@ -1,10 +1,10 @@
 import React from "react";
 
 const HomeButton = (props) => {
-  const { onClick, name, children } = props;
+  const { onClick = () => {}, name, children } = props;
   return (
     <button
-      className="bg-black inline-flex items-center justify-between text-white border-r-4 border-b-4 border-primary p-4 mb-4 pl-6"
+      className="bg-black inline-flex items-center justify-between text-white p-4 pl-6 mb-4 border-r-4 border-b-4 border-primary rounded-lg shadow-md hover:shadow-lg"
       onClick={onClick}
     >
       {name}

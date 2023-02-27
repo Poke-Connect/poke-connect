@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { createNewMessage } from "dbNew/dbWrites";
 import SendIcon from "assets/icons/SendIcon";
 import { updateConnectionData } from "dbNew/dbUpdate";
+import { Socket } from "context/SocketContext";
 
 const InputContainer = (props) => {
-  const { connectionId, selfId, socket, otherUserId, messages, setMessages } =
-    props;
-
+  const { connectionId, selfId, otherUserId, messages, setMessages } = props;
   const [text, setText] = useState("");
+  const socket = Socket();
 
   const onChangeHandler = (e) => {
     setText(e.target.value);
@@ -23,14 +23,18 @@ const InputContainer = (props) => {
       senderId: selfId,
     };
     try {
-      const messageId = await createNewMessage(messageData);
-      await updateConnectionData(connectionId, text, selfId);
-      socket.emit(
-        "send-message",
-        { ...messageData, _id: messageId },
-        otherUserId
-      );
-      setMessages([...messages, { ...messageData, _id: messageId }]);
+      if (socket) {
+        const messageId = await createNewMessage(messageData);
+        await updateConnectionData(connectionId, text, selfId);
+        socket.emit(
+          "send-message",
+          { ...messageData, _id: messageId },
+          otherUserId
+        );
+        setMessages([...messages, { ...messageData, _id: messageId }]);
+      } else {
+        console.log("error");
+      }
     } catch (e) {
       console.log("error", e);
     }

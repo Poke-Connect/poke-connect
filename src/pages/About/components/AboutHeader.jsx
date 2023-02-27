@@ -10,7 +10,7 @@ const AboutHeader = ({ isLoggedIn }) => {
   }
 
   const onHomeClickHandler = () => {
-    navigate(`/home`);
+    navigate(`/signin`);
   };
 
   return (

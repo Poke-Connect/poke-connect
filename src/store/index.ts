@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rideReducer from "../reducers/ride/rideSlice";
+import authReducer from "../features/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
-    ride: rideReducer,
+    auth: authReducer,
   },
 });

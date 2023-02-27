@@ -10,16 +10,13 @@ const instance = axios.create({
 const headerConfig = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Credentials": true,
-  Authorization: `Bearer ${getToken()}`,
-  // "Access-Control-Allow-Origin": "*",
-  // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
 };
 
 export const getRequest = async (url, params = {}) => {
   try {
     const res = await instance.get(url, {
       params,
-      headers: headerConfig,
+      headers: { ...headerConfig, Authorization: `Bearer ${getToken()}` },
     });
     return res;
   } catch (e) {
@@ -30,7 +27,7 @@ export const getRequest = async (url, params = {}) => {
 export const postRequest = async (url, data) => {
   try {
     const res = await instance.post(url, data, {
-      headers: headerConfig,
+      headers: { ...headerConfig, Authorization: `Bearer ${getToken()}` },
     });
     return res;
   } catch (e) {
@@ -41,7 +38,7 @@ export const postRequest = async (url, data) => {
 export const putRequest = async (url, data) => {
   try {
     const res = await instance.put(url, data, {
-      headers: headerConfig,
+      headers: { ...headerConfig, Authorization: `Bearer ${getToken()}` },
     });
     return res;
   } catch (e) {
@@ -52,7 +49,7 @@ export const putRequest = async (url, data) => {
 export const patchRequest = async (url, data) => {
   try {
     const res = await instance.patch(url, data, {
-      headers: headerConfig,
+      headers: { ...headerConfig, Authorization: `Bearer ${getToken()}` },
     });
     return res;
   } catch (e) {

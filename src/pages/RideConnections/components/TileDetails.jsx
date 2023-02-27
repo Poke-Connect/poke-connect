@@ -12,14 +12,14 @@ const TileDetails = (props) => {
     timeDiff = "",
     distDiff = "",
     timeStampRide = "",
-    uid = "",
+    userId = "",
     onClickHandler,
   } = props;
 
   const navigate = useNavigate();
 
   const onPhotoClickHandler = () => {
-    uid && navigate(`/user/${uid}`);
+    userId && navigate(`/user/${userId}`);
   };
 
   return (

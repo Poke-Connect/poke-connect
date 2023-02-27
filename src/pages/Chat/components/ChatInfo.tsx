@@ -17,10 +17,10 @@ const ChatInfo: FC<IProps> = (props) => {
   };
 
   return (
-    <div className="bg-primary-light px-9 pt-4 pb-3 text-left left-0 right-0 z-5">
+    <div className="bg-primary-light px-9 py-2 jusify-between items-center ">
       <div
         id="userInfoContainer"
-        className="flex flex-row "
+        className="flex flex-row"
         onClick={onClickHandler}
       >
         <ImageContainer
@@ -28,7 +28,7 @@ const ChatInfo: FC<IProps> = (props) => {
           alt={displayName[0]}
           dimension={10}
         />
-        <div className="chat-details flex flex-col pt-2 pl-2">
+        <div className="chat-details pt-2 pl-2">
           <div className="text-base font-semibold">{displayName}</div>
         </div>
       </div>

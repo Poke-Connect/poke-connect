@@ -1,27 +1,34 @@
 # MAIN:
-    - Socket when new connection Added
-    - Socket when new ride Added
-    - discoverability/ ride update socket AND api call value 
-    - Storing profile pics
+    | Logout fix (keeps on re-rendring)
+    | Login fix (after logout--> when login --> shows empty screen)
+    | Refresh the jwt token
+    | app crash on refresh token expiry
+    | Chat not working properly
+    | Socket when new connection Added
+    | Socket when new ride Added
+    | discoverability/ ride update socket AND api call value 
+
     - Count of new connections/messages
-    - Logout fix (keeps on re-rendring)
-    - Login fix (after logout--> when login --> shows empty screen)
-    - 'Connect on Whatsapp' functionality
-    - Make all files typescript
-    - add code checking
-    - Map fix
-    - manage strings and number like 2 hrs from central place
     - All CX copies fix
         - empty components
         - toast messages
-    - No internet scenarios
-    - API error handling
     - UI   
         - Scroll on my rides
         - Scroll on my connections
         - Better the empty MyProfile UI page
         - empty connected connection fix
         - Chat page UI
+
+    - 'Connect on Whatsapp' functionality
+    - Make all files typescript
+    - Map fix
+    - manage strings and number like 2 hrs from central place
+    - multiple people matching
+    
+    - No internet scenarios
+    - API error handling
+    - Storing profile pics
+    
     - Host the backend and frontend 
     - Remove firebase dependendecies (apart from analytics)
     - Analytics improvement

@@ -1,27 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import AppRouter from "./AppRouter";
 import { useJsApiLoader } from "@react-google-maps/api";
-import { AuthContextProvider } from "context/AuthProvider";
 import { ChatContextProvider } from "context/ChatContext";
 import Loading from "./pages/Loading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserData, refreshAccessToken } from "features/auth/authSlice";
+import { getToken } from "helpers/helpersAuth";
+import { useNavigate } from "react-router-dom";
 import { SocketProvider } from "context/SocketContext";
+import jwt_decode from "jwt-decode";
 
 const App = () => {
   const [libraries] = useState(["places"]);
+  const navigate = useNavigate();
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_POKE_GOOGLE_MAPS_API_KEY,
     libraries,
   });
+  const token = getToken();
+  const { user, loading } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
 
-  if (!isLoaded) {
+  useEffect(() => {
+    if (!token) {
+      navigate("/signin");
+      return;
+    }
+
+    const decodedToken = jwt_decode(token);
+
+    if (decodedToken.exp < Date.now() / 1000) {
+      dispatch(refreshAccessToken(navigate));
+      return;
+    }
+
+    if (token && !user) {
+      dispatch(getUserData(token));
+      return;
+    }
+  }, [token, user]);
+
+  if (!isLoaded || loading) {
     return <Loading />;
   }
 
   return (
-    <AuthContextProvider>
+    <>
       <ChatContextProvider>
         <SocketProvider>
           <AppRouter />
@@ -33,7 +60,7 @@ const App = () => {
           />
         </SocketProvider>
       </ChatContextProvider>
-    </AuthContextProvider>
+    </>
   );
 };
 

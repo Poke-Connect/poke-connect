@@ -3,28 +3,9 @@ import DateTimeElement from "components/DateTimeElement";
 import AddressElement from "./AddressElement";
 import ToggleElement from "./ToggleElement";
 import RideLine from "components/RideLine";
-import { toast } from "react-toastify";
-import { toastStrings } from "strings/toastStrings";
-import { toggleRideDiscoverability } from "api/ride";
 
 const TripElement = (props) => {
   const { rideData, onClickHandler, upcoming } = props;
-
-  const handleToggleChange = async () => {
-    if (!rideData) {
-      return;
-    }
-    try {
-      if (rideData.discoverability) {
-        toast.success(toastStrings.DISCOVERABILITY_SUCCESS_OFF);
-      } else {
-        toast.success(toastStrings.DISCOVERABILITY_SUCCESS_ON);
-      }
-      await toggleRideDiscoverability(rideData._id, !rideData.discoverability);
-    } catch (e) {
-      toast.error(toastStrings.ERROR);
-    }
-  };
 
   if (!rideData) {
     return null;
@@ -47,8 +28,8 @@ const TripElement = (props) => {
       </div>
       {upcoming ? (
         <ToggleElement
+          rideId={rideData._id}
           discoverability={rideData.discoverability}
-          handleToggleChange={handleToggleChange}
         />
       ) : null}
     </div>

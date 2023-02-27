@@ -1,33 +1,32 @@
-import React, { createContext, useEffect, useState, useContext } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useRef,
+} from "react";
 import io from "socket.io-client";
 import { SERVER_URL } from "config/serverConfig";
-import { UserAuth } from "context/AuthProvider";
+import { useSelector } from "react-redux";
 
 export const SocketContext = createContext();
 
 export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
-  const { user } = UserAuth();
+  const socketRef = useRef();
+
+  const { user } = useSelector((store) => store.auth);
 
   useEffect(() => {
-    const newSocket = io(SERVER_URL, { withCredentials: true });
-
-    newSocket.on("connect", () => {
-      console.log("Connected to server");
-      setSocket(newSocket);
-
-      // Add User to the server
-      if (user) {
-        newSocket.emit("add-user", user._id);
-      }
-    });
-
+    socketRef.current = io(SERVER_URL, { withCredentials: true });
+    if (user) {
+      socketRef.current.emit("add-user", user._id);
+    }
+    setSocket(socketRef.current);
     return () => {
-      // Disconnect the socket when the component unmounts
-      newSocket.disconnect();
-      console.log("Socket disconnected!");
+      socketRef.current.disconnect();
     };
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     // Get all connected users from server

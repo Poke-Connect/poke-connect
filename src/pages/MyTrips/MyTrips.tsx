@@ -1,14 +1,13 @@
 import React, { useState, useEffect, FC } from "react";
-import { UserAuth } from "context/AuthProvider";
 import ShowTrips from "./components/ShowTrips";
 import Heading from "components/UI/Heading";
 import EmptyItem from "components/UI/EmptyItem";
 import { emptyStrings } from "strings/emptyStrings";
 import { getUserRides } from "api/ride";
+import { useSelector } from "react-redux";
 
 const MyTrips: FC = () => {
-  const { user } = UserAuth();
-
+  const { user } = useSelector((store: any) => store.auth);
   const [myTrips, setMyTrips] = useState<any>([]);
 
   useEffect(() => {

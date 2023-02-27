@@ -1,4 +1,3 @@
-import { UserAuth } from "context/AuthProvider";
 import { UserChat } from "context/ChatContext";
 import { Socket } from "context/SocketContext";
 import { createNewConnection, createRideConnection } from "dbNew/dbWrites";
@@ -7,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { toastStrings } from "strings/toastStrings";
 import TileDetails from "../components/TileDetails";
+import { useSelector } from "react-redux";
 
 const AvailableConnectionTile = (props) => {
   const { rideDetails: otherRide, myRide, timeDiff, distDiff } = props;
   const navigate = useNavigate();
+  const { user } = useSelector((store) => store.auth);
 
-  const { user } = UserAuth();
   const { dispatch } = UserChat();
   const socket = Socket();
 
@@ -85,20 +85,3 @@ const AvailableConnectionTile = (props) => {
 };
 
 export default AvailableConnectionTile;
-
-// const onClickHandler = async () => {
-//   if (!userObj || !creatorObj) {
-//     return;
-//   }
-//   const toastId = toast.loading(toastStrings.CREATING_CONNECTION);
-
-//   try {
-
-//
-
-//     navigate(`/chat/${combinedId}`);
-//   } catch (error) {
-//     toast.error(toastStrings.ERROR);
-//     console.log("Connection Failed", error);
-//   }
-// };

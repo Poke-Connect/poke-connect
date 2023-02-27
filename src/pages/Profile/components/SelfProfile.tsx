@@ -4,12 +4,14 @@ import SecondaryProfileInfo from "./SecondaryProfileInfo";
 import { getSecondaryInfo } from "../helper";
 import { useNavigate } from "react-router-dom";
 import Loading from "pages/Loading";
-import { signout } from "helpers/helpersAuth";
+import { useDispatch } from "react-redux";
+import { logout } from "features/auth/authSlice";
 
 const SelfProfile = (props) => {
   const { profileData } = props;
 
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ const SelfProfile = (props) => {
   const onLogOutPressHandler = async () => {
     setLoading(true);
     try {
-      signout();
+      dispatch(logout());
       navigate(`/signin`);
     } catch (error) {
       console.log(error);

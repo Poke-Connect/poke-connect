@@ -1,32 +1,31 @@
 import React, { FC, useEffect, useState } from "react";
 import FooterLayout from "./components/FooterLayout";
 import { Outlet, useParams } from "react-router-dom";
-import { UserAuth } from "context/AuthProvider";
-import { getConnectedRideConnections, getRide } from "api/ride";
-import { getFilteredRides } from "api/ride";
+import {
+  getConnectedRideConnections,
+  getRide,
+  getFilteredRides,
+} from "api/ride";
 import { getFilteredRidesTimeNew } from "helpers/getFilteredRidesTimeNew";
 import { getConnectedCount } from "./helpers";
 import { Socket } from "context/SocketContext";
+import { useSelector } from "react-redux";
 
 const RideConnections: FC = () => {
-  console.log("recreating component");
-
   const params = useParams();
   const { rideId } = params;
-  const { user } = UserAuth();
+  const { user } = useSelector((store: any) => store.auth);
 
   const [myRide, setMyRide] = useState(null);
   const [connectedConnections, setConnectedConnections] = useState([]);
   const [availableConnections, setAvailableConnections] = useState<any>([]);
   const [connectedCount, setConnectedCount] = useState<number>(0);
   const [availableCount, setAvailableCount] = useState<number>(0);
-  const [stateRefetch, setStateRefetch] = useState(false);
   const socket = Socket();
 
   //shift this to custom hook
   useEffect(() => {
     const fetchConnections = async () => {
-      console.log("refetching data");
       if (rideId) {
         const ride = await getRide(rideId);
         setMyRide(ride);
@@ -35,7 +34,6 @@ const RideConnections: FC = () => {
           rideId
         );
         setConnectedConnections(connectedRideConnections);
-
         setConnectedCount(getConnectedCount(connectedRideConnections));
 
         let filteredRides: any;
@@ -59,35 +57,23 @@ const RideConnections: FC = () => {
       }
     };
 
-    fetchConnections();
-  }, [rideId, stateRefetch]);
-
-  useEffect(() => {
-    if (!socket) {
-      console.log("Socket not found ");
-      return;
-    }
-
     // Handle incoming events from the server
-    socket.on("connection-added", (data) => {
-      // setMessages([...messages, data]);
-      console.log("Ride connection socket: Received data from server:", data);
-      setStateRefetch(true);
-    });
-  }, [socket]);
+    if (socket) {
+      socket.on("connection-added", fetchConnections);
+      socket.on("get-ride", fetchConnections);
+      socket.on("get-toggled-ride", fetchConnections);
+    }
+    fetchConnections();
 
-  // const changeConnectionType = (connectionId, connectionObj) => {
-  //   setAvailableConnections((prevConnections) => {
-  //     prevConnections.filter(
-  //       (connection) => connection[0]._id !== connectionId
-  //     );
-  //   });
-  //   // setConnectedConnections((prev) => {
-  //   //   [...prev, connectionObj];
-  //   // });
-  //   setAvailableCount((prev) => (prev - 1 >= 0 ? prev - 1 : 0));
-  //   setConnectedCount((prev) => prev + 1);
-  // };
+    return () => {
+      if (socket) {
+        // Remove 'connection-added' event listener
+        socket.off("connection-added", fetchConnections);
+        socket.off("get-ride", fetchConnections);
+        socket.off("get-toggled-ride", fetchConnections);
+      }
+    };
+  }, [rideId, socket, user]);
 
   return (
     <div className="flex-col flex justify-between ">
@@ -104,3 +90,8 @@ const RideConnections: FC = () => {
 };
 
 export default RideConnections;
+
+/**TEST CASES
+ * 1. Rides on addition changes from available to connected
+ * 2. Count is changing
+ */

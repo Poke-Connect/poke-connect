@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { UserAuth } from "context/AuthProvider";
 import { useParams } from "react-router-dom";
 import UserProfileContainer from "./components/UserProfileContainer";
 import { getUser } from "api/user";
+import { useSelector } from "react-redux";
 
 const UserProfile = () => {
-  const { user } = UserAuth();
+  const { user } = useSelector((store) => store.auth);
   const params = useParams();
   const { userId } = params;
 
@@ -16,13 +16,12 @@ const UserProfile = () => {
       const profile = await getUser(userId);
       setProfileData(profile);
     };
-
     userId && fetchProfile();
   }, [userId]);
 
   return (
     profileData && (
-      <UserProfileContainer profileData={profileData} selfId={user._id} />
+      <UserProfileContainer profileData={profileData} selfId={user?._id} />
     )
   );
 };
