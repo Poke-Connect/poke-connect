@@ -7,13 +7,13 @@ import MyTrips from "./pages/MyTrips/MyTrips";
 import AvailableConnections from "./pages/RideConnections/AvailableConnections/AvailableConnections";
 import MyConnections from "./pages/MyConnections/MyConnections";
 import Chat from "./pages/Chat/Chat";
-import UserProfile from "./pages/Profile/UserProfile";
+import Profile from "./pages/Profile/Profile";
 import NewRide from "./pages/NewRide/NewRide";
 import SignIn from "./pages/SignIn/SignIn";
 import Protected from "./pages/Protected";
 import LogOut from "./pages/LogOut";
 import ConnectedConnections from "./pages/RideConnections/ConnectedConnections/ConnectedConnections";
-import EditProfile from "./pages/Profile/EditProfile";
+import EditProfile from "./pages/Profile/EditProfile/EditProfile";
 import RideConnections from "pages/RideConnections/RideConnections";
 import AppLayout from "components/Layout/AppLayout";
 
@@ -103,7 +103,7 @@ const AppRouter: FC = () => {
           path="user/:userId"
           element={
             <Protected>
-              <UserProfile />
+              <Profile />
             </Protected>
           }
         />

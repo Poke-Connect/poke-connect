@@ -3,11 +3,17 @@ import { useNavigate } from "react-router-dom";
 import TileDetails from "../components/TileDetails";
 import { createUserObj } from "../helpers";
 import { UserChat } from "context/ChatContext";
+import EmptyItem from "components/UI/EmptyItem";
+import { emptyStrings } from "strings/emptyStrings";
 
 const ConnectedConnectionsList = (props) => {
   const { connectionsData } = props;
   const { dispatch } = UserChat();
   const navigate = useNavigate();
+
+  if (!connectionsData || connectionsData.length === 0) {
+    return <EmptyItem text={emptyStrings.CONNECTED_CONNECTIONS} />;
+  }
 
   const onClickHandler = (data) => {
     if (!data.connectionId) {

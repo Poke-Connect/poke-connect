@@ -20,7 +20,7 @@ const MyTrips: FC = () => {
   }, [user._id]);
 
   return (
-    <div className="pl-6 pr-7 w-screen ">
+    <div className="px-6 w-screen flex flex-col">
       <Heading text={"My Trips"} />
       {!myTrips && <EmptyItem text={emptyStrings.MY_TRIPS} />}
       <div className="pt-1">{myTrips && <ShowTrips myTrips={myTrips} />}</div>

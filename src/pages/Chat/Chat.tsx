@@ -44,7 +44,7 @@ const Chat: FC = () => {
   }, [chatId, socket]);
 
   return (
-    <div className="flex flex-col w-screen h-full ">
+    <div className="flex flex-col w-screen h-full">
       <ChatLayout
         otherUser={otherUser}
         selfId={selfUser._id}

@@ -1,8 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import SelfProfile from "./SelfProfile";
 import OtherProfile from "./OtherProfile";
 
-const UserProfileContainer = (props) => {
+interface IProps {
+  profileData: any;
+  selfId: string;
+}
+
+const ProfileContainer: FC<IProps> = (props) => {
   const { profileData, selfId } = props;
   if (!profileData) {
     return null;
@@ -16,4 +21,4 @@ const UserProfileContainer = (props) => {
   );
 };
 
-export default UserProfileContainer;
+export default ProfileContainer;

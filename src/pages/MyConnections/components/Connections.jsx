@@ -11,7 +11,7 @@ const Connections = (props) => {
   }
 
   return (
-    <div>
+    <div className="pb-12">
       {myConnections.map((connection) => (
         <ConnectionElement key={connection._id} connection={connection} />
       ))}

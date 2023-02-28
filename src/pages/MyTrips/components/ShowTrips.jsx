@@ -9,22 +9,20 @@ const ShowTrips = (props) => {
   }
   const filteredTrips = getfilteredTrips(myTrips);
   return (
-    <div>
-      <div>
-        <TripsList
-          heading={"Upcoming Trips"}
-          tripsList={filteredTrips[0]}
-          upcoming={true}
-        />
-      </div>
-      <div className="mt-10">
+    <>
+      <TripsList
+        heading={"Upcoming Trips"}
+        tripsList={filteredTrips[0]}
+        upcoming={true}
+      />
+      <div className="mt-10 pb-16">
         <TripsList
           heading={"Completed Trips"}
           tripsList={filteredTrips[1]}
           upcoming={false}
         />
       </div>
-    </div>
+    </>
   );
 };
 

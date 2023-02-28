@@ -21,7 +21,7 @@ const MyConnections = () => {
   }, [user._id]);
 
   return (
-    <div className="pl-6 pr-7 w-screen">
+    <div className="px-6 w-screen">
       <Heading text={"My Connections"} />
       <div>
         {myConnections && <Connections myConnections={myConnections} />}

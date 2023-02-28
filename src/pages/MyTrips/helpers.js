@@ -1,5 +1,7 @@
 import { getCurrentTimeStamp } from "../../helpers/dateHelper";
 
+
+//Time handling
 export const getfilteredTrips = (myTrips) => {
   const upcomingTrips = [];
   const completedTrips = [];

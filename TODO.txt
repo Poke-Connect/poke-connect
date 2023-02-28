@@ -8,17 +8,19 @@
     | Socket when new ride Added
     | discoverability/ ride update socket AND api call value 
 
-    - Count of new connections/messages
     - All CX copies fix
         - empty components
         - toast messages
+        
     - UI   
-        - Scroll on my rides
-        - Scroll on my connections
-        - Better the empty MyProfile UI page
-        - empty connected connection fix
-        - Chat page UI
+        | Scroll on my rides
+        | Scroll on my connections
+        - Better empty MyProfile UI page
+        | empty connected connection fix
+        | Chat page UI
 
+    - Notifications - over whatsapp
+    - Count of new connections/messages
     - 'Connect on Whatsapp' functionality
     - Make all files typescript
     - Map fix
