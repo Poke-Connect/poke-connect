@@ -7,13 +7,15 @@ import React, {
 } from "react";
 import io from "socket.io-client";
 import { SERVER_URL } from "config/serverConfig";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { incrementUnreadCount } from "features/conversations/conversationsSlice";
 
 export const SocketContext = createContext();
 
 export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const socketRef = useRef();
+  const dispatch = useDispatch();
 
   const { user } = useSelector((store) => store.auth);
 
@@ -32,6 +34,10 @@ export const SocketProvider = ({ children }) => {
     // Get all connected users from server
     socket?.on("get-users", (data) => {
       console.log("Received users from server:", data);
+    });
+
+    socket?.on("connection-added", (_data) => {
+      dispatch(incrementUnreadCount());
     });
   }, [socket]);
 

@@ -3,11 +3,15 @@ import Connections from "./components/Connections";
 import Heading from "components/UI/Heading";
 import { getUserConnections } from "api/connection";
 import { filterConnections } from "./helper";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { resetCount } from "features/conversations/conversationsSlice";
+import { emptyNewConnections } from "api/user";
 
 const MyConnections = () => {
   const { user } = useSelector((store) => store.auth);
+  const { unreadCount } = useSelector((store) => store.conversations);
 
+  const dispatch = useDispatch();
   const [myConnections, setMyConnections] = useState(null);
 
   useEffect(() => {
@@ -18,6 +22,11 @@ const MyConnections = () => {
     };
 
     user._id && fetchConnections();
+
+    if (unreadCount > 0) {
+      emptyNewConnections(user._id);
+    }
+    dispatch(resetCount());
   }, [user._id]);
 
   return (

@@ -1,12 +1,13 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import ChatIcon from "assets/icons/ChatIcon";
 import { useNavigate } from "react-router-dom";
 import CountIcon from "./CountIcon";
+import { useSelector } from "react-redux";
 
 const ConnectionsIcon: FC = () => {
   const navigate = useNavigate();
 
-  const [count, setCount] = useState<number | any>(0);
+  const { unreadCount } = useSelector((store: any) => store.conversations);
 
   const onClickHandler = () => {
     navigate(`/connections`);
@@ -15,8 +16,7 @@ const ConnectionsIcon: FC = () => {
   return (
     <div className="relative mr-4 " onClick={onClickHandler}>
       <ChatIcon />
-
-      {count > 0 && <CountIcon count={count} />}
+      {unreadCount > 0 && <CountIcon count={unreadCount} />}
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserData, refreshAccessToken } from "features/auth/authSlice";
+import { setUnreadCount } from "features/conversations/conversationsSlice";
 import { getToken } from "helpers/helpersAuth";
 import { useNavigate } from "react-router-dom";
 import { SocketProvider } from "context/SocketContext";
@@ -41,6 +42,10 @@ const App = () => {
       dispatch(getUserData(token));
       return;
     }
+
+    dispatch(
+      setUnreadCount({ newConnectionCount: user?.newConnections?.length })
+    );
   }, [token, user]);
 
   if (!isLoaded || loading) {

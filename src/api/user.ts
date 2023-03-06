@@ -1,4 +1,4 @@
-import { getRequest, putRequest } from "config/axiosConfig";
+import { getRequest, putRequest, patchRequest } from "config/axiosConfig";
 
 const userBase = "/user";
 
@@ -15,5 +15,11 @@ export const getUser = async (id: string) => {
 export const updateUser = async (id: string, newData: any) => {
   const url = `${userBase}/${id}`;
   const res = await putRequest(url, newData);
+  return res?.data;
+};
+
+export const emptyNewConnections = async (id: string) => {
+  const url = `${userBase}/${id}/newConnections`;
+  const res = await patchRequest(url);
   return res?.data;
 };

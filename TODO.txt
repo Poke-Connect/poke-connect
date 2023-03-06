@@ -1,26 +1,12 @@
 # MAIN:
-    | Logout fix (keeps on re-rendring)
-    | Login fix (after logout--> when login --> shows empty screen)
-    | Refresh the jwt token
-    | app crash on refresh token expiry
-    | Chat not working properly
-    | Socket when new connection Added
-    | Socket when new ride Added
-    | discoverability/ ride update socket AND api call value 
-
     - All CX copies fix
         - empty components
         - toast messages
         - if no info in other user profile, show some SVG
         - error screen
-        
-    - UI   
-        | Scroll on my rides
-        | Scroll on my connections
-        | Better empty MyProfile UI page
-        | empty connected connection fix
-        | Chat page UI
 
+    - Access Current location feature
+    - Add Zomaland functionality
     - API error handling
         - No internet scenarios
     - Storing profile pics
@@ -29,11 +15,8 @@
     - Notifications - over whatsapp
     - 'Connect on Whatsapp' functionality
     
-    | Map fix
     - manage strings and number like 2 hrs from central place
     - multiple people matching
-    
-    
     
     - Remove firebase dependendecies (apart from analytics)
     - Analytics improvement
