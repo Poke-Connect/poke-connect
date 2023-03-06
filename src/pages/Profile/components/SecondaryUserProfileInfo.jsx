@@ -9,7 +9,7 @@ const SecondaryUserProfileInfo = (props) => {
   const createSecondaryInfo = () => {
     const rows = [];
     for (let info in secondaryInfo) {
-      if (!TO_IGNORE.includes(info)) {
+      if (!TO_IGNORE.includes(info) && secondaryInfo[info]) {
         rows.push(
           <ProfileElement key={info} header={info} body={secondaryInfo[info]} />
         );

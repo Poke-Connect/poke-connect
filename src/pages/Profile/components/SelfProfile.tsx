@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PrimaryProfileInfo from "./PrimaryProfileInfo";
 import SecondaryProfileInfo from "./SecondaryProfileInfo";
-import { getSecondaryInfo } from "../helper";
+import { checkIfEmptyField, getSecondaryInfo } from "../helper";
 import { useNavigate } from "react-router-dom";
 import Loading from "pages/Loading";
 import { useDispatch } from "react-redux";
@@ -32,9 +32,15 @@ const SelfProfile = (props) => {
     setLoading(false);
   };
 
+  const onUpdatePressHandler = () => {
+    navigate(`/user/${_id}/edit`);
+  };
+
   if (loading) {
     return <Loading />;
   }
+
+  const isEmpty = checkIfEmptyField(secondaryInfo);
 
   return (
     <div className="pt-3 pb-10 pl-6 w-screen ">
@@ -45,13 +51,22 @@ const SelfProfile = (props) => {
         userId={_id}
       />
       <SecondaryProfileInfo secondaryInfo={secondaryInfo} />
-      <div className="logout flex pl-3 pt-5 ">
+      <div className="flex  pt-5 items-start justify-between pl-6 pr-7 ">
         <button
           className="bg-black text-white px-5 py-1.5 font-sm font-semibold"
           onClick={onLogOutPressHandler}
         >
           Logout
         </button>
+        {isEmpty && (
+          <button
+            type={"button"}
+            onClick={onUpdatePressHandler}
+            className="bg-white text-primary underline p-1 pl-4 pr-4 text-base underline-offset-2 font-semibold"
+          >
+            Complete Profile
+          </button>
+        )}
       </div>
     </div>
   );

@@ -8,7 +8,9 @@ const SecondaryProfileInfo = (props) => {
     const rows = [];
     for (let info in secondaryInfo) {
       rows.push(
-        <ProfileElement key={info} header={info} body={secondaryInfo[info]} />
+        secondaryInfo[info] && (
+          <ProfileElement key={info} header={info} body={secondaryInfo[info]} />
+        )
       );
     }
     return <>{rows}</>;

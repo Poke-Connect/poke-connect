@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GMapElement from "./components/GMapElement";
 import { useNavigate, useLocation } from "react-router-dom";
 import DateTimeContainer from "./components/DateTimeContainer";
@@ -29,29 +29,19 @@ const NewRide = () => {
   const [dateValue, setDateValue] = useState(getTodaysDate());
   const [timeValue, setTimeValue] = useState(getTimeNow());
   const [locationValue, setLocationValue] = useState(null);
+  const [tripDistance, setTripDistance] = useState(0);
 
   const navigate = useNavigate();
 
   const onFindMatchesHandler = async () => {
-    const airportCordinates = new google.maps.LatLng(13.199379, 77.710136);
     try {
-      const minRouteObject = await getRouteObject(
-        rideType,
-        locationValue,
-        airportCordinates
-      );
-
-      setDirectionsResponse(minRouteObject);
-
-      const distance = getTripDistance(minRouteObject);
-
       const rideId = await createNewRideBackend(
         rideType,
         userId,
         dateValue,
         timeValue,
         locationValue,
-        distance
+        tripDistance
       );
       //CREATE A SOCKET EVENT
       if (socket) {
@@ -66,58 +56,76 @@ const NewRide = () => {
     //IF REQUIRED: Distance and duration can be taken from minRouteObject
   };
 
+  useEffect(() => {
+    const airportCordinates = new google.maps.LatLng(13.199379, 77.710136);
+    const fetchDirections = async () => {
+      const minRouteObject = await getRouteObject(
+        rideType,
+        locationValue,
+        airportCordinates
+      );
+      const distance = getTripDistance(minRouteObject);
+      setDirectionsResponse(minRouteObject);
+      setTripDistance(distance);
+    };
+    locationValue && fetchDirections();
+  }, [locationValue, rideType]);
+
   return (
     <div
       id="container"
-      className="bg-white flex flex-col items-start w-screen h-full"
+      className="bg-white flex flex-col items-start w-screen h-full flex-grow"
     >
-      <div className="ml-8 flex">
-        <Heading text={"Find a connection"} />
-      </div>
-      <div className="flex flex-col w-full pt-1 pl-2">
-        <div className="flex flex-row w-full pl-1 ">
-          <RideLine height={"m"} type={"newRide"} />
-          <div
-            className={`flex w-full ${
-              rideType === DESTINATION_RIDE
-                ? "flex-col"
-                : "flex flex-col-reverse"
-            }`}
-          >
-            <div>
-              <PlacesAutocomplete
-                setLocationValue={setLocationValue}
-                placeholder={
-                  rideType === DESTINATION_RIDE ? "From where?" : "Where to?"
-                }
-              />
-            </div>
-            <div>
-              <InputField
-                name={"KIA"}
-                disabled={true}
-                placeholder={"Kempegowda International Airport"}
-                styles={"placeholder-black"}
-              />
+      <div id="upper" className="flex flex-col w-full">
+        <div className="ml-8">
+          <Heading text={"Find a connection"} />
+        </div>
+        <div className="flex flex-col w-full pt-1 pl-2 flex-grow">
+          <div className="flex flex-row w-full pl-1 ">
+            <RideLine height={"m"} type={"newRide"} />
+            <div
+              className={`flex w-full ${
+                rideType === DESTINATION_RIDE
+                  ? "flex-col"
+                  : "flex flex-col-reverse"
+              }`}
+            >
+              <div>
+                <PlacesAutocomplete
+                  setLocationValue={setLocationValue}
+                  placeholder={
+                    rideType === DESTINATION_RIDE ? "From where?" : "Where to?"
+                  }
+                />
+              </div>
+              <div>
+                <InputField
+                  name={"KIA"}
+                  disabled={true}
+                  placeholder={"Kempegowda International Airport"}
+                  styles={"placeholder-black"}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-row w-full my-2 pl-6  justify-between">
-          <DateTimeContainer
-            dateValue={dateValue}
-            setDateValue={setDateValue}
-            timeValue={timeValue}
-            setTimeValue={setTimeValue}
-          />
-        </div>
-        <div className="flex w-full m-5">
-          <ButtonContainer
-            onFindMatchesHandler={onFindMatchesHandler}
-            locationValue={locationValue}
-          />
+          <div className="flex flex-row w-full my-2 pl-6 justify-between">
+            <DateTimeContainer
+              dateValue={dateValue}
+              setDateValue={setDateValue}
+              timeValue={timeValue}
+              setTimeValue={setTimeValue}
+            />
+          </div>
+          <div className="flex w-full m-5">
+            <ButtonContainer
+              onFindMatchesHandler={onFindMatchesHandler}
+              locationValue={locationValue}
+            />
+          </div>
         </div>
       </div>
-      <div className=" w-full h-[45%]">
+
+      <div id="lower" className="flex-grow w-full">
         {<GMapElement directionsResponse={directionsResponse} />}
       </div>
     </div>

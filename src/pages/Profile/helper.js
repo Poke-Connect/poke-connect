@@ -18,3 +18,12 @@ export const getSecondaryInfo = (profileData) => {
   };
   return secondaryInfoObj;
 };
+
+export const checkIfEmptyField = (secondaryInfo) => {
+  for (let info in secondaryInfo) {
+    if (!secondaryInfo[info]) {
+      return true;
+    }
+  }
+  return false;
+};
