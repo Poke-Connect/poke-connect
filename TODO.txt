@@ -7,10 +7,14 @@
 
     | Access Current location feature
     | Add Zomaland functionality
+
+    Requires Cloud
     - Storing profile pics
     - Host the backend and frontend 
+
     - Connection details on chat page 
     - Share location for pickup
+
 
     - API error handling
         - No internet scenarios

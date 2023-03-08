@@ -7,9 +7,10 @@ import { toast } from "react-toastify";
 import { toastStrings } from "constants/toastStrings";
 import TileDetails from "../components/TileDetails";
 import { useSelector } from "react-redux";
+import { createUserObj } from "../helpers";
 
 const AvailableConnectionTile = (props) => {
-  const { rideDetails: otherRide, myRide, timeDiff, distDiff } = props;
+  const { rideDetails: otherRide, myRide, extraTime, extraDist } = props;
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.auth);
 
@@ -27,9 +28,6 @@ const AvailableConnectionTile = (props) => {
       return;
     }
     const toastId = toast.loading(toastStrings.CREATING_CONNECTION);
-
-    //Add Socket event here
-
     try {
       const connectionId = await createNewConnection(user, otherUser);
       if (!connectionId) {
@@ -41,17 +39,15 @@ const AvailableConnectionTile = (props) => {
         otherUser,
         myRide,
         otherRide,
-        distDiff,
-        timeDiff,
+        extraDist,
+        extraTime,
         connectionId
       );
-
       socket.emit(
         "add-connection",
         { connectionId: connectionId },
         otherUser._id
       );
-
       toast.update(toastId, {
         render: toastStrings.MATCH_CREATION_SUCCESS,
         type: "success",
@@ -70,15 +66,15 @@ const AvailableConnectionTile = (props) => {
     }
   };
 
+  const userDetails = createUserObj(otherUser);
+  const matchDetails = { extraTime, extraDist };
+  const rideDetails = { timeStampRide, location };
+
   return (
     <TileDetails
-      displayName={otherUser?.displayName}
-      photoURL={otherUser?.photoURL}
-      uid={otherUser?._id}
-      location={location}
-      timeDiff={timeDiff}
-      distDiff={distDiff}
-      timeStampRide={timeStampRide}
+      userDetails={userDetails}
+      matchDetails={matchDetails}
+      rideDetails={rideDetails}
       onClickHandler={onClickHandler}
     />
   );

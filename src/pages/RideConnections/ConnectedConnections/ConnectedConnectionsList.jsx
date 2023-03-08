@@ -33,19 +33,23 @@ const ConnectedConnectionsList = (props) => {
 
   return (
     <>
-      {connectionsData.map((data) => (
-        <TileDetails
-          key={data._id}
-          displayName={data.user.displayName}
-          photoURL={data.user.photoURL}
-          location={data.ride.location}
-          timeDiff={data.matchInfo.extraTime}
-          distDiff={data.matchInfo.extraDist}
-          timeStampRide={data.timeStampRide}
-          userId={data.user.userId}
-          onClickHandler={() => onClickHandler(data)}
-        />
-      ))}
+      {connectionsData.map((data) => {
+        const userDetails = createUserObj(data.user);
+        const matchDetails = data.matchInfo;
+        const rideDetails = {
+          timeStampRide: data.timeStampRide,
+          location: data.ride.location,
+        };
+        return (
+          <TileDetails
+            key={data._id}
+            userDetails={userDetails}
+            matchDetails={matchDetails}
+            rideDetails={rideDetails}
+            onClickHandler={() => onClickHandler(data)}
+          />
+        );
+      })}
     </>
   );
 };

@@ -1,23 +1,23 @@
-import React from "react";
+import React, { FC } from "react";
 import { createTimeStringFromTimeStamp } from "helpers/dateHelper";
 import PicContainer from "components/PicContainer";
 import NameInfoContainer from "./NameInfoContainer";
 import { useNavigate } from "react-router-dom";
+import { IMatchInfo, IUserInfo } from "types";
 
-const TileDetails = (props) => {
-  const {
-    displayName = "",
-    photoURL = "",
-    location = "",
-    timeDiff = "",
-    distDiff = "",
-    timeStampRide = "",
-    userId = "",
-    onClickHandler,
-  } = props;
+interface IProps {
+  userDetails: IUserInfo;
+  rideDetails: { location: string; timeStampRide: string };
+  matchDetails: IMatchInfo;
+  onClickHandler: any;
+}
 
+const TileDetails: FC<IProps> = (props) => {
+  const { userDetails, rideDetails, matchDetails, onClickHandler } = props;
+  const { _id: userId = "", displayName = "", photoURL = "" } = userDetails;
+  const { location = "", timeStampRide = "" } = rideDetails;
+  const { extraDist = "", extraTime = "" } = matchDetails;
   const navigate = useNavigate();
-
   const onPhotoClickHandler = () => {
     userId && navigate(`/user/${userId}`);
   };
@@ -39,8 +39,8 @@ const TileDetails = (props) => {
         <NameInfoContainer
           displayName={displayName}
           location={location}
-          timeDiff={timeDiff}
-          distDiff={distDiff}
+          timeDiff={extraTime}
+          distDiff={extraDist}
         />
         <div
           id="rideTime"

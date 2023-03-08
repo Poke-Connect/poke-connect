@@ -1,10 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import DateTimeElement from "components/DateTimeElement";
 import EmptyItem from "components/UI/EmptyItem";
 import { emptyStrings } from "constants/emptyStrings";
 import AvailableConnectionTile from "./AvailableConnectionTile";
 
-const AvailableConnectionsList = (props) => {
+interface IProps {
+  myRide: any;
+  availableConnections: any;
+}
+
+const AvailableConnectionsList: FC<IProps> = (props) => {
   const { myRide, availableConnections } = props;
 
   if (!myRide || !availableConnections) {
@@ -25,13 +30,13 @@ const AvailableConnectionsList = (props) => {
       />
       <div>
         {availableConnections
-          ? availableConnections.map((rideArr) => (
+          ? availableConnections.map((rideArr: any) => (
               <AvailableConnectionTile
                 key={rideArr[0]._id}
                 rideDetails={rideArr[0]}
                 myRide={myRide}
-                timeDiff={rideArr[1]}
-                distDiff={rideArr[2]}
+                extraTime={rideArr[1]}
+                extraDist={rideArr[2]}
               />
             ))
           : null}
