@@ -1,6 +1,6 @@
 import React from "react";
 import { createLocationString } from "helpers/utils";
-import { commonStrings } from "strings/commonStrings";
+import { commonStrings } from "constants/commonStrings";
 
 const AddressElement = (props) => {
   const { location, rideType } = props;

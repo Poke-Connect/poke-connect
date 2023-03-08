@@ -1,8 +1,7 @@
 import React from "react";
-import usePlacesAutocomplete from "use-places-autocomplete";
+import usePlacesAutocomplete, { getGeocode } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import InputField from "./InputField";
-import SuggestionItem from "./SuggestionItem";
 
 const BANGALORE_LAT = 12.972442;
 const BANGALORE_LNG = 77.580643;
@@ -41,12 +40,6 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
       setValue(description, false);
       clearSuggestions();
       setLocationValue(description);
-
-      // Get latitude and longitude via utility functions
-      //   getGeocode({ address: description }).then((results) => {
-      //     const { lat, lng } = getLatLng(results[0]);
-      //     console.log("📍 Coordinates: ", { lat, lng });
-      //   });
     };
 
   const renderSuggestions = () =>
@@ -63,6 +56,31 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
       );
     });
 
+  const currentLocationHandler = async () => {
+    const successCallback = (position) => {
+      const { latitude, longitude } = position.coords;
+      getGeocode({
+        // eslint-disable-next-line no-undef
+        location: new google.maps.LatLng(latitude, longitude),
+      }).then((results) => {
+        setValue(results[0].formatted_address, false);
+        setLocationValue(results[0].formatted_address);
+        clearSuggestions();
+      });
+    };
+
+    const errorCallback = () => {
+      console.log("Unable to retrieve your location");
+    };
+
+    if (navigator.geolocation) {
+      //TODO: Need to handle Loading
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    } else {
+      console.log("Navigator not supported");
+    }
+  };
+
   return (
     <div ref={ref}>
       <InputField
@@ -78,7 +96,10 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
           <div className="flex flex-1 mx-2 px-2 border-b-2 border-primary">
             Search Results
           </div>
-          <ul className="overflow-y-scroll">{renderSuggestions()}</ul>
+          <ul className="overflow-y-scroll">
+            <div onClick={currentLocationHandler}>Use my current location</div>
+            {renderSuggestions()}
+          </ul>
         </div>
       )}
     </div>

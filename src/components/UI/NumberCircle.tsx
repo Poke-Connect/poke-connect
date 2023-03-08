@@ -9,7 +9,7 @@ const NumberCircle: FC<IProps> = ({ count }) => {
     return null;
   }
   return (
-    <div className="p-3 h-2 w-2 bg-primary rounded-full flex justify-center items-center">
+    <div className="p-[0.6rem] h-2 w-2 bg-primary rounded-full flex justify-center items-center">
       <p className="font-normal text-sm text-white"> {count}</p>
     </div>
   );

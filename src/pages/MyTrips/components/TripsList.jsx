@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import EmptyItem from "components/UI/EmptyItem";
 import TripElement from "./TripElement";
-import { emptyStrings } from "strings/emptyStrings";
+import { emptyStrings } from "constants/emptyStrings";
 
 const TripsList = (props) => {
   const { heading, upcoming, tripsList } = props;

@@ -4,7 +4,7 @@ import { createNewConnection, createRideConnection } from "dbNew/dbWrites";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { toastStrings } from "strings/toastStrings";
+import { toastStrings } from "constants/toastStrings";
 import TileDetails from "../components/TileDetails";
 import { useSelector } from "react-redux";
 

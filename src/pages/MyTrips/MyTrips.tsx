@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC } from "react";
 import ShowTrips from "./components/ShowTrips";
 import Heading from "components/UI/Heading";
 import EmptyItem from "components/UI/EmptyItem";
-import { emptyStrings } from "strings/emptyStrings";
+import { emptyStrings } from "constants/emptyStrings";
 import { getUserRides } from "api/ride";
 import { useSelector } from "react-redux";
 

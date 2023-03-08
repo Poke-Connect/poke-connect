@@ -1,6 +1,6 @@
 import EmptyItem from "components/UI/EmptyItem";
 import React from "react";
-import { emptyStrings } from "strings/emptyStrings";
+import { emptyStrings } from "constants/emptyStrings";
 import ConnectionElement from "./ConnectionElement";
 
 const Connections = (props) => {

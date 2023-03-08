@@ -5,15 +5,17 @@
         - if no info in other user profile, show some SVG
         - error screen
 
-    - Access Current location feature
-    - Add Zomaland functionality
-    - API error handling
-        - No internet scenarios
+    | Access Current location feature
+    | Add Zomaland functionality
     - Storing profile pics
     - Host the backend and frontend 
-    - Count of new connections/messages
+
+    - API error handling
+        - No internet scenarios
+    - Count of new messages
     - Notifications - over whatsapp
     - 'Connect on Whatsapp' functionality
+    - Code cleanup
     
     - manage strings and number like 2 hrs from central place
     - multiple people matching

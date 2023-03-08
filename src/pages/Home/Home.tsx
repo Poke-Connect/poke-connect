@@ -5,7 +5,7 @@ import Arrow from "assets/icons/Arrow";
 import Line from "components/Line";
 import RoundButton from "components/Buttons/RoundButton";
 import WarningBar from "./components/WarningBar";
-import { commonStrings } from "strings/commonStrings";
+import { commonStrings } from "constants/commonStrings";
 
 const Home: FC = () => {
   const navigate = useNavigate();

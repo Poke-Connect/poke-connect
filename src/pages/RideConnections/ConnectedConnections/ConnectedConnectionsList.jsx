@@ -4,7 +4,7 @@ import TileDetails from "../components/TileDetails";
 import { createUserObj } from "../helpers";
 import { UserChat } from "context/ChatContext";
 import EmptyItem from "components/UI/EmptyItem";
-import { emptyStrings } from "strings/emptyStrings";
+import { emptyStrings } from "constants/emptyStrings";
 
 const ConnectedConnectionsList = (props) => {
   const { connectionsData } = props;

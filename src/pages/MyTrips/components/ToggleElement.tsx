@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import Switch from "components/Switch";
 import { toast } from "react-toastify";
-import { toastStrings } from "strings/toastStrings";
+import { toastStrings } from "constants/toastStrings";
 import { toggleRideDiscoverability } from "api/ride";
 import { Socket } from "context/SocketContext";
 

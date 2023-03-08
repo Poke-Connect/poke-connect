@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { toastStrings } from "strings/toastStrings";
+import { toastStrings } from "constants/toastStrings";
 import { addFeedbackDb } from "dbNew/dbWrites";
 
 const ReachUs = () => {

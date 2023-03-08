@@ -1,7 +1,7 @@
 import React from "react";
 import DateTimeElement from "components/DateTimeElement";
 import EmptyItem from "components/UI/EmptyItem";
-import { emptyStrings } from "strings/emptyStrings";
+import { emptyStrings } from "constants/emptyStrings";
 import AvailableConnectionTile from "./AvailableConnectionTile";
 
 const AvailableConnectionsList = (props) => {

@@ -7,7 +7,7 @@ import EditInput from "./EditInput";
 import ButtonContainer from "./ButtonContainer";
 import PicEmailContainer from "./PicEmailContainer";
 import { toast } from "react-toastify";
-import { toastStrings } from "strings/toastStrings";
+import { toastStrings } from "constants/toastStrings";
 import { updateProfile } from "dbNew/dbUpdate";
 
 const EditProfileForm = (props) => {
