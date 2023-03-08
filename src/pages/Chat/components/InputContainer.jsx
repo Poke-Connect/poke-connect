@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { createNewMessage } from "dbNew/dbWrites";
+import { createNewMessage } from "db/dbWrites";
 import SendIcon from "assets/icons/SendIcon";
-import { updateConnectionData } from "dbNew/dbUpdate";
+import { updateConnectionData } from "db/dbUpdate";
 import { Socket } from "context/SocketContext";
 
 const InputContainer = (props) => {

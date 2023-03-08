@@ -12,7 +12,7 @@ import ButtonContainer from "./components/ButtonContainer";
 import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
 import { toastStrings } from "constants/toastStrings";
-import { createNewRideBackend } from "dbNew/dbWrites";
+import { createNewRideBackend } from "db/dbWrites";
 import { Socket } from "context/SocketContext";
 import { useSelector } from "react-redux";
 

@@ -8,7 +8,7 @@ import ButtonContainer from "./ButtonContainer";
 import PicEmailContainer from "./PicEmailContainer";
 import { toast } from "react-toastify";
 import { toastStrings } from "constants/toastStrings";
-import { updateProfile } from "dbNew/dbUpdate";
+import { updateProfile } from "db/dbUpdate";
 
 const EditProfileForm = (props) => {
   const navigate = useNavigate();

@@ -9,6 +9,8 @@
     | Add Zomaland functionality
     - Storing profile pics
     - Host the backend and frontend 
+    - Connection details on chat page 
+    - Share location for pickup
 
     - API error handling
         - No internet scenarios
@@ -16,6 +18,7 @@
     - Notifications - over whatsapp
     - 'Connect on Whatsapp' functionality
     - Code cleanup
+    - Using TS interfaces
     
     - manage strings and number like 2 hrs from central place
     - multiple people matching

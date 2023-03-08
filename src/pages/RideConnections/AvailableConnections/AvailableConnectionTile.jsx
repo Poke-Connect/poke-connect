@@ -1,6 +1,6 @@
 import { UserChat } from "context/ChatContext";
 import { Socket } from "context/SocketContext";
-import { createNewConnection, createRideConnection } from "dbNew/dbWrites";
+import { createNewConnection, createRideConnection } from "db/dbWrites";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

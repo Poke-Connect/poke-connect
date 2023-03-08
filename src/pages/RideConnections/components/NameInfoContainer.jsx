@@ -15,7 +15,7 @@ const NameInfoContainer = (props) => {
   } = props;
 
   return (
-    <div id="nameInfoContainer" className="flex-col max-w-[80%]">
+    <div id="nameInfoContainer" className="flex-col max-w-[90%]">
       <div className="text-base font-semibold flex justify-start">
         <p className="text-ellipsis overflow-hidden line-clamp-1">
           {capitaliseName(displayName)}
@@ -26,7 +26,7 @@ const NameInfoContainer = (props) => {
         <p className="text-ellipsis overflow-hidden line-clamp-1">{`Pickup: ${createLocationString(
           location
         )}`}</p>
-        <p className="text-ellipsis overflow-hidden line-clamp-1">{`Distance b/w pickups: ${getDistanceInKm(
+        <p className="text-ellipsis overflow-hidden line-clamp-1">{`Dist b/w pickups: ${getDistanceInKm(
           distDiff
         )}km`}</p>
         <p className="text-ellipsis overflow-hidden line-clamp-1">{`Extra time travel: ${getTimeInMins(
