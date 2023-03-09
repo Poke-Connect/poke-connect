@@ -1,17 +1,19 @@
-import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
+import React, { FC } from "react";
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { login } from "features/auth/authSlice";
+import { useAppDispatch } from "hooks";
 
-const GoogleLoginButton = () => {
+const GoogleLoginButton: FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const onSuccessHandler = async (credentialResponse) => {
+  const onSuccessHandler = async (credentialResponse: CredentialResponse) => {
     try {
-      dispatch(login(credentialResponse.credential));
-      navigate("/home");
+      if (credentialResponse && credentialResponse.credential) {
+        dispatch(login(credentialResponse.credential));
+        navigate("/home");
+      }
     } catch (error) {
       console.log("error while success signin", error);
     }

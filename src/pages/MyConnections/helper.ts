@@ -13,7 +13,10 @@ export const filterConnections = (userConnections, userId) => {
       lastMessage: connection.lastMessage,
       updatedAt: connection.updatedAt,
     };
-    newUserConnections.push(newConnection);
+    //Checking for deleted users
+    if (newConnection.userInfo) {
+      newUserConnections.push(newConnection);
+    }
   }
 
   return newUserConnections;

@@ -9,7 +9,6 @@ import { useMyConnections } from "customHooks";
 const MyConnections = () => {
   const { user } = useSelector((store: any) => store.auth);
   const { unreadCount } = useSelector((store: any) => store.conversations);
-
   const dispatch = useDispatch();
   const myConnections = useMyConnections(user._id);
 

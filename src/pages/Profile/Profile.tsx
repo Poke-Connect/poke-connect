@@ -8,7 +8,7 @@ const Profile: FC = () => {
   const { user } = useSelector((store: any) => store.auth);
   const params = useParams();
   const { userId = "" } = params;
-  const profileData = useProfileData(userId);
+  const { profileData } = useProfileData(userId);
 
   return (
     profileData && (

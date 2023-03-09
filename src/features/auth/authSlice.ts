@@ -1,25 +1,29 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { signInUser, generateRefreshToken } from "api/auth";
 import { getUser } from "api/user";
 import jwt_decode from "jwt-decode";
 import { setCookie, removeCookie, getCookie } from "helpers/helpersAuth";
+import { AuthState, SignInResponse } from "./authTypes";
 
 // CreateAsyncThunk takes 2 types --> <Type(Return object), Type(Argument)>
 
-export const login = createAsyncThunk("auth/login", async (credentials) => {
-  try {
-    const response = await signInUser(credentials);
-    return response.data;
-  } catch (error) {
-    throw new Error("Error signing in the user");
+export const login = createAsyncThunk<SignInResponse, string>(
+  "auth/login",
+  async (credentials) => {
+    try {
+      const response = await signInUser(credentials);
+      return response?.data;
+    } catch (error) {
+      throw new Error("Error signing in the user");
+    }
   }
-});
+);
 
-export const getUserData = createAsyncThunk(
+export const getUserData = createAsyncThunk<any, string>(
   "auth/getUserData",
   async (token) => {
     try {
-      const decodedToken = jwt_decode(token);
+      const decodedToken: any = jwt_decode(token);
       const userData = await getUser(decodedToken._id);
       return userData;
     } catch (error) {
@@ -28,13 +32,13 @@ export const getUserData = createAsyncThunk(
   }
 );
 
-export const refreshAccessToken = createAsyncThunk(
+export const refreshAccessToken = createAsyncThunk<any, any>(
   "auth/refreshAccessToken",
   async (navigate) => {
     try {
       removeCookie("token");
       const res = await generateRefreshToken();
-      return res.data;
+      return res?.data;
     } catch (error) {
       console.log("FACING ERROR FINISHED");
       navigate("/signin");
@@ -43,7 +47,7 @@ export const refreshAccessToken = createAsyncThunk(
   }
 );
 
-const initialState = {
+const initialState: AuthState = {
   isAuthenticated: false,
   token: null,
   user: null,
@@ -68,14 +72,17 @@ export const authSlice = createSlice({
     builder.addCase(login.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(login.fulfilled, (state, action) => {
-      state.loading = false;
-      state.isAuthenticated = true;
-      state.token = action.payload.token;
-      state.user = action.payload.user;
-      setCookie("token", action.payload.token);
-      state.error = null;
-    });
+    builder.addCase(
+      login.fulfilled,
+      (state, action: PayloadAction<SignInResponse>) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+        setCookie("token", action.payload.token);
+        state.error = null;
+      }
+    );
     builder.addCase(login.rejected, (state, action) => {
       state.loading = false;
       state.isAuthenticated = false;
@@ -103,14 +110,17 @@ export const authSlice = createSlice({
     builder.addCase(refreshAccessToken.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(refreshAccessToken.fulfilled, (state, action) => {
-      state.loading = false;
-      state.isAuthenticated = true;
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.error = null;
-      setCookie("token", action.payload.token);
-    });
+    builder.addCase(
+      refreshAccessToken.fulfilled,
+      (state, action: PayloadAction<any>) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.error = null;
+        setCookie("token", action.payload.token);
+      }
+    );
     builder.addCase(refreshAccessToken.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message;

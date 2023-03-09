@@ -1,34 +1,17 @@
 import { IUser } from "types";
 import { RootState } from "store";
 
+interface SignInResponse {
+  token: string;
+  user: any;
+}
+
 interface AuthState {
   isAuthenticated: boolean;
-  token: string | null;
-  user: IUser | null;
-  error: string | null;
+  token: any;
+  user: any;
+  error: any;
   loading: boolean;
 }
 
-interface Credentials {
-  email: string;
-  password: string;
-}
-
-interface TokenResponse {
-  token: string;
-  user: IUser;
-}
-
-interface RefreshTokenResponse {
-  token: string;
-  user: IUser;
-}
-
-export {
-  AuthState,
-  Credentials,
-  TokenResponse,
-  RefreshTokenResponse,
-  IUser,
-  RootState,
-};
+export { AuthState, IUser, RootState, SignInResponse };

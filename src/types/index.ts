@@ -6,6 +6,7 @@ import { IMessage } from "./IMessage.js";
 import { IRide } from "./IRide.js";
 import { IUser } from "./IUser.js";
 import { ISecondaryInfo } from "./ISecondaryInfo.js";
+import { LibraryType } from "./LibraryType.js";
 
 export {
   IUserInfo,
@@ -16,4 +17,5 @@ export {
   IRide,
   IUser,
   ISecondaryInfo,
+  LibraryType,
 };
