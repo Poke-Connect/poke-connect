@@ -1,7 +1,5 @@
 import React, { FC } from "react";
-import ChatInfo from "./ChatInfo";
-import InputContainer from "./InputContainer";
-import MessagesList from "./MessagesList";
+import { ChatInfo, InputContainer, MessagesList } from ".";
 
 interface IProps {
   otherUser: any;

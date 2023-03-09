@@ -5,15 +5,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import TileDetails from "../components/TileDetails";
-import { useSelector } from "react-redux";
 import { createUserObj } from "../helpers";
 import { TOAST_STRINGS } from "appConstants";
+import { useAppSelector } from "hooks";
 
 const AvailableConnectionTile = (props) => {
   const { rideDetails: otherRide, myRide, extraTime, extraDist } = props;
   const { CREATING_CONNECTION, ERROR, MATCH_CREATION_SUCCESS } = TOAST_STRINGS;
   const navigate = useNavigate();
-  const { user } = useSelector((store) => store.auth);
+  const { user } = useAppSelector((store) => store.auth);
 
   const { dispatch } = UserChat();
   const socket = Socket();

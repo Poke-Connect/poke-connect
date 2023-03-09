@@ -9,6 +9,7 @@
 
 
     -- API error handling
+    -- message socket on MyConnections page
 
 
     - All CX copies fix

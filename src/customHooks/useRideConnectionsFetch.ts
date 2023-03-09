@@ -9,7 +9,7 @@ import { getFilteredRidesTimeNew } from "helpers/getFilteredRidesTimeNew";
 
 export const useRideConnectionsFetch = (rideId: any, user: any) => {
   const [myRide, setMyRide] = useState(null);
-  const [connectedConnections, setConnectedConnections] = useState([]);
+  const [connectedConnections, setConnectedConnections] = useState<any>([]);
   const [availableConnections, setAvailableConnections] = useState<any>([]);
 
   const socket = Socket();

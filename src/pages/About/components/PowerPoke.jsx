@@ -7,7 +7,7 @@ const DONATE_TEXT =
 const NEW_DONATE_TEXT =
   "Also, the chances of you getting a match are directly proportional to the number of friends you get to sign up ;)";
 
-const Donate = () => {
+const PowerPoke = () => {
   return (
     <div className="donate-to-poke text-left bg-primary rounded-lg p-5 mt-6">
       <h2 className=" flex font-semibold text-xl items-center gap-2 pb-1.5">
@@ -22,4 +22,4 @@ const Donate = () => {
   );
 };
 
-export default Donate;
+export default PowerPoke;

@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import MessageItem from "./MessageItem";
 
-const MessagesList = (props) => {
-  const { messages } = props;
+interface IProps {
+  messages: any[];
+}
 
-  const ref = useRef();
+const MessagesList: FC<IProps> = (props) => {
+  const { messages } = props;
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -15,7 +18,7 @@ const MessagesList = (props) => {
       id="container"
       className="flex flex-col px-4 pt-5 pb-20 overflow-y-auto"
     >
-      {messages.map((message) => (
+      {messages.map((message: any) => (
         <MessageItem key={message._id} message={message} />
       ))}
       <div ref={ref} />

@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import FooterLayout from "./components/FooterLayout";
 import { Outlet, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useRideConnectionsFetch } from "customHooks";
 import { getConnectedCount } from "./helpers";
+import { useAppSelector } from "hooks";
 
 const RideConnections: FC = () => {
   const params = useParams();
   const { rideId } = params;
-  const { user } = useSelector((store: any) => store.auth);
+  const { user } = useAppSelector((store) => store.auth);
 
   const { myRide, connectedConnections, availableConnections } =
     useRideConnectionsFetch(rideId, user);

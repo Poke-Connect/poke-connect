@@ -1,12 +1,12 @@
 import { createRoute } from "helpers/createRoute";
+import { COMMON_STRINGS } from "appConstants";
 
-// eslint-disable-next-line no-undef
-const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
+const { DESTINATION_RIDE } = COMMON_STRINGS;
 
 export const getRouteObject = async (
-  rideType,
-  locationValue,
-  airportCordinates
+  rideType: any,
+  locationValue: any,
+  airportCordinates: any
 ) => {
   if (!rideType) {
     return {};
@@ -17,7 +17,7 @@ export const getRouteObject = async (
   }
 };
 
-export const getTripDistance = (minRouteObject) => {
+export const getTripDistance = (minRouteObject: any) => {
   const distValue = minRouteObject?.routes[0]?.legs[0]?.distance.value;
   return distValue ? distValue : 0;
 };

@@ -1,13 +1,7 @@
-/* eslint-disable no-undef */
-import React, { useState } from "react";
-import GMapElement from "./components/GMapElement";
+import React, { FC, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import DateTimeContainer from "./components/DateTimeContainer";
 import { getTodaysDate, getTimeNow } from "helpers/dateHelper";
-import PlacesAutocomplete from "./components/PlacesAutoComplete";
-import InputField from "./components/InputField";
 import Heading from "components/UI/Heading";
-import ButtonContainer from "./components/ButtonContainer";
 import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
 import { createNewRideBackend } from "db/dbWrites";
@@ -15,11 +9,18 @@ import { Socket } from "context/SocketContext";
 import { useSelector } from "react-redux";
 import { useDirections } from "customHooks";
 import { TOAST_STRINGS, COMMON_STRINGS } from "appConstants";
+import {
+  ButtonContainer,
+  DateTimeContainer,
+  GMapElement,
+  InputField,
+  PlacesAutocomplete,
+} from "./components";
 
-const NewRide = () => {
+const NewRide: FC = () => {
   const location = useLocation();
   const rideType = location.state.rideType;
-  const { user } = useSelector((store) => store.auth);
+  const { user } = useSelector((store: any) => store.auth);
   const userId = user._id;
   const socket = Socket();
   const { DESTINATION_RIDE } = COMMON_STRINGS;

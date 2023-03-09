@@ -5,5 +5,15 @@ import { IFeedback } from "./IFeedback.js";
 import { IMessage } from "./IMessage.js";
 import { IRide } from "./IRide.js";
 import { IUser } from "./IUser.js";
+import { ISecondaryInfo } from "./ISecondaryInfo.js";
 
-export { IUserInfo, IRideInfo, IMatchInfo, IFeedback, IMessage, IRide, IUser };
+export {
+  IUserInfo,
+  IRideInfo,
+  IMatchInfo,
+  IFeedback,
+  IMessage,
+  IRide,
+  IUser,
+  ISecondaryInfo,
+};

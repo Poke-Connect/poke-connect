@@ -1,6 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 
-const HomeButton = (props) => {
+interface IProps {
+  onClick: any;
+  name: any;
+  children: any;
+}
+
+const HomeButton: FC<IProps> = (props) => {
   const { onClick = () => {}, name, children } = props;
   return (
     <button

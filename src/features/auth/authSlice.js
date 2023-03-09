@@ -4,6 +4,8 @@ import { getUser } from "api/user";
 import jwt_decode from "jwt-decode";
 import { setCookie, removeCookie, getCookie } from "helpers/helpersAuth";
 
+// CreateAsyncThunk takes 2 types --> <Type(Return object), Type(Argument)>
+
 export const login = createAsyncThunk("auth/login", async (credentials) => {
   try {
     const response = await signInUser(credentials);

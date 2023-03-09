@@ -1,12 +1,14 @@
 import React, { FC } from "react";
-import AboutUs from "./components/AboutUs";
-import Donate from "./components/Donate";
-import ReachUs from "./components/ReachUs";
-import AboutHeader from "./components/AboutHeader";
 import { useNavigate } from "react-router-dom";
 import LinkText from "components/UI/LinkText";
-import HowWeWork from "./components/HowWeWork";
 import { useSelector } from "react-redux";
+import {
+  AboutHeader,
+  AboutUs,
+  HowWeWork,
+  PowerPoke,
+  ReachUs,
+} from "./components";
 
 const About: FC = () => {
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ const About: FC = () => {
             />
           )}
           <HowWeWork />
-          <Donate />
+          <PowerPoke />
           <div className="mt-10 pb-10">
             <ReachUs />
           </div>

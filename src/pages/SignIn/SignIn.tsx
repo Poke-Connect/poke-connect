@@ -5,7 +5,7 @@ import Loading from "pages/Loading";
 import LinkText from "components/UI/LinkText";
 import { signInLogger } from "firebaseUtils/firebaseLogger";
 import GoogleLoginButton from "./components/GoogleLoginButton";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "hooks";
 
 const ABOUT_US_MIN =
   "Poke helps you connect with probable co-passengers and share a cab.";
@@ -14,7 +14,7 @@ const POWER_POKE =
   "Poke is powered by people like you. Please give us feedback to help us build a better experience for you and share with your friends to increase your chances of connection.";
 
 const SignIn = () => {
-  const { user, loading } = useSelector((store: any) => store.auth);
+  const { user, loading } = useAppSelector((store) => store.auth);
   const navigate = useNavigate();
 
   const handleAboutUs = () => {

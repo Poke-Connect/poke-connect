@@ -11,7 +11,7 @@ export const conversationsSlice = createSlice({
     incrementUnreadCount: (state) => {
       state.unreadCount++;
     },
-    resetCount: (state, _action) => {
+    resetCount: (state) => {
       state.unreadCount = 0;
     },
     setUnreadCount: (state, action) => {

@@ -2,12 +2,12 @@ import React, { FC } from "react";
 import ChatIcon from "assets/icons/ChatIcon";
 import { useNavigate } from "react-router-dom";
 import CountIcon from "./CountIcon";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "hooks";
 
 const ConnectionsIcon: FC = () => {
   const navigate = useNavigate();
 
-  const { unreadCount } = useSelector((store: any) => store.conversations);
+  const { unreadCount } = useAppSelector((store) => store.conversations);
 
   const onClickHandler = () => {
     navigate(`/connections`);

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import { useSelector } from "react-redux";
 
-const MessageItem = ({ message }) => {
+interface IProps {
+  message: any;
+}
+
+const MessageItem: FC<IProps> = (props) => {
+  const { message } = props;
   const { senderId, text } = message;
-  const { user } = useSelector((store) => store.auth);
+  const { user } = useSelector((store: any) => store.auth);
 
   const bgColor =
     user._id === senderId

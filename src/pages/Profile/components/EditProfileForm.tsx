@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { getSecondaryInfo } from "../helper";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import EditInput from "./EditInput";
-import ButtonContainer from "./ButtonContainer";
-import PicEmailContainer from "./PicEmailContainer";
 import { toast } from "react-toastify";
 import { updateProfile } from "db/dbUpdate";
 import { TOAST_STRINGS } from "appConstants";
+import { ButtonContainer, EditInput, PicEmailContainer } from ".";
+import ErrorString from "./ErrorString";
 
-const EditProfileForm = (props) => {
+interface IProps {
+  profileData: any;
+  isNew: any;
+}
+
+const EditProfileForm: FC<IProps> = (props) => {
   const navigate = useNavigate();
   const { EDIT_PROFILE_SUCCESS, ERROR } = TOAST_STRINGS;
 
@@ -75,6 +79,9 @@ const EditProfileForm = (props) => {
     navigate("/home");
   };
 
+  console.log("formik", formik.errors.mobile);
+  console.log("formik type", typeof formik.errors.mobile);
+
   return (
     <div id="form" className="pt-3 pb-10 pl-6 pr-7 w-full">
       <form onSubmit={formik.handleSubmit} className=" w-full">
@@ -118,10 +125,7 @@ const EditProfileForm = (props) => {
           <div id="mobile" className="flex flex-row w-full">
             <div
               id={"countryCode"}
-              name={"countryCode"}
               placeholder={"+91"}
-              disabled={true}
-              value={"+91"}
               className="p-2 rounded-lg bg-lightGray text-typeText m-2 mr-0 w-1/6"
             >
               +91
@@ -139,7 +143,7 @@ const EditProfileForm = (props) => {
             </div>
           </div>
           {formik.touched.mobile && formik.errors.mobile ? (
-            <p className="text-sm text-primary">{formik.errors.mobile}</p>
+            <ErrorString text={formik.errors.mobile} />
           ) : null}
           <select
             id={"gender"}
@@ -184,7 +188,6 @@ const EditProfileForm = (props) => {
             placeholder={"About"}
             value={formik.values.about}
             onChange={formik.handleChange}
-            type="text"
             className="p-2 rounded-lg bg-lightGray placeholder-typeText text-black m-2 h-32 w-full items-start align-top justify-start"
           />
         </div>

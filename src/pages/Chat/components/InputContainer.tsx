@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { FC, useState, ChangeEvent } from "react";
 import { createNewMessage } from "db/dbWrites";
 import SendIcon from "assets/icons/SendIcon";
 import { updateConnectionData } from "db/dbUpdate";
 import { Socket } from "context/SocketContext";
 
-const InputContainer = (props) => {
+interface IProps {
+  connectionId: any;
+  selfId: any;
+  otherUserId: any;
+  messages: any;
+  setMessages: any;
+}
+
+const InputContainer: FC<IProps> = (props) => {
   const { connectionId, selfId, otherUserId, messages, setMessages } = props;
-  const [text, setText] = useState("");
+  const [text, setText] = useState<any>("");
   const socket = Socket();
 
-  const onChangeHandler = (e) => {
-    setText(e.target.value);
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value);
   };
 
   const onSubmitHandler = async () => {
@@ -35,8 +43,8 @@ const InputContainer = (props) => {
       } else {
         console.log("error");
       }
-    } catch (e) {
-      console.log("error", e);
+    } catch (error: any) {
+      console.log("error", error);
     }
     setText("");
   };
