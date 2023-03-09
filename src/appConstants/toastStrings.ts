@@ -1,4 +1,4 @@
-export const toastStrings = {
+export const TOAST_STRINGS = {
   ERROR: "Opps, something went wrong!",
   FEEDBACK_SUCCESS: "Thanks, feedback submitted successfully",
   DISCOVERABILITY_SUCCESS_OFF: "Trip’s discoverability turned Off",

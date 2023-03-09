@@ -5,10 +5,11 @@ import Arrow from "assets/icons/Arrow";
 import Line from "components/Line";
 import RoundButton from "components/Buttons/RoundButton";
 import WarningBar from "./components/WarningBar";
-import { commonStrings } from "constants/commonStrings";
+import { COMMON_STRINGS } from "appConstants";
 
 const Home: FC = () => {
   const navigate = useNavigate();
+  const { DESTINATION_RIDE, ORIGIN_RIDE } = COMMON_STRINGS;
 
   const onClickTripsHandler = () => {
     navigate(`/mytrips`);
@@ -16,13 +17,13 @@ const Home: FC = () => {
 
   const onTravelToAirportHandler = () => {
     navigate(`/connections/new`, {
-      state: { rideType: commonStrings.DESTINATION_RIDE },
+      state: { rideType: DESTINATION_RIDE },
     });
   };
 
   const onTravelFromAirportHandler = () => {
     navigate(`/connections/new`, {
-      state: { rideType: commonStrings.ORIGIN_RIDE },
+      state: { rideType: ORIGIN_RIDE },
     });
   };
 

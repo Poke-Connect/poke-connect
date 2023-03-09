@@ -1,4 +1,16 @@
 # MAIN:
+    -- Using TS interfaces
+    -- manage strings and number like 2 hrs from central place
+    -- Code cleanup
+        - Moving stuff to custom hooks
+        - exporting helper components from index files
+        --> NewRide page
+        --> Profile page
+
+
+    -- API error handling
+
+
     - All CX copies fix
         - empty components
         - toast messages
@@ -16,15 +28,14 @@
     - Share location for pickup
 
 
-    - API error handling
+    
         - No internet scenarios
     - Count of new messages
     - Notifications - over whatsapp
     - 'Connect on Whatsapp' functionality
-    - Code cleanup
-    - Using TS interfaces
     
-    - manage strings and number like 2 hrs from central place
+    
+    
     - multiple people matching
     
     - Remove firebase dependendecies (apart from analytics)

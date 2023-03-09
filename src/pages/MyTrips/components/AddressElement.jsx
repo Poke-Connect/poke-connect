@@ -1,11 +1,11 @@
 import React from "react";
 import { createLocationString } from "helpers/utils";
-import { commonStrings } from "constants/commonStrings";
+import { COMMON_STRINGS } from "appConstants";
 
 const AddressElement = (props) => {
   const { location, rideType } = props;
   const locationDisplay = createLocationString(location);
-  const { KIA, DESTINATION_RIDE } = commonStrings;
+  const { KIA, DESTINATION_RIDE } = COMMON_STRINGS;
 
   const styles =
     rideType === DESTINATION_RIDE ? "flex-col" : "flex flex-col-reverse";

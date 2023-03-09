@@ -4,13 +4,14 @@ import { createNewConnection, createRideConnection } from "db/dbWrites";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { toastStrings } from "constants/toastStrings";
 import TileDetails from "../components/TileDetails";
 import { useSelector } from "react-redux";
 import { createUserObj } from "../helpers";
+import { TOAST_STRINGS } from "appConstants";
 
 const AvailableConnectionTile = (props) => {
   const { rideDetails: otherRide, myRide, extraTime, extraDist } = props;
+  const { CREATING_CONNECTION, ERROR, MATCH_CREATION_SUCCESS } = TOAST_STRINGS;
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.auth);
 
@@ -27,11 +28,11 @@ const AvailableConnectionTile = (props) => {
     if (!user || !otherUser) {
       return;
     }
-    const toastId = toast.loading(toastStrings.CREATING_CONNECTION);
+    const toastId = toast.loading(CREATING_CONNECTION);
     try {
       const connectionId = await createNewConnection(user, otherUser);
       if (!connectionId) {
-        toast.error(toastStrings.ERROR);
+        toast.error(ERROR);
         return;
       }
       await createRideConnection(
@@ -49,7 +50,7 @@ const AvailableConnectionTile = (props) => {
         otherUser._id
       );
       toast.update(toastId, {
-        render: toastStrings.MATCH_CREATION_SUCCESS,
+        render: MATCH_CREATION_SUCCESS,
         type: "success",
         isLoading: false,
         autoClose: 100,
@@ -61,7 +62,7 @@ const AvailableConnectionTile = (props) => {
       });
       navigate(`/chat/${connectionId}`);
     } catch (error) {
-      toast.error(toastStrings.ERROR);
+      toast.error(ERROR);
       console.log("Connection Failed", error);
     }
   };

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import DateTimeElement from "components/DateTimeElement";
 import EmptyItem from "components/UI/EmptyItem";
-import { emptyStrings } from "constants/emptyStrings";
 import AvailableConnectionTile from "./AvailableConnectionTile";
+import { EMPTY_STRINGS } from "appConstants";
 
 interface IProps {
   myRide: any;
@@ -19,7 +19,7 @@ const AvailableConnectionsList: FC<IProps> = (props) => {
   const isEmpty = availableConnections.length === 0 ? true : false;
 
   if (isEmpty) {
-    return <EmptyItem text={emptyStrings.AVAILABLE_CONNECTIONS} />;
+    return <EmptyItem text={EMPTY_STRINGS.AVAILABLE_CONNECTIONS} />;
   }
 
   return (

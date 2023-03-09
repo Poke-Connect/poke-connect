@@ -1,4 +1,4 @@
-export const socketStrings = {
+export const SOCKET_STRINGS = {
   CONNECTION: "connection",
   DISCONNECT: "disconnect",
   ADD_USER: "add-user",

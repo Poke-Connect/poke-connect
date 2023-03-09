@@ -1,13 +1,13 @@
 import EmptyItem from "components/UI/EmptyItem";
 import React from "react";
-import { emptyStrings } from "constants/emptyStrings";
 import ConnectionElement from "./ConnectionElement";
+import { EMPTY_STRINGS } from "appConstants";
 
 const Connections = (props) => {
   const { myConnections } = props;
 
   if (!myConnections || myConnections.length === 0) {
-    return <EmptyItem text={emptyStrings.MY_CONNECTIONS} />;
+    return <EmptyItem text={EMPTY_STRINGS.MY_CONNECTIONS} />;
   }
 
   return (

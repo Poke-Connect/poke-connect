@@ -1,22 +1,20 @@
 /* eslint-disable no-undef */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GMapElement from "./components/GMapElement";
 import { useNavigate, useLocation } from "react-router-dom";
 import DateTimeContainer from "./components/DateTimeContainer";
 import { getTodaysDate, getTimeNow } from "helpers/dateHelper";
 import PlacesAutocomplete from "./components/PlacesAutoComplete";
-import { getRouteObject, getTripDistance } from "./helpers";
 import InputField from "./components/InputField";
 import Heading from "components/UI/Heading";
 import ButtonContainer from "./components/ButtonContainer";
 import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
-import { toastStrings } from "constants/toastStrings";
 import { createNewRideBackend } from "db/dbWrites";
 import { Socket } from "context/SocketContext";
 import { useSelector } from "react-redux";
-
-const DESTINATION_RIDE = "DESTINATION_RIDE"; // From X --> TO_AIRPORT
+import { useDirections } from "customHooks";
+import { TOAST_STRINGS, COMMON_STRINGS } from "appConstants";
 
 const NewRide = () => {
   const location = useLocation();
@@ -24,12 +22,11 @@ const NewRide = () => {
   const { user } = useSelector((store) => store.auth);
   const userId = user._id;
   const socket = Socket();
+  const { DESTINATION_RIDE } = COMMON_STRINGS;
 
-  const [directionsResponse, setDirectionsResponse] = useState(null);
   const [dateValue, setDateValue] = useState(getTodaysDate());
   const [timeValue, setTimeValue] = useState(getTimeNow());
   const [locationValue, setLocationValue] = useState(null);
-  const [tripDistance, setTripDistance] = useState(0);
 
   const navigate = useNavigate();
 
@@ -43,33 +40,20 @@ const NewRide = () => {
         locationValue,
         tripDistance
       );
-      //CREATE A SOCKET EVENT
       if (socket) {
         socket.emit("create-ride", { rideId: rideId });
       }
-      toast.success(toastStrings.RIDE_CREATION_SUCCESS);
+      toast.success(TOAST_STRINGS.RIDE_CREATION_SUCCESS);
       navigate(`/rideconnections/${rideId}/available`);
     } catch (e) {
-      toast.error(toastStrings.ERROR);
+      toast.error(TOAST_STRINGS.ERROR);
     }
-
-    //IF REQUIRED: Distance and duration can be taken from minRouteObject
   };
 
-  useEffect(() => {
-    const airportCordinates = new google.maps.LatLng(13.199379, 77.710136);
-    const fetchDirections = async () => {
-      const minRouteObject = await getRouteObject(
-        rideType,
-        locationValue,
-        airportCordinates
-      );
-      const distance = getTripDistance(minRouteObject);
-      setDirectionsResponse(minRouteObject);
-      setTripDistance(distance);
-    };
-    locationValue && fetchDirections();
-  }, [locationValue, rideType]);
+  const { directionsResponse, tripDistance } = useDirections(
+    rideType,
+    locationValue
+  );
 
   return (
     <div

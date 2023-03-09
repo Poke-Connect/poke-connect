@@ -1,4 +1,4 @@
-export const emptyStrings = {
+export const EMPTY_STRINGS = {
   MY_CONNECTIONS: "No connections yet, create a new ride to find connections.",
   MY_TRIPS: "No trips yet, go to find new connections to create a new trip.",
   UPCOMING_TRIPS:

@@ -2,10 +2,11 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { toastStrings } from "constants/toastStrings";
 import { addFeedbackDb } from "db/dbWrites";
+import { TOAST_STRINGS } from "appConstants";
 
 const ReachUs = () => {
+  const { FEEDBACK_SUCCESS, ERROR } = TOAST_STRINGS;
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -21,10 +22,9 @@ const ReachUs = () => {
     }),
     onSubmit: (values) => {
       try {
-        addFeedbackDb(values);
-        toast.success(toastStrings.FEEDBACK_SUCCESS);
+        addFeedbackDb(FEEDBACK_SUCCESS);
       } catch (e) {
-        toast.error(toastStrings.ERROR);
+        toast.error(ERROR);
       }
       formik.resetForm();
     },

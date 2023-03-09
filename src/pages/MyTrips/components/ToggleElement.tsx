@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
 import Switch from "components/Switch";
 import { toast } from "react-toastify";
-import { toastStrings } from "constants/toastStrings";
 import { toggleRideDiscoverability } from "api/ride";
 import { Socket } from "context/SocketContext";
+import { TOAST_STRINGS } from "appConstants";
 
 interface IProps {
   discoverability: boolean;
@@ -12,6 +12,8 @@ interface IProps {
 
 const ToggleElement: FC<IProps> = (props) => {
   const { discoverability, rideId } = props;
+  const { DISCOVERABILITY_SUCCESS_OFF, DISCOVERABILITY_SUCCESS_ON, ERROR } =
+    TOAST_STRINGS;
   const socket = Socket();
 
   const [toggleState, setToggleState] = useState<boolean>(discoverability);
@@ -19,9 +21,9 @@ const ToggleElement: FC<IProps> = (props) => {
   const onToggleHandler = async () => {
     try {
       if (toggleState) {
-        toast.success(toastStrings.DISCOVERABILITY_SUCCESS_OFF);
+        toast.success(DISCOVERABILITY_SUCCESS_OFF);
       } else {
-        toast.success(toastStrings.DISCOVERABILITY_SUCCESS_ON);
+        toast.success(DISCOVERABILITY_SUCCESS_ON);
       }
       await toggleRideDiscoverability(rideId, !toggleState);
       if (socket) {
@@ -29,7 +31,7 @@ const ToggleElement: FC<IProps> = (props) => {
       }
       setToggleState(!toggleState);
     } catch (e) {
-      toast.error(toastStrings.ERROR);
+      toast.error(ERROR);
     }
   };
 

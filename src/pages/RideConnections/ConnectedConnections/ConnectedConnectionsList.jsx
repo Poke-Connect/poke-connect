@@ -4,7 +4,7 @@ import TileDetails from "../components/TileDetails";
 import { createUserObj } from "../helpers";
 import { UserChat } from "context/ChatContext";
 import EmptyItem from "components/UI/EmptyItem";
-import { emptyStrings } from "constants/emptyStrings";
+import { EMPTY_STRINGS } from "appConstants";
 
 const ConnectedConnectionsList = (props) => {
   const { connectionsData } = props;
@@ -12,7 +12,7 @@ const ConnectedConnectionsList = (props) => {
   const navigate = useNavigate();
 
   if (!connectionsData || connectionsData.length === 0) {
-    return <EmptyItem text={emptyStrings.CONNECTED_CONNECTIONS} />;
+    return <EmptyItem text={EMPTY_STRINGS.CONNECTED_CONNECTIONS} />;
   }
 
   const onClickHandler = (data) => {

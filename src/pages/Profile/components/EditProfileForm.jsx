@@ -7,11 +7,12 @@ import EditInput from "./EditInput";
 import ButtonContainer from "./ButtonContainer";
 import PicEmailContainer from "./PicEmailContainer";
 import { toast } from "react-toastify";
-import { toastStrings } from "constants/toastStrings";
 import { updateProfile } from "db/dbUpdate";
+import { TOAST_STRINGS } from "appConstants";
 
 const EditProfileForm = (props) => {
   const navigate = useNavigate();
+  const { EDIT_PROFILE_SUCCESS, ERROR } = TOAST_STRINGS;
 
   const { profileData, isNew } = props;
   const [isEditing, setIsEditing] = useState(true);
@@ -50,10 +51,10 @@ const EditProfileForm = (props) => {
         updateProfile(values, userId, email, photoURL);
         setIsEditing(false);
         formik.resetForm();
-        toast.success(toastStrings.EDIT_PROFILE_SUCCESS);
+        toast.success(EDIT_PROFILE_SUCCESS);
         isNew ? navigate("/home") : navigate(`/user/${userId}`);
       } catch (e) {
-        toast.error(toastStrings.ERROR);
+        toast.error(ERROR);
       }
     },
   });

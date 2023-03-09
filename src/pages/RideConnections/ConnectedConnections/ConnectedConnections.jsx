@@ -2,13 +2,13 @@ import React from "react";
 import RideConnectionsLayout from "../RideConnectionsLayout";
 import ConnectedConnectionsList from "./ConnectedConnectionsList";
 import { useOutletContext } from "react-router-dom";
-import { headingStrings } from "constants/headingStrings";
+import { HEADING_STRINGS } from "appConstants";
 
 const ConnectedConnections = () => {
   const { connectedConnections } = useOutletContext();
 
   return (
-    <RideConnectionsLayout heading={headingStrings.CONNECTED_CONNECTIONS}>
+    <RideConnectionsLayout heading={HEADING_STRINGS.CONNECTED_CONNECTIONS}>
       <ConnectedConnectionsList
         connectionsData={connectedConnections?.connectedConnections}
       />
