@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import DateTimeElement from "components/DateTimeElement";
 import EmptyItem from "components/UI/EmptyItem";
 import AvailableConnectionTile from "./AvailableConnectionTile";
 import { EMPTY_STRINGS } from "appConstants";
+import { DateTimeElement } from "containers";
 
 interface IProps {
   myRide: any;

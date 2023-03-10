@@ -1,6 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 
-const DateTimeText = (props) => {
+interface IProps {
+  text: string;
+}
+
+const DateTimeText: FC<IProps> = (props) => {
   const { text } = props;
   return <p className="text-typeText text-sm font-light">{text}</p>;
 };

@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Connections from "./components/Connections";
-import Heading from "components/UI/Heading";
 import { useSelector, useDispatch } from "react-redux";
 import { resetCount } from "features/conversations/conversationsSlice";
 import { emptyNewConnections } from "api/user";
 import { useMyConnections } from "customHooks";
+import { Heading } from "components";
 
 const MyConnections = () => {
   const { user } = useSelector((store: any) => store.auth);

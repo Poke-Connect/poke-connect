@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ReachUs from "../About/components/ReachUs";
 import Loading from "pages/Loading";
-import LinkText from "components/UI/LinkText";
 import { signInLogger } from "firebaseUtils/firebaseLogger";
 import GoogleLoginButton from "./components/GoogleLoginButton";
 import { useAppSelector } from "hooks";
+import { LinkText } from "components";
 
 const ABOUT_US_MIN =
   "Poke helps you connect with probable co-passengers and share a cab.";

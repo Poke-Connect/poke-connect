@@ -5,6 +5,7 @@ import { useChatsFetch } from "./useChatsFetch";
 import { useChatSocket } from "./useChatSocket";
 import { useMyConnections } from "./useMyConnections";
 import { useAppAuth } from "./useAppAuth";
+import { useUserRidesFetch } from "./useUserRidesFetch";
 
 export {
   useRideConnectionsFetch,
@@ -14,4 +15,5 @@ export {
   useChatSocket,
   useMyConnections,
   useAppAuth,
+  useUserRidesFetch,
 };

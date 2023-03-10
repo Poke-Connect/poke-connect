@@ -1,6 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 
-const Switch = (props) => {
+interface IProps {
+  toggleState: any;
+  onToggleHandler: any;
+}
+
+const Switch: FC<IProps> = (props) => {
   const { toggleState, onToggleHandler } = props;
 
   const toggleClass = " transform translate-x-full";

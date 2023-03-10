@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import LinkText from "components/UI/LinkText";
 import { useSelector } from "react-redux";
 import {
   AboutHeader,
@@ -9,6 +8,7 @@ import {
   PowerPoke,
   ReachUs,
 } from "./components";
+import { LinkText } from "components";
 
 const About: FC = () => {
   const navigate = useNavigate();

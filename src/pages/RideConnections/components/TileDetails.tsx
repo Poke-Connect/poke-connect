@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { createTimeStringFromTimeStamp } from "helpers/dateHelper";
-import PicContainer from "components/PicContainer";
+import PicContainer from "components/UI/PicContainer";
 import NameInfoContainer from "./NameInfoContainer";
 import { useNavigate } from "react-router-dom";
 import { IMatchInfo, IUserInfo } from "types";

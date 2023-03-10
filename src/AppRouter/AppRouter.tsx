@@ -1,21 +1,21 @@
 import React, { FC } from "react";
 import { Route, Routes } from "react-router-dom";
-import About from "./pages/About/About";
-import Error from "./pages/Error";
-import Home from "./pages/Home/Home";
-import MyTrips from "./pages/MyTrips/MyTrips";
-import AvailableConnections from "./pages/RideConnections/AvailableConnections/AvailableConnections";
-import MyConnections from "./pages/MyConnections/MyConnections";
-import Chat from "./pages/Chat/Chat";
-import Profile from "./pages/Profile/Profile";
-import NewRide from "./pages/NewRide/NewRide";
-import SignIn from "./pages/SignIn/SignIn";
-import Protected from "./pages/Protected";
-import LogOut from "./pages/LogOut";
-import ConnectedConnections from "./pages/RideConnections/ConnectedConnections/ConnectedConnections";
-import EditProfile from "./pages/Profile/EditProfile/EditProfile";
+import About from "../pages/About/About";
+import Error from "../pages/Error";
+import Home from "../pages/Home/Home";
+import MyTrips from "../pages/MyTrips/MyTrips";
+import AvailableConnections from "../pages/RideConnections/AvailableConnections/AvailableConnections";
+import MyConnections from "../pages/MyConnections/MyConnections";
+import Chat from "../pages/Chat/Chat";
+import Profile from "../pages/Profile/Profile";
+import NewRide from "../pages/NewRide/NewRide";
+import SignIn from "../pages/SignIn/SignIn";
+import Protected from "../pages/Protected";
+import LogOut from "../pages/LogOut";
+import ConnectedConnections from "../pages/RideConnections/ConnectedConnections/ConnectedConnections";
+import EditProfile from "../pages/Profile/EditProfile/EditProfile";
 import RideConnections from "pages/RideConnections/RideConnections";
-import AppLayout from "components/Layout/AppLayout";
+import AppLayout from "./AppLayout";
 
 const AppRouter: FC = () => {
   return (

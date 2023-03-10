@@ -1,5 +1,4 @@
 import React, { useState, FC } from "react";
-import AppRouter from "./AppRouter";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { ChatContextProvider } from "context/ChatContext";
 import Loading from "./pages/Loading";
@@ -9,6 +8,7 @@ import { useAppAuth } from "customHooks";
 import { LibraryType } from "types";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import { AppRouter } from "AppRouter";
 
 const App: FC = () => {
   const [libraries] = useState<LibraryType[]>(["places"]);

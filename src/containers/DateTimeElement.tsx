@@ -1,11 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   createTimeStringFromTimeStamp,
   createDateStringTrip,
 } from "helpers/dateHelper";
-import DateTimeText from "./UI/DateTimeText";
+import { DateTimeText } from "components";
 
-const DateTimeElement = (props) => {
+interface IProps {
+  date: any;
+  timeStampRide: any;
+}
+
+const DateTimeElement: FC<IProps> = (props) => {
   const { date, timeStampRide } = props;
   const dateDisplay = createDateStringTrip(date);
   const timeDisplay = createTimeStringFromTimeStamp(timeStampRide);

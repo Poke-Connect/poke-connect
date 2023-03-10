@@ -1,10 +1,16 @@
-import React from "react";
-import DateTimeElement from "components/DateTimeElement";
+import React, { FC } from "react";
 import AddressElement from "./AddressElement";
 import ToggleElement from "./ToggleElement";
-import RideLine from "components/RideLine";
+import { RideLine } from "components";
+import { DateTimeElement } from "containers";
 
-const TripElement = (props) => {
+interface IProps {
+  rideData: any;
+  onClickHandler: any;
+  upcoming: any;
+}
+
+const TripElement: FC<IProps> = (props) => {
   const { rideData, onClickHandler, upcoming } = props;
 
   if (!rideData) {

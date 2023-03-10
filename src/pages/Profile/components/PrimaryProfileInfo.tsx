@@ -1,11 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "assets/icons/EditIcon";
-import IconButton from "components/IconButton";
 import ImageContainer from "components/UI/ImageContainer";
 import { capitaliseName } from "helpers/utils";
+import { IconButton } from "components";
 
-const PrimaryProfileInfo = (props) => {
+interface IProps {
+  displayName: string;
+  email: string;
+  photoURL: string;
+  userId: string;
+}
+
+const PrimaryProfileInfo: FC<IProps> = (props) => {
   const { displayName, email, photoURL, userId } = props;
 
   const navigate = useNavigate();
@@ -25,7 +32,7 @@ const PrimaryProfileInfo = (props) => {
         </div>
       </div>
       <div className="edit pl-2 md:pl-10">
-        <IconButton IconParam={EditIcon} onPressHandler={onEditPressHandler} />
+        <IconButton IconParam={EditIcon} onClickHandler={onEditPressHandler} />
       </div>
     </div>
   );

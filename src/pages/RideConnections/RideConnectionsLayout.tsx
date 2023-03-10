@@ -1,5 +1,5 @@
+import { Heading } from "components";
 import React, { FC, ReactNode } from "react";
-import Heading from "components/UI/Heading";
 
 interface IProps {
   heading: string;

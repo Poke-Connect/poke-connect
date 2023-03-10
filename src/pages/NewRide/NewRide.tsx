@@ -1,8 +1,6 @@
 import React, { FC, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getTodaysDate, getTimeNow } from "helpers/dateHelper";
-import Heading from "components/UI/Heading";
-import RideLine from "components/RideLine";
 import { toast } from "react-toastify";
 import { createNewRideBackend } from "db/dbWrites";
 import { Socket } from "context/SocketContext";
@@ -16,6 +14,7 @@ import {
   InputField,
   PlacesAutocomplete,
 } from "./components";
+import { Heading, RideLine } from "components";
 
 const NewRide: FC = () => {
   const location = useLocation();

@@ -1,12 +1,18 @@
-import React from "react";
+import React, { FC, memo } from "react";
 import { getfilteredTrips } from "../helpers";
 import TripsList from "./TripsList";
 
-const ShowTrips = (props) => {
+interface IProps {
+  myTrips: any;
+}
+
+const ShowTrips: FC<IProps> = memo((props) => {
   const { myTrips } = props;
+
   if (!myTrips) {
     return null;
   }
+
   const filteredTrips = getfilteredTrips(myTrips);
   return (
     <>
@@ -24,6 +30,6 @@ const ShowTrips = (props) => {
       </div>
     </>
   );
-};
+});
 
 export default ShowTrips;

@@ -79,9 +79,6 @@ const EditProfileForm: FC<IProps> = (props) => {
     navigate("/home");
   };
 
-  console.log("formik", formik.errors.mobile);
-  console.log("formik type", typeof formik.errors.mobile);
-
   return (
     <div id="form" className="pt-3 pb-10 pl-6 pr-7 w-full">
       <form onSubmit={formik.handleSubmit} className=" w-full">

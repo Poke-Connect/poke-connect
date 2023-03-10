@@ -1,12 +1,16 @@
-import React from "react";
+import React, { FC, ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { logout } from "features/auth/authSlice";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "hooks";
 
-const Protected = ({ children }) => {
+interface IProps {
+  children: ReactNode;
+}
+
+const Protected: FC<IProps> = (props) => {
+  const { children } = props;
   const { user } = useAppSelector((store) => store.auth);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   if (!user || !user._id) {
     dispatch(logout());

@@ -1,7 +1,7 @@
 import React from "react";
 import { UserChat } from "context/ChatContext";
 import { useNavigate } from "react-router-dom";
-import PicContainer from "components/PicContainer";
+import PicContainer from "components/UI/PicContainer";
 import InfoContainer from "./InfoContainer";
 
 const ConnectionElement = (props) => {

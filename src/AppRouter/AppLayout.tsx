@@ -1,13 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import { Outlet, Navigate, useLocation } from "react-router-dom";
-import Header from "./Header/Header";
 import { logout } from "features/auth/authSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { checkLocation } from "components/helpers";
+import { checkLocation } from "helpers/utils";
+import { useAppDispatch, useAppSelector } from "hooks";
+import { Header } from "containers";
 
-const AppLayout = () => {
-  const { user } = useSelector((store) => store.auth);
-  const dispatch = useDispatch();
+const AppLayout: FC = () => {
+  const { user } = useAppSelector((store) => store.auth);
+  const dispatch = useAppDispatch();
 
   const location = useLocation();
   const isChatPage = checkLocation(location.pathname, "chat");

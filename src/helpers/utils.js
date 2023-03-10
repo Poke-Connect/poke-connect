@@ -36,3 +36,11 @@ export const getFirstName = (displayName) => {
 export const getObjectLength = (obj) => {
   return obj ? Object.keys(obj).length : 0;
 };
+
+export const checkLocation = (pathname, toCheck) => {
+  if (pathname.split("/")[1] === toCheck) {
+    return true;
+  } else {
+    return false;
+  }
+};

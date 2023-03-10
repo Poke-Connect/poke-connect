@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import RightSideNav from "../RightSideNav/RightSideNav";
-import ConnectionsIcon from "./ConnectionsIcon";
-import ProfileIcon from "./ProfileIcon";
-import { useDispatch, useSelector } from "react-redux";
+import ConnectionsIcon from "./components/ConnectionsIcon";
 import { logout } from "features/auth/authSlice";
 import { googleLogout } from "@react-oauth/google";
+import ProfileIcon from "./components/ProfileIcon";
+import { useAppDispatch, useAppSelector } from "hooks";
+import { RightSideNav } from "containers";
 
-const Header = () => {
-  const { user } = useSelector((store) => store.auth);
-  const dispatch = useDispatch();
+const Header: FC = () => {
+  const { user } = useAppSelector((store) => store.auth);
+  const dispatch = useAppDispatch();
 
   const [showSidebar, setShowSidebar] = useState(false);
   const toggleSideBar = () => setShowSidebar(!showSidebar);

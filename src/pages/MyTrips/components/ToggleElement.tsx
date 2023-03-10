@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
-import Switch from "components/Switch";
 import { toast } from "react-toastify";
 import { toggleRideDiscoverability } from "api/ride";
 import { Socket } from "context/SocketContext";
 import { TOAST_STRINGS } from "appConstants";
+import { Switch } from "components";
 
 interface IProps {
   discoverability: boolean;
@@ -37,11 +37,7 @@ const ToggleElement: FC<IProps> = (props) => {
 
   return (
     <div className="flex-col flex justify-end items-end ">
-      <Switch
-        toggleState={toggleState}
-        setToggleState={setToggleState}
-        onToggleHandler={onToggleHandler}
-      />
+      <Switch toggleState={toggleState} onToggleHandler={onToggleHandler} />
       <p className="text-xs text-typeText font-extralight italic">
         Discoverable
       </p>

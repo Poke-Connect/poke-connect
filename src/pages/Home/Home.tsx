@@ -2,10 +2,9 @@ import React, { FC } from "react";
 import NewConnectionContainer from "./components/NewConnectionContainer";
 import { useNavigate } from "react-router-dom";
 import Arrow from "assets/icons/Arrow";
-import Line from "components/Line";
-import RoundButton from "components/Buttons/RoundButton";
 import WarningBar from "./components/WarningBar";
 import { COMMON_STRINGS } from "appConstants";
+import { Line, SecondaryButton } from "components";
 
 const Home: FC = () => {
   const navigate = useNavigate();
@@ -36,7 +35,7 @@ const Home: FC = () => {
       />
       <Line />
       <div className="flex flex-col w-4/5">
-        <RoundButton
+        <SecondaryButton
           text={"My Trips"}
           onClickHandler={onClickTripsHandler}
           IconParam={Arrow}

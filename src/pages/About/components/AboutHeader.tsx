@@ -1,8 +1,12 @@
-import React from "react";
-import Header from "components/Layout/Header/Header";
+import { Header } from "containers";
+import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AboutHeader = ({ isLoggedIn }) => {
+interface IProps {
+  isLoggedIn: any;
+}
+
+const AboutHeader: FC<IProps> = ({ isLoggedIn }) => {
   const navigate = useNavigate();
 
   if (isLoggedIn) {
