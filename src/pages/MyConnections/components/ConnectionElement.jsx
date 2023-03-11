@@ -1,8 +1,8 @@
 import React from "react";
 import { UserChat } from "context/ChatContext";
 import { useNavigate } from "react-router-dom";
-import PicContainer from "components/UI/PicContainer";
 import InfoContainer from "./InfoContainer";
+import PicConnectionContainer from "./PicConnectionContainer";
 
 const ConnectionElement = (props) => {
   const { connection } = props;
@@ -26,12 +26,13 @@ const ConnectionElement = (props) => {
   };
 
   return (
-    <div className="flex flex-row py-8 pl-2 justify-between items-center border-b border-primary gap-3 ">
-      <div className="flex flex-row justify-start w-full">
-        <PicContainer
+    <div className="flex flex-row py-8 pl-2 justify-between items-center border-b border-primary gap-3  ">
+      <div className="flex flex-row justify-start w-full ">
+        <PicConnectionContainer
           photoURL={photoURL}
           alt={displayName[0]}
           onClickHandler={onPhotoClickHandler}
+          userId={userId}
         />
         <InfoContainer
           onClickHandler={onClickHandler}

@@ -8,17 +8,25 @@
             - if no info in other user profile, show some SVG
             - error screen
 
+        --Whatsapp Login
+        --Request layer
+        -- turn off ride discoverability
+        --Connect on Whatsapp
+
         -- API error handling
-        -- message socket on MyConnections page
+        -- Notification Handling
+        
 
         --Requires Cloud
-            - Storing profile pics
-            - Host the backend and frontend 
+           
+            -- Host the backend and frontend 
+            -- message socket on MyConnections page
 
         -- Connection details on chat page 
         -- Share location for pickup
     
     VERSION 3 -
+     - Storing profile pics
         - No internet scenarios
         - Count of new messages
         - Notifications - over whatsapp
