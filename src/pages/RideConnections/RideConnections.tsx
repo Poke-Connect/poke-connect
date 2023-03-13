@@ -13,6 +13,10 @@ const RideConnections: FC = () => {
   const { myRide, connectedConnections, availableConnections } =
     useRideConnectionsFetch(rideId, user);
 
+  if (!rideId) {
+    return null;
+  }
+
   return (
     <div className="flex-col flex justify-between ">
       <Outlet

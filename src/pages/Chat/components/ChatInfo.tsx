@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 interface IProps {
   userId: string;
   displayName: string;
-  photoURL?: string;
+  photoURL: string;
 }
 
 const ChatInfo: FC<IProps> = (props) => {

@@ -3,10 +3,10 @@ import { createTimeStringFromTimeStamp } from "helpers/dateHelper";
 import PicContainer from "components/UI/PicContainer";
 import NameInfoContainer from "./NameInfoContainer";
 import { useNavigate } from "react-router-dom";
-import { IMatchInfo, IUserInfo } from "types";
+import { IMatchInfo } from "types";
 
 interface IProps {
-  userDetails: IUserInfo;
+  userDetails: any;
   rideDetails: { location: string; timeStampRide: string };
   matchDetails: IMatchInfo;
   onClickHandler: any;

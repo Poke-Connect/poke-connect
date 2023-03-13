@@ -17,6 +17,7 @@ const FixedInput: FC<IProps> = ({ setFromValue }) => {
       disabled={true}
       placeholder={INPUT_PLACEHOLDER}
       styles={"placeholder-black"}
+      value={INPUT_PLACEHOLDER}
     />
   );
 };

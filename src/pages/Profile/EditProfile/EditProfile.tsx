@@ -1,9 +1,8 @@
 import React, { FC } from "react";
-import EditProfileForm from "../components/EditProfileForm";
-import { useLocation } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useProfileData } from "customHooks";
 import { useAppSelector } from "hooks";
+import { EditProfileForm } from "../containers";
 
 const EditProfile: FC = () => {
   const { user } = useAppSelector((store) => store.auth);

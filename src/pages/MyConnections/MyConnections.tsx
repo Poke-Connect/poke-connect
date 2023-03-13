@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import Connections from "./components/Connections";
-import { useSelector, useDispatch } from "react-redux";
 import { resetCount } from "features/conversations/conversationsSlice";
 import { emptyNewConnections } from "api/user";
 import { useMyConnections } from "customHooks";
 import { Heading } from "components";
+import { useAppDispatch, useAppSelector } from "hooks";
+import { Connections } from "./components";
 
 const MyConnections = () => {
-  const { user } = useSelector((store: any) => store.auth);
-  const { unreadCount } = useSelector((store: any) => store.conversations);
-  const dispatch = useDispatch();
+  const { user } = useAppSelector((store) => store.auth);
+  const { unreadCount } = useAppSelector((store) => store.conversations);
+  const dispatch = useAppDispatch();
   const myConnections = useMyConnections(user._id);
 
   useEffect(() => {

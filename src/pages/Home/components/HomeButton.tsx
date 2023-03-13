@@ -3,7 +3,6 @@ import React, { FC } from "react";
 interface IProps {
   onClick: any;
   name: any;
-  children: any;
   IconParam?: any;
 }
 
