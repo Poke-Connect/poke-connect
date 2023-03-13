@@ -1,11 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import { createLocationString } from "helpers/utils";
 import { COMMON_STRINGS } from "appConstants";
 
-const AddressElement = (props) => {
-  const { location, rideType } = props;
+interface IProps {
+  location: string;
+  rideType: string;
+  from: string;
+}
+
+const AddressElement: FC<IProps> = (props) => {
+  const { location, rideType, from } = props;
   const locationDisplay = createLocationString(location);
-  const { KIA, DESTINATION_RIDE } = COMMON_STRINGS;
+  const { DESTINATION_RIDE } = COMMON_STRINGS;
 
   const styles =
     rideType === DESTINATION_RIDE ? "flex-col" : "flex flex-col-reverse";
@@ -19,7 +25,7 @@ const AddressElement = (props) => {
       </div>
       <div className="flex justify-start ">
         <p className="text-ellipsis overflow-hidden line-clamp-1 text-base">
-          {KIA}
+          {from}
         </p>
       </div>
     </div>

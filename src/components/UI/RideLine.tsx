@@ -16,7 +16,7 @@ const RideLine: FC<IProps> = (props) => {
   };
   const styles = type === "newRide" ? " justify-start mt-6" : " justify-center";
   return (
-    <div className={"flex flex-col w-fit items-center" + styles}>
+    <div className={"flex flex-col w-[3%] items-center " + styles}>
       <div>
         <FromPoint />
       </div>

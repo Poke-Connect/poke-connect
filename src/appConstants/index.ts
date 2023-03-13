@@ -5,6 +5,7 @@ import { DB_STRINGS } from "./dbStrings";
 import { EMPTY_STRINGS } from "./emptyStrings";
 import { HEADING_STRINGS } from "./headingStrings";
 import { SOCKET_STRINGS } from "./socketStrings";
+import { ABOUT_STRINGS } from "./aboutStrings";
 
 export {
   TOAST_STRINGS,
@@ -14,4 +15,5 @@ export {
   EMPTY_STRINGS,
   HEADING_STRINGS,
   SOCKET_STRINGS,
+  ABOUT_STRINGS,
 };

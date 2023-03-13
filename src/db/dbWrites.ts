@@ -1,3 +1,4 @@
+import { IFeedback } from "./../types/IFeedback";
 import { postConnection } from "api/connection";
 import { addFeedback } from "api/feedback";
 import { addMessage } from "api/messages";
@@ -6,12 +7,13 @@ import { createDateString, createTimeStamp } from "helpers/dateHelper";
 import { createNewConnectionData, createRideConnectionData } from "./helpers";
 
 export const createNewRideBackend = async (
-  rideType,
-  userId,
-  dateValue,
-  timeValue,
-  locationValue,
-  distance
+  rideType: string,
+  userId: string,
+  dateValue: any,
+  timeValue: any,
+  locationValue: string,
+  distance: number,
+  from: string
 ) => {
   const date = createDateString(dateValue);
   const timeStampRide = createTimeStamp(dateValue, timeValue);
@@ -25,19 +27,20 @@ export const createNewRideBackend = async (
     time: timeValue,
     timeStampRide,
     distance,
+    from,
   };
 
   return createRide(newRideData);
 };
 
 export const createRideConnection = async (
-  user1,
-  user2,
-  ride1,
-  ride2,
-  extraDist,
-  extraTime,
-  connectionId
+  user1: any,
+  user2: any,
+  ride1: any,
+  ride2: any,
+  extraDist: any,
+  extraTime: any,
+  connectionId: any
 ) => {
   const connectionData1 = createRideConnectionData(
     user1,
@@ -65,7 +68,7 @@ export const createRideConnection = async (
   return;
 };
 
-export const createNewConnection = async (user1, user2) => {
+export const createNewConnection = async (user1: any, user2: any) => {
   const connectionData = createNewConnectionData(user1._id, user2._id);
   const { connectionId = null } = await postConnection(connectionData);
 
@@ -77,7 +80,7 @@ export const createNewMessage = async (messageData: any) => {
   return message._id;
 };
 
-export const addFeedbackDb = async (feedback: any) => {
+export const addFeedbackDb = async (feedback: IFeedback) => {
   const res = await addFeedback(feedback);
   return res;
 };

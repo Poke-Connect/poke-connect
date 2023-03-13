@@ -2,11 +2,10 @@ import React from "react";
 import usePlacesAutocomplete, { getGeocode } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import InputField from "./InputField";
-
-const BANGALORE_LAT = 12.972442;
-const BANGALORE_LNG = 77.580643;
+import { COORDINATES } from "appConstants";
 
 const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
+  const { BANGALORE } = COORDINATES;
   const {
     ready,
     value,
@@ -15,7 +14,7 @@ const PlacesAutocomplete = ({ placeholder, setLocationValue }) => {
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      location: new window.google.maps.LatLng(BANGALORE_LAT, BANGALORE_LNG),
+      location: new window.google.maps.LatLng(BANGALORE.LAT, BANGALORE.LNG),
       radius: 100,
     },
     debounce: 600,

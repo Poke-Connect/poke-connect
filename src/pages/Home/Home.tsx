@@ -14,13 +14,13 @@ const Home: FC = () => {
     navigate(`/mytrips`);
   };
 
-  const onTravelToAirportHandler = () => {
+  const onTravelToHandler = () => {
     navigate(`/connections/new`, {
       state: { rideType: DESTINATION_RIDE },
     });
   };
 
-  const onTravelFromAirportHandler = () => {
+  const onTravelFromHandler = () => {
     navigate(`/connections/new`, {
       state: { rideType: ORIGIN_RIDE },
     });
@@ -30,8 +30,8 @@ const Home: FC = () => {
     <div className="flex flex-col items-center w-full ">
       <WarningBar />
       <NewConnectionContainer
-        onTravelToAirportHandler={onTravelToAirportHandler}
-        onTravelFromAirportHandler={onTravelFromAirportHandler}
+        onTravelToHandler={onTravelToHandler}
+        onTravelFromHandler={onTravelFromHandler}
       />
       <Line />
       <div className="flex flex-col w-4/5">

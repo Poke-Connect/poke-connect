@@ -6,7 +6,7 @@ const ButtonContainer = (props) => {
     <button
       disabled={locationValue ? false : true}
       onClick={onFindMatchesHandler}
-      className="bg-black inline-flex py-2 justify-center text-lg w-5/6 rounded-lg text-white"
+      className="bg-black py-2 justify-center text-lg rounded-lg text-white flex my-5 w-full"
     >
       Find Connections
     </button>

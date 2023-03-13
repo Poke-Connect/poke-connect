@@ -1,13 +1,13 @@
 export interface IRide {
-  createdAt: Date;
-  rideId: string;
-  userId: string;
+  user: string;
   date: string;
   discoverability: boolean;
   location: string;
   rideType: string;
   time: string;
   timeStampRide: number;
+  distance?: number;
+  from: string;
 }
 
 /**

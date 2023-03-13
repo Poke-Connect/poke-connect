@@ -1,25 +1,28 @@
 # MAIN:
     VERSION Z - 
         -- Add Zomaland CX
-
         -- All CX copies fix
             - empty components
             - toast messages
             - if no info in other user profile, show some SVG
             - error screen
+        -- API error handling
+        -- Host the backend and frontend 
+        -- Triggers || Helpers
+        -- Test cases (Unit test)
+
 
         --Whatsapp Login
         --Request layer
         -- turn off ride discoverability
         --Connect on Whatsapp
 
-        -- API error handling
         -- Notification Handling
         
 
         --Requires Cloud
            
-            -- Host the backend and frontend 
+           
             -- message socket on MyConnections page
 
         -- Connection details on chat page 

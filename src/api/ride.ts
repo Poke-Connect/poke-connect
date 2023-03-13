@@ -1,9 +1,10 @@
 import { getRequest, patchRequest, postRequest } from "config/axiosConfig";
+import { IRide } from "types";
 
 const rideBase = "/ride";
 const rideConnectionBase = "/rideConnection";
 
-export const createRide = async (rideData) => {
+export const createRide = async (rideData: IRide) => {
   const res = await postRequest(rideBase, rideData);
   if (res?.status === 201) {
     return res?.data;
@@ -54,7 +55,7 @@ export const getConnectedRideConnections = async (id: string) => {
   }
 };
 
-export const postRideConnection = async (id: string, connectionData) => {
+export const postRideConnection = async (id: string, connectionData: any) => {
   const url = `${rideConnectionBase}/${id}`;
   const res = await postRequest(url, connectionData);
   if (res?.status === 201) {

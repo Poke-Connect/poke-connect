@@ -6,15 +6,10 @@ import { createNewRideBackend } from "db/dbWrites";
 import { Socket } from "context/SocketContext";
 import { useSelector } from "react-redux";
 import { useDirections } from "customHooks";
-import { TOAST_STRINGS, COMMON_STRINGS } from "appConstants";
-import {
-  ButtonContainer,
-  DateTimeContainer,
-  GMapElement,
-  InputField,
-  PlacesAutocomplete,
-} from "./components";
-import { Heading, RideLine } from "components";
+import { TOAST_STRINGS } from "appConstants";
+import { ButtonContainer, DateTimeContainer, GMapElement } from "./components";
+import { Heading } from "components";
+import AddressInputContainer from "./components/AddressInputContainer";
 
 const NewRide: FC = () => {
   const location = useLocation();
@@ -22,11 +17,11 @@ const NewRide: FC = () => {
   const { user } = useSelector((store: any) => store.auth);
   const userId = user._id;
   const socket = Socket();
-  const { DESTINATION_RIDE } = COMMON_STRINGS;
 
-  const [dateValue, setDateValue] = useState(getTodaysDate());
-  const [timeValue, setTimeValue] = useState(getTimeNow());
-  const [locationValue, setLocationValue] = useState(null);
+  const [dateValue, setDateValue] = useState<any>(getTodaysDate());
+  const [timeValue, setTimeValue] = useState<any>(getTimeNow());
+  const [locationValue, setLocationValue] = useState<any>(null);
+  const [fromValue, setFromValue] = useState<any>(null);
 
   const navigate = useNavigate();
 
@@ -38,7 +33,8 @@ const NewRide: FC = () => {
         dateValue,
         timeValue,
         locationValue,
-        tripDistance
+        tripDistance,
+        fromValue
       );
       if (socket) {
         socket.emit("create-ride", { rideId: rideId });
@@ -56,61 +52,27 @@ const NewRide: FC = () => {
   );
 
   return (
-    <div
-      id="container"
-      className="bg-white flex flex-col items-start w-screen h-full flex-grow"
-    >
-      <div id="upper" className="flex flex-col w-full">
-        <div className="ml-8">
-          <Heading text={"Find a connection"} />
+    <div className="bg-white flex flex-col items-start w-screen h-full flex-grow">
+      <Heading text={"Find a connection"} styles="ml-8" />
+      <div className={`flex flex-col w-full pt-1 flex-grow `}>
+        <AddressInputContainer
+          rideType={rideType}
+          setLocationValue={setLocationValue}
+          setFromValue={setFromValue}
+        />
+        <div className="w-5/6 pl-4 ml-3">
+          <DateTimeContainer
+            dateValue={dateValue}
+            setDateValue={setDateValue}
+            timeValue={timeValue}
+            setTimeValue={setTimeValue}
+          />
+          <ButtonContainer
+            onFindMatchesHandler={onFindMatchesHandler}
+            locationValue={locationValue}
+          />
         </div>
-        <div className="flex flex-col w-full pt-1 pl-2 flex-grow">
-          <div className="flex flex-row w-full pl-1 ">
-            <RideLine height={"m"} type={"newRide"} />
-            <div
-              className={`flex w-full ${
-                rideType === DESTINATION_RIDE
-                  ? "flex-col"
-                  : "flex flex-col-reverse"
-              }`}
-            >
-              <div>
-                <PlacesAutocomplete
-                  setLocationValue={setLocationValue}
-                  placeholder={
-                    rideType === DESTINATION_RIDE ? "From where?" : "Where to?"
-                  }
-                />
-              </div>
-              <div>
-                <InputField
-                  name={"KIA"}
-                  disabled={true}
-                  placeholder={"Kempegowda International Airport"}
-                  styles={"placeholder-black"}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-row w-full my-2 pl-6 justify-between">
-            <DateTimeContainer
-              dateValue={dateValue}
-              setDateValue={setDateValue}
-              timeValue={timeValue}
-              setTimeValue={setTimeValue}
-            />
-          </div>
-          <div className="flex w-full m-5">
-            <ButtonContainer
-              onFindMatchesHandler={onFindMatchesHandler}
-              locationValue={locationValue}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="lower" className="flex-grow w-full">
-        {<GMapElement directionsResponse={directionsResponse} />}
+        <GMapElement directionsResponse={directionsResponse} />
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ const ToggleElement: FC<IProps> = (props) => {
   };
 
   return (
-    <div className="flex-col flex justify-end items-end ">
+    <div className="flex-col flex justify-center items-end ">
       <Switch toggleState={toggleState} onToggleHandler={onToggleHandler} />
       <p className="text-xs text-typeText font-extralight italic">
         Discoverable
