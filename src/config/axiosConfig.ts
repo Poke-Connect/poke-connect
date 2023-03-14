@@ -3,7 +3,7 @@ import { getToken } from "helpers/helpersAuth";
 import { SERVER_URL_PROD } from "./serverConfig";
 
 const instance = axios.create({
-  baseURL: SERVER_URL_PROD,
+  baseURL: `${SERVER_URL_PROD}/api`,
   withCredentials: true,
 });
 
