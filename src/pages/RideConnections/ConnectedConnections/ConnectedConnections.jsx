@@ -1,15 +1,17 @@
 import React from "react";
 import RideConnectionsLayout from "../RideConnectionsLayout";
-import ShowRideConnections from "./ShowRideConnections";
+import ConnectedConnectionsList from "./ConnectedConnectionsList";
 import { useOutletContext } from "react-router-dom";
-import { headingStrings } from "strings/headingStrings";
+import { HEADING_STRINGS } from "appConstants";
 
 const ConnectedConnections = () => {
   const { connectedConnections } = useOutletContext();
 
   return (
-    <RideConnectionsLayout heading={headingStrings.CONNECTED_CONNECTIONS}>
-      <ShowRideConnections rideConnections={connectedConnections} />
+    <RideConnectionsLayout heading={HEADING_STRINGS.CONNECTED_CONNECTIONS}>
+      <ConnectedConnectionsList
+        connectionsData={connectedConnections?.connectedConnections}
+      />
     </RideConnectionsLayout>
   );
 };

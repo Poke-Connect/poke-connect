@@ -1,25 +1,32 @@
-import React from "react";
+import { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserAuth } from "context/AuthProvider";
+import { logout } from "features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "hooks";
 
-const LogOut = () => {
+const LogOut: FC = () => {
   const navigate = useNavigate();
-  const { user, logOut } = UserAuth();
+  const { user } = useAppSelector((store) => store.auth);
+  const dispatch = useAppDispatch();
 
   const onLogOutPressHandler = async () => {
-    if (!user || !user.uid) {
+    if (!user) {
       navigate(`/signin`);
       return;
     }
     try {
-      await logOut();
+      dispatch(logout());
       navigate(`/signin`);
     } catch (error) {
       console.log(error);
     }
   };
-  onLogOutPressHandler();
-  return <div></div>;
+
+  useEffect(() => {
+    onLogOutPressHandler();
+    navigate("/");
+  }, []);
+
+  return null;
 };
 
 export default LogOut;

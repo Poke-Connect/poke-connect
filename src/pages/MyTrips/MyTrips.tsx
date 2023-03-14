@@ -1,31 +1,19 @@
-import React, { useState, useEffect, FC } from "react";
-import { getDatabase, onValue, ref } from "firebase/database";
-import { UserAuth } from "context/AuthProvider";
+import React, { FC } from "react";
 import ShowTrips from "./components/ShowTrips";
-import Heading from "components/UI/Heading";
 import EmptyItem from "components/UI/EmptyItem";
-import { emptyStrings } from "strings/emptyStrings";
+import { useSelector } from "react-redux";
+import { EMPTY_STRINGS } from "appConstants";
+import { useUserRidesFetch } from "customHooks";
+import { Heading } from "components";
 
 const MyTrips: FC = () => {
-  const { user } = UserAuth();
-
-  const [myTrips, setMyTrips] = useState([]);
-
-  const db = getDatabase();
-
-  const myTripsRef = ref(db, `userRides/${user?.uid}`);
-
-  useEffect(() => {
-    onValue(myTripsRef, (snapshot) => {
-      const data = snapshot.val();
-      setMyTrips(data);
-    });
-  }, []);
+  const { user } = useSelector((store: any) => store.auth);
+  const myTrips = useUserRidesFetch(user._id);
 
   return (
-    <div className="pl-6 pr-7 w-screen ">
+    <div className="px-6 w-screen flex flex-col">
       <Heading text={"My Trips"} />
-      {!myTrips && <EmptyItem text={emptyStrings.MY_TRIPS} />}
+      {!myTrips && <EmptyItem text={EMPTY_STRINGS.MY_TRIPS} />}
       <div className="pt-1">{myTrips && <ShowTrips myTrips={myTrips} />}</div>
     </div>
   );
