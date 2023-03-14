@@ -35,7 +35,7 @@ const About: FC = () => {
           )}
           <HowWeWork />
           <PowerPoke />
-          <div className="mt-10 pb-10">
+          <div className="mt-10 pb-20">
             <ReachUs />
           </div>
         </div>

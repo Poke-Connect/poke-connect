@@ -1,6 +1,9 @@
 # MAIN:
     VERSION Z - 
         -- Add Zomaland CX
+        -- Add share my ride option
+        -- Show all rides
+        -- Filter/Sort logic
         -- All CX copies fix
             - empty components
             - toast messages

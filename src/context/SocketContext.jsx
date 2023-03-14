@@ -6,7 +6,7 @@ import React, {
   useRef,
 } from "react";
 import io from "socket.io-client";
-import { SERVER_URL } from "config/serverConfig";
+import { SERVER_URL_PROD } from "config/serverConfig";
 import { useSelector, useDispatch } from "react-redux";
 import { incrementUnreadCount } from "features/conversations/conversationsSlice";
 import { createOnlineUsersArray } from "helpers/createOnlineUsersArray";
@@ -22,7 +22,7 @@ export const SocketProvider = ({ children }) => {
   const { user } = useSelector((store) => store.auth);
 
   useEffect(() => {
-    socketRef.current = io(SERVER_URL, { withCredentials: true });
+    socketRef.current = io(SERVER_URL_PROD, { withCredentials: true });
     if (user) {
       socketRef.current.emit("add-user", user._id);
     }

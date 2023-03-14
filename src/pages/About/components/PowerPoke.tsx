@@ -13,6 +13,7 @@ const PowerPoke: FC = () => {
       <div className="flex gap-2 flex-col px-3">
         <p className="font-normal text-sm ">{POWER_POKE_DATA.line1}</p>
         <p className="font-normal text-sm ">{POWER_POKE_DATA.line2}</p>
+        <p className="font-medium text-sm ">{POWER_POKE_DATA.line3}</p>
       </div>
     </div>
   );

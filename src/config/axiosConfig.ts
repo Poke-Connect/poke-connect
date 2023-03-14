@@ -1,9 +1,9 @@
 import axios from "axios";
 import { getToken } from "helpers/helpersAuth";
-import { SERVER_URL } from "./serverConfig";
+import { SERVER_URL_PROD } from "./serverConfig";
 
 const instance = axios.create({
-  baseURL: SERVER_URL,
+  baseURL: SERVER_URL_PROD,
   withCredentials: true,
 });
 
