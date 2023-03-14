@@ -1,4 +1,10 @@
 # MAIN:
+    HOSTING:
+    1. Environment variables
+    2. Remove firebase 
+    3. Signin config
+
+
     VERSION Z - 
         -- Add Zomaland CX
         -- Add share my ride option

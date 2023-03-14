@@ -1,9 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 import { getPerformance } from "firebase/performance";
-import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyALkq7kUVmZzzlaZ_rAIriYDQhayC9vnH8",
@@ -19,12 +16,12 @@ export const firebaseConfig = {
 
 //Initialize Firebase services
 const app = initializeApp(firebaseConfig);
-export const auth = new getAuth(app);
-export const fireStoreDb = getFirestore();
+// export const auth = new getAuth(app);
+// export const fireStoreDb = getFirestore();
 export const analytics = getAnalytics(app);
 export const perf = getPerformance(app);
 
-export const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider("6Lcp-nIjAAAAAM-mqbKoq4hwHkcexGkMteTYmsxT"),
-  isTokenAutoRefreshEnabled: true,
-});
+// export const appCheck = initializeAppCheck(app, {
+//   provider: new ReCaptchaV3Provider("6Lcp-nIjAAAAAM-mqbKoq4hwHkcexGkMteTYmsxT"),
+//   isTokenAutoRefreshEnabled: true,
+// });
