@@ -1,5 +1,14 @@
 # Getting Started with Poke
 
+## Changing Environment
+
+To toggle app environment between DEV and PROD:
+1. Go to src/config/envConfig
+2. Change export ENV to required environment
+
+~~ Always make sure to change the ENV to PROD before release ~~
+
+
 ## Folder structure (src/)
 
 App entry point --> index.js
