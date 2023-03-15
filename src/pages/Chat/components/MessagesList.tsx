@@ -18,9 +18,10 @@ const MessagesList: FC<IProps> = (props) => {
       id="container"
       className="flex flex-col px-4 pt-5 pb-20 overflow-y-auto"
     >
-      {messages.map((message: any) => (
-        <MessageItem key={message._id} message={message} />
-      ))}
+      {messages &&
+        messages.map((message: any) => (
+          <MessageItem key={message._id} message={message} />
+        ))}
       <div ref={ref} />
     </div>
   );

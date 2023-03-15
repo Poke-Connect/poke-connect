@@ -11,5 +11,5 @@ export const getfilteredTrips = (myTrips: any) => {
       completedTrips.push(trip);
     }
   }
-  return [upcomingTrips, completedTrips];
+  return [upcomingTrips.reverse(), completedTrips.reverse()];
 };

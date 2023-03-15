@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { Socket } from "context/SocketContext";
+import { useSocket } from "context/SocketContext";
 
 export const useChatSocket = (chatId: string, setMessages: Function) => {
-  const socket = Socket();
+  const socket = useSocket();
 
   useEffect(() => {
     let mounted = true;

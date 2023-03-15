@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Socket } from "context/SocketContext";
+import { useSocket } from "context/SocketContext";
 import {
   getConnectedRideConnections,
   getRide,
@@ -12,7 +12,7 @@ export const useRideConnectionsFetch = (rideId: any, user: any) => {
   const [connectedConnections, setConnectedConnections] = useState<any>([]);
   const [availableConnections, setAvailableConnections] = useState<any>([]);
 
-  const socket = Socket();
+  const socket = useSocket();
 
   useEffect(() => {
     const fetchConnections = async () => {

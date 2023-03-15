@@ -2,7 +2,7 @@ import React, { FC, useState, ChangeEvent } from "react";
 import { createNewMessage } from "db/dbWrites";
 import SendIcon from "assets/icons/SendIcon";
 import { updateConnectionData } from "db/dbUpdate";
-import { Socket } from "context/SocketContext";
+import { useSocket } from "context/SocketContext";
 
 interface IProps {
   connectionId: any;
@@ -15,7 +15,7 @@ interface IProps {
 const InputContainer: FC<IProps> = (props) => {
   const { connectionId, selfId, otherUserId, messages, setMessages } = props;
   const [text, setText] = useState<any>("");
-  const socket = Socket();
+  const socket = useSocket();
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);

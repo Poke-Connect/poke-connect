@@ -1,5 +1,5 @@
 import { UserChat } from "context/ChatContext";
-import { Socket } from "context/SocketContext";
+import { useSocket } from "context/SocketContext";
 import { createNewConnection, createRideConnection } from "db/dbWrites";
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +23,7 @@ const AvailableConnectionTile: FC<IProps> = (props) => {
   const { user } = useAppSelector((store) => store.auth);
 
   const { dispatch } = UserChat();
-  const socket = Socket();
+  const socket = useSocket();
 
   const { user: otherUser, location, timeStampRide } = otherRide;
 
@@ -51,7 +51,7 @@ const AvailableConnectionTile: FC<IProps> = (props) => {
         extraTime,
         connectionId
       );
-      socket.emit(
+      socket?.emit(
         "add-connection",
         { connectionId: connectionId },
         otherUser._id
@@ -60,7 +60,7 @@ const AvailableConnectionTile: FC<IProps> = (props) => {
         render: MATCH_CREATION_SUCCESS,
         type: "success",
         isLoading: false,
-        autoClose: 100,
+        autoClose: 60,
         closeButton: true,
       });
       dispatch({

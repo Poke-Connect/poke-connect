@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { getTodaysDate, getTimeNow } from "helpers/dateHelper";
 import { toast } from "react-toastify";
 import { createNewRideBackend } from "db/dbWrites";
-import { Socket } from "context/SocketContext";
+import { useSocket } from "context/SocketContext";
 import { useSelector } from "react-redux";
 import { useDirections } from "customHooks";
 import { TOAST_STRINGS } from "appConstants";
@@ -16,7 +16,7 @@ const NewRide: FC = () => {
   const rideType = location.state.rideType;
   const { user } = useSelector((store: any) => store.auth);
   const userId = user._id;
-  const socket = Socket();
+  const socket = useSocket();
 
   const [dateValue, setDateValue] = useState<any>(getTodaysDate());
   const [timeValue, setTimeValue] = useState<any>(getTimeNow());
@@ -39,7 +39,6 @@ const NewRide: FC = () => {
       if (socket) {
         socket.emit("create-ride", { rideId: rideId });
       }
-      toast.success(TOAST_STRINGS.RIDE_CREATION_SUCCESS);
       navigate(`/rideconnections/${rideId}/available`);
     } catch (e) {
       toast.error(TOAST_STRINGS.ERROR);

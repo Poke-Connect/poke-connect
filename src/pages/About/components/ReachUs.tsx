@@ -32,7 +32,7 @@ const ReachUs: FC = () => {
   });
 
   return (
-    <div className="reach-out-us ">
+    <div className="reach-out-us">
       <h2 className="font-semibold text-left text-xl">Reach out to us</h2>
       <div className="pt-2">
         <form

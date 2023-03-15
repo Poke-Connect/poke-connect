@@ -2,9 +2,8 @@ import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserObj } from "../helpers";
 import { UserChat } from "context/ChatContext";
-import EmptyItem from "components/UI/EmptyItem";
-import { EMPTY_STRINGS } from "appConstants";
 import { TileDetails } from "../components";
+import EmptyConnectedConnection from "../components/EmptyConnectedConnection";
 
 interface IProps {
   connectionsData: any;
@@ -16,7 +15,7 @@ const ConnectedConnectionsList: FC<IProps> = (props) => {
   const navigate = useNavigate();
 
   if (!connectionsData || connectionsData.length === 0) {
-    return <EmptyItem text={EMPTY_STRINGS.CONNECTED_CONNECTIONS} />;
+    return <EmptyConnectedConnection />;
   }
 
   const onClickHandler = (data) => {

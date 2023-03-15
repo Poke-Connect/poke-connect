@@ -36,11 +36,11 @@ const TripElement: FC<IProps> = (props) => {
             <RideLine height="s" />
           </div>
           <AddressElement from={from} location={location} rideType={rideType} />
-          {upcoming ? (
-            <ToggleElement rideId={_id} discoverability={discoverability} />
-          ) : null}
         </div>
       </div>
+      {upcoming ? (
+        <ToggleElement rideId={_id} discoverability={discoverability} />
+      ) : null}
     </div>
   );
 };

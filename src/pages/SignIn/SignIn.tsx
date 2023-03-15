@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ReachUs from "../About/components/ReachUs";
 import Loading from "pages/Loading";
 import { signInLogger } from "firebaseUtils/firebaseLogger";
-import GoogleLoginButton from "./components/GoogleLoginButton";
 import { useAppSelector } from "hooks";
-import { LinkText } from "components";
+import { AppInfo, GoogleLoginButton, PokeHeading } from "./components";
+import { CopyRightFooter } from "components";
 
-const ABOUT_US_MIN =
-  "Poke helps you connect with probable co-passengers and share a cab.";
-
-const POWER_POKE =
-  "Poke is powered by people like you. Please give us feedback to help us build a better experience for you and share with your friends to increase your chances of connection.";
-
-const SignIn = () => {
+const SignIn: FC = () => {
   const { user, loading } = useAppSelector((store) => store.auth);
   const navigate = useNavigate();
 
-  const handleAboutUs = () => {
+  const aboutLinkHandler = () => {
     navigate("/about");
   };
 
@@ -33,38 +26,19 @@ const SignIn = () => {
   }
 
   return (
-    <div className="flex flex-col text-left h-full overflow-y-scroll pb-20">
-      <div className="flex flex-col bg-black text-white px-7 pt-2 border-b-8 border-primary">
-        <h1 className="pt-8 pl-2 font-medium text-8xl">POKE</h1>
-        <h4 className="text-2xl font-medium tracking-[.05em] pl-3 pt-5 pb-4 mt-[-10px]">
-          Connect via travel
-        </h4>
-      </div>
-      <div className="flex flex-col text-primary pr-7 pt-5 pb-0 pl-9">
-        <h3 className="font-medium pt-2 text-xl pl-1 py-5">
+    <div className="flex flex-col min-h-screen ">
+      <PokeHeading />
+      <div className="flex flex-col text-primary px-7 pt-5 pb-0 ">
+        <h2 className="font-medium text-xl pl-1 py-5">
           Meet new co-passengers
-        </h3>
+        </h2>
         <GoogleLoginButton />
       </div>
-      <div className="pb-5">
-        <div className="px-10">
-          <div className="about-us text-left pt-7">
-            <h2 className="font-semibold text-xl pb-1.5">About Us</h2>
-            <p className="font-normal text-sm">{ABOUT_US_MIN}</p>
-            <LinkText
-              text={"Learn more about Poke"}
-              onClickHandler={handleAboutUs}
-            />
-          </div>
-          <div className="power-us text-left pt-7">
-            <h2 className="font-semibold text-xl pb-1.5">Power Poke</h2>
-            <p className="font-normal text-sm">{POWER_POKE}</p>
-            <p className="font-normal text-sm "></p>
-          </div>
-          <div className="power-us text-left pt-7">
-            <ReachUs />
-          </div>
-        </div>
+      <div className="mt-2 mb-6">
+        <AppInfo aboutLinkHandler={aboutLinkHandler} />
+      </div>
+      <div className="flex-none mt-auto">
+        <CopyRightFooter />
       </div>
     </div>
   );

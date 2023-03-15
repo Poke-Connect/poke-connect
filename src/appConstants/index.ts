@@ -6,6 +6,7 @@ import { EMPTY_STRINGS } from "./emptyStrings";
 import { HEADING_STRINGS } from "./headingStrings";
 import { SOCKET_STRINGS } from "./socketStrings";
 import { ABOUT_STRINGS } from "./aboutStrings";
+import { ABOUT_MIN_STRINGS } from "./aboutMinStrings";
 
 export {
   TOAST_STRINGS,
@@ -16,4 +17,5 @@ export {
   HEADING_STRINGS,
   SOCKET_STRINGS,
   ABOUT_STRINGS,
+  ABOUT_MIN_STRINGS,
 };

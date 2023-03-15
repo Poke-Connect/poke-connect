@@ -1,11 +1,11 @@
 import { getUserConnections } from "api/connection";
 import { filterConnections } from "pages/MyConnections/helper";
 import { useState, useEffect } from "react";
-import { Socket } from "context/SocketContext";
+import { useSocket } from "context/SocketContext";
 
 export const useMyConnections = (userId: any) => {
   const [myConnections, setMyConnections] = useState<any>(null);
-  const socket = Socket();
+  const socket = useSocket();
 
   useEffect(() => {
     const fetchConnections = async () => {

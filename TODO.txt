@@ -1,14 +1,17 @@
 # MAIN:
-    HOSTING:
-    1. Environment variables
-    2. Remove firebase 
-    3. Signin config
+
+    ARMAAN:
+    1. Signin page UI
+        font size increase
+    2. Zomaland icons
+    3. Toasts (Remove not needed)
+    4. fonts
+    5. Complete testing
 
 
     VERSION Z - 
         -- Add Zomaland CX
         -- Add share my ride option
-        -- Show all rides
         -- Filter/Sort logic
         -- All CX copies fix
             - empty components

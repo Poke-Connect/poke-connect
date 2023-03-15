@@ -10,6 +10,7 @@ import IconButton from "./Buttons/IconButton";
 
 import Line from "./UI/Line";
 import RideLine from "./UI/RideLine";
+import CopyRightFooter from "./UI/CopyRightFooter";
 
 export {
   Heading,
@@ -22,4 +23,5 @@ export {
   IconButton,
   Line,
   RideLine,
+  CopyRightFooter,
 };

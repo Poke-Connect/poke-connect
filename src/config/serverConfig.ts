@@ -1,3 +1,8 @@
-export const SERVER_URL = "http://localhost:5900";
+import { ENV } from "config/envConfig";
 
-export const SERVER_URL_PROD = "https://poke-connect-backend.onrender.com";
+const serverUrl = {
+  DEV: "http://localhost:5900",
+  PROD: "https://poke-connect-backend.onrender.com",
+};
+
+export const SERVER_URL = ENV ? serverUrl[ENV] : serverUrl.PROD;
