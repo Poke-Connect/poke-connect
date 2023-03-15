@@ -101,7 +101,7 @@ const PlacesAutocomplete: FC<IProps> = ({ placeholder, setLocationValue }) => {
             Search Results
           </div>
           <ul className="overflow-y-scroll">
-            <div onClick={currentLocationHandler}>Use my current location</div>
+            {/* <div onClick={currentLocationHandler}>Use my current location</div> */}
             {renderSuggestions()}
           </ul>
         </div>

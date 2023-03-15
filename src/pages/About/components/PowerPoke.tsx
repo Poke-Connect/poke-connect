@@ -5,7 +5,7 @@ import { ABOUT_STRINGS } from "appConstants";
 const PowerPoke: FC = () => {
   const { POWER_POKE_DATA } = ABOUT_STRINGS;
   return (
-    <div className="donate-to-poke text-left bg-primary rounded-lg p-5 mt-6">
+    <div className="donate-to-poke text-left bg-primary-light rounded-lg p-5 mt-6">
       <h2 className=" flex font-semibold text-xl items-center gap-2 pb-1.5">
         <Heart />
         Power Poke

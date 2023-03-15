@@ -22,10 +22,15 @@ const NewRide: FC = () => {
   const [timeValue, setTimeValue] = useState<any>(getTimeNow());
   const [locationValue, setLocationValue] = useState<any>(null);
   const [fromValue, setFromValue] = useState<any>(null);
+  const [error, setError] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
   const onFindMatchesHandler = async () => {
+    if (!locationValue) {
+      setError(true);
+      return;
+    }
     try {
       const rideId = await createNewRideBackend(
         rideType,
@@ -47,7 +52,8 @@ const NewRide: FC = () => {
 
   const { directionsResponse, tripDistance } = useDirections(
     rideType,
-    locationValue
+    locationValue,
+    setError
   );
 
   return (
@@ -66,10 +72,12 @@ const NewRide: FC = () => {
             timeValue={timeValue}
             setTimeValue={setTimeValue}
           />
-          <ButtonContainer
-            onFindMatchesHandler={onFindMatchesHandler}
-            locationValue={locationValue}
-          />
+          <ButtonContainer onFindMatchesHandler={onFindMatchesHandler} />
+          {error && (
+            <p className="text-primary pt-2 pl-1">
+              Please enter a valid location
+            </p>
+          )}
         </div>
         <GMapElement directionsResponse={directionsResponse} />
       </div>

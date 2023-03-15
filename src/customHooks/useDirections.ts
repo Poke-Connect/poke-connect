@@ -2,7 +2,11 @@ import { useState, useEffect, useMemo } from "react";
 import { getRouteObject, getTripDistance } from "pages/NewRide/helpers";
 import { MAP_FIXED_COORD } from "AppConfig";
 
-export const useDirections = (rideType: any, locationValue: any) => {
+export const useDirections = (
+  rideType: any,
+  locationValue: any,
+  setError: any
+) => {
   const [directionsResponse, setDirectionsResponse] = useState<any>(null);
   const [tripDistance, setTripDistance] = useState<any>(0);
 
@@ -22,8 +26,11 @@ export const useDirections = (rideType: any, locationValue: any) => {
       setDirectionsResponse(minRouteObject);
       setTripDistance(distance);
     };
-    locationValue && fetchDirections();
-  }, [locationValue, rideType, fixedCordinates]);
+    if (locationValue) {
+      fetchDirections();
+      setError(false);
+    }
+  }, [locationValue, rideType, fixedCordinates, setError]);
 
   return { directionsResponse, tripDistance };
 };

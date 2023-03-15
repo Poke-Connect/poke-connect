@@ -1,12 +1,5 @@
 # MAIN:
 
-    ARMAAN:
-    1. Signin page UI
-        font size increase
-    2. Zomaland icons
-    3. Toasts (Remove not needed)
-    4. fonts
-    5. Complete testing
 
 
     VERSION Z - 
@@ -22,6 +15,7 @@
         -- Host the backend and frontend 
         -- Triggers || Helpers
         -- Test cases (Unit test)
+        -- change fonts
 
 
         --Whatsapp Login

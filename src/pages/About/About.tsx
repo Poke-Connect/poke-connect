@@ -8,7 +8,7 @@ import {
   PowerPoke,
   ReachUs,
 } from "./components";
-import { CopyRightFooter, LinkText } from "components";
+import { CopyRightFooter, PrimaryButton } from "components";
 
 const About: FC = () => {
   const navigate = useNavigate();
@@ -29,10 +29,13 @@ const About: FC = () => {
           <AboutUs />
           <HowWeWork />
           {!isLoggedIn && (
-            <LinkText
-              text={"Get started"}
-              onClickHandler={onGetStartedHandler}
-            />
+            <div className={"pt-2 pb-3"}>
+              <PrimaryButton
+                text={"Get started"}
+                onClickHandler={onGetStartedHandler}
+                styles="w-full"
+              />
+            </div>
           )}
           <PowerPoke />
           <div className="mt-10 pb-20">

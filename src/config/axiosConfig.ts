@@ -24,7 +24,7 @@ export const getRequest = async (url: any, params: any = {}) => {
   }
 };
 
-export const postRequest = async (url: any, data: any) => {
+export const postRequest = async (url: any, data?: any) => {
   try {
     const res = await instance.post(url, data, {
       headers: { ...headerConfig, Authorization: `Bearer ${getToken()}` },
@@ -46,7 +46,7 @@ export const putRequest = async (url: any, data: any) => {
   }
 };
 
-export const patchRequest = async (url: any, data: any) => {
+export const patchRequest = async (url: any, data?: any) => {
   try {
     const res = await instance.patch(url, data, {
       headers: { ...headerConfig, Authorization: `Bearer ${getToken()}` },

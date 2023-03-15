@@ -2,7 +2,7 @@ var Colors = {
   black: "rgba(0, 0, 0, 1)",
   white: "rgba(255, 255, 255, 1)",
   magentaLighter: "rgba(216, 63, 135, 0.2)",
-  magentaLight: "rgba(216, 63, 135, 0.5)",
+  magentaLight: "rgba(216, 63, 135, 0.8)",
   magenta: "rgba(216, 63, 135, 1)",
   lightGray: "rgba(246, 246, 246, 1)",
   textGray: "rgba(151, 151, 151, 1)",

@@ -3,7 +3,7 @@ export const ABOUT_STRINGS = {
   Poke helps you share a ride and split costs for an eco-friendly and wallet-friendly way to travel. 
   Join the Poke community today and start living sustainably.`,
 
-  QUOTE: `"Happiness and Travel is Only Real When Shared"`,
+  QUOTE: `"Happiness and travel is only real when shared"`,
 
   HOW_IT_WORKS_DATA: {
     CREATE_RIDE: `First things first, create a ride for a suitable day and time. 

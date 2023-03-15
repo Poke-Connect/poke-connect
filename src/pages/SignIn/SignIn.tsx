@@ -26,9 +26,9 @@ const SignIn: FC = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen ">
+    <div className="flex flex-col min-h-screen">
       <PokeHeading />
-      <div className="flex flex-col text-primary px-7 pt-5 pb-0 ">
+      <div className="flex flex-col text-primary px-7 pt-5 pb-0">
         <h2 className="font-medium text-xl pl-1 py-5">
           Meet new co-passengers
         </h2>

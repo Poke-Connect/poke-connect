@@ -19,7 +19,7 @@ const GMapElement: FC<IProps> = (props) => {
 
   const { LAT: FIXED_LAT, LNG: FIXED_LNG } = MAP_FIXED_COORD;
   return (
-    <div className="mt-2 md:w-full h-full flex-grow w-full">
+    <div className="mt-5 md:w-full h-full flex-grow w-full">
       <GoogleMap
         center={{ lat: FIXED_LAT, lng: FIXED_LNG }}
         zoom={18}

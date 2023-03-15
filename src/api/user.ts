@@ -20,6 +20,6 @@ export const updateUser = async (id: string, newData: any) => {
 
 export const emptyNewConnections = async (id: string) => {
   const url = `${userBase}/${id}/newConnections`;
-  const res = await patchRequest(url, "");
+  const res = await patchRequest(url);
   return res?.data;
 };
