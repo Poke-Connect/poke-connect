@@ -18,15 +18,21 @@ const RideConnections: FC = () => {
   }
 
   return (
-    <div className="flex-col flex justify-between ">
-      <Outlet
-        context={{ myRide, connectedConnections, availableConnections }}
-      />
-      <FooterLayout
-        rideId={rideId}
-        connectedCount={getConnectedCount(connectedConnections)}
-        availableCount={availableConnections ? availableConnections.length : 0}
-      />
+    <div className="relative w-full">
+      <div className="pb-20">
+        <Outlet
+          context={{ myRide, connectedConnections, availableConnections }}
+        />
+      </div>
+      <div className="fixed bottom-0 left-0 w-full bg-white">
+        <FooterLayout
+          rideId={rideId}
+          connectedCount={getConnectedCount(connectedConnections)}
+          availableCount={
+            availableConnections ? availableConnections.length : 0
+          }
+        />
+      </div>
     </div>
   );
 };

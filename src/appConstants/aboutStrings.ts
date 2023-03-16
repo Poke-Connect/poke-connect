@@ -9,8 +9,7 @@ export const ABOUT_STRINGS = {
     CREATE_RIDE: `First things first, create a ride for a suitable day and time. 
     Tell us where you're headed and we'll help you find a co-passenger who's going the same way.`,
     FIND_MATCHES: `Browse through a list of available connections for 
-    your ride and learn about their pickup and drop-
-    off points. Don't see any connections available at 
+    your ride and learn about their pickup and drop-off points. Don't see any connections available at 
     the moment? No worries! Just check back later.`,
     POKE: `Poke the person you want to connect with. 
     Don't be shy - poke as many as you want! 
