@@ -9,6 +9,7 @@ var Colors = {
   darkGray: "rgba(232, 232, 232, 1)",
   whiteGray: "rgba(218, 218, 218, 1)",
   lineGray: "rgba(229, 229, 229, 1)",
+  rust: "rgba(174,63,39,1)",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -30,6 +31,7 @@ module.exports = {
         darkGray: Colors.darkGray,
         whiteGray: Colors.whiteGray,
         lineGray: Colors.lineGray,
+        socialPrimary: Colors.rust,
       },
       maxWidth: {
         "1/2": "50%",

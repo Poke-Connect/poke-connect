@@ -31,7 +31,7 @@ const PokeSocial: FC = () => {
         </h1>
         <p className="text-[3.25rem] leading-none mb-4">
           The new way to connect with your{" "}
-          <span className="text-primary">community</span>
+          <span className="text-socialPrimary">community</span>
         </p>
       </div>
       <img
