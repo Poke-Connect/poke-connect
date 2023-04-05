@@ -14,7 +14,7 @@ export const useAppAuth = () => {
 
   useEffect(() => {
     if (!token) {
-      navigate("/signin");
+      // navigate("/signin");
       return;
     }
     const decodedToken: any = jwt_decode(token);

@@ -16,12 +16,14 @@ import ConnectedConnections from "../pages/RideConnections/ConnectedConnections/
 import EditProfile from "../pages/Profile/EditProfile/EditProfile";
 import RideConnections from "pages/RideConnections/RideConnections";
 import AppLayout from "./AppLayout";
+import PokeSocial from "pages/PokeSocial/PokeSocial";
 
 const AppRouter: FC = () => {
   return (
     <Routes>
       <Route path="/signin" element={<SignIn />} />
       <Route path="about" element={<About />} />
+      <Route path="/social" element={<PokeSocial />} />
       <Route
         element={
           <Protected>

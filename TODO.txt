@@ -1,5 +1,19 @@
 # MAIN:
 
+-----------------------------------Idea: Exclusive Cab Pooling, for a specific purpose.-------------------------------
+ -- Create a seperate API layer
+ -- Create a seperate transformation layer
+ -- Make UI solid
+
+ --> Location bug:
+ --> multiple rides by same person for same location (max 2)
+ --> previous time ride
+ --> fix useAppAuth
+
+
+ 
+-- Login with OTP (Whatsapp number)
+ -- Use React query to minimise calls
 
 
     VERSION Z - 
