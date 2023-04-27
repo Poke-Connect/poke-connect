@@ -1,5 +1,9 @@
 # Getting Started with Poke
 
+## About Poke
+Poke helps you share a ride and split costs for an eco-friendly and wallet-friendly way to travel.
+Tech Stack: React, Redux, Tailwind CSS, Node, Express and MongoDB.
+
 ## Changing Environment
 
 To toggle app environment between DEV and PROD:
