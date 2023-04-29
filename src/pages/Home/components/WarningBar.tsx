@@ -1,12 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
+import { COMMON_STRINGS } from "appConstants";
 
-const WARNING_TEXT = "CURRENTLY ONLY IN BANGALORE!";
-
-const WarningBar = () => {
+const WarningBar: FC = () => {
   return (
     <div className="bg-primary mb-8 w-full justify-center items-center flex-row">
       <h3 className="text-center font-medium text-white italic">
-        🚕 {WARNING_TEXT} 🚕
+        {COMMON_STRINGS.WARNING_TEXT}
       </h3>
     </div>
   );

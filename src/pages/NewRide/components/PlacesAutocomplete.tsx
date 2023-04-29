@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import usePlacesAutocomplete, { getGeocode } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import InputField from "./InputField";
-import { COORDINATES } from "appConstants";
+import { CITY_COORDINATES } from "AppConfig";
 
 interface IProps {
   placeholder: string;
@@ -10,7 +10,6 @@ interface IProps {
 }
 
 const PlacesAutocomplete: FC<IProps> = ({ placeholder, setLocationValue }) => {
-  const { BANGALORE } = COORDINATES;
   const {
     ready,
     value,
@@ -19,7 +18,10 @@ const PlacesAutocomplete: FC<IProps> = ({ placeholder, setLocationValue }) => {
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      location: new window.google.maps.LatLng(BANGALORE.LAT, BANGALORE.LNG),
+      location: new window.google.maps.LatLng(
+        CITY_COORDINATES.LAT,
+        CITY_COORDINATES.LNG
+      ),
       radius: 100,
     },
     debounce: 600,

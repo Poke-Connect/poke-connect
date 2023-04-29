@@ -3,13 +3,15 @@ import ZomalandFrom from "assets/icons/ZomalandFrom";
 import { COORDINATES } from "appConstants";
 
 //Home Screen
-const TO_NAME = "To Zomaland";
-const FROM_NAME = "From Zomaland";
+const TO_NAME = "to leap (af)fair";
+const FROM_NAME = "from leap (af)fair";
 
 //New Ride Screen
-const INPUT_NAME = "Zomaland";
-const INPUT_PLACEHOLDER = "Embassy International Riding School, Bengaluru";
-const { EMBASSY_INTERNATIONAL } = COORDINATES;
+const INPUT_NAME = "leap (af)fair";
+const INPUT_PLACEHOLDER = "jio world drive, bkc, mumbai";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const { EMBASSY_INTERNATIONAL, BANGALORE, MUMBAI, JIO_WORLD_DRIVE_MUMBAI } =
+  COORDINATES;
 
 export {
   ZomalandTo as ToIcon,
@@ -18,5 +20,7 @@ export {
   FROM_NAME,
   INPUT_NAME,
   INPUT_PLACEHOLDER,
-  EMBASSY_INTERNATIONAL as MAP_FIXED_COORD,
+  //Using Mumbai for Leap affair
+  JIO_WORLD_DRIVE_MUMBAI as MAP_FIXED_COORD,
+  MUMBAI as CITY_COORDINATES,
 };
