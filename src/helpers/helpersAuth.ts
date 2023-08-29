@@ -41,7 +41,7 @@ export const getToken = () => {
 // set in localstorage
 export const setLocalStorage = (
   key: string,
-  value: string | number | boolean
+  value: string | number | boolean | object
 ) => {
   if (typeof window !== "undefined") {
     localStorage.setItem(key, JSON.stringify(value));
@@ -55,7 +55,7 @@ export const removeLocalStorage = (key: any) => {
   }
 };
 
-// remove from localstorage
+// get from localstorage
 export const getLocalStorage = (key: any) => {
   if (typeof window !== "undefined") {
     return localStorage.getItem(key);
@@ -83,25 +83,28 @@ export const isAuth = () => {
   }
 };
 
-export const signout = () => {
+//Clear complete local storage
+export const clearLocalStorage = () => {
   if (typeof window !== "undefined") {
-    if (getToken()) {
-      removeCookie("token");
-    }
-    if (getLocalStorage("user")) {
-      removeLocalStorage("user");
-    }
-    googleLogout();
+    localStorage.clear();
   }
 };
 
-export const clearStorageData = () => {
-  if (typeof window !== "undefined") {
-    if (getToken()) {
-      removeCookie("token");
-    }
-    if (getLocalStorage("user")) {
-      removeLocalStorage("user");
-    }
-  }
+//Clear Auth storage
+export const clearAuthData = () => {
+  clearLocalStorage();
+  removeCookie("token");
+  removeCookie("refreshToken");
+};
+
+export const getLocalUser = () => {
+  const storedUserJSON = localStorage.getItem("user");
+  const storedUser = storedUserJSON ? JSON.parse(storedUserJSON) : null;
+  return storedUser;
+};
+
+export const getLocalChat = () => {
+  const storedChatJSON = localStorage.getItem("chatState");
+  const storedChat = storedChatJSON ? JSON.parse(storedChatJSON) : null;
+  return storedChat;
 };

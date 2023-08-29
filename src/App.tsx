@@ -1,6 +1,5 @@
 import React, { useState, FC } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
-import { ChatContextProvider } from "context/ChatContext";
 import Loading from "./pages/Loading";
 import { ToastContainer } from "react-toastify";
 import { SocketProvider } from "context/SocketContext";
@@ -24,17 +23,15 @@ const App: FC = () => {
 
   return (
     <>
-      <ChatContextProvider>
-        <SocketProvider>
-          <AppRouter />
-          <ToastContainer
-            position="bottom-center"
-            autoClose={2000}
-            hideProgressBar={true}
-            theme="light"
-          />
-        </SocketProvider>
-      </ChatContextProvider>
+      <SocketProvider>
+        <AppRouter />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={2000}
+          hideProgressBar={true}
+          theme="light"
+        />
+      </SocketProvider>
     </>
   );
 };

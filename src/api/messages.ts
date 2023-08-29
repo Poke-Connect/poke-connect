@@ -2,7 +2,7 @@ import { getRequest, postRequest } from "config/axiosConfig";
 
 const messageBase = "/message";
 
-export const getConnectionMessages = async (connectionId: string) => {
+export const getConnectionMessages = async (connectionId: string | null) => {
   if (!connectionId) {
     return [];
   }

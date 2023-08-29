@@ -27,7 +27,6 @@ const Header: FC = () => {
   const onSignOutHandler = () => {
     toggleSideBar();
     dispatch(logout());
-    googleLogout();
     navigate("/signin");
   };
 

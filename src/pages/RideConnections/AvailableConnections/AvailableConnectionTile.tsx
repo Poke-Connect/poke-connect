@@ -1,4 +1,3 @@
-import { UserChat } from "context/ChatContext";
 import { useSocket } from "context/SocketContext";
 import { createNewConnection, createRideConnection } from "db/dbWrites";
 import React, { FC } from "react";
@@ -6,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createUserObj } from "../helpers";
 import { TOAST_STRINGS } from "appConstants";
-import { useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector } from "hooks";
 import { TileDetails } from "../components";
+import { changeUserChat } from "features/chat/chatSlice";
 
 interface IProps {
   rideDetails: any;
@@ -22,8 +22,8 @@ const AvailableConnectionTile: FC<IProps> = (props) => {
   const navigate = useNavigate();
   const { user } = useAppSelector((store) => store.auth);
 
-  const { dispatch } = UserChat();
   const socket = useSocket();
+  const dispatch = useAppDispatch();
 
   const { user: otherUser, location, timeStampRide } = otherRide;
 
@@ -63,10 +63,7 @@ const AvailableConnectionTile: FC<IProps> = (props) => {
         autoClose: 60,
         closeButton: true,
       });
-      dispatch({
-        type: "CHANGE_USER_CHAT",
-        payload: { user: otherUser, chatId: connectionId },
-      });
+      dispatch(changeUserChat({ chatId: connectionId, chatUser: otherUser }));
       navigate(`/chat/${connectionId}`);
     } catch (error) {
       toast.error(ERROR);

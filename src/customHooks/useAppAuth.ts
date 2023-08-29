@@ -2,36 +2,55 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { useAppDispatch, useAppSelector } from "hooks";
-import { getToken } from "helpers/helpersAuth";
-import { getUserData, refreshAccessToken } from "features/auth/authSlice";
+import { getLocalUser, getToken } from "helpers/helpersAuth";
+import { logout, setUser } from "features/auth/authSlice";
 import { setUnreadCount } from "features/conversations/conversationsSlice";
 
 export const useAppAuth = () => {
   const token = getToken();
-  const { user, loading } = useAppSelector((store) => store.auth);
+  const { user: storeUser, loading } = useAppSelector((store) => store.auth);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) {
-      // navigate("/signin");
-      return;
-    }
-    const decodedToken: any = jwt_decode(token);
-    if (decodedToken.exp < Date.now() / 1000) {
-      dispatch(refreshAccessToken(navigate));
-      return;
-    }
+    const checkTokenAndUserData = async () => {
+      if (!token) {
+        navigate("/signin");
+        return;
+      }
+      try {
+        const decodedToken: any = jwt_decode(token);
+        if (decodedToken.exp < Date.now() / 1000) {
+          dispatch(logout());
+          navigate("/signin");
+          // Handle token expiration or other refresh scenarios if needed
+          // await dispatch(refreshAccessToken(navigate));
+        } else if (!storeUser) {
+          const localUser = getLocalUser();
+          if (localUser?.email) {
+            dispatch(setUser({ user: localUser }));
+          } else {
+            dispatch(logout());
+            navigate("/signin");
+          }
+        }
 
-    if (token && !user) {
-      dispatch(getUserData(token));
-      return;
-    }
+        if (storeUser?.newConnections) {
+          dispatch(
+            setUnreadCount({
+              newConnectionCount: storeUser.newConnections.length,
+            })
+          );
+        }
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        navigate("/signin");
+      }
+    };
 
-    dispatch(
-      setUnreadCount({ newConnectionCount: user?.newConnections?.length })
-    );
-  }, [token, user]);
+    checkTokenAndUserData();
+  }, [token, storeUser, dispatch, navigate]);
 
   return { loading };
 };

@@ -22,7 +22,7 @@ const GMapElement: FC<IProps> = (props) => {
     <div className="mt-5 md:w-full h-full flex-grow w-full">
       <GoogleMap
         center={{ lat: FIXED_LAT, lng: FIXED_LNG }}
-        zoom={18}
+        zoom={15}
         mapContainerStyle={{ width: "100%", height: "100%" }}
         options={{
           zoomControl: false,
@@ -33,7 +33,7 @@ const GMapElement: FC<IProps> = (props) => {
       >
         <MarkerF
           position={{ lat: FIXED_LAT, lng: FIXED_LNG }}
-          icon={customIcon}
+          // icon={customIcon}
         />
         {directionsResponse && (
           <DirectionsRenderer directions={directionsResponse} />

@@ -1,26 +1,33 @@
 import ZomalandTo from "assets/icons/ZomalandTo";
 import ZomalandFrom from "assets/icons/ZomalandFrom";
+import PlaneLanding from "assets/icons/PlaneLanding";
+import PlaneTakeoff from "assets/icons/PlaneTakeoff";
 import { COORDINATES } from "appConstants";
 
 //Home Screen
-const TO_NAME = "to leap (af)fair";
-const FROM_NAME = "from leap (af)fair";
+const TO_NAME = "To KIA Airport";
+const FROM_NAME = "From KIA Airport";
 
 //New Ride Screen
-const INPUT_NAME = "leap (af)fair";
-const INPUT_PLACEHOLDER = "jio world drive, bkc, mumbai";
+const INPUT_NAME = "KIA Airport";
+const INPUT_PLACEHOLDER = "Kempegowda International Airport";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const { EMBASSY_INTERNATIONAL, BANGALORE, MUMBAI, JIO_WORLD_DRIVE_MUMBAI } =
-  COORDINATES;
+const {
+  EMBASSY_INTERNATIONAL,
+  BANGALORE,
+  MUMBAI,
+  JIO_WORLD_DRIVE_MUMBAI,
+  KIA,
+} = COORDINATES;
 
 export {
-  ZomalandTo as ToIcon,
-  ZomalandFrom as FromIcon,
+  PlaneLanding as ToIcon,
+  PlaneTakeoff as FromIcon,
   TO_NAME,
   FROM_NAME,
   INPUT_NAME,
   INPUT_PLACEHOLDER,
   //Using Mumbai for Leap affair
-  JIO_WORLD_DRIVE_MUMBAI as MAP_FIXED_COORD,
-  MUMBAI as CITY_COORDINATES,
+  KIA as MAP_FIXED_COORD,
+  BANGALORE as CITY_COORDINATES,
 };

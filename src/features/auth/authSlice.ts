@@ -1,9 +1,15 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { signInUser, generateRefreshToken } from "api/auth";
+import { signInUser } from "api/auth";
 import { getUser } from "api/user";
 import jwt_decode from "jwt-decode";
-import { setCookie, removeCookie, getCookie } from "helpers/helpersAuth";
+import {
+  setCookie,
+  getCookie,
+  clearAuthData,
+  setLocalStorage,
+} from "helpers/helpersAuth";
 import { AuthState, SignInResponse } from "./authTypes";
+import { googleLogout } from "@react-oauth/google";
 
 // CreateAsyncThunk takes 2 types --> <Type(Return object), Type(Argument)>
 
@@ -32,20 +38,20 @@ export const getUserData = createAsyncThunk<any, string>(
   }
 );
 
-export const refreshAccessToken = createAsyncThunk<any, any>(
-  "auth/refreshAccessToken",
-  async (navigate) => {
-    try {
-      removeCookie("token");
-      const res = await generateRefreshToken();
-      return res?.data;
-    } catch (error) {
-      console.log("FACING ERROR FINISHED");
-      navigate("/signin");
-      throw new Error("Error signing in the user");
-    }
-  }
-);
+// export const refreshAccessToken = createAsyncThunk<any, any>(
+//   "auth/refreshAccessToken",
+//   async (navigate) => {
+//     try {
+//       removeCookie("token");
+//       const res = await generateRefreshToken();
+//       return res?.data;
+//     } catch (error) {
+//       console.log("FACING ERROR FINISHED");
+//       navigate("/signin");
+//       throw new Error("Error signing in the user");
+//     }
+//   }
+// );
 
 const initialState: AuthState = {
   isAuthenticated: false,
@@ -63,14 +69,18 @@ export const authSlice = createSlice({
       state.isAuthenticated = false;
       state.token = null;
       state.user = null;
-      removeCookie("token");
-      removeCookie("refreshToken");
+      googleLogout();
+      clearAuthData();
+    },
+    setUser: (state, action) => {
+      state.user = action.payload.user;
     },
   },
   extraReducers: (builder) => {
     //Login builder
     builder.addCase(login.pending, (state) => {
       state.loading = true;
+      state.error = null;
     });
     builder.addCase(
       login.fulfilled,
@@ -80,7 +90,7 @@ export const authSlice = createSlice({
         state.token = action.payload.token;
         state.user = action.payload.user;
         setCookie("token", action.payload.token);
-        state.error = null;
+        setLocalStorage("user", action.payload.user);
       }
     );
     builder.addCase(login.rejected, (state, action) => {
@@ -105,30 +115,9 @@ export const authSlice = createSlice({
       state.error = action.error.message;
       state.isAuthenticated = false;
     });
-
-    //Refresh token builder
-    builder.addCase(refreshAccessToken.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(
-      refreshAccessToken.fulfilled,
-      (state, action: PayloadAction<any>) => {
-        state.loading = false;
-        state.isAuthenticated = true;
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.error = null;
-        setCookie("token", action.payload.token);
-      }
-    );
-    builder.addCase(refreshAccessToken.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-      state.isAuthenticated = false;
-    });
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, setUser } = authSlice.actions;
 
 export default authSlice.reducer;

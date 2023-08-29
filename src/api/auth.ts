@@ -8,6 +8,6 @@ export const signInUser = async (credentials: any) => {
   });
 };
 
-export const generateRefreshToken = async () => {
-  return await postRequest(`${BASE_URL}/refresh-token`);
-};
+// export const generateRefreshToken = async () => {
+//   return await postRequest(`${BASE_URL}/refresh-token`);
+// };

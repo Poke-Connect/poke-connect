@@ -1,8 +1,9 @@
 import React, { FC } from "react";
-import { UserChat } from "context/ChatContext";
 import { useNavigate } from "react-router-dom";
 import InfoContainer from "./InfoContainer";
 import { PicConnectionContainer } from ".";
+import { changeUserChat } from "features/chat/chatSlice";
+import { useAppDispatch } from "hooks";
 
 interface IProps {
   connection: any;
@@ -14,14 +15,10 @@ const ConnectionElement: FC<IProps> = (props) => {
   const { displayName = "", photoURL = "", _id: userId = "" } = userInfo;
 
   const navigate = useNavigate();
-
-  const { dispatch } = UserChat();
+  const dispatch = useAppDispatch();
 
   const onClickHandler = () => {
-    dispatch({
-      type: "CHANGE_USER_CHAT",
-      payload: { user: userInfo, chatId: connectionId },
-    });
+    dispatch(changeUserChat({ chatId: connectionId, chatUser: userInfo }));
     navigate(`/chat/${connectionId}`);
   };
 

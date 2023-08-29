@@ -14,12 +14,14 @@ const SignIn: FC = () => {
     navigate("/about");
   };
 
+  //TODO: Need to do error handling in case request fails
+
   useEffect(() => {
     if (user !== null) {
       signInLogger(null, "navigating to home screen", null);
       navigate("/home");
     }
-  }, []);
+  }, [user, navigate]);
 
   if (loading) {
     return <Loading />;

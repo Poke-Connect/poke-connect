@@ -1,10 +1,11 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserObj } from "../helpers";
-import { UserChat } from "context/ChatContext";
 import { TileDetails } from "../components";
 import EmptyConnectedConnection from "../components/EmptyConnectedConnection";
 import { DateTimeElement } from "containers";
+import { changeUserChat } from "features/chat/chatSlice";
+import { useAppDispatch } from "hooks";
 
 interface IProps {
   connectionsData: any;
@@ -13,7 +14,7 @@ interface IProps {
 
 const ConnectedConnectionsList: FC<IProps> = (props) => {
   const { connectionsData, myRide } = props;
-  const { dispatch } = UserChat();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   if (!connectionsData || connectionsData.length === 0) {
@@ -26,10 +27,9 @@ const ConnectedConnectionsList: FC<IProps> = (props) => {
     }
     const userObj = createUserObj(data?.user);
     try {
-      dispatch({
-        type: "CHANGE_USER_CHAT",
-        payload: { user: userObj, chatId: data.connectionId },
-      });
+      dispatch(
+        changeUserChat({ chatId: data.connectionId, chatUser: userObj })
+      );
       navigate(`/chat/${data.connectionId}`);
     } catch (error) {
       console.log("Connection Failed", error);
