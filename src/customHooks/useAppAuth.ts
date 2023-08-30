@@ -10,15 +10,11 @@ export const useAppAuth = () => {
   const token = getToken();
   const { user: storeUser, loading } = useAppSelector((store) => store.auth);
 
-  console.log("CURRENT LOADING", loading);
-
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkTokenAndUserData = async () => {
-      console.log("CURRENT token", token);
-
       if (!token) {
         navigate("/signin");
         return;

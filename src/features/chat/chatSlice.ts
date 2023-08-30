@@ -11,7 +11,6 @@ const chatSlice = createSlice({
   initialState,
   reducers: {
     changeUserChat: (state, action) => {
-      console.log("action payload", action.payload);
       state.chatId = action.payload.chatId;
       state.chatUser = action.payload.chatUser;
       setLocalStorage("chatState", {

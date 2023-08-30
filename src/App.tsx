@@ -16,7 +16,6 @@ const App: FC = () => {
     libraries,
   });
   const { loading } = useAppAuth();
-  console.log("auth loading", loading);
 
   if (!isLoaded || loading) {
     return <Loading />;

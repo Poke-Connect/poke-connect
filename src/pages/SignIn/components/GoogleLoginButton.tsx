@@ -10,13 +10,9 @@ const GoogleLoginButton: FC = () => {
   const dispatch = useAppDispatch();
 
   const onSuccessHandler = async (credentialResponse: CredentialResponse) => {
-    console.log("success in client login try", credentialResponse.credential);
     try {
       if (credentialResponse && credentialResponse.credential) {
         dispatch(login(credentialResponse.credential));
-
-        console.log("dispatch of login done");
-
         navigate("/home");
       }
     } catch (error) {
