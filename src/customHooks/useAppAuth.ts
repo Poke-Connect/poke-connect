@@ -10,11 +10,15 @@ export const useAppAuth = () => {
   const token = getToken();
   const { user: storeUser, loading } = useAppSelector((store) => store.auth);
 
+  console.log("CURRENT LOADING", loading);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkTokenAndUserData = async () => {
+      console.log("CURRENT token", token);
+
       if (!token) {
         navigate("/signin");
         return;
@@ -22,7 +26,7 @@ export const useAppAuth = () => {
       try {
         const decodedToken: any = jwt_decode(token);
         if (decodedToken.exp < Date.now() / 1000) {
-          dispatch(logout());
+          await dispatch(logout());
           navigate("/signin");
           // Handle token expiration or other refresh scenarios if needed
           // await dispatch(refreshAccessToken(navigate));
@@ -31,7 +35,7 @@ export const useAppAuth = () => {
           if (localUser?.email) {
             dispatch(setUser({ user: localUser }));
           } else {
-            dispatch(logout());
+            await dispatch(logout());
             navigate("/signin");
           }
         }
@@ -50,7 +54,7 @@ export const useAppAuth = () => {
     };
 
     checkTokenAndUserData();
-  }, [token, storeUser, dispatch, navigate]);
+  }, [token, storeUser, dispatch, navigate, loading]);
 
   return { loading };
 };
